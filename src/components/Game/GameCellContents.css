@@ -1,0 +1,17 @@
+.game-cell {
+  margin: 0;
+  padding: 0;
+  width: var(--game-cell-size);
+  height: var(--game-cell-size);
+}
+
+.game-cell.space {
+  background-color: #140765;
+  border-color: #555;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.game-cell.overlay {
+  margin-top: calc(var(--game-cell-size) * -1);
+}

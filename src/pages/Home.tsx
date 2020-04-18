@@ -1,14 +1,15 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonPopover } from '@ionic/react';
+import React, { useState } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 
 const Home: React.FC = () => {
+  const [showPopover, setShowPopover] = useState(false);
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>Gotta get Outta this Space</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
