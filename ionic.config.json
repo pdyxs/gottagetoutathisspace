@@ -1,0 +1,7 @@
+{
+  "name": "gottagetouttathisspace",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
