@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './GameGrid.css';
 import { IonGrid, IonRow } from '@ionic/react';
 import GameCell from './GameCell';
-import Level, { GameCellSettings } from './Level';
 
 import levels from './levels';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
+
 interface GameGridProps { }
 
-const grid = levels[0];
+const grid = levels[1];
 
 const GameGrid: React.FC<GameGridProps> = () => {
   return (

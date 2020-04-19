@@ -16,7 +16,10 @@ const GameCell: React.FC<GameCellProps> = (props) => {
   return (
       <IonCol size="auto" className="game-cell-container"
         onClick={type == "blank" ? undefined :
-          e => {setShowPopover(true); setPopoverEvent(e.nativeEvent)}}>
+          e => {
+            setShowPopover(true);
+            setPopoverEvent(e.nativeEvent)
+          }}>
 
         <GameCellContents settings={props.settings} />
         <IonPopover
@@ -24,7 +27,9 @@ const GameCell: React.FC<GameCellProps> = (props) => {
             event={popoverEvent}
             onDidDismiss={e => setShowPopover(false)}
           >
-          <div className={`game-cell ${type} overlay`}></div>
+          <div className={`game-cell-container overlay`}>
+            <GameCellContents settings={props.settings} />
+          </div>
           <div className="game-cell-popover">
             <p>This is popover content</p>
           </div>

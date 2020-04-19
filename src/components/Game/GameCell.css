@@ -8,6 +8,10 @@
   padding: 0;
 }
 
+.game-cell-container.overlay {
+  margin: 0;
+}
+
 .game-cell-popover {
   padding: var(--game-cell-margin);
   width: var(--game-cell-size) * 2;

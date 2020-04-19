@@ -3,6 +3,7 @@
   padding: 0;
   width: var(--game-cell-size);
   height: var(--game-cell-size);
+  pointer-events: none;
 }
 
 .game-cell.space {
@@ -12,6 +13,80 @@
   border-style: solid;
 }
 
-.game-cell.overlay {
+.game-cell-contents-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.game-cell-contents {
+  --margin: calc(var(--game-cell-size) * 0.1);
+
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.game-cell-container.overlay .game-cell {
   margin-top: calc(var(--game-cell-size) * -1);
+}
+
+.game-cell-contents .planet, .game-cell-contents .star {
+  --size: 2em;
+  --colour: brown;
+
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--colour);
+  border-radius: calc(var(--size) / 2);
+
+  position: absolute;
+  left: calc((var(--game-cell-size) - var(--size)) / 2);
+  top: calc(var(--size) / -2);
+}
+
+.game-cell-contents .star {
+    --colour: yellow;
+    --size: 3em;
+}
+
+.game-cell-contents .planet {
+    border: 1px white solid;
+}
+
+.game-cell-contents .planet.planet-rocky {
+  --size: 1em;
+}
+
+.game-cell-contents .enemies {
+  position: absolute;
+  width: 100%;
+  bottom: calc(var(--game-cell-size) / -2 + var(--margin));
+
+  color: purple;
+}
+
+.game-cell-contents .fuels {
+  position: absolute;
+  width: 100%;
+  top: calc(var(--game-cell-size) / -2 + var(--margin));
+
+  color: yellow;
+}
+
+.game-cell-contents .crews {
+  position: absolute;
+  left: 0;
+  top: -0.5em;
+  padding-left: var(--margin);
+}
+
+.game-cell-contents .upgrades {
+  position: absolute;
+  right: 0;
+  top: -0.5em;
+  padding-right: var(--margin);
 }
