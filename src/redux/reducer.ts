@@ -1,4 +1,4 @@
-import { SET_SHIP_DATA, ShipData } from "./actions";
+import { SET_SHIP_DATA } from "./actions";
 
 export default function reducer(
   state:any = {},

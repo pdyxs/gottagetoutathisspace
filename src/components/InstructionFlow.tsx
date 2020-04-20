@@ -7,7 +7,6 @@ import { retrieveShipCode, clearShipCode } from '../storage';
 import { getShipData } from '../firebaseConfig';
 import { setShipData, ShipData, clearShipData } from '../redux/actions';
 import { findIndex } from 'lodash';
-import { IonReactRouter } from '@ionic/react-router';
 
 export interface InstructionPageProps {
   baseUrl: string,
@@ -36,7 +35,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
   const history = useHistory();
   const shipCode = useSelector((state: any) => state.shipCode);
 
-  let currentPageIndex = findIndex(pages, page => history.location.pathname == `${baseUrl}/${page.url}`);
+  let currentPageIndex = findIndex(pages, page => history.location.pathname === `${baseUrl}/${page.url}`);
   let currentPage = currentPageIndex < 0 ? null : pages[currentPageIndex];
   let nextPage = (currentPageIndex >= pages.length - 1) ? null : pages[currentPageIndex + 1];
   let nextUrl = `${baseUrl}/${nextPage?.url}`;

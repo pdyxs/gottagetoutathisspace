@@ -1,10 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonPopover } from '@ionic/react';
-import React, { useState } from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonPage, IonButton } from '@ionic/react';
+import React from 'react';
 import './Start.css';
 
 const Start: React.FC = () => {
-  const [showPopover, setShowPopover] = useState(false);
   return (
     <IonPage>
       <IonContent>

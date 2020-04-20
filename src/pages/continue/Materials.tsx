@@ -68,7 +68,7 @@ const materials = [
 ];
 
 const Materials: React.FC = () => {
-  const [shipCode, shipData] = useSelector((state: any) => [state.shipCode, state.shipData]);
+  const shipData = useSelector((state: any) => state.shipData);
 
   return (
     <IonContent>
