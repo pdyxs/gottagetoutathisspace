@@ -18,13 +18,17 @@ const Start: React.FC = () => {
 
           <div>
             <IonButton
-              routerLink="continue"
+              routerLink="/continue"
               color="primary">
               I got a strange package in the mail
             </IonButton>
           </div>
           <div>
-            <IonButton color="primary">I didn't, but this sounds fun</IonButton>
+            <IonButton
+              routerLink="/new"
+              color="primary">
+              I didn't, but this sounds fun
+            </IonButton>
           </div>
 
         </div>

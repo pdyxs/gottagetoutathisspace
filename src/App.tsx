@@ -4,6 +4,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Start from './pages/Start';
 import Continue from './pages/continue';
+import NewGame from './pages/new';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -30,6 +31,7 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/start" component={Start} exact={true} />
         <Route path="/continue" component={Continue} />
+        <Route path="/new" component={NewGame} />
         <Route exact path="/" render={() => <Redirect to="/start" />} />
       </IonRouterOutlet>
     </IonReactRouter>
