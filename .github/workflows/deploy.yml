@@ -25,4 +25,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: ls
     - run: npm install
-    - run: npm run deploy --if-present
+    - run: npm run build --if-present
+    - name: Deploy to foo-bar.surge.sh
+      uses: dswistowski/surge-sh-action@v1
+      with:
+        domain: 'https://gottagetouttathis.space'
+        project: './build/'
+        login: ${{ secrets.surge_login }}
+        token: ${{ secrets.surge_token }}
