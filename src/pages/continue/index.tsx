@@ -2,6 +2,7 @@ import React from 'react';
 import Intro from './Intro';
 import Materials from './Materials';
 import History from './History';
+import Ship from './Ship';
 
 import InstructionFlow,
   { InstructionPagesInfo }
@@ -24,6 +25,11 @@ const flow : InstructionPagesInfo = [
     url: 'materials',
     requiresShipCode: true,
     component: Materials
+  },
+  {
+    url: 'createShip',
+    requiresShipCode: true,
+    component: Ship
   }
 ]
 

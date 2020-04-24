@@ -59,12 +59,13 @@ const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
         <p>
           To begin, please enter the serial number of your ship.
         </p>
-        <p>
+        <form onSubmit={(e) => {codeInput.length >= minCodeLength && setCode(codeInput); e.preventDefault();}}>
           <IonLoading isOpen={busy} message="Checking Serial Number" />
-          <IonInput value={codeInput} placeholder="Enter Serial Number Here"
-            onIonChange={e => setCodeInput(e.detail.value!)}></IonInput>
+          <IonInput
+            value={codeInput} placeholder="Enter Serial Number Here"
+            onIonChange={e => setCodeInput(e.detail.value!)} />
           <IonButton disabled={codeInput.length < minCodeLength} onClick={e => setCode(codeInput)}>Enter</IonButton>
-        </p>
+        </form>
       </div>
     </IonContent>
   );

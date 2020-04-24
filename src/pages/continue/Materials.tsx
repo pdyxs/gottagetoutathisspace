@@ -1,7 +1,8 @@
-import { IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { ShipData } from '../../redux/actions';
+import { InstructionPageProps } from '../../components/InstructionFlow';
 
 const materials = [
   {
@@ -67,19 +68,26 @@ const materials = [
   // }
 ];
 
-const Materials: React.FC = () => {
+const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const shipData = useSelector((state: any) => state.shipData);
 
   return (
     <IonContent>
       <div className="ion-text-center ion-padding">
         <h2>Materials</h2>
-        <p>
-          This is what you should find in your envelope. As
-          your components have been created by past captains, they will be
-          unique. Past captains have left notes about what
-          you'll find.
-        </p>
+        <div className="page-container">
+          <p>
+            This is what you should find in your envelope. As
+            your components have been created by past captains, they will be
+            unique. Past captains have left notes about what
+            you'll find.
+          </p>
+          <p>
+            If you can't find something, don't panic! You might have to
+            source some components yourself, or
+            get in touch with the last captain.
+          </p>
+        </div>
         <IonGrid>
           <IonRow>
             {materials.map((material, i) =>
@@ -98,6 +106,9 @@ const Materials: React.FC = () => {
             )}
           </IonRow>
         </IonGrid>
+        <IonButton routerLink={nextUrl}>
+          I've got everything, let's go!
+        </IonButton>
       </div>
     </IonContent>
   );
