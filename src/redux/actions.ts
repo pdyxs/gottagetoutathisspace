@@ -13,6 +13,8 @@ export interface LevelData {
 }
 
 export interface ShipData {
+  shipName: string,
+
   levelsComplete: number,
   robotTokens: string,
   shipToken: string,
@@ -25,12 +27,12 @@ export interface ShipData {
   spaceCards: string,
   crewCards: string,
 
-  damageDice: string,
-
   levels: Array<LevelData>
 }
 
 export const DefaultShipData : ShipData = {
+  shipName: '',
+  
   levelsComplete: 0,
 
   robotTokens: '',
@@ -43,8 +45,6 @@ export const DefaultShipData : ShipData = {
   shipCards: '',
   spaceCards: '',
   crewCards: '',
-
-  damageDice: '',
 
   levels: []
 }

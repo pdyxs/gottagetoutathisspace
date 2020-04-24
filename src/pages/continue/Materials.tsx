@@ -58,13 +58,13 @@ const materials = [
     name: "Fuel Tokens",
     explanation: "Fuel that you have, or can collect. You might not have any.",
     notes: (d : ShipData) => d.fuelTokens
-  },
-  {
-    count: "Maybe some",
-    name: "Damage Dice",
-    explanation: "Dice that are used to determine the effects of damage on your modules. If you don't have any, your modules are probably fine!",
-    notes: (d : ShipData) => d.damageDice
   }
+  // {
+  //   count: "Maybe some",
+  //   name: "Damage Dice",
+  //   explanation: "Dice that are used to determine the effects of damage on your modules. If you don't have any, your modules are probably fine!",
+  //   notes: (d : ShipData) => d.damageDice
+  // }
 ];
 
 const Materials: React.FC = () => {
@@ -72,7 +72,7 @@ const Materials: React.FC = () => {
 
   return (
     <IonContent>
-      <div className="ion-text-center">
+      <div className="ion-text-center ion-padding">
         <h2>Materials</h2>
         <p>
           This is what you should find in your envelope. As
@@ -83,7 +83,7 @@ const Materials: React.FC = () => {
         <IonGrid>
           <IonRow>
             {materials.map((material, i) =>
-              <IonCol key={i} size="6" size-md="4" size-lg="3">
+              <IonCol key={i} size="12" size-md="6" size-lg="4">
                 <IonCard>
                   <IonCardHeader>
                     <IonCardSubtitle>{material.count}</IonCardSubtitle>

@@ -32,25 +32,36 @@ const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
   return (
     <IonContent>
-      <div className="ion-text-center">
+      <div className="page-container">
         <h2>What This Is</h2>
         <p>"Gotta Get Outta This Space" is a print, play and post game.</p>
         <p>
-          You're going to be captaining a spaceship through
-          a solar system, changing the ship as you go using
-          whatever materials you have on hand.
+          The spaceship that’s been sent to your solar system is one of
+          the last remaining human ships in the galaxy. Your goal is to
+          guide it safely through your solar system, picking up supplies
+          (and hopefully you!) as you go.
         </p>
         <p>
-          Once you've finished (assuming you succeed), you'll
-          pack up the game and send it to someone else, who'll
-          then do the same.
+          As your ship gets improved and damaged, you’ll change the board
+          game components in front of you, writing on some pieces,
+          destroying others, and making new ones with whatever materials
+          you have on hand.
         </p>
         <p>
-          To begin, please enter the code on your ship.
+          Once you've finished (assuming you do, in fact, get outta
+            this space), you'll pack up the game and send it to
+            someone else, who'll then do the same.
         </p>
         <p>
-          <IonLoading isOpen={busy} message="Checking Code" />
-          <IonInput value={codeInput} placeholder="Enter Code Here"
+          Together, you’re charting a path out of the galaxy - if you
+          make it, you can escape the grasp of the new robot overlords!
+        </p>
+        <p>
+          To begin, please enter the serial number of your ship.
+        </p>
+        <p>
+          <IonLoading isOpen={busy} message="Checking Serial Number" />
+          <IonInput value={codeInput} placeholder="Enter Serial Number Here"
             onIonChange={e => setCodeInput(e.detail.value!)}></IonInput>
           <IonButton disabled={codeInput.length < minCodeLength} onClick={e => setCode(codeInput)}>Enter</IonButton>
         </p>

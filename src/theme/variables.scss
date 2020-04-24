@@ -1,0 +1,47 @@
+$font-size: 20pt;
+
+h1, h2, h3, h4 {
+  font-family: 'Tulpen One';
+}
+
+h1 {
+ font-size: 2.5 * $font-size;
+}
+
+h2 {
+  font-size: 2 * $font-size;
+}
+
+h3 {
+  font-size: 1.75 * $font-size;
+}
+
+h4 {
+  font-size: 1.5 * $font-size;
+}
+
+html {
+  ion-toolbar {
+    font-family: 'Tulpen One';
+    font-size: $font-size !important;
+  }
+
+  ion-button {
+    font-family: 'Tulpen One';
+    font-size: $font-size !important;
+
+    &.small {
+      font-size: $font-size * .75 !important;
+    }
+  }
+
+  ion-title {
+    font-family: 'Tulpen One';
+    font-size: $font-size;
+  }
+
+  ion-card-title {
+    font-size: $font-size * 1.2;
+    font-family: 'Tulpen One';
+  }
+}

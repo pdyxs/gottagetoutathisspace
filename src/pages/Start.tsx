@@ -6,16 +6,17 @@ const Start: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <div className="ion-text-center">
+        <div className="startPage ion-text-center">
           <p>The robot uprising was swift and brutal</p>
-          <p>This ship is one of the few that survived</p>
+          <p>Only one ship survived</p>
           <p>Now it's time to run</p>
           <p className="ion-no-margin ion-margin-top">Now, you've</p>
 
-          <h1 className="ion-no-margin ion-margin-bottom">Gotta Get Outta This Space</h1>
+          <h1 className="title ion-no-margin ion-margin-bottom">Gotta Get Outta This Space</h1>
 
           <div>
             <IonButton
+              size="large"
               routerLink="/continue"
               color="primary">
               I got a strange package in the mail
@@ -23,6 +24,7 @@ const Start: React.FC = () => {
           </div>
           <div>
             <IonButton
+              size="large"
               routerLink="/new"
               color="primary">
               I didn't, but this sounds fun

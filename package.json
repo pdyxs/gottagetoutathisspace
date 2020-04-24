@@ -57,6 +57,7 @@
     "@types/firebase": "^3.2.1",
     "@types/lodash": "^4.14.150",
     "@types/react-redux": "^7.1.7",
+    "node-sass": "^4.13.1",
     "surge": "^0.21.3"
   },
   "description": "An Ionic project"
