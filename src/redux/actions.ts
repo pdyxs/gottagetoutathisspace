@@ -9,7 +9,8 @@ export const clearShipData = () => {
 }
 
 export interface LevelData {
-
+  playerName: string,
+  fuelAtEnd: number
 }
 
 export interface ShipData {
@@ -32,7 +33,7 @@ export interface ShipData {
 
 export const DefaultShipData : ShipData = {
   shipName: '',
-  
+
   levelsComplete: 0,
 
   robotTokens: '',

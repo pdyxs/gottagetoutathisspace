@@ -13,9 +13,15 @@ const ContinueShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
         <h2>Assemble your ship!</h2>
         <p>
           Before you begin, you need to assemble your ship! Take all
-          the Ship Module cards and put them together. This is the state
-          that the last player, _, left the ship in.
+          the Ship Module cards and put them together.
         </p>
+        { shipData.levels.length > shipData.levelsComplete &&
+          <p>
+            This is the state that the last player,
+            {shipData.levels[shipData.levelsComplete].playerName},
+            left the ship in.
+          </p>
+        }
         <h3>A tour of the ship</h3>
         <p>
           Your ship should have all the information about what each
