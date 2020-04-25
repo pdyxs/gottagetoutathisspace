@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './GameCell.css';
-import { IonCol, IonPopover, IonButton } from '@ionic/react';
+import { IonCol, IonPopover } from '@ionic/react';
 import GameCellContents from './GameCellContents';
-import { GameCellSettings } from './Level';
+import { GameCellSettings } from '../../model/Level';
 
 interface GameCellProps {
   settings: GameCellSettings
@@ -15,7 +15,7 @@ const GameCell: React.FC<GameCellProps> = (props) => {
 
   return (
       <IonCol size="auto" className="game-cell-container"
-        onClick={type == "blank" ? undefined :
+        onClick={type === "blank" ? undefined :
           e => {
             setShowPopover(true);
             setPopoverEvent(e.nativeEvent)

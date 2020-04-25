@@ -15,7 +15,7 @@ const ContinueShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
           Before you begin, you need to assemble your ship! Take all
           the Ship Module cards and put them together.
         </p>
-        { shipData.levels.length > shipData.levelsComplete &&
+        { shipData.levels?.length > shipData.levelsComplete &&
           <p>
             This is the state that the last player,
             {shipData.levels[shipData.levelsComplete].playerName},
@@ -34,7 +34,7 @@ const ContinueShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
           do more actions.
         </p>
         <IonButton routerLink={nextUrl}>
-          Enough with the history, let's save humanity already!
+          Great! Let's do this!
         </IonButton>
       </div>
     </IonContent>

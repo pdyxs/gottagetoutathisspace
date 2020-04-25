@@ -6,12 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { retrieveShipCode, clearShipCode } from '../storage';
 import { getShipData } from '../firebaseConfig';
 import { setShipData, ShipData, clearShipData } from '../redux/actions';
-import { findIndex } from 'lodash';
+import { findIndex, take, drop } from 'lodash';
 
 export interface InstructionPageProps {
   baseUrl: string,
   nextUrl: string,
-  nextPage: InstructionPageInfo | null
+  nextPage: InstructionPageInfo | null,
+  pastPages: Array<InstructionPageInfo>,
+  futurePages: Array<InstructionPageInfo>
 }
 
 interface InstructionPageInfo {
@@ -102,7 +104,11 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
               <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
                 render={(props) =>
                   <Page.component {...props}
-                    baseUrl={baseUrl} nextPage={nextPage} nextUrl={nextUrl} />}
+                    baseUrl={baseUrl}
+                    nextPage={nextPage}
+                    nextUrl={nextUrl}
+                    pastPages={take(pages, currentPageIndex)}
+                    futurePages={drop(pages, currentPageIndex + 1)} />}
                 exact={true} />
             )}
             <Route exact path={baseUrl} render={() => <Redirect to={`${baseUrl}/${pages[0].url}`} />} />

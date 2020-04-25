@@ -1,4 +1,4 @@
-import Level from "../Level";
+import Level from "../model/Level";
 
 const grid : Level = [
   [

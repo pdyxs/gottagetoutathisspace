@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import './GameCellContents.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { GameCellSettings } from './Level';
 import { times } from 'lodash';
+import { GameCellSettings } from '../../model/Level';
 
 interface GameCellContentsProps {
   settings: GameCellSettings
@@ -17,37 +17,37 @@ const GameCellContents: React.FC<GameCellContentsProps> = (props) => {
           <div className="game-cell-contents">
             {contents && contents.map((content, i) => (
               <Fragment key={i}>
-                {content.type == "startPosition" &&
+                {content.type === "startPosition" &&
                   <FontAwesomeIcon icon={['fas', 'space-shuttle']} size="lg" rotation={270} />
                 }
-                {content.type == "planet" &&
+                {content.type === "planet" &&
                   <div className={`planet planet-${content.subtype}`}></div>
                 }
-                {content.type == "star" &&
+                {content.type === "star" &&
                   <div className={`star star-${content.subtype}`}></div>
                 }
-                {content.type == "enemy" &&
+                {content.type === "enemy" &&
                   <div className="enemies">
                     {times(content.count || 1).map((i) => (
                       <FontAwesomeIcon className={`enemy enemy-${i+1}`} key={i} icon={['fas', 'robot']} />
                     ))}
                   </div>
                 }
-                {content.type == "fuel" &&
+                {content.type === "fuel" &&
                   <div className="fuels">
                     {times(content.count || 1).map((i) => (
                       <FontAwesomeIcon className={`fuel fuel-${i+1}`} key={i} icon={['fas', 'bolt']} />
                     ))}
                   </div>
                 }
-                {content.type == "crew" &&
+                {content.type === "crew" &&
                   <div className="crews">
                     {times(content.count || 1).map((i) => (
                       <FontAwesomeIcon className={`crew crew-${i+1}`} key={i} icon={['fas', 'user']} />
                     ))}
                   </div>
                 }
-                {content.type == "upgrade" &&
+                {content.type === "upgrade" &&
                   <div className="upgrades">
                     {times(content.count || 1).map((i) => (
                       <FontAwesomeIcon className={`upgrade upgrade-${i+1}`} key={i} icon={['fas', 'tools']} />

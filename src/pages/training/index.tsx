@@ -1,24 +1,24 @@
 import React from 'react';
-import Intro from './Intro';
 
 import InstructionFlow,
   { InstructionPagesInfo }
   from '../../components/InstructionFlow';
+import MapSetup from './MapSetup';
 
 const flow : InstructionPagesInfo = [
   {
-    url: 'intro',
-    requiresShipCode: false,
-    component: Intro
+    url: 'mapSetup',
+    requiresShipCode: true,
+    component: MapSetup
   }
 ]
 
-export const baseUrl = '/new';
+export const baseUrl = '/training';
 
-const NewGame: React.FC = () => {
+const Training: React.FC = () => {
   return (
     <InstructionFlow pages={flow} baseUrl={baseUrl} />
   );
 };
 
-export default NewGame;
+export default Training;

@@ -3,12 +3,13 @@ import Intro from './Intro';
 import Materials from './Materials';
 import History from './History';
 import Ship from './Ship';
+import TrainingIntro from './Training';
 
 import InstructionFlow,
   { InstructionPagesInfo }
   from '../../components/InstructionFlow';
 
-const baseUrl = '/continue';
+export const baseUrl = '/continue';
 
 const flow : InstructionPagesInfo = [
   {
@@ -27,9 +28,14 @@ const flow : InstructionPagesInfo = [
     component: Materials
   },
   {
-    url: 'createShip',
+    url: 'assembleShip',
     requiresShipCode: true,
     component: Ship
+  },
+  {
+    url: 'trainingIntro',
+    requiresShipCode: true,
+    component: TrainingIntro
   }
 ]
 
