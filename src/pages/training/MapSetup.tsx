@@ -5,7 +5,7 @@ import GameGrid from '../../components/Game/GameGrid';
 
 import trainingLevel from '../../levels/training';
 
-const MapSetup: React.FC<InstructionPageProps> = ({nextUrl}) => {
+const MapSetup: React.FC<InstructionPageProps> = () => {
 
   return (
     <IonContent>

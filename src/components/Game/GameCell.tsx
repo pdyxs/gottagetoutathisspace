@@ -2,36 +2,53 @@ import React, { useState } from 'react';
 import './GameCell.css';
 import { IonCol, IonPopover } from '@ionic/react';
 import GameCellContents from './GameCellContents';
-import { GameCellSettings } from '../../model/Level';
+import Level, { GameCellSettings, Coords } from '../../model/Level';
+import GameCellPopover from './GameCellPopover';
 
 interface GameCellProps {
-  settings: GameCellSettings
+  coordinates: Coords,
+  level: Level,
+  settings: GameCellSettings,
+  refresh: CallableFunction,
+  includeControls: boolean
 }
 
 const GameCell: React.FC<GameCellProps> = (props) => {
   const [showPopover, setShowPopover] = useState(false);
   const [popoverEvent, setPopoverEvent] = useState(new Event(""));
-  const {settings: {type}} = props;
+  const {coordinates, level, refresh} = props;
+  let popover = React.useRef<HTMLIonPopoverElement>(null);
+
+  var newProps = {
+    ...props,
+    refresh: function(dismissPopover: boolean = true) {
+      if (dismissPopover) {
+        popover.current?.dismiss();
+      }
+      refresh();
+    }
+  }
 
   return (
       <IonCol size="auto" className="game-cell-container"
-        onClick={type === "blank" ? undefined :
+        onClick={level.cellIsInGrid(coordinates) ?
           e => {
             setShowPopover(true);
             setPopoverEvent(e.nativeEvent)
-          }}>
+          } : undefined}>
 
-        <GameCellContents settings={props.settings} />
+        <GameCellContents {...newProps} />
         <IonPopover
+            ref={popover}
             isOpen={showPopover}
             event={popoverEvent}
-            onDidDismiss={e => setShowPopover(false)}
+            onDidDismiss={() => setShowPopover(false)}
           >
           <div className={`game-cell-container overlay`}>
-            <GameCellContents settings={props.settings} />
+            <GameCellContents {...newProps} />
           </div>
           <div className="game-cell-popover">
-            <p>This is popover content</p>
+            <GameCellPopover {...newProps} />
           </div>
         </IonPopover>
       </IonCol>

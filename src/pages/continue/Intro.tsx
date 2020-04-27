@@ -64,7 +64,7 @@ const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
           <IonInput
             value={codeInput} placeholder="Enter Serial Number Here"
             onIonChange={e => setCodeInput(e.detail.value!)} />
-          <IonButton disabled={codeInput.length < minCodeLength} onClick={e => setCode(codeInput)}>Enter</IonButton>
+          <IonButton disabled={codeInput.length < minCodeLength} onClick={() => setCode(codeInput)}>Enter</IonButton>
         </form>
       </div>
     </IonContent>

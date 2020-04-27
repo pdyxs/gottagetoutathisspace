@@ -1,56 +1,56 @@
-import Level from "../model/Level";
+import Level, { CellContentTypes, CellTypes, PlanetTypes, StarTypes } from "../model/Level";
 
-const grid : Level = [
+const grid = new Level([
   [
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: "startPosition" }
+        { type: CellContentTypes.Player }
       ]
     },
-    { type: 'space' },
-    { type: 'space' },
-    { type: 'space' }
+    { type: CellTypes.Space },
+    { type: CellTypes.Space },
+    { type: CellTypes.Space }
   ],
   [
-    { type: 'space' },
+    { type: CellTypes.Space },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'planet', subtype: 'gas' },
-        { type: 'fuel', count: 2 }
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant },
+        { type: CellContentTypes.Fuel, count: 2 }
       ]
     },
-    { type: 'space' },
-    { type: 'space' }
+    { type: CellTypes.Space },
+    { type: CellTypes.Space }
   ],
   [
-    { type: 'space' },
-    { type: 'space' },
-    { type: 'space' },
+    { type: CellTypes.Space },
+    { type: CellTypes.Space },
+    { type: CellTypes.Space },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'enemy', count: 1 }
+        { type: CellContentTypes.Robot, count: 1 }
       ]
     }
   ],
   [
-    { type: 'space' },
+    { type: CellTypes.Space },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'enemy', count: 1 }
+        { type: CellContentTypes.Robot, count: 1 }
       ]
     },
-    { type: 'space' },
+    { type: CellTypes.Space },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'star', subtype: 'blue' }
+        { type: CellContentTypes.Star, subtype: StarTypes.BlueGiant }
       ]
     },
   ]
-];
+]);
 
 export default grid;

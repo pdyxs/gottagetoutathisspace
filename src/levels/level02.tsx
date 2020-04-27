@@ -1,88 +1,88 @@
-import Level from "../model/Level";
+import Level, { CellTypes, CellContentTypes, PlanetTypes, StarTypes } from "../model/Level";
 
-const grid : Level = [
+const grid = new Level([
   [
-    { type: 'blank' },
-    { type: 'blank' },
+    { type: CellTypes.Blank },
+    { type: CellTypes.Blank },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: "startPosition" }
+        { type: CellContentTypes.Player }
       ]
     },
-    { type: 'blank' },
-    { type: 'blank' }
+    { type: CellTypes.Blank },
+    { type: CellTypes.Blank }
   ],
   [
-    { type: 'blank' },
-    { type: 'space' },
-    { type: 'space' },
-    { type: 'space' },
-    { type: 'blank' }
+    { type: CellTypes.Blank },
+    { type: CellTypes.Space },
+    { type: CellTypes.Space },
+    { type: CellTypes.Space },
+    { type: CellTypes.Blank }
   ],
   [
-    { type: 'space' },
+    { type: CellTypes.Space },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'planet', subtype:'rocky' },
-        { type: 'fuel', count: 1 },
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky },
+        { type: CellContentTypes.Fuel, count: 1 },
         { type: 'upgrade' }
       ]
     },
-    { type: 'space' },
-    { type: 'space' },
-    { type: 'space' }
+    { type: CellTypes.Space },
+    { type: CellTypes.Space },
+    { type: CellTypes.Space }
   ],
   [
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'enemy', count: 1 }
+        { type: CellContentTypes.Robot, count: 1 }
       ]
     },
-    { type: 'space' },
+    { type: CellTypes.Space },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'star', subtype: 'yellow' }
+        { type: CellContentTypes.Star, subtype: StarTypes.Yellow }
       ]
     },
-    { type: 'space' },
+    { type: CellTypes.Space },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'planet', subtype: 'gas' },
-        { type: 'fuel', count: 3 }
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant },
+        { type: CellContentTypes.Fuel, count: 3 }
       ]
     }
   ],
   [
-    { type: 'blank' },
-    { type: 'blank' },
+    { type: CellTypes.Blank },
+    { type: CellTypes.Blank },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'planet', subtype: 'rocky' },
-        { type: 'fuel', count: 1 },
-        { type: 'crew' }
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky },
+        { type: CellContentTypes.Fuel, count: 1 },
+        { type: CellContentTypes.Crew }
       ]
     },
-    { type: 'blank' },
-    { type: 'blank' }
+    { type: CellTypes.Blank },
+    { type: CellTypes.Blank }
   ],
   [
-    { type: 'blank' },
-    { type: 'blank' },
+    { type: CellTypes.Blank },
+    { type: CellTypes.Blank },
     {
-      type: 'space',
+      type: CellTypes.Space,
       contents: [
-        { type: 'enemy', count: 1 }
+        { type: CellContentTypes.Robot, count: 1 }
       ]
     },
-    { type: 'blank' },
-    { type: 'blank' }
+    { type: CellTypes.Blank },
+    { type: CellTypes.Blank }
   ]
-];
+]);
 
 export default grid;
