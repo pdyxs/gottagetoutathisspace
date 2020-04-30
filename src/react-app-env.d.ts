@@ -9,6 +9,11 @@ declare namespace NodeJS {
   }
 }
 
+declare module '*.mdx' {
+  const content: string;
+  export default content;
+}
+
 declare module '*.bmp' {
   const src: string;
   export default src;
