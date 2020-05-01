@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { IonItemGroup, IonItem } from '@ionic/react';
 import Expandable from '../Expandable';
 import { isNil } from 'lodash';
+import './Accordion.scss';
 
 interface AccordionProps {
   children: React.ReactElement<AccordionItemProps>[],
@@ -65,8 +66,13 @@ export const AccordionItem : React.FC<AccordionItemProps> = ({
 
   return (
     <IonItemGroup>
-      <IonItem className={classnames('accordion-title', titleClassName)}
-        onClick={toggleExpanded}>
+      <IonItem
+        color={expand ? 'secondary' : 'primary'}
+        className={
+        classnames('accordion-title',
+          {selected: expand},
+          titleClassName)}
+        onClick={toggleExpanded} button>
         {title}
       </IonItem>
       <Expandable isExpanded={expand} className={classnames(className)}>

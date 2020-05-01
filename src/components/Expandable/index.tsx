@@ -41,7 +41,7 @@ const Expandable: React.FC<ExpandableProps> = ({
       classnames(className, 'expandable', {collapsed: !isExpanded})
     } style={computedStyle} {...otherProps}>
       <IonItem className="expandable-container" ref={item}>
-        {children}
+        <div>{children}</div>
       </IonItem>
     </div>
   );

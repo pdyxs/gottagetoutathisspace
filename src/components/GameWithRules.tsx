@@ -11,7 +11,7 @@ interface GameWithRulesProps {
 const GameWithRules: React.FC<GameWithRulesProps> = ({level}) => {
   return (
     <div className="gameAndRulesContainer">
-      <table className="blah">
+      <table className="gameAndRulesTable">
         <tbody>
           <tr>
             <td className="gameContainer">
