@@ -1,0 +1,22 @@
+.gameAndRulesContainer {
+  text-align: center;
+
+  .blah {
+    margin: 0 auto;
+    background-color: blue;
+    max-width: 1320px;
+
+
+    .gameContainer {
+      width: 660px;
+      background: black;
+    }
+
+    .rulesContainer {
+      min-width: 400px;
+      max-width: 660px;
+      background: grey;
+      height: 100%;
+    }
+  }
+}

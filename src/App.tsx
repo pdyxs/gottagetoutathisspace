@@ -27,12 +27,14 @@ import '@ionic/react/css/display.css';
 import './theme/fonts.css';
 import './theme/variables.css';
 import './theme/variables.scss';
+import Game from './pages/Game';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/start" component={Start} exact={true} />
+        <Route path="/game" component={Game} />
         <Route path={continueURL} component={Continue} />
         <Route path={newURL} component={NewGame} />
         <Route path={trainingURL} component={Training} />
