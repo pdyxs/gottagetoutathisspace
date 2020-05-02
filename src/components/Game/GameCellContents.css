@@ -26,67 +26,79 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
 }
 
 .game-cell-container.overlay .game-cell {
   margin-top: calc(var(--game-cell-size) * -1);
 }
 
-.game-cell-contents .planet, .game-cell-contents .star {
-  --size: 2em;
-  --colour: brown;
-
-  width: var(--size);
-  height: var(--size);
-  background-color: var(--colour);
-  border-radius: calc(var(--size) / 2);
-
+.game-cell-contents .ggo-icon {
   position: absolute;
-  left: calc((var(--game-cell-size) - var(--size)) / 2);
-  top: calc(var(--size) / -2);
 }
 
-.game-cell-contents .star {
-    --colour: yellow;
+.game-cell-contents .ggo-icon-playerShip
+{
+  --size: 2em;
+}
+
+.game-cell-contents .ggo-icon-planet
+{
+  --size: 2em;
+}
+
+.game-cell-contents .ggo-icon-planet,
+.game-cell-contents .ggo-icon-star,
+.game-cell-contents .ggo-icon-playerShip {
+  left: calc((var(--game-cell-size) - var(--size)) / 2);
+  top: calc((var(--game-cell-size) - var(--size)) / 2);
+}
+
+.game-cell-contents .ggo-icon-star {
     --size: 3em;
 }
 
-.game-cell-contents .planet {
-    border: 1px white solid;
+.game-cell-contents .ggo-icon-planet-gas {
+  --size: 2em;
 }
 
-.game-cell-contents .planet.planet-rocky {
+.game-cell-contents .ggo-icon-planet-rocky {
   --size: 1em;
 }
 
-.game-cell-contents .enemies {
+.game-cell-contents .ggo-icon-container {
   position: absolute;
+  text-align: center;
+}
+
+.game-cell-contents .ggo-icon-container .ggo-icon {
+  position: initial;
+}
+
+.game-cell-contents .ggo-icon-container-enemy {
   width: 100%;
-  bottom: calc(var(--game-cell-size) / -2 + var(--margin));
-
-  color: purple;
+  bottom: 0;
+  height: 1.5em;
 }
 
-.game-cell-contents .fuels {
-  position: absolute;
+.game-cell-contents .ggo-icon-container-fuel {
   width: 100%;
-  top: calc(var(--game-cell-size) / -2 + var(--margin));
-
-  color: yellow;
+  top: var(--margin);
 }
 
-.game-cell-contents .crews {
-  position: absolute;
-  left: 0;
-  top: -0.5em;
-  padding-left: var(--margin);
+.game-cell-contents .ggo-icon-container-crew,
+.game-cell-contents .ggo-icon-crew {
+  left: var(--margin);
+  height: 100%;
+  margin: auto;
 }
 
-.game-cell-contents .upgrades {
-  position: absolute;
-  right: 0;
-  top: -0.5em;
-  padding-right: var(--margin);
+.game-cell-contents .ggo-icon-container-module,
+.game-cell-contents .ggo-icon-module,
+.game-cell-contents .ggo-icon-container-upgrade,
+.game-cell-contents .ggo-icon-upgrade {
+  right: var(--margin);
+  height: 100%;
+  margin: auto;
 }

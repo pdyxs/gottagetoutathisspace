@@ -13,9 +13,8 @@
 }
 
 .game-cell-popover {
-  padding: var(--game-cell-margin);
-  width: var(--game-cell-size) * 2;
-  margin: 0 calc(var(--game-cell-size) * -0.5);
-  background-color: var(--ion-color-primary);
-  border: 1px solid var(--ion-color-secondary);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
 }

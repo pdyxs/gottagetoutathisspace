@@ -1,0 +1,1 @@
+{count} barrels of fuel

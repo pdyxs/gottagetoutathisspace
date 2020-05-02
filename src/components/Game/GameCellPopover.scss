@@ -1,7 +1,33 @@
+
+
 .popover {
+  padding: 0;
+  width: calc(var(--game-cell-size) * 4);
+  margin: 0 calc(var(--game-cell-size) * -1.5);
+  border: var(--game-cell-margin) solid var(--ion-color-primary);
+
   text-align: center;
+
+  max-height: 300px;
+  overflow: scroll;
 
   .section {
     margin: 0 auto;
   }
+}
+
+.popover.popover-first {
+  margin-left: 0;
+}
+
+.popover.popover-second {
+  margin-left: calc(var(--game-cell-size) * -1.1);
+}
+
+.popover.popover-last {
+  margin-left: calc(var(--game-cell-size) * -3)
+}
+
+.popover.popover-second-last {
+  margin-left: calc(var(--game-cell-size) * -1.9)
 }

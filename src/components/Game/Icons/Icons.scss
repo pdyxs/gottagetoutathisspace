@@ -1,0 +1,28 @@
+.ggo-icon {
+  --size: 1em;
+}
+
+.ggo-icon-planet, .ggo-icon-star {
+  font-size: initial;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--colour);
+  border-radius: calc(var(--size) / 2);
+}
+
+.ggo-icon-star {
+  --colour: yellow;
+}
+
+.ggo-icon-planet {
+  --colour: brown;
+  border: 1px white solid;
+}
+
+.ggo-icon-enemy {
+    color: purple;
+}
+
+.ggo-icon-fuel {
+    color: yellow;
+}

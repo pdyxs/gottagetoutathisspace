@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import './GameCellContents.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { times } from 'lodash';
-import Level, { GameCellSettings, Coords, CellContentTypes } from '../../model/Level';
+import Level, { GameCellSettings, Coords } from '../../model/Level';
+import { CellContentIcon } from './Pieces';
 
 interface GameCellContentsProps {
   settings: GameCellSettings,
@@ -20,40 +20,13 @@ const GameCellContents: React.FC<GameCellContentsProps> = (props) => {
           <div className="game-cell-contents">
             {contents && contents.map((content, i) => (
               <Fragment key={i}>
-                {content.type === CellContentTypes.Player &&
-                  <FontAwesomeIcon icon={['fas', 'space-shuttle']} size="lg" rotation={270} />
+                {content.count === undefined &&
+                  <CellContentIcon content={content} />
                 }
-                {content.type === CellContentTypes.Planet &&
-                  <div className={`planet planet-${content.subtype}`}></div>
-                }
-                {content.type === CellContentTypes.Star &&
-                  <div className={`star star-${content.subtype}`}></div>
-                }
-                {content.type === CellContentTypes.Robot &&
-                  <div className="enemies">
+                {((content?.count || 0) > 0) &&
+                  <div className={`ggo-icon-container ggo-icon-container-${content.type}`}>
                     {times(content.count || 0).map((i) => (
-                      <FontAwesomeIcon className={`enemy enemy-${i+1}`} key={i} icon={['fas', 'robot']} />
-                    ))}
-                  </div>
-                }
-                {content.type === CellContentTypes.Fuel &&
-                  <div className="fuels">
-                    {times(content.count || 1).map((i) => (
-                      <FontAwesomeIcon className={`fuel fuel-${i+1}`} key={i} icon={['fas', 'bolt']} />
-                    ))}
-                  </div>
-                }
-                {content.type === CellContentTypes.Crew &&
-                  <div className="crews">
-                    {times(content.count || 1).map((i) => (
-                      <FontAwesomeIcon className={`crew crew-${i+1}`} key={i} icon={['fas', 'user']} />
-                    ))}
-                  </div>
-                }
-                {content.type === CellContentTypes.Upgrade &&
-                  <div className="upgrades">
-                    {times(content.count || 1).map((i) => (
-                      <FontAwesomeIcon className={`upgrade upgrade-${i+1}`} key={i} icon={['fas', 'tools']} />
+                      <CellContentIcon content={content} className={`${content.type}-${i+1}`} key={i} />
                     ))}
                   </div>
                 }

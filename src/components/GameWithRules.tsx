@@ -15,7 +15,7 @@ const GameWithRules: React.FC<GameWithRulesProps> = ({level}) => {
         <tbody>
           <tr>
             <td className="gameContainer">
-              <GameGrid level={level} />
+              <GameGrid level={level} includeControls={true} />
             </td>
             <td className="rulesContainer">
               <GameRules level={level} />

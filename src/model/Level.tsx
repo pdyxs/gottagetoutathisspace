@@ -1,6 +1,6 @@
 import { cloneDeep, find, isNil, isArray, without } from "lodash";
 
-export interface GameCellContents {
+export interface GameCellContent {
   type: string,
   subtype?: string,
   count?: number
@@ -8,7 +8,7 @@ export interface GameCellContents {
 
 export interface GameCellSettings {
   type: string,
-  contents?: Array<GameCellContents>
+  contents?: Array<GameCellContent>
 }
 
 export interface Coords extends Array<number> {}
@@ -38,7 +38,8 @@ export enum CellContentTypes {
   Star = 'star',
   RobotFactory = 'robotFactory',
   Crew = 'crew',
-  Upgrade = 'upgrade'
+  Upgrade = 'upgrade',
+  Module = 'module'
 }
 
 export enum StarTypes {
@@ -77,7 +78,7 @@ class Level {
     return true;
   }
 
-  cellIsInGrid(coordinates: Coords | GameCellContents) : boolean {
+  cellIsInGrid(coordinates: Coords | GameCellContent) : boolean {
     return this.getCell(coordinates)?.type !== CellTypes.Blank;
   }
 
@@ -91,9 +92,9 @@ class Level {
     return where;
   }
 
-  getAt(where: Coords | GameCellSettings, type: CellContentTypes) : GameCellContents | undefined {
+  getAt(where: Coords | GameCellSettings, type: CellContentTypes) : GameCellContent | undefined {
     let cell = this.getCell(where);
-    return find(cell?.contents, (c : GameCellContents) => c.type === type);
+    return find(cell?.contents, (c : GameCellContent) => c.type === type);
   }
 
   isShipAt(coordinates: Coords) {
