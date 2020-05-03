@@ -3,7 +3,19 @@ import React from "react";
 import './Icons.scss';
 import { IconProps } from "../Pieces";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas as fasp } from '@fortawesome/pro-solid-svg-icons';
+
+library.add(fas);
+library.add(far);
+library.add(fasp);
+
 export const RobotIcon : React.FC<IconProps> = ({className}) =>
+  <FontAwesomeIcon className={className} icon={['fas', 'user-robot']} />
+
+export const RobotFactoryIcon : React.FC<IconProps> = ({className}) =>
   <FontAwesomeIcon className={className} icon={['fas', 'robot']} />
 
 export const PlayerIcon : React.FC<IconProps> = ({className}) =>

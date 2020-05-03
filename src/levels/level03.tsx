@@ -41,6 +41,7 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
+        { type: CellContentTypes.RobotFactory },
         { type: CellContentTypes.Robot, count: 1 }
       ]
     },

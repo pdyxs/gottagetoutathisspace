@@ -2,7 +2,7 @@ import Level, { Coords, GameCellSettings, CellContentTypes, PlanetTypes } from "
 import { IonItem } from "@ionic/react";
 import React from "react";
 import './GameCellPopover.scss';
-import { isNil, find } from "lodash";
+import { isNil, find, filter } from "lodash";
 import classNames from "classnames";
 import { CellContentIcon, CellContentDescription, CellContentControls } from "./Pieces";
 
@@ -19,9 +19,10 @@ const GameCellPopover: React.FC<GameCellPopoverProps> = (props) => {
 
   const cell = level.getCell(coordinates);
 
-  var descriptiveContents = [
-    ...(cell?.contents || [])
-  ];
+  var descriptiveContents = filter(
+    cell?.contents,
+    c => c.count !== 0
+  );
 
   if (isNil(find(descriptiveContents, c => c.type === CellContentTypes.Robot))) {
     descriptiveContents.push({

@@ -10,6 +10,10 @@
   border-radius: calc(var(--size) / 2);
 }
 
+.ggo-icon.svg-inline--fa {
+  font-size: var(--size);
+}
+
 .ggo-icon-star {
   --colour: yellow;
 }
@@ -20,7 +24,11 @@
 }
 
 .ggo-icon-enemy {
-    color: purple;
+    color: silver;
+}
+
+.ggo-icon-robotFactory {
+    color: gold;
 }
 
 .ggo-icon-fuel {

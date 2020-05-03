@@ -2,15 +2,8 @@ import React, { useState, Fragment } from 'react';
 import './GameGrid.css';
 import { IonGrid, IonRow } from '@ionic/react';
 import GameCell from './GameCell';
-
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
 import Level from '../../model/Level';
 import GameControls from './GameControls';
-
-library.add(fas);
-library.add(far);
 
 interface GameGridProps {
   level: Level,

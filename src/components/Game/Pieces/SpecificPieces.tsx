@@ -5,7 +5,7 @@ import { CellContentTypes } from "../../../model/Level";
 
 import PlayerControls from "../Controls/PlayerControls";
 import PlayerDescription from "../Descriptions/PlayerDescription.md"
-import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon } from "../Icons";
+import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon, DivIcon, RobotFactoryIcon } from "../Icons";
 
 import RobotDescription from "../Descriptions/RobotDescription.md"
 import RobotControls from "../Controls/RobotControls";
@@ -19,6 +19,12 @@ import FuelControls from "../Controls/FuelControls";
 import UpgradeDescription from '../Descriptions/UpgradeDescription.md';
 
 import ModuleDescription from '../Descriptions/ModuleDescription.md';
+
+import StarDescription from '../Descriptions/StarDescription.md';
+
+import PlanetDescription from '../Descriptions/PlanetDescription.md';
+
+import RobotFactoryDescription from '../Descriptions/RobotFactoryDescription.md';
 
 interface ContentTypeDefinition {
   controls?: React.FC<ControlProps>,
@@ -85,6 +91,27 @@ const pieces = setAll([
       controls: CrewControls,
       description: ModuleDescription,
       icon: ModuleIcon
+    }
+  },
+  {
+    key: CellContentTypes.Star,
+    val: {
+      icon: DivIcon,
+      description: StarDescription
+    }
+  },
+  {
+    key: CellContentTypes.Planet,
+    val: {
+      icon: DivIcon,
+      description: PlanetDescription
+    }
+  },
+  {
+    key: CellContentTypes.RobotFactory,
+    val: {
+      icon: RobotFactoryIcon,
+      description: RobotFactoryDescription
     }
   }
 ]);

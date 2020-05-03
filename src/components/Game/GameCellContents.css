@@ -40,7 +40,16 @@
 
 .game-cell-contents .ggo-icon-playerShip
 {
-  --size: 2em;
+  --size: 30px;
+  left: 31.25px;
+  top: 31.25px;
+}
+
+.game-cell-contents .ggo-icon-robotFactory
+{
+  --size: 40px;
+  left: 26px;
+  top: 26px;
 }
 
 .game-cell-contents .ggo-icon-planet
@@ -49,8 +58,8 @@
 }
 
 .game-cell-contents .ggo-icon-planet,
-.game-cell-contents .ggo-icon-star,
-.game-cell-contents .ggo-icon-playerShip {
+.game-cell-contents .ggo-icon-star
+{
   left: calc((var(--game-cell-size) - var(--size)) / 2);
   top: calc((var(--game-cell-size) - var(--size)) / 2);
 }
