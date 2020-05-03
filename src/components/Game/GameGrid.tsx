@@ -36,7 +36,9 @@ const GameGrid: React.FC<GameGridProps> = ({level, includeControls}) => {
           </IonRow>
         ))) }
       </IonGrid>
-      <GameControls {...gameProps} />
+      {includeControls &&
+        <GameControls {...gameProps} />
+      }
     </Fragment>
   );
 };

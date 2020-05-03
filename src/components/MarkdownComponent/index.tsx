@@ -17,9 +17,10 @@ const MarkdownComponent : React.FC<MarkdownComponentProps> =
       );
 
       source = replace(source,
-        new RegExp(/^\|(!?)([A-Za-z0-9_]*)(([=|!=|>|<|>=|<=])([^:]*))?:(.*)$/, 'gm'),
+        new RegExp(/^\|(!?)([A-Za-z0-9_]*)((=|!=|>=|>|<=|<)?([^:]*))?:(.*)(\n)/, 'gm'),
         (_full, not, variable, _eq, comparator, comparison, line) => {
           if (!line) return _full;
+          line = line + '\n';
 
           let val = transformations[variable];
           not = not === '!';

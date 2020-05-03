@@ -6,7 +6,7 @@ import { ShipData } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
 import { baseUrl as trainingUrl } from '../training';
 
-const ContinueTraining: React.FC<InstructionPageProps> = ({nextUrl, futurePages}) => {
+const ContinueTraining: React.FC<InstructionPageProps> = ({futurePages}) => {
   const shipData = useSelector((state: any) => state.shipData) as ShipData;
   const [showSkipCheck, setShowSkipCheck] = useState(false);
   const history = useHistory();
@@ -16,7 +16,7 @@ const ContinueTraining: React.FC<InstructionPageProps> = ({nextUrl, futurePages}
       <div className="page-container">
         <h2>Let's do a training mission!</h2>
         <p>
-          When you chart the SS {shipData.shipName}'s path through
+          When you chart the {shipData.shipName}'s path through
           your solar system, you’ll only get one chance to avoid the
           horrible robots coming for you! So we’ve put together a
           training simulation to help you… well… not destroy the

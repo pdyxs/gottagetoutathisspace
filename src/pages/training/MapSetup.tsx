@@ -1,17 +1,23 @@
-import { IonContent } from '@ionic/react';
+import { IonContent, IonButton } from '@ionic/react';
 import React from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 import GameGrid from '../../components/Game/GameGrid';
 
 import trainingLevel from '../../levels/training';
 
-const MapSetup: React.FC<InstructionPageProps> = () => {
+import Content from 'content/Training/MapSetup.md';
+import MarkdownComponent from '../../components/MarkdownComponent';
+
+const MapSetup: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
   return (
     <IonContent>
       <div className="ion-text-center">
-        <h2>Training</h2>
+        <MarkdownComponent source={Content} />
         <GameGrid level={trainingLevel} />
+        <IonButton routerLink={nextUrl}>
+          I've made the space, can I please now get out of it?
+        </IonButton>
       </div>
     </IonContent>
   );

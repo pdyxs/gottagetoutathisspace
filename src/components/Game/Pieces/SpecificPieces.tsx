@@ -4,27 +4,27 @@ import { set } from "lodash";
 import { CellContentTypes } from "../../../model/Level";
 
 import PlayerControls from "../Controls/PlayerControls";
-import PlayerDescription from "../Descriptions/PlayerDescription.md"
+import PlayerDescription from "content/Descriptions/PlayerDescription.md"
 import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon, DivIcon, RobotFactoryIcon } from "../Icons";
 
-import RobotDescription from "../Descriptions/RobotDescription.md"
+import RobotDescription from "content/Descriptions/RobotDescription.md"
 import RobotControls from "../Controls/RobotControls";
 
-import CrewDescription from '../Descriptions/CrewDescription.md';
+import CrewDescription from 'content/Descriptions/CrewDescription.md';
 import CrewControls from "../Controls/CrewControls";
 
-import FuelDescription from '../Descriptions/FuelDescription.md';
+import FuelDescription from 'content/Descriptions/FuelDescription.md';
 import FuelControls from "../Controls/FuelControls";
 
-import UpgradeDescription from '../Descriptions/UpgradeDescription.md';
+import UpgradeDescription from 'content/Descriptions/UpgradeDescription.md';
 
-import ModuleDescription from '../Descriptions/ModuleDescription.md';
+import ModuleDescription from 'content/Descriptions/ModuleDescription.md';
 
-import StarDescription from '../Descriptions/StarDescription.md';
+import StarDescription from 'content/Descriptions/StarDescription.md';
 
-import PlanetDescription from '../Descriptions/PlanetDescription.md';
+import PlanetDescription from 'content/Descriptions/PlanetDescription.md';
 
-import RobotFactoryDescription from '../Descriptions/RobotFactoryDescription.md';
+import RobotFactoryDescription from 'content/Descriptions/RobotFactoryDescription.md';
 
 interface ContentTypeDefinition {
   controls?: React.FC<ControlProps>,

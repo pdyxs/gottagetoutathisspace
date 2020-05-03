@@ -1,18 +1,15 @@
 import { IonContent, IonPage, IonButton } from '@ionic/react';
 import React from 'react';
-import './Start.css';
+import './Start.scss';
+import Content from 'content/Start.md';
+import ReactMarkdown from 'react-markdown';
 
 const Start: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <div className="startPage ion-text-center">
-          <p>The robot uprising was swift and brutal</p>
-          <p>Only one ship survived</p>
-          <p>Now it's time to run</p>
-          <p className="ion-no-margin ion-margin-top">Now, you've</p>
-
-          <h1 className="title ion-no-margin ion-margin-bottom">Gotta Get Outta This Space</h1>
+        <div className="startPage ion-text-center startPage">
+          <ReactMarkdown source={Content} />
 
           <div>
             <IonButton

@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux';
 import { ShipData } from '../../redux/actions';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
+import Content from 'content/Continue/Materials.md';
+import MarkdownComponent from '../../components/MarkdownComponent';
+
 const materials = [
   {
     count: 16,
@@ -33,13 +36,13 @@ const materials = [
   {
     count: 1,
     name: "Ship Token",
-    explanation: "The representation of your ship on the map",
+    explanation: "The representation of the ship on the map",
     notes: (d : ShipData) => d.shipToken
   },
   {
     count: 1,
     name: "Survivor Token",
-    explanation: "A survivor who you might be able to rescue",
+    explanation: "Represents you!",
     notes: (d : ShipData) => d.survivorToken
   },
   {
@@ -55,17 +58,11 @@ const materials = [
     notes: (d : ShipData) => d.newModuleToken
   },
   {
-    count: "Maybe some",
+    count: "Some",
     name: "Fuel Tokens",
-    explanation: "Fuel that you have, or can collect. You might not have any.",
+    explanation: "Fuel that you have, or can collect.",
     notes: (d : ShipData) => d.fuelTokens
   }
-  // {
-  //   count: "Maybe some",
-  //   name: "Damage Dice",
-  //   explanation: "Dice that are used to determine the effects of damage on your modules. If you don't have any, your modules are probably fine!",
-  //   notes: (d : ShipData) => d.damageDice
-  // }
 ];
 
 const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
@@ -74,19 +71,8 @@ const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
   return (
     <IonContent>
       <div className="ion-text-center ion-padding">
-        <h2>Materials</h2>
         <div className="page-container">
-          <p>
-            This is what you should find in your envelope. As
-            your components have been created by past captains, they will be
-            unique. Past captains have left notes about what
-            you'll find.
-          </p>
-          <p>
-            If you can't find something, don't panic! You might have to
-            source some components yourself, or
-            get in touch with the last captain.
-          </p>
+          <MarkdownComponent source={Content} />
         </div>
         <IonGrid>
           <IonRow>
@@ -98,7 +84,7 @@ const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
                     <IonCardTitle>{material.name}</IonCardTitle>
                   </IonCardHeader>
                   <IonCardContent>
-                    <p>{material.notes(shipData)}</p>
+                    <p className="notes">{material.notes(shipData)}</p>
                     <p>{material.explanation}</p>
                   </IonCardContent>
                 </IonCard>

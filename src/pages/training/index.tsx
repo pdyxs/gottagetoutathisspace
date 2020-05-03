@@ -4,12 +4,18 @@ import InstructionFlow,
   { InstructionPagesInfo }
   from '../../components/InstructionFlow';
 import MapSetup from './MapSetup';
+import Game from './Game';
 
 const flow : InstructionPagesInfo = [
   {
     url: 'mapSetup',
     requiresShipCode: true,
     component: MapSetup
+  },
+  {
+    url: 'play',
+    requiresShipCode: true,
+    component: Game
   }
 ]
 

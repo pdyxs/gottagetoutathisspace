@@ -1,4 +1,4 @@
-import Level, { Coords, GameCellSettings, CellContentTypes, PlanetTypes } from "../../model/Level";
+import Level, { Coords, GameCellSettings, CellContentTypes } from "../../model/Level";
 import { IonItem } from "@ionic/react";
 import React from "react";
 import './GameCellPopover.scss';
@@ -24,21 +24,14 @@ const GameCellPopover: React.FC<GameCellPopoverProps> = (props) => {
     c => c.count !== 0
   );
 
-  if (isNil(find(descriptiveContents, c => c.type === CellContentTypes.Robot))) {
-    descriptiveContents.push({
-      type: CellContentTypes.Robot,
-      count: 0
-    });
-  }
-
-  var planet = find(descriptiveContents, c => c.type === CellContentTypes.Planet);
-  if (planet && planet.subtype === PlanetTypes.Rocky &&
-      isNil(find(descriptiveContents, c => c.type === CellContentTypes.Crew)))
+  if (includeControls)
   {
-    descriptiveContents.push({
-      type: CellContentTypes.Crew,
-      count: 0
-    });
+    if (isNil(find(descriptiveContents, c => c.type === CellContentTypes.Robot))) {
+      descriptiveContents.push({
+        type: CellContentTypes.Robot,
+        count: 0
+      });
+    }
   }
 
   return (
