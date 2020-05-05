@@ -1,19 +1,22 @@
 import React from 'react';
 import Level from '../../model/Level';
 import Accordion, { AccordionItem } from '../Accordion';
-import TakeActions from './TakeActions.md';
-import RobotsMove from './RobotsMove.md';
-import RobotsAttack from './RobotsAttack.md';
-import Rounds from './Rounds.md';
-import EnvironmentalEffects from './EnvironmentalEffects.md';
+import TakeActions from 'content/Rules/TakeActions.md';
+import RobotsMove from 'content/Rules/RobotsMove.md';
+import RobotsAttack from 'content/Rules/RobotsAttack.md';
+import Rounds from 'content/Rules/Rounds.md';
+import EnvironmentalEffects from 'content/Rules/EnvironmentalEffects.md';
 import ReactMarkdown from 'react-markdown';
 import { IonItem } from '@ionic/react';
 
+import './Rules.scss';
+
 interface GameRulesProps {
-  level: Level
+  level: Level,
+  specialInstructions?: string
 }
 
-const GameRules: React.FC<GameRulesProps> = () => {
+const GameRules: React.FC<GameRulesProps> = ({specialInstructions}) => {
   return (
     <div>
       <h2>Rules</h2>
@@ -22,15 +25,22 @@ const GameRules: React.FC<GameRulesProps> = () => {
           <ReactMarkdown source={Rounds} />
         </div>
       </IonItem>
+      {specialInstructions &&
+        <IonItem color="notebook" className="handwritten">
+          <div>
+            <ReactMarkdown source={specialInstructions} />
+          </div>
+        </IonItem>
+      }
       <Accordion>
         <AccordionItem title="1. Take Actions">
-          <ReactMarkdown source={TakeActions} />
+          <ReactMarkdown className="strong-em-as-success-button" source={TakeActions} />
         </AccordionItem>
         <AccordionItem title="2. Robots Move">
-          <ReactMarkdown source={RobotsMove} />
+          <ReactMarkdown className="robots-move strong-em-as-danger-button" source={RobotsMove} />
         </AccordionItem>
         <AccordionItem title="3. Robots Attack">
-          <ReactMarkdown source={RobotsAttack} />
+          <ReactMarkdown className="strong-em-as-danger-button" source={RobotsAttack} />
         </AccordionItem>
         <AccordionItem title="4. Environmental Effects">
           <ReactMarkdown source={EnvironmentalEffects} />

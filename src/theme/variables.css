@@ -11,6 +11,24 @@ ion-popover {
   /* background: none !important; */
 }
 
+:root {
+  --ion-color-notebook: #f3daae;
+  --ion-color-notebook-rgb: 243,218,174;
+  --ion-color-notebook-contrast: #000000;
+  --ion-color-notebook-contrast-rgb: 0,0,0;
+  --ion-color-notebook-shade: #d6c099;
+  --ion-color-notebook-tint: #f4deb6;
+}
+
+.ion-color-notebook {
+  --ion-color-base: var(--ion-color-notebook);
+  --ion-color-base-rgb: var(--ion-color-notebook-rgb);
+  --ion-color-contrast: var(--ion-color-notebook-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-notebook-contrast-rgb);
+  --ion-color-shade: var(--ion-color-notebook-shade);
+  --ion-color-tint: var(--ion-color-notebook-tint);
+}
+
 /*
  * Dark Colors
  * -------------------------------------------

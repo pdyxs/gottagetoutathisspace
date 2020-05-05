@@ -84,7 +84,7 @@ const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
                     <IonCardTitle>{material.name}</IonCardTitle>
                   </IonCardHeader>
                   <IonCardContent>
-                    <p className="notes">{material.notes(shipData)}</p>
+                    <p color="notebook" className="handwritten note">{material.notes(shipData)}</p>
                     <p>{material.explanation}</p>
                   </IonCardContent>
                 </IonCard>

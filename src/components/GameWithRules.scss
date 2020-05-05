@@ -2,7 +2,7 @@
   text-align: center;
 
   display: flex;
-  align-items: center;
+  align-items: top;
   height: 100%;
 
   .gameAndRulesTable {
@@ -11,6 +11,8 @@
 
     .gameContainer {
       width: 660px;
+      vertical-align: top;
+      padding-top: 5.5em;
     }
 
     .rulesContainer {

@@ -6,10 +6,13 @@ import GameRules from './Rules';
 
 interface GameWithRulesProps {
   level: Level,
-  includeControls?: boolean
+  includeControls?: boolean,
+  specialInstructions?: string
 }
 
-const GameWithRules: React.FC<GameWithRulesProps> = ({level, includeControls}) => {
+const GameWithRules: React.FC<GameWithRulesProps> = (
+  {level, includeControls, specialInstructions}
+) => {
   return (
     <div className="gameAndRulesContainer">
       <table className="gameAndRulesTable">
@@ -19,7 +22,7 @@ const GameWithRules: React.FC<GameWithRulesProps> = ({level, includeControls}) =
               <GameGrid level={level} includeControls={includeControls} />
             </td>
             <td className="rulesContainer">
-              <GameRules level={level} />
+              <GameRules level={level} specialInstructions={specialInstructions} />
             </td>
           </tr>
         </tbody>

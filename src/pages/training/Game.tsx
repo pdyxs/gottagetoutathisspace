@@ -6,11 +6,14 @@ import trainingLevel from '../../levels/training';
 
 import GameWithRules from '../../components/GameWithRules';
 
+import SpecialInstructions from 'content/Training/ScenarioInstructions.md';
+
 const Game: React.FC<InstructionPageProps> = () => {
 
   return (
     <IonContent>
-      <GameWithRules level={trainingLevel} includeControls={true} />
+      <GameWithRules level={trainingLevel}
+        includeControls={true} specialInstructions={SpecialInstructions}  />
     </IonContent>
   );
 };
