@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import Level from '../../../model/Level';
-import { IonButton, IonPopover, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonLabel, IonNote } from '@ionic/react';
+import { IonButton, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel, IonNote } from '@ionic/react';
 import './TakeDamageControl.scss';
 import TakeDamageContent from 'content/Controls/TakeDamage.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 import ShipModule, { ShipModuleDamage } from 'model/Module';
 import ShipModules from 'data/modules';
-import { filter, find, isNil, without, shuffle, take, first, map, reduce } from 'lodash';
+import { filter, find, isNil, without, shuffle, take, first, reduce } from 'lodash';
 
 interface TakeDamageControlProps {
   level: Level
@@ -24,7 +24,6 @@ const TakeDamageControl: React.FC<TakeDamageControlProps> = (props) => {
   const [showDamagePopover, setShowDamagePopover] = useState(false);
   const [damageOptions, setDamageOptions] = useState<DamageOption[]>([]);
   let popover = React.useRef<HTMLIonPopoverElement>(null);
-  const {level, refresh} = props;
 
   function setupDamage() {
     var compulsoryModules = filter(ShipModules,

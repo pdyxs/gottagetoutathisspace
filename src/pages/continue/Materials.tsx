@@ -1,7 +1,6 @@
 import { IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol, IonButton, IonItem } from '@ionic/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ShipData } from '../../redux/actions';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 import materials from 'data/materials';
 
