@@ -14,7 +14,7 @@ import CrewDescription from 'content/Descriptions/CrewDescription.md';
 import CrewControls from "../Controls/CrewControls";
 
 import FuelDescription from 'content/Descriptions/FuelDescription.md';
-import FuelControls from "../Controls/FuelControls";
+// import FuelControls from "../Controls/FuelControls";
 
 import UpgradeDescription from 'content/Descriptions/UpgradeDescription.md';
 
@@ -72,7 +72,7 @@ const pieces = setAll([
   {
     key: CellContentTypes.Fuel,
     val: {
-      controls: FuelControls,
+      // controls: FuelControls,
       description: FuelDescription,
       icon: FuelIcon
     }

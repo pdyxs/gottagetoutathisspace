@@ -18,8 +18,11 @@ const GameControls: React.FC<GameControlsProps> = (props) => {
 
   return (
     <Fragment>
-      <IonButton color="danger" onClick={updateRobots}>
+      <IonButton color="warning" onClick={updateRobots}>
         Move Robots
+      </IonButton>
+      <IonButton color="danger">
+        Take Damage
       </IonButton>
     </Fragment>
   );

@@ -37,7 +37,7 @@ const GameRules: React.FC<GameRulesProps> = ({specialInstructions}) => {
           <ReactMarkdown className="strong-em-as-success-button" source={TakeActions} />
         </AccordionItem>
         <AccordionItem title="2. Robots Move">
-          <ReactMarkdown className="robots-move strong-em-as-danger-button" source={RobotsMove} />
+          <ReactMarkdown className="robots-move strong-em-as-warning-button" source={RobotsMove} />
         </AccordionItem>
         <AccordionItem title="3. Robots Attack">
           <ReactMarkdown className="strong-em-as-danger-button" source={RobotsAttack} />
