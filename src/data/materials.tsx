@@ -1,6 +1,7 @@
 import { ShipData } from "../redux/actions";
+import Material from "model/Materials";
 
-const materials: any[] = [
+const materials: Material[] = [
   {
     count: 16,
     name: "Space Cards",
