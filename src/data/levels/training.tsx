@@ -1,4 +1,4 @@
-import Level, { CellContentTypes, CellTypes, PlanetTypes, StarTypes } from "../model/Level";
+import Level, { CellContentTypes, CellTypes, PlanetTypes, StarTypes } from 'model/Level';
 
 const grid = new Level([
   [

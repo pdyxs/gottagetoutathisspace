@@ -1,6 +1,6 @@
 import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setShipData, ShipData } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
 import { getShipData } from '../../firebaseConfig';
@@ -14,7 +14,8 @@ import ReactMarkdown from 'react-markdown';
 const minCodeLength = 3;
 
 const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
-  const [codeInput, setCodeInput] = useState<string>('');
+  const shipCode = useSelector((state: any) => state.shipCode);
+  const [codeInput, setCodeInput] = useState<string>(shipCode || '');
   const [busy, setBusy] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();

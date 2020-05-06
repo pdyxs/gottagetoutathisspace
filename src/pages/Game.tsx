@@ -1,6 +1,6 @@
 import { IonContent, IonPage } from '@ionic/react';
 import React from 'react';
-import level from '../levels/level03';
+import level from 'data/levels/level03';
 import GameWithRules from '../components/GameWithRules';
 
 const Game: React.FC = () => {

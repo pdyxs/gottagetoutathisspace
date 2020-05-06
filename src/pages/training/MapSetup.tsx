@@ -3,7 +3,7 @@ import React from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 import GameGrid from '../../components/Game/GameGrid';
 
-import trainingLevel from '../../levels/training';
+import trainingLevel from 'data/levels/training';
 
 import Content from 'content/Training/MapSetup.md';
 import MarkdownComponent from '../../components/MarkdownComponent';

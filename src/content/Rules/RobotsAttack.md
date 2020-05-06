@@ -1,1 +1,1 @@
-If there are any robots on the square with your ship, your ship gets damaged! Take 1 damage per robot by clicking the ___Take Damage___ button.
+If there are any robots on the square with your ship, your ship gets damaged! Click the ___Take Damage___ button once for each robot in your square.

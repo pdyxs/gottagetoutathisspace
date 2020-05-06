@@ -13,7 +13,8 @@ export interface InstructionPageProps {
   nextUrl: string,
   nextPage: InstructionPageInfo | null,
   pastPages: Array<InstructionPageInfo>,
-  futurePages: Array<InstructionPageInfo>
+  futurePages: Array<InstructionPageInfo>,
+  resetShip: () => void
 }
 
 interface InstructionPageInfo {
@@ -43,7 +44,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
   let nextUrl = `${baseUrl}/${nextPage?.url}`;
 
   async function checkLocalStorage() {
-    if (!shipCode && currentPage != null && currentPage.requiresShipCode)
+    if (!shipCode && currentPage != null)
     {
       const code = await retrieveShipCode();
 
@@ -63,7 +64,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
     return;
   }
 
-  if (!busy && !shipCode && currentPage != null && currentPage.requiresShipCode)
+  if (!busy && !shipCode && currentPage != null)
   {
     setBusy(true);
   }
@@ -104,6 +105,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
               <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
                 render={(props) =>
                   <Page.component {...props}
+                    resetShip={resetShip}
                     baseUrl={baseUrl}
                     nextPage={nextPage}
                     nextUrl={nextUrl}

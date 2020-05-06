@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import './GameCell.css';
 import Level from '../../model/Level';
 import { IonButton } from '@ionic/react';
+import TakeDamageControl from './Controls/TakeDamageControl';
 
 interface GameControlsProps {
   level: Level
@@ -21,9 +21,7 @@ const GameControls: React.FC<GameControlsProps> = (props) => {
       <IonButton color="warning" onClick={updateRobots}>
         Move Robots
       </IonButton>
-      <IonButton color="danger">
-        Take Damage
-      </IonButton>
+      <TakeDamageControl {...props} />
     </Fragment>
   );
 };

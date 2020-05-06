@@ -4,10 +4,10 @@ import { set } from "lodash";
 import { CellContentTypes } from "../../../model/Level";
 
 import PlayerControls from "../Controls/PlayerControls";
-import PlayerDescription from "content/Descriptions/PlayerDescription.md"
+import PlayerDescription from 'content/Descriptions/PlayerDescription.md'
 import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon, DivIcon, RobotFactoryIcon } from "../Icons";
 
-import RobotDescription from "content/Descriptions/RobotDescription.md"
+import RobotDescription from 'content/Descriptions/RobotDescription.md';
 import RobotControls from "../Controls/RobotControls";
 
 import CrewDescription from 'content/Descriptions/CrewDescription.md';
