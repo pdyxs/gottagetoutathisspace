@@ -5,11 +5,13 @@ import TakeDamageControl from './Controls/TakeDamageControl';
 
 interface GameControlsProps {
   level: Level
-  refresh: CallableFunction
+  refresh: CallableFunction,
+  winLevel?: () => void,
+  loseLevel?: () => void
 }
 
 const GameControls: React.FC<GameControlsProps> = (props) => {
-  const {level, refresh} = props;
+  const {level, refresh, winLevel, loseLevel} = props;
 
   function updateRobots() {
     level.updateRobots();
@@ -18,10 +20,24 @@ const GameControls: React.FC<GameControlsProps> = (props) => {
 
   return (
     <Fragment>
-      <IonButton color="warning" onClick={updateRobots}>
-        Move Robots
-      </IonButton>
-      <TakeDamageControl {...props} />
+      <div>
+        <IonButton color="warning" onClick={updateRobots}>
+          Move Robots
+        </IonButton>
+        <TakeDamageControl {...props} />
+      </div>
+      <div className="ion-margin-top">
+        {winLevel &&
+          <IonButton color="success" onClick={winLevel}>
+            I Got Outta This Space
+          </IonButton>
+        }
+        {loseLevel &&
+          <IonButton color="light" onClick={loseLevel}>
+            The Ship Exploded
+          </IonButton>
+        }
+      </div>
     </Fragment>
   );
 };

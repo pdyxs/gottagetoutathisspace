@@ -2,11 +2,11 @@ import { IonContent, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardCo
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
-import trainingLevel from 'data/levels/training';
+import level from 'data/levels/level02';
 
 import GameWithRules from '../../components/GameWithRules';
 
-import SpecialInstructions from 'content/Training/ScenarioInstructions.md';
+import SpecialInstructions from 'content/Game/ScenarioInstructions.md';
 
 import WinContent from 'content/Training/Win.md';
 import LoseContent from 'content/Training/Lose.md';
@@ -39,7 +39,7 @@ const Game: React.FC<InstructionPageProps> = () => {
 
   return (
     <IonContent>
-      <GameWithRules level={trainingLevel}
+      <GameWithRules level={level}
         includeControls={true} specialInstructions={SpecialInstructions}
         winLevel={winLevel}
         loseLevel={loseLevel} />

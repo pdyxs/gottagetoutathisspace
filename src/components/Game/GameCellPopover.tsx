@@ -40,7 +40,8 @@ const GameCellPopover: React.FC<GameCellPopoverProps> = (props) => {
         'popover-first': coordinates[0] === 0,
         'popover-second': coordinates[0] === 1,
         'popover-last': coordinates[0] === level.grid[0].length - 1,
-        'popover-second-last': coordinates[0] === level.grid[0].length - 2
+        'popover-second-last': coordinates[0] === level.grid[0].length - 2,
+        'popover-bottom': coordinates[1] >= level.grid.length - 2
       })}>
       {cell && (isNil(cell.contents) || cell.contents?.length === 0) &&
         <IonItem>Nothing but space</IonItem>
@@ -48,7 +49,7 @@ const GameCellPopover: React.FC<GameCellPopoverProps> = (props) => {
       {descriptiveContents.map(content =>
         <IonItem key={`${content.type}-${content.subtype}`}>
           <CellContentIcon className="ion-margin-end" content={content} />
-          <CellContentDescription content={content} />
+          <CellContentDescription content={content} includeControls={includeControls} />
           {includeControls &&
             <CellContentControls content={content} {...props} />
           }

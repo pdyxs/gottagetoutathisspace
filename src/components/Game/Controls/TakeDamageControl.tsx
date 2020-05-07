@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import Level from '../../../model/Level';
 import { IonButton, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel, IonNote } from '@ionic/react';
 import './TakeDamageControl.scss';
 import TakeDamageIntroContent from 'content/Controls/TakeDamageIntro.md';
@@ -14,8 +13,6 @@ import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface TakeDamageControlProps {
-  level: Level
-  refresh: CallableFunction
 }
 
 interface DamageOption {
@@ -25,7 +22,7 @@ interface DamageOption {
 
 const damageOptionCount = 3;
 
-const TakeDamageControl: React.FC<TakeDamageControlProps> = (props) => {
+const TakeDamageControl: React.FC<TakeDamageControlProps> = () => {
   const [showDamagePopover, setShowDamagePopover] = useState(false);
   const [damageChosen, setDamageChosen] = useState<DamageOption | null>(null);
   const [damageOptions, setDamageOptions] = useState<DamageOption[]>([]);

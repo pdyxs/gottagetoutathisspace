@@ -7,10 +7,12 @@ import GameControls from './GameControls';
 
 interface GameGridProps {
   level: Level,
-  includeControls?: boolean
+  includeControls?: boolean,
+  winLevel?: () => void,
+  loseLevel?: () => void
 }
 
-const GameGrid: React.FC<GameGridProps> = ({level, includeControls}) => {
+const GameGrid: React.FC<GameGridProps> = ({level, includeControls, winLevel, loseLevel}) => {
   const [refreshCount, setRefresh] = useState(0);
 
   function refresh() {
@@ -18,8 +20,10 @@ const GameGrid: React.FC<GameGridProps> = ({level, includeControls}) => {
   }
 
   let gameProps = {
-    refresh: refresh,
-    level: level
+    refresh,
+    level,
+    winLevel,
+    loseLevel
   }
 
   return (

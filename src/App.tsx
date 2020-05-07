@@ -6,6 +6,7 @@ import Start from './pages/Start';
 import Continue, {baseUrl as continueURL} from './pages/continue';
 import NewGame, {baseUrl as newURL} from './pages/new';
 import Training, {baseUrl as trainingURL} from './pages/training';
+import Game, {baseUrl as gameURL} from './pages/game';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,17 +28,16 @@ import '@ionic/react/css/display.css';
 import './theme/fonts.css';
 import './theme/variables.css';
 import './theme/variables.scss';
-import Game from './pages/Game';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/start" component={Start} exact={true} />
-        <Route path="/game" component={Game} />
         <Route path={continueURL} component={Continue} />
         <Route path={newURL} component={NewGame} />
         <Route path={trainingURL} component={Training} />
+        <Route path={gameURL} component={Game} />
         <Route exact path="/" render={() => <Redirect to="/start" />} />
       </IonRouterOutlet>
     </IonReactRouter>

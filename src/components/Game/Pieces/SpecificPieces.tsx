@@ -25,6 +25,7 @@ import StarDescription from 'content/Descriptions/StarDescription.md';
 import PlanetDescription from 'content/Descriptions/PlanetDescription.md';
 
 import RobotFactoryDescription from 'content/Descriptions/RobotFactoryDescription.md';
+import UpgradeControls from "../Controls/UpgradeControls";
 
 interface ContentTypeDefinition {
   controls?: React.FC<ControlProps>,
@@ -80,7 +81,7 @@ const pieces = setAll([
   {
     key: CellContentTypes.Upgrade,
     val: {
-      controls: CrewControls,
+      controls: UpgradeControls,
       description: UpgradeDescription,
       icon: UpgradeIcon
     }

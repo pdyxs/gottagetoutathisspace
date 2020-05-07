@@ -1,3 +1,2 @@
-A home planet: put your token on one of these.
-
-Hopefully, you'll be able to send the ship to pick you up!
+A Survivor
+|!includeControls:: put a Survivor token for each player on one of these - on different planets if possible.

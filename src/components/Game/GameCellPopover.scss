@@ -16,6 +16,11 @@
   }
 }
 
+.popover.popover-bottom {
+  position: absolute;
+  bottom: calc(var(--game-cell-size));
+}
+
 .popover.popover-first {
   margin-left: 0;
 }

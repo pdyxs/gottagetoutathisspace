@@ -5,6 +5,7 @@ import TakeActions from 'content/Rules/TakeActions.md';
 import RobotsMove from 'content/Rules/RobotsMove.md';
 import RobotsAttack from 'content/Rules/RobotsAttack.md';
 import Rounds from 'content/Rules/Rounds.md';
+import End from 'content/Rules/End.md';
 import EnvironmentalEffects from 'content/Rules/EnvironmentalEffects.md';
 import ReactMarkdown from 'react-markdown';
 import { IonItem } from '@ionic/react';
@@ -46,6 +47,11 @@ const GameRules: React.FC<GameRulesProps> = ({specialInstructions}) => {
           <ReactMarkdown source={EnvironmentalEffects} />
         </AccordionItem>
       </Accordion>
+      <IonItem color="dark">
+        <div>
+          <ReactMarkdown source={End} />
+        </div>
+      </IonItem>
     </div>
   );
 };

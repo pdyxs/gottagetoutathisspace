@@ -34,10 +34,13 @@ export const CellContentIcon : React.FC<CellContentIconProps> = ({className, con
 
 interface CellContentDescriptionProps {
   className?: string,
-  content: GameCellContent
+  content: GameCellContent,
+  includeControls: boolean
 }
 
-export const CellContentDescription : React.FC<CellContentDescriptionProps> = ({content}) => {
+export const CellContentDescription : React.FC<CellContentDescriptionProps> = ({
+  content, includeControls
+}) => {
   if (!has(pieces, content.type)) return (<></>);
   const description = pieces[content.type].description;
   if (!description) return (<></>);
@@ -49,7 +52,7 @@ export const CellContentDescription : React.FC<CellContentDescriptionProps> = ({
         `ggo-description-${content.type}-${content.subtype || 'default'}`
       )}
       source={description}
-      transformations={{...content}} />
+      transformations={{...content, includeControls}} />
   );
 }
 
