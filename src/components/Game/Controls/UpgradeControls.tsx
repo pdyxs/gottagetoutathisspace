@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { IonButton, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from "@ionic/react";
 import { ControlProps } from "../Pieces";
 import './CrewControls.scss';
-import MarkdownComponent from "components/MarkdownComponent";
+//import MarkdownComponent from "components/MarkdownComponent";
 
 const UpgradeControls : React.FC<ControlProps> = ({className}) => {
   const [showPopover, setShowPopover] = useState(false);
