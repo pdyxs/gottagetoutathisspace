@@ -1,3 +1,5 @@
+import { IconPrefix, IconName } from "@fortawesome/fontawesome-svg-core";
+
 export enum ShipModuleType {
   Basic = 'basic',
   Advanced = 'advanced'
@@ -22,6 +24,7 @@ export interface ShipModuleDamage {
   name: string,
   compulsory?: boolean,
   effect: string,
+  icon?: [IconPrefix, IconName],
   detail?: string
 }
 

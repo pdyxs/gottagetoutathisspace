@@ -23,7 +23,8 @@ const modules: ShipModule[] = [
       {
         name: 'System Shutdown',
         effect: 'Spend your next free action repairing this',
-        detail: 'To effect repairs, colour in the damage square'
+        detail: 'To effect repairs, colour in the damage square',
+        icon: ['fas', 'slash']
       }
     ]
   },
@@ -49,12 +50,14 @@ const modules: ShipModule[] = [
       {
         name: 'Loss of Atmosphere',
         effect: 'Lose 1 crew capacity',
-        detail: 'If you now have less crew capacity than crew, one of your crew dies'
+        detail: 'Cross out one room. If you now have less crew capacity than crew, one of your crew dies',
+        icon: ['far', 'window-close']
       },
       {
         name: 'Trapped Crew',
         effect: 'Exhaust one crew member immediately',
-        detail: 'If all of your crew are already exhausted, one of your crew dies'
+        detail: 'Turn over a crew card. If all of your crew are already exhausted, one of your crew dies',
+        icon: ['fas', 'snooze']
       }
     ]
   },
@@ -85,11 +88,13 @@ const modules: ShipModule[] = [
       {
         name: 'Broken Drum',
         effect: 'Lose 1 fuel capacity',
-        detail: 'If you now have less capacity than fuel, lose 1 fuel'
+        detail: 'Cross out some capacity. If you now have less capacity than fuel, lose 1 fuel',
+        icon: ['far', 'window-close']
       },
       {
         name: 'Broken Pipe',
-        effect: 'You may only use 1 fuel from this Cargo Bay per turn'
+        effect: 'You may only use 1 fuel from this Cargo Bay per turn',
+        icon: ['far', 'tint']
       }
     ]
   },
@@ -97,12 +102,12 @@ const modules: ShipModule[] = [
     name: 'Thruster',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Move to one of these squares'
+      'Move to one of these movement squares'
     ],
     upgrades: [
       {
         name: 'Extra Maneuverability',
-        effect: 'Colour in another square - you can now move there'
+        effect: 'Colour in another movement square - you can now move there'
       },
       {
         name: 'Improved Resilience',
@@ -113,12 +118,15 @@ const modules: ShipModule[] = [
     damage: [
       {
         name: 'Loss of Maneuverability',
-        effect: 'Put an "X" through a square - you can no longer move there'
+        effect: 'You can move to one less movement square',
+        detail: 'Put an "X" through a movement square',
+        icon: ['far', 'window-close']
       },
       {
         name: 'Thruster Failed',
         effect: 'Spend an Action to repair this before you can move again',
-        detail: 'To effect repairs, colour in the damage square'
+        detail: 'To effect repairs, colour in the damage square',
+        icon: ['fas', 'slash']
       }
     ]
   },
@@ -126,12 +134,12 @@ const modules: ShipModule[] = [
     name: 'Gun',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Kill a robot in one of these squares'
+      'Kill a robot in one of these target squares'
     ],
     upgrades: [
       {
         name: 'Improved Aim',
-        effect: 'Colour in another square - you can now shoot there'
+        effect: 'Circle in a target square - you can now shoot there'
       },
       {
         name: 'Improved Resilience',
@@ -142,12 +150,15 @@ const modules: ShipModule[] = [
     damage: [
       {
         name: 'Reduced Aim',
-        effect: 'Put an "X" through a square - you can no longer shoot there'
+        effect: 'You can shoot at one less target square',
+        detail: 'Put an "X" through a target square',
+        icon: ['far', 'window-close']
       },
       {
         name: 'Weapons Failure',
         effect: 'Spend an Action to repair this before you can shoot again',
-        detail: 'To effect repairs, colour in the damage square'
+        detail: 'To effect repairs, colour in the damage square',
+        icon: ['fas', 'slash']
       }
     ]
   },
@@ -168,7 +179,9 @@ const modules: ShipModule[] = [
       {
         compulsory: true,
         name: 'Take Damage',
-        effect: 'No effect'
+        effect: 'No effect',
+        detail: "You don't have to write this on the module card",
+        icon: ['fas', 'square']
       }
     ]
   },
@@ -188,12 +201,14 @@ const modules: ShipModule[] = [
     damage: [
       {
         name: 'Collateral Damage',
-        effect: 'When you use this module, take 1 damage'
+        effect: 'When you use this module, take 1 damage',
+        icon: ['far', 'clone']
       },
       {
         name: 'Weapons Failure',
         effect: 'Spend an Action to repair this before you use it again',
-        detail: 'To effect repairs, colour in the damage square'
+        detail: 'To effect repairs, colour in the damage square',
+        icon: ['fas', 'slash']
       }
     ]
   },
@@ -213,7 +228,9 @@ const modules: ShipModule[] = [
     damage: [
       {
         name: 'Loss of Spare Parts',
-        effect: 'When you repair a module, you must colour in one blank damage square on any module'
+        effect: 'When you repair a module, you must damage another',
+        detail: 'To do this, colour in a blank damage square on any module',
+        icon: ['far', 'clone']
       }
     ]
   }
