@@ -17,19 +17,13 @@ const GameWithRules: React.FC<GameWithRulesProps> = (
 ) => {
   return (
     <div className="gameAndRulesContainer">
-      <table className="gameAndRulesTable">
-        <tbody>
-          <tr>
-            <td className="gameContainer">
-              <GameGrid level={level} includeControls={includeControls}
-                winLevel={winLevel} loseLevel={loseLevel} />
-            </td>
-            <td className="rulesContainer">
-              <GameRules level={level} specialInstructions={specialInstructions} />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="gameContainer">
+        <GameGrid level={level} includeControls={includeControls}
+          winLevel={winLevel} loseLevel={loseLevel} />
+      </div>
+      <div className="rulesContainer">
+        <GameRules level={level} specialInstructions={specialInstructions} />
+      </div>
     </div>
   );
 };

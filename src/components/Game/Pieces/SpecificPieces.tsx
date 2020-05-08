@@ -26,6 +26,7 @@ import PlanetDescription from 'content/Descriptions/PlanetDescription.md';
 
 import RobotFactoryDescription from 'content/Descriptions/RobotFactoryDescription.md';
 import UpgradeControls from "../Controls/UpgradeControls";
+import NewModuleControls from "../Controls/NewModuleControls";
 
 interface ContentTypeDefinition {
   controls?: React.FC<ControlProps>,
@@ -89,7 +90,7 @@ const pieces = setAll([
   {
     key: CellContentTypes.Module,
     val: {
-      controls: CrewControls,
+      controls: NewModuleControls,
       description: ModuleDescription,
       icon: ModuleIcon
     }

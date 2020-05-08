@@ -2,24 +2,24 @@
   text-align: center;
 
   display: flex;
-  align-items: top;
+  flex-direction: row;
+  justify-content: center;
   height: 100%;
+  max-width: 1320px;
 
-  .gameAndRulesTable {
-    max-width: 1320px;
-    margin: 0 auto;
+  margin: 0 auto;
 
-    .gameContainer {
-      width: 660px;
-      vertical-align: top;
-      padding-top: 5.5em;
-    }
+  .gameContainer {
+    max-width: 660px;
+    margin: 0 20px;
+    vertical-align: top;
+    padding-top: 5.5em;
+  }
 
-    .rulesContainer {
-      min-width: 400px;
-      max-width: 660px;
-      height: 100%;
-      vertical-align: top;
-    }
+  .rulesContainer {
+    min-width: 400px;
+    max-width: 660px;
+    height: 100%;
+    vertical-align: top;
   }
 }

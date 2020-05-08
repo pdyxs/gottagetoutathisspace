@@ -64,12 +64,13 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
     return;
   }
 
-  if (!busy && !shipCode && currentPage != null)
-  {
+  if (!busy && !shipCode && currentPage !== null && currentPage.requiresShipCode) {
     setBusy(true);
   }
 
-  useEffect(() => { checkLocalStorage() });
+  useEffect(() => {
+    checkLocalStorage();
+  });
 
   function resetShip() {
     dispatch(clearShipData());

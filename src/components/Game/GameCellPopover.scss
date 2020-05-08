@@ -1,4 +1,79 @@
+%popoverWithCard {
+  width: 500px;
 
+  .markdown-content p,
+  .markdown-content h2,
+  .markdown-content h3 {
+    font-size: initial;
+    margin-bottom: 0.5em;
+  }
+
+  .popover-card-button-item {
+    border-style: solid none;
+    border-color: #999;
+    border-width: .5px;
+
+    .option {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .note {
+    .full-width {
+      width: 100%;
+    }
+
+    div:first-child {
+      margin-top: 8px;
+    }
+    div:last-child {
+      margin-bottom: 8px;
+    }
+
+    .note-heading {
+      font-size: 0.9em;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .note-content {
+      font-size: 0.75em;
+    }
+
+    .module {
+      line-height: 1em;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  .module {
+    font-family: "Tulpen One";
+    font-size: 1.5em;
+    padding: 3px 5px;
+    border-radius: 4px;
+    margin-right: 3px;
+  }
+
+  .module-basic {
+    background: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+  }
+
+  .module-advanced {
+    background: var(--ion-color-tertiary);
+    color: var(--ion-color-tertiary-contrast);
+  }
+}
+
+.popoverWithCard .popover-content {
+  @extend %popoverWithCard;
+}
+
+.takeDamagePopover .popover-content {
+  @extend %popoverWithCard;
+}
 
 .popover {
   padding: 0 !important;

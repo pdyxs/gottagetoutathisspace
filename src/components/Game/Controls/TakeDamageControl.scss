@@ -1,25 +1,6 @@
-%popoverWithCard {
-  width: 500px;
-
-  .markdown-content p,
-  .markdown-content h2,
-  .markdown-content h3 {
-    font-size: initial;
-    margin-bottom: 0.5em;
-  }
-}
-
-.popoverWithCard .popover-content {
-  @extend %popoverWithCard;
-}
-
 .takeDamagePopover .popover-content {
-  @extend %popoverWithCard;
 
   .damage-option-item {
-    border-style: solid none;
-    border-color: #999;
-    border-width: .5px;
 
     .damage-option-icon {
       font-size: 2em;
@@ -43,42 +24,6 @@
       .damage-option-icon {
         color: var(--ion-color-notebook-contrast);
       }
-
-      .damageEffect {
-        margin-top: 8px;
-        font-size: 0.9em;
-        font-weight: bold;
-        text-align: center;
-      }
-
-      .damageDetail {
-        margin-bottom: 8px;
-        font-size: 0.75em;
-      }
     }
-  }
-
-  .damage-option {
-    --margin-top: 8px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-
-  .module {
-    font-family: "Tulpen One";
-    font-size: 1.5em;
-    padding: 3px 5px;
-    border-radius: 4px;
-    margin-right: 3px;
-  }
-
-  .module-basic {
-    background: var(--ion-color-primary);
-    color: var(--ion-color-primary-contrast);
-  }
-
-  .module-advanced {
-    background: var(--ion-color-tertiary);
-    color: var(--ion-color-tertiary-contrast);
   }
 }

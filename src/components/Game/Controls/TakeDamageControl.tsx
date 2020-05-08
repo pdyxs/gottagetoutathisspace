@@ -77,11 +77,12 @@ const TakeDamageControl: React.FC<TakeDamageControlProps> = () => {
             <MarkdownComponent className="markdown-content" source={TakeDamageIntroContent} />
             {damageOptions.map(option =>
               <IonItem button onClick={() => chooseDamage(option)}
-                key={option.module.name} color="warning" className="damage-option-item">
+                key={option.module.name} color="warning"
+                className="damage-option-item popover-card-button-item">
                 <div slot="start" className="damage-option-icon">
                   <FontAwesomeIcon icon={option.damage.icon || ['fas', 'square']} />
                 </div>
-                <div slot="start" className="damage-option">
+                <div slot="start" className="option damage-option">
                   <IonLabel>
                     <span className={classNames("module", `module-${option.module.type}`)}>{option.module.name}</span>
                     {option.damage.name}
@@ -126,8 +127,8 @@ const TakeDamageControl: React.FC<TakeDamageControlProps> = () => {
                 <FontAwesomeIcon icon={damageChosen?.damage.icon || ['fas', 'square']} />
               </div>
               <div slot="start">
-                <div className="damageEffect">{damageChosen?.damage.effect}</div>
-                <div className="damageDetail">{damageChosen?.damage.detail}</div>
+                <div className="damageEffect note-heading">{damageChosen?.damage.effect}</div>
+                <div className="damageDetail note-content">{damageChosen?.damage.detail}</div>
               </div>
             </IonItem>
             <MarkdownComponent className="markdown-content" source={TakeDamageDestroyModuleContent} />

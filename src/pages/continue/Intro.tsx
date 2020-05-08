@@ -1,5 +1,5 @@
 import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShipData, ShipData } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { InstructionPageProps } from '../../components/InstructionFlow';
 
 import Content from 'content/Continue/Intro.md';
 import ReactMarkdown from 'react-markdown';
+import { isNil } from 'lodash';
 
 const minCodeLength = 3;
 
@@ -33,6 +34,12 @@ const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
       history.push(nextUrl);
     }
   }
+
+  useEffect(() => {
+    if (!isNil(shipCode) && codeInput === '') {
+      setCodeInput(shipCode);
+    }
+  }, [codeInput, shipCode]);
 
   return (
     <IonContent>
