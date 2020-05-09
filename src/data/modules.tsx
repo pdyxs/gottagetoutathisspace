@@ -5,7 +5,6 @@ const modules: ShipModule[] = [
     name: 'Cockpit',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Do 1 action per turn without using fuel',
       'Action: If you are at a star, leave this solar system'
     ],
     upgrades: [

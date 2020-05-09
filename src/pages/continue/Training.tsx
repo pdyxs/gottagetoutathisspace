@@ -5,6 +5,7 @@ import { InstructionPageProps } from '../../components/InstructionFlow';
 import { ShipData } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
 import { baseUrl as trainingUrl } from '../training';
+import { baseUrl as gameURL } from '../game';
 
 const ContinueTraining: React.FC<InstructionPageProps> = ({futurePages}) => {
   const shipData = useSelector((state: any) => state.shipData) as ShipData;
@@ -38,7 +39,7 @@ const ContinueTraining: React.FC<InstructionPageProps> = ({futurePages}) => {
             {
               text: 'Yes! Skip to the game already!',
               cssClass: 'danger',
-              handler: () => history.replace(futurePages[0].url)
+              handler: () => history.replace(gameURL)
             },
             {
               text: 'Sure, I guess I should train first',

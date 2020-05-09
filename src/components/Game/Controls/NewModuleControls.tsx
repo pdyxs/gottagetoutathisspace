@@ -4,13 +4,16 @@ import { IonButton, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardCon
 import { ControlProps } from "../Pieces";
 import MarkdownComponent from "components/MarkdownComponent";
 import ShipModule from "model/Module";
-import { take, shuffle } from "lodash";
+import { take, shuffle, times } from "lodash";
 import ShipModules from 'data/modules';
 import classNames from "classnames";
 
 import IntroContent from 'content/Controls/ModuleIntro.md';
 import MakeModuleContent from 'content/Controls/MakeModule.md';
 import { CellContentTypes } from "model/Level";
+
+import './NewModuleControls.scss';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const moduleOptionCount = 3;
 
@@ -51,7 +54,7 @@ const NewModuleControls : React.FC<ControlProps> = ({className, level, coordinat
         onDidDismiss={() => setShowIntroPopover(false)}>
         <IonCard color="success">
           <IonCardHeader>
-            <IonCardTitle>Time to up your... grades?</IonCardTitle>
+            <IonCardTitle>Add-ons ahoy!</IonCardTitle>
           </IonCardHeader>
 
           <IonCardContent>
@@ -68,8 +71,8 @@ const NewModuleControls : React.FC<ControlProps> = ({className, level, coordinat
                 </div>
                 <div slot="start" className="option module-option">
                   <IonNote className="ion-padding-bottom">
-                    {option.basicEffects.map(effect =>
-                      <div>{effect}</div>
+                    {option.basicEffects.map((effect, i) =>
+                      <div key={i}>{effect}</div>
                     )}
                   </IonNote>
                 </div>
@@ -89,7 +92,7 @@ const NewModuleControls : React.FC<ControlProps> = ({className, level, coordinat
         <IonCard color="success">
           <IonCardHeader>
             <IonCardTitle>
-              Ship Moduled!
+              New Module Acquired!
             </IonCardTitle>
           </IonCardHeader>
 
@@ -99,17 +102,21 @@ const NewModuleControls : React.FC<ControlProps> = ({className, level, coordinat
               source={MakeModuleContent}
               transformations={{moduleName: moduleChosen?.name || ''}} />
             <IonItem color="notebook" class="effectNote note handwritten">
-              <div slot="start">
-                <span className={classNames("module", `module-${moduleChosen?.type}`)}>{moduleChosen?.name}</span>
-              </div>
               <div slot="start" className="full-width">
-                {moduleChosen?.basicEffects.map(effect =>
-                  <div className="note-content">{effect}</div>
+                <div className="note-heading">{moduleChosen?.name}</div>
+                {moduleChosen?.basicEffects.map((effect,i) =>
+                  <div key={i} className="note-content ion-padding-bottom">{effect}</div>
                 )}
+                <div className="damage-squares-container">
+                  Damage:
+                  {times(moduleChosen?.damageSlots || 0).map((_d,i) =>
+                    <FontAwesomeIcon className="damage-square" key={i} icon={['far', 'square']} />
+                  )}
+                </div>
               </div>
             </IonItem>
             <IonItem button onClick={() => {setModuleChosen(null); setShowIntroPopover(true);}}>
-              Actually, I might add something else
+              Actually, I might build something else
             </IonItem>
             <IonItem button onClick={doModule}>
               Done! Let's get back to it!

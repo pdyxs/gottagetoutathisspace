@@ -30,6 +30,7 @@ const Game: React.FC<InstructionPageProps> = () => {
   }
 
   function restart() {
+    trainingLevel.reset();
     history.push(trainingURL);
   }
 

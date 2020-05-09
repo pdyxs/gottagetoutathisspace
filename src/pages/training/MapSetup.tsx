@@ -12,12 +12,16 @@ const MapSetup: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
   return (
     <IonContent>
-      <div className="ion-text-center">
-        <MarkdownComponent source={Content} />
-        <GameGrid level={trainingLevel} />
-        <IonButton routerLink={nextUrl}>
-          I've made the space, can I please now get out of it?
-        </IonButton>
+      <div className="gameAndTextContainer">
+        <div className="gameContainer">
+          <GameGrid level={trainingLevel} />
+        </div>
+        <div className="textContainer">
+          <MarkdownComponent source={Content} />
+          <IonButton routerLink={nextUrl}>
+            I've made the space, can I please now get out of it?
+          </IonButton>
+        </div>
       </div>
     </IonContent>
   );

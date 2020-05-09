@@ -2,3 +2,30 @@
   --padding-start: 8px;
   --padding-end: 8px;
 }
+
+.crew-profile-container {
+  display: flex;
+  flex-direction: row;
+
+  .crew-profile-picture {
+    width: 100px;
+    height: 100px;
+    border: solid;
+    border-radius: 10px;
+    margin-right: 10px;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 0.75em;
+  }
+
+  .crew-info {
+    div {
+      text-align: left !important;
+    }
+    .crew-name {
+      font-size: 1.3em !important;
+    }
+  }
+}

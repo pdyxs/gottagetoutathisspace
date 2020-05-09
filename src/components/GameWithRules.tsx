@@ -16,12 +16,12 @@ const GameWithRules: React.FC<GameWithRulesProps> = (
   {level, includeControls, specialInstructions, winLevel, loseLevel}
 ) => {
   return (
-    <div className="gameAndRulesContainer">
+    <div className="gameAndTextContainer">
       <div className="gameContainer">
         <GameGrid level={level} includeControls={includeControls}
           winLevel={winLevel} loseLevel={loseLevel} />
       </div>
-      <div className="rulesContainer">
+      <div className="textContainer">
         <GameRules level={level} specialInstructions={specialInstructions} />
       </div>
     </div>

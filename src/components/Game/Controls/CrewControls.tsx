@@ -53,7 +53,7 @@ const CrewControls : React.FC<ControlProps> = ({className, level, coordinates}) 
         onDidDismiss={() => setShowIntroPopover(false)}>
         <IonCard color="success">
           <IonCardHeader>
-            <IonCardTitle>Time to up your... grades?</IonCardTitle>
+            <IonCardTitle>Ready to get outta here?</IonCardTitle>
           </IonCardHeader>
 
           <IonCardContent>
@@ -87,7 +87,7 @@ const CrewControls : React.FC<ControlProps> = ({className, level, coordinates}) 
         <IonCard color="success">
           <IonCardHeader>
             <IonCardTitle>
-              Ship Crewd!
+              Crew Got!
             </IonCardTitle>
           </IonCardHeader>
 
@@ -98,14 +98,29 @@ const CrewControls : React.FC<ControlProps> = ({className, level, coordinates}) 
               transformations={{moduleName: crewChosen?.name || ''}} />
             <IonItem color="notebook" class="effectNote note handwritten">
               <div slot="start" className="full-width">
-                <div className="note-heading">
-                  {crewChosen?.name}
+                <div className="crew-profile-container">
+                  <div className="crew-profile-picture">
+                    Your picture here
+                  </div>
+                  <div className="crew-info">
+                    <div className="note-heading crew-name">
+                      Your name here
+                    </div>
+                    <div className="note-heading">
+                      {crewChosen?.name}
+                    </div>
+                  </div>
                 </div>
-                <div className="note-content">{crewChosen?.power}</div>
+                <div className="note-content ion-margin-top">
+                  {crewChosen?.power}
+                </div>
+                <div className="note-content ion-text-right">
+                  Then, exhaust (flip over)
+                </div>
               </div>
             </IonItem>
             <IonItem button onClick={() => {setCrewChosen(null); setShowIntroPopover(true);}}>
-              Actually, I might be someone else
+              Actually, I might have a different role
             </IonItem>
             <IonItem button onClick={doCrew}>
               Done! Let's get back to it!

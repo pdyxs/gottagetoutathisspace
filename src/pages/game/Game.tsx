@@ -8,13 +8,10 @@ import GameWithRules from '../../components/GameWithRules';
 
 import SpecialInstructions from 'content/Game/ScenarioInstructions.md';
 
-import WinContent from 'content/Training/Win.md';
-import LoseContent from 'content/Training/Lose.md';
+import WinContent from 'content/Game/Win.md';
+import LoseContent from 'content/Game/Lose.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 import { useHistory } from 'react-router-dom';
-
-import { baseUrl as gameURL } from '../game';
-import { baseUrl as trainingURL } from './';
 
 const Game: React.FC<InstructionPageProps> = () => {
   const [showWinPopover, setShowWinPopover] = useState(false);
@@ -29,12 +26,8 @@ const Game: React.FC<InstructionPageProps> = () => {
     setShowLosePopover(true);
   }
 
-  function restart() {
-    history.push(trainingURL);
-  }
-
-  function playFull() {
-    history.push(gameURL);
+  function returnHome() {
+    history.push('/');
   }
 
   return (
@@ -43,8 +36,8 @@ const Game: React.FC<InstructionPageProps> = () => {
         includeControls={true} specialInstructions={SpecialInstructions}
         winLevel={winLevel}
         loseLevel={loseLevel} />
+      
       <IonPopover isOpen={showWinPopover}
-        backdropDismiss={false}
         cssClass="popoverWithCard"
         onDidDismiss={() => setShowWinPopover(false)}>
         <IonCard color="success">
@@ -56,8 +49,8 @@ const Game: React.FC<InstructionPageProps> = () => {
 
           <IonCardContent>
             <MarkdownComponent className="markdown-content" source={WinContent} />
-            <IonItem button color="tertiary" onClick={playFull}>
-              Onward!
+            <IonItem button color="tertiary" onClick={returnHome}>
+              Huzzah!
             </IonItem>
             <IonItem button onClick={() => setShowWinPopover(false)}>
               Whoops, pressed the wrong button
@@ -67,7 +60,6 @@ const Game: React.FC<InstructionPageProps> = () => {
       </IonPopover>
 
       <IonPopover isOpen={showLosePopover}
-        backdropDismiss={false}
         cssClass="popoverWithCard"
         onDidDismiss={() => setShowLosePopover(false)}>
         <IonCard color="light">
@@ -79,11 +71,8 @@ const Game: React.FC<InstructionPageProps> = () => {
 
           <IonCardContent>
             <MarkdownComponent className="markdown-content" source={LoseContent} />
-            <IonItem button color="tertiary" onClick={restart}>
-              I should probably try that again
-            </IonItem>
-            <IonItem button color="danger" onClick={playFull}>
-              I've learned what I need to. Let's play the full game!
+            <IonItem button color="danger" onClick={returnHome}>
+              Spacerats!
             </IonItem>
             <IonItem button onClick={() => setShowLosePopover(false)}>
               Whoops, pressed the wrong button
