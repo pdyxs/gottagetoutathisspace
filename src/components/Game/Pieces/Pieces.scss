@@ -1,0 +1,13 @@
+.ggo-description {
+  strong em {
+    background: var(--ion-color-notebook);
+    color: var(--ion-color-notebook-contrast);
+    padding: 3px;
+    font-family: 'Indie Flower';
+    font-weight: normal;
+    font-style: normal;
+    border-radius: 2px;
+    transform: rotate(3deg);
+    display: inline-block;
+  }
+}

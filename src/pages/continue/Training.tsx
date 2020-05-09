@@ -19,10 +19,10 @@ const ContinueTraining: React.FC<InstructionPageProps> = () => {
       <div className="page-container">
         <MarkdownComponent source={TrainingMission} transformations={{...shipData}} />
         <IonButton routerLink={trainingUrl}>
-          Great! Let's do this!
+          Let's train!
         </IonButton>
 
-        <IonButton onClick={() => setShowSkipCheck(true)}>
+        <IonButton color="light" onClick={() => setShowSkipCheck(true)}>
           Screw that! I don't need no training!
         </IonButton>
         <IonAlert

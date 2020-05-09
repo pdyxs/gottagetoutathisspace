@@ -1,1 +1,1 @@
-Your ship!
+Your ship! ___{shipToken}___

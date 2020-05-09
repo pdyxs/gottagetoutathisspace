@@ -6,6 +6,10 @@ import classNames from "classnames";
 import MarkdownComponent from "../../MarkdownComponent";
 
 import pieces from './SpecificPieces';
+import { useSelector } from "react-redux";
+import { ShipData } from "redux/actions";
+
+import './Pieces.scss';
 
 export interface IconProps {
   className?: string
@@ -41,6 +45,7 @@ interface CellContentDescriptionProps {
 export const CellContentDescription : React.FC<CellContentDescriptionProps> = ({
   content, includeControls
 }) => {
+  const shipData = useSelector((state: any) => state.shipData) as ShipData;
   if (!has(pieces, content.type)) return (<></>);
   const description = pieces[content.type].description;
   if (!description) return (<></>);
@@ -52,7 +57,7 @@ export const CellContentDescription : React.FC<CellContentDescriptionProps> = ({
         `ggo-description-${content.type}-${content.subtype || 'default'}`
       )}
       source={description}
-      transformations={{...content, includeControls}} />
+      transformations={{...shipData, ...content, includeControls}} />
   );
 }
 

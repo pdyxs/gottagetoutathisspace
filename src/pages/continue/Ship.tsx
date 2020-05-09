@@ -13,7 +13,8 @@ const ContinueShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
     <IonContent>
       <div className="page-container">
         <MarkdownComponent source={Content} transformations={{...shipData}} />
-        <IonButton routerLink={nextUrl}>
+        <img alt="the state of this ship left by the last player " src="/assets/last_ship.jpg" />
+        <IonButton className="ion-margin-bottom" routerLink={nextUrl}>
           Great! Let's do this!
         </IonButton>
       </div>

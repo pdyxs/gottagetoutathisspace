@@ -66,7 +66,7 @@ const modules: ShipModule[] = [
     basicEffects: [
       'Hold up to 3 fuel',
       'Spend 1 fuel to do 1 Action',
-      'Action: Pick up 1 Crew, Upgrade or Module from a planet'
+      'Action: Pick up 1 Survivor, Upgrade or Module from a planet'
     ],
     upgrades: [
       {
@@ -133,7 +133,7 @@ const modules: ShipModule[] = [
     name: 'Gun',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Kill a robot in one of these target squares'
+      'Action: Kill a robot in one of these target squares'
     ],
     upgrades: [
       {
