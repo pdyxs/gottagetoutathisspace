@@ -43,6 +43,14 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
   let nextPage = (currentPageIndex >= pages.length - 1) ? null : pages[currentPageIndex + 1];
   let nextUrl = `${baseUrl}/${nextPage?.url}`;
 
+  function gotoPageWithoutShipCode() {
+    if (!pages[0].requiresShipCode) {
+      history.replace(`${baseUrl}/${pages[0].url}`);
+    } else {
+      history.replace(`/start`);
+    }
+  }
+
   async function checkLocalStorage() {
     if (!shipCode && currentPage != null)
     {
@@ -53,11 +61,11 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
         if (shipData)
         {
           dispatch(setShipData(code, shipData as ShipData));
-        } else {
-          history.replace(`${baseUrl}/${pages[0].url}`);
+        } else if (currentPage.requiresShipCode) {
+          gotoPageWithoutShipCode();
         }
-      } else {
-        history.replace(`${baseUrl}/${pages[0].url}`);
+      } else if (currentPage.requiresShipCode) {
+        gotoPageWithoutShipCode();
       }
       setBusy(false);
     }
