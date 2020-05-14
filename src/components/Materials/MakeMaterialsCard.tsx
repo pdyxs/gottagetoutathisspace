@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useState } from 'react';
 
 import './MakeMaterialsCard.scss';
 
-import Material, { MaterialBuildOption } from 'model/Materials';
+import Material, { MaterialBuildOption, BuildOptionTypeDetails } from 'model/Materials';
 import { isNil, first, isString } from 'lodash';
 import classNames from 'classnames';
 
@@ -44,7 +44,12 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
             {isString(Preview) ?
               <IonImg src={Preview || ''} />
               :
-              <Preview className={classNames(`material-build-${buildOption.type}`)}
+              <Preview className={classNames(
+                  `material-build-${buildOption.type}`, {
+                  'printable': BuildOptionTypeDetails[buildOption.type].isPrinted,
+                  'printer-friendly': BuildOptionTypeDetails[buildOption.type].isFriendly,
+                  'show-detail': BuildOptionTypeDetails[buildOption.type].hasDetails
+                })}
                 buildOption={buildOption} material={material} />
             }
           </div>

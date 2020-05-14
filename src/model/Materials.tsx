@@ -9,24 +9,31 @@ export enum MaterialBuildOptionType {
 }
 
 export interface MaterialBuildOptionTypeDetail {
-  isPrinted: boolean
+  isPrinted: boolean,
+  isFriendly?: boolean,
+  hasDetails?: boolean
 }
 
-export const MaterialBuildOptionTypeDetails : {[id: string]: MaterialBuildOptionTypeDetail} = {
+export const BuildOptionTypeDetails : {[id: string]: MaterialBuildOptionTypeDetail} = {
   [MaterialBuildOptionType.Buy]: {
-    isPrinted: false
+    isPrinted: false,
+    hasDetails: true
   },
 
   [MaterialBuildOptionType.PrintNormal]: {
-    isPrinted: true
+    isPrinted: true,
+    hasDetails: true
   },
 
   [MaterialBuildOptionType.PrintFriendly]: {
-    isPrinted: true
+    isPrinted: true,
+    isFriendly: true,
+    hasDetails: true
   },
 
   [MaterialBuildOptionType.PrintTemplate]: {
-    isPrinted: true
+    isPrinted: true,
+    isFriendly: true
   },
 
   [MaterialBuildOptionType.Build]: {

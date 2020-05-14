@@ -12,13 +12,36 @@ const materials: Material[] = [
     notes: (d : ShipData) => d.spaceCards,
     buildOptions: [
       {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice deck",
+        preview: ({className}) =>
+          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
+            className={className} />
+      },
+      {
         type: MaterialBuildOptionType.PrintNormal,
         description: "I want to print them",
-        preview: () => <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant} />
+        preview: ({className}) =>
+          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
+            className={className} />
       },
       {
         type: MaterialBuildOptionType.PrintFriendly,
-        description: "I want to print them, but be friendly to my printer"
+        description: "I want to print them, but be friendly to my printer",
+        preview: ({className}) =>
+          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
+            className={className} />
+      },
+      {
+        type: MaterialBuildOptionType.PrintTemplate,
+        description: "I want to print the words but draw the space things myself",
+        preview: ({className}) =>
+          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
+            className={className} />
+      },
+      {
+        type: MaterialBuildOptionType.Build,
+        description: "I want to make them myself"
       }
     ]
   },

@@ -13,14 +13,15 @@ import { isString } from 'lodash';
 interface SpaceCardProps {
   type: CellContentTypes,
   subtype?: StarTypes | PlanetTypes,
-  variety?: number
+  variety?: number,
+  className?: string
 }
 
-const SpaceCard: React.FC<SpaceCardProps> = ({type, subtype, variety}) => {
+const SpaceCard: React.FC<SpaceCardProps> = ({className, type, subtype, variety}) => {
   var piece = pieces[type];
   return (
-    <SquareCard className="space-card">
-      <CellContentIcon content={{type, subtype, variety}} />
+    <SquareCard className={classNames("card", "space-card", className)}>
+      <CellContentIcon className="detail" content={{type, subtype, variety}} />
       {piece && piece.name &&
         <h3>
           {isString(piece.name) ? piece.name : piece.name[subtype || '']}
