@@ -11,6 +11,10 @@ ion-popover {
   /* background: none !important; */
 }
 
+ion-action-sheet .action-sheet-title {
+  --color: #8BA8FF;
+}
+
 :root {
   --ion-color-notebook: #f3daae;
   --ion-color-notebook-rgb: 243,218,174;

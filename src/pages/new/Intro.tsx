@@ -2,30 +2,19 @@ import { IonContent, IonButton } from '@ionic/react';
 import React from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
+import Content from 'content/New/Intro.md';
+import MarkdownComponent from 'components/MarkdownComponent';
+
 const NewIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
   return (
     <IonContent>
-      <div className="ion-text-center">
-        <h2>What This Is</h2>
-        <p>"Gotta Get Outta This Space" is a print, play and post game.</p>
-        <p>
-          To play, you'll have to print, find or make components for the
-          game.
-        </p>
-        <p>
-          You'll then captain a spaceship through
-          a solar system, changing the ship as you go using
-          whatever materials you have on hand.
-        </p>
-        <p>
-          Once you've finished (assuming you succeed), you'll
-          pack up the game and send it to someone else, who'll
-          then do the same.
-        </p>
-        <p>
-          <IonButton routerLink={nextUrl}>Great, let's do it!</IonButton>
-        </p>
+      <div className="page-container">
+        <MarkdownComponent source={Content} />
+        <div className="centre">
+          <IonButton routerLink={nextUrl}>Great, how do I make a copy of the game?</IonButton>
+          <IonButton>I've already got a copy and am ready to go!</IonButton>
+        </div>
       </div>
     </IonContent>
   );

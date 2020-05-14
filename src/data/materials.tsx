@@ -20,7 +20,6 @@ const materials: Material[] = [
     explanation: "Your crew. Each comes with an ability that can be used once per game",
     notes: (d : ShipData) => d.crewCards
   },
-
   {
     count: 20,
     name: "Robot Tokens",

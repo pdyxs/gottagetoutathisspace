@@ -18,32 +18,35 @@ const ContinueTraining: React.FC<InstructionPageProps> = () => {
     <IonContent>
       <div className="page-container">
         <MarkdownComponent source={TrainingMission} transformations={{...shipData}} />
-        <IonButton routerLink={trainingUrl}>
-          Let's train!
-        </IonButton>
 
-        <IonButton color="light" onClick={() => setShowSkipCheck(true)}>
-          Screw that! I don't need no training!
-        </IonButton>
-        <IonAlert
-          isOpen={showSkipCheck}
-          onDidDismiss={() => setShowSkipCheck(false)}
-          header={'Are you sure?'}
-          message={'Learning is, in fact, how you learn stuff'}
-          buttons={[
-            {
-              text: 'Yes! Skip to the game already!',
-              cssClass: 'danger',
-              handler: () => history.replace(gameURL)
-            },
-            {
-              text: 'Sure, I guess I should train first',
-              role: 'cancel',
-              cssClass: 'secondary',
-              handler: () => history.replace(trainingUrl)
-            }
-          ]}
-        />
+        <div className="centre">
+          <IonButton routerLink={trainingUrl}>
+            Let's train!
+          </IonButton>
+
+          <IonButton color="light" onClick={() => setShowSkipCheck(true)}>
+            Screw that! I don't need no training!
+          </IonButton>
+          <IonAlert
+            isOpen={showSkipCheck}
+            onDidDismiss={() => setShowSkipCheck(false)}
+            header={'Are you sure?'}
+            message={'Learning is, in fact, how you learn stuff'}
+            buttons={[
+              {
+                text: 'Yes! Skip to the game already!',
+                cssClass: 'danger',
+                handler: () => history.replace(gameURL)
+              },
+              {
+                text: 'Sure, I guess I should train first',
+                role: 'cancel',
+                cssClass: 'secondary',
+                handler: () => history.replace(trainingUrl)
+              }
+            ]}
+          />
+        </div>
       </div>
     </IonContent>
   );

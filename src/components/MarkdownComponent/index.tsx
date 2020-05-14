@@ -1,6 +1,7 @@
 import React from "react";
 import { replace, isNil, isEmpty, isNumber } from "lodash";
 import ReactMarkdown from "react-markdown";
+import classNames from "classnames";
 
 interface MarkdownComponentProps {
   className?: string,
@@ -62,7 +63,7 @@ const MarkdownComponent : React.FC<MarkdownComponentProps> =
         });
     }
 
-    return <ReactMarkdown className={className} source={source}  />
+    return <ReactMarkdown className={classNames('default-markdown', className)} source={source}  />
   }
 
 export default MarkdownComponent;

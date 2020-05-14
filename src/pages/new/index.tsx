@@ -1,5 +1,6 @@
 import React from 'react';
 import Intro from './Intro';
+import MakeGame from './MakeGame';
 
 import InstructionFlow,
   { InstructionPagesInfo }
@@ -10,6 +11,11 @@ const flow : InstructionPagesInfo = [
     url: 'intro',
     requiresShipCode: false,
     component: Intro
+  },
+  {
+    url: 'make',
+    requiresShipCode: false,
+    component: MakeGame
   }
 ]
 

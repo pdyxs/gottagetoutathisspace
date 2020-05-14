@@ -45,7 +45,8 @@ const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
     <IonContent>
       <div className="page-container">
         <ReactMarkdown source={Content} />
-        <form onSubmit={(e) => {codeInput.length >= minCodeLength && setCode(codeInput); e.preventDefault();}}>
+        <form className="centre"
+          onSubmit={(e) => {codeInput.length >= minCodeLength && setCode(codeInput); e.preventDefault();}}>
           <IonLoading isOpen={busy} message="Checking Serial Number" />
           <IonInput
             value={codeInput} placeholder="Enter Serial Number Here"
