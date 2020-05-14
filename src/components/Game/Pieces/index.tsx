@@ -12,7 +12,8 @@ import { ShipData } from "redux/actions";
 import './Pieces.scss';
 
 export interface IconProps {
-  className?: string
+  className?: string,
+  content: GameCellContent
 }
 
 export interface ControlProps {
@@ -33,6 +34,7 @@ export const CellContentIcon : React.FC<CellContentIconProps> = ({className, con
   const IconComponent = pieces[content.type].icon;
   if (!IconComponent) return (<></>);
   return <IconComponent
+      content={content}
       className={classNames(className, 'ggo-icon', `ggo-icon-${content.type}`, `ggo-icon-${content.type}-${content.subtype || 'default'}`)} />
 }
 

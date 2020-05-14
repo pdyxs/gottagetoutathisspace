@@ -9,8 +9,8 @@ import { storeShipCode } from '../../storage';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
 import Content from 'content/Continue/Intro.md';
-import ReactMarkdown from 'react-markdown';
 import { isNil } from 'lodash';
+import MarkdownComponent from 'components/MarkdownComponent';
 
 const minCodeLength = 3;
 
@@ -44,7 +44,7 @@ const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
   return (
     <IonContent>
       <div className="page-container">
-        <ReactMarkdown source={Content} />
+        <MarkdownComponent source={Content} />
         <form className="centre"
           onSubmit={(e) => {codeInput.length >= minCodeLength && setCode(codeInput); e.preventDefault();}}>
           <IonLoading isOpen={busy} message="Checking Serial Number" />

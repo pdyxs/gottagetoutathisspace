@@ -1,11 +1,11 @@
 import React from "react";
 import { ControlProps, IconProps } from ".";
 import { set } from "lodash";
-import { CellContentTypes } from "../../../model/Level";
+import { CellContentTypes, PlanetTypes, StarTypes } from "../../../model/Level";
 
 import PlayerControls from "../Controls/PlayerControls";
 import PlayerDescription from 'content/Descriptions/PlayerDescription.md'
-import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon, DivIcon, RobotFactoryIcon } from "../Icons";
+import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon, RobotFactoryIcon } from "../Icons";
 
 import RobotDescription from 'content/Descriptions/RobotDescription.md';
 import RobotControls from "../Controls/RobotControls";
@@ -23,15 +23,19 @@ import ModuleDescription from 'content/Descriptions/ModuleDescription.md';
 import StarDescription from 'content/Descriptions/StarDescription.md';
 
 import PlanetDescription from 'content/Descriptions/PlanetDescription.md';
+import PlanetCardText from 'content/CardText/Planet.md';
 
 import RobotFactoryDescription from 'content/Descriptions/RobotFactoryDescription.md';
 import UpgradeControls from "../Controls/UpgradeControls";
 import NewModuleControls from "../Controls/NewModuleControls";
+import ImageIcon from "../Icons/ImageIcon";
 
 interface ContentTypeDefinition {
   controls?: React.FC<ControlProps>,
   description?: string,
-  icon?: React.FC<IconProps>
+  icon?: React.FC<IconProps>,
+  cardText?: string,
+  name?: {[id: string]: string} | string
 }
 
 interface ConceptTypeKeyValuePair {
@@ -98,20 +102,31 @@ const pieces = setAll([
   {
     key: CellContentTypes.Star,
     val: {
-      icon: DivIcon,
+      name: {
+        [StarTypes.BlueGiant]: "Blue Giant",
+        [StarTypes.Yellow]: "Yellow Star",
+        [StarTypes.RedDwarf]: "Red Dwarf"
+      },
+      icon: ImageIcon,
       description: StarDescription
     }
   },
   {
     key: CellContentTypes.Planet,
     val: {
-      icon: DivIcon,
-      description: PlanetDescription
+      name: {
+        [PlanetTypes.GasGiant]: "Gas Giant",
+        [PlanetTypes.Rocky]: "Rocky Planet"
+      },
+      icon: ImageIcon,
+      description: PlanetDescription,
+      cardText: PlanetCardText
     }
   },
   {
     key: CellContentTypes.RobotFactory,
     val: {
+      name: "Robot Factory",
       icon: RobotFactoryIcon,
       description: RobotFactoryDescription
     }

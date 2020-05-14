@@ -7,7 +7,7 @@ import MarkdownComponent from 'components/MarkdownComponent';
 import materials from 'data/materials';
 import MakeMaterialsCard from 'components/Materials/MakeMaterialsCard';
 
-const MakeGame: React.FC<InstructionPageProps> = ({}) => {
+const MakeGame: React.FC<InstructionPageProps> = () => {
 
   return (
     <IonContent>

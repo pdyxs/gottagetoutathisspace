@@ -7,24 +7,15 @@
   width: var(--size);
   height: var(--size);
   background-color: var(--colour);
-  border-radius: calc(var(--size) / 2);
+  border-radius: 50%;
+}
+
+.ggo-icon-planet-gas {
+  transform: rotate(-30deg) scale(1.5);
 }
 
 .ggo-icon.svg-inline--fa {
   font-size: var(--size);
-}
-
-.ggo-icon-star {
-  --colour: yellow;
-}
-
-.ggo-icon-star.ggo-icon-star-blue {
-  --colour: aqua;
-}
-
-.ggo-icon-planet {
-  --colour: brown;
-  border: 1px white solid;
 }
 
 .ggo-icon-enemy {

@@ -3,7 +3,8 @@ import { cloneDeep, find, isNil, isArray, without } from "lodash";
 export interface GameCellContent {
   type: string,
   subtype?: string,
-  count?: number
+  count?: number,
+  variety?: number
 }
 
 export interface GameCellSettings {

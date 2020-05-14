@@ -1,10 +1,11 @@
-import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonSelect, IonSelectOption } from '@ionic/react';
-import React, { useLayoutEffect } from 'react';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonSelect, IonSelectOption, IonImg } from '@ionic/react';
+import React, { useLayoutEffect, useState } from 'react';
 
 import './MakeMaterialsCard.scss';
 
-import Material from 'model/Materials';
-import { isNil } from 'lodash';
+import Material, { MaterialBuildOption } from 'model/Materials';
+import { isNil, first, isString } from 'lodash';
+import classNames from 'classnames';
 
 interface MakeMaterialsCardProps {
   material: Material
@@ -12,6 +13,8 @@ interface MakeMaterialsCardProps {
 
 const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
   let select = React.useRef<HTMLIonSelectElement>(null);
+  let [buildOption, setBuildOption] =
+    useState<MaterialBuildOption|undefined>(first(material.buildOptions))
 
   useLayoutEffect(() => {
     if (!isNil(select.current)) {
@@ -19,8 +22,9 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
       style.innerHTML = '.select-text { white-space: normal !important; }';
       select.current?.shadowRoot?.appendChild( style )
     }
-  })
+  });
 
+  const Preview = buildOption?.preview;
 
   return (
     <IonCard className="make-materials-card">
@@ -29,18 +33,35 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
         <IonCardTitle>{material.name}</IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
-        <p>{material.explanation}</p>
+        <p>{material.description}</p>
+        {material.buildDescription &&
+          <p className="ion-padding-top">{material.buildDescription}</p>
+        }
       </IonCardContent>
-        <IonSelect ref={select}
-          className="select-material-creation"
-          interface="action-sheet"
-          interfaceOptions={{header: material.name}}>
-          <IonSelectOption value="brown">I want to buy a nice deck</IonSelectOption>
-          <IonSelectOption value="blonde">I want to print them</IonSelectOption>
-          <IonSelectOption value="black">I want to print them, but be friendly to my printer</IonSelectOption>
-          <IonSelectOption value="red">I want to print the words but draw the space things myself</IonSelectOption>
-          <IonSelectOption value="red">I want to make them myself</IonSelectOption>
-        </IonSelect>
+      {buildOption && Preview &&
+        <div className="material-build-preview-container">
+          <div className="material-build-preview">
+            {isString(Preview) ?
+              <IonImg src={Preview || ''} />
+              :
+              <Preview className={classNames(`material-build-${buildOption.type}`)}
+                buildOption={buildOption} material={material} />
+            }
+          </div>
+        </div>
+      }
+      <IonSelect ref={select}
+        className="select-material-creation"
+        interface="action-sheet"
+        interfaceOptions={{header: material.name}}
+        value={buildOption}
+        onIonChange={e => setBuildOption(e.detail.value)}>
+        {material.buildOptions.map(buildOption =>
+          <IonSelectOption value={buildOption} key={buildOption.type}>
+            {buildOption.description}
+          </IonSelectOption>
+        )}
+      </IonSelect>
     </IonCard>
   );
 };

@@ -3,4 +3,14 @@
   .select-material-creation {
     background: var(--ion-color-step-200);
   }
+
+  .material-build-preview-container {
+    width: "100%";
+    background-color: white;
+    padding: 1em;
+    .material-build-preview {
+      transform: rotate(2deg);
+      width: 100%;
+    }
+  }
 }

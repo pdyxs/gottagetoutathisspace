@@ -31,7 +31,7 @@ const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
                         {material.notes(shipData)}
                       </div>
                     </IonItem>
-                    <p>{material.explanation}</p>
+                    <p>{material.description}</p>
                   </IonCardContent>
                 </IonCard>
               </IonCol>

@@ -65,7 +65,7 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky },
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky, variety: 2 },
         { type: CellContentTypes.Fuel, count: 1 },
         { type: CellContentTypes.Module },
         { type: CellContentTypes.Crew }

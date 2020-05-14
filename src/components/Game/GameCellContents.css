@@ -65,15 +65,15 @@
 }
 
 .game-cell-contents .ggo-icon-star {
-    --size: 3em;
+  --size: 50%;
 }
 
 .game-cell-contents .ggo-icon-planet-gas {
-  --size: 2em;
+  --size: 40%;
 }
 
 .game-cell-contents .ggo-icon-planet-rocky {
-  --size: 1em;
+  --size: 30%;
 }
 
 .game-cell-contents .ggo-icon-container {
