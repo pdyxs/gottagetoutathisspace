@@ -1,0 +1,67 @@
+.card.crew-card {
+  background: var(--ion-color-warning-shade);
+  color: var(--ion-color-warning-contrast);
+
+  &.square-box {
+    --aspect-ratio: 0.8;
+  }
+
+  .square-content {
+
+    text-align: left;
+    padding: 6%;
+
+    .crew-profile-picture {
+      float: left;
+      width: 40%;
+
+      border: solid;
+      border-radius: 10%;
+      margin-right: 4%;
+
+      position: relative;
+      overflow: hidden;
+
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+    }
+
+    h3 {
+      color: black;
+      margin-bottom: 0;
+      margin-top: 3%;
+    }
+
+    h4 {
+      margin-top: -3%;
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+
+    .power {
+      margin-top: 0;
+    }
+
+    .exhaust {
+      font-size: 1.2em;
+      text-align: right;
+
+      position: absolute;
+      bottom: 2%;
+      right: 6%;
+
+      .flip-icon {
+        text-align: right;
+        ion-icon {
+          color: black;
+        }
+      }
+    }
+  }
+}

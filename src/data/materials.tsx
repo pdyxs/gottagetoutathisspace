@@ -1,8 +1,22 @@
 import { ShipData } from "../redux/actions";
-import Material, { MaterialBuildOptionType } from "model/Materials";
+import Material, { MaterialBuildOptionType, MaterialComponentProps } from "model/Materials";
 import SpaceCard from "components/Game/GameElements/SpaceCard";
 import React from "react";
 import { CellContentTypes, PlanetTypes } from "model/Level";
+import ShipCard from "components/Game/GameElements/ShipCard";
+import modules from "./modules";
+import CrewCard from "components/Game/GameElements/CrewCard";
+import crew from "./crew";
+
+const SpaceCardPreviewComponent : React.FC<MaterialComponentProps> = ({className}) =>
+  <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
+    className={className} />;
+
+const ShipCardPreviewComponent : React.FC<MaterialComponentProps> = ({className}) =>
+  <ShipCard module={modules[0]} className={className} />;
+
+const CrewCardPreviewComponent : React.FC<MaterialComponentProps> = ({className}) =>
+  <CrewCard crew={crew[0]} className={className} />;
 
 const materials: Material[] = [
   {
@@ -14,30 +28,22 @@ const materials: Material[] = [
       {
         type: MaterialBuildOptionType.Buy,
         description: "I want to buy a nice deck",
-        preview: ({className}) =>
-          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
-            className={className} />
+        preview: SpaceCardPreviewComponent
       },
       {
         type: MaterialBuildOptionType.PrintNormal,
         description: "I want to print them",
-        preview: ({className}) =>
-          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
-            className={className} />
+        preview: SpaceCardPreviewComponent
       },
       {
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print them, but be friendly to my printer",
-        preview: ({className}) =>
-          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
-            className={className} />
+        preview: SpaceCardPreviewComponent
       },
       {
         type: MaterialBuildOptionType.PrintTemplate,
         description: "I want to print the words but draw the space things myself",
-        preview: ({className}) =>
-          <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
-            className={className} />
+        preview: SpaceCardPreviewComponent
       },
       {
         type: MaterialBuildOptionType.Build,
@@ -51,7 +57,32 @@ const materials: Material[] = [
     description: "These modules come together to make your ship. Each affects what you can do or what your ship can contain in some way.",
     buildDescription: "The full deck includes 10 blank ship module cards that you and your friends can use to expand the ship",
     notes: (d : ShipData) => d.shipCards,
-    buildOptions: []
+    buildOptions: [
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice deck",
+        preview: ShipCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintNormal,
+        description: "I want to print them",
+        preview: ShipCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintFriendly,
+        description: "I want to print them, but be friendly to my printer",
+        preview: ShipCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintTemplate,
+        description: "I want to print the words but draw the space things myself",
+        preview: ShipCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Build,
+        description: "I want to make them myself"
+      }
+    ]
   },
   {
     count: "1 or more",
@@ -59,7 +90,32 @@ const materials: Material[] = [
     description: "Your crew. Each comes with an ability that can be used once per game",
     buildDescription: "",
     notes: (d : ShipData) => d.crewCards,
-    buildOptions: []
+    buildOptions: [
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice deck",
+        preview: CrewCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintNormal,
+        description: "I want to print them",
+        preview: CrewCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintFriendly,
+        description: "I want to print them, but be friendly to my printer",
+        preview: CrewCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintTemplate,
+        description: "I want to print the words but draw the space things myself",
+        preview: CrewCardPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Build,
+        description: "I want to make them myself"
+      }
+    ]
   },
   {
     count: 20,

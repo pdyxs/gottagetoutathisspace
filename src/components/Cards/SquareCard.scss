@@ -1,19 +1,24 @@
-.square-box{
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: #4679BD;
-}
-.square-box:before{
+.square-box {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #4679BD;
+  border-radius: 8%;
+
+  --aspect-ratio: 1;
+
+  &:before{
     content: "";
     display: block;
-    padding-top: 100%;
-}
-.square-content{
-    position:  absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    text-align: center;
+    padding-top: calc(100% * var(--aspect-ratio);
+  }
+
+  .square-content{
+      position:  absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+  }
 }

@@ -10,14 +10,16 @@
   }
 }
 
-.space-card {
+.card {
   background: black;
-  border-radius: 5%;
   text-align: center;
 
   h3 {
     color: var(--ion-text-color);
   }
+}
+
+.space-card {
 
   .ggo-icon {
     position: absolute;
