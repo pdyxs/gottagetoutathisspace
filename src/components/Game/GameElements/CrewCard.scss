@@ -1,3 +1,12 @@
+.card * {
+  margin: 0;
+  padding: 0;
+}
+
+.sized-in-css {
+  width: 100%;
+}
+
 .card.crew-card {
   background: var(--ion-color-warning-shade);
   color: var(--ion-color-warning-contrast);
@@ -9,13 +18,12 @@
   .square-content {
 
     text-align: left;
-    padding: 6%;
+    padding: 7%;
 
     .crew-profile-picture {
-      float: left;
-      width: 40%;
-
+      width: 100%;
       border: solid;
+      border-width: 5%;
       border-radius: 10%;
       margin-right: 4%;
 
@@ -29,27 +37,33 @@
       }
     }
 
-    h3 {
-      color: black;
-      margin-bottom: 0;
-      margin-top: 3%;
-    }
+    .right-column {
+      padding-left: 5%;
 
-    h4 {
-      margin-top: -3%;
-      font-size: 3em;
-    }
+      h3 {
+        font-size: calc(var(--element-width) * 0.33);
+        margin-bottom: 0;
+        margin-top: 3%;
+        height: 50%;
+        color: black;
+      }
 
-    p {
-      font-size: 1.2em;
+      h4 {
+        font-size: calc(var(--element-width) * 0.25);
+        margin-top: -3%;
+        height: 50%;
+      }
     }
 
     .power {
-      margin-top: 0;
+      margin-top: 3%;
+      width: 100%;
+      font-size: calc(var(--element-width)*0.06);
     }
 
     .exhaust {
-      font-size: 1.2em;
+      width: 100%;
+      font-size: calc(var(--element-width)*0.045);
       text-align: right;
 
       position: absolute;
@@ -57,6 +71,7 @@
       right: 6%;
 
       .flip-icon {
+        font-size: calc(var(--element-width)*0.07);
         text-align: right;
         ion-icon {
           color: black;

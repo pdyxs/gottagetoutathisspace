@@ -6,9 +6,10 @@ import classNames from 'classnames';
 
 import slugify from 'slugify';
 import Crew from 'model/Crew';
-import { IonIcon } from '@ionic/react';
+import { IonIcon, IonGrid, IonRow, IonCol } from '@ionic/react';
 
 import { returnDownForwardOutline } from "ionicons/icons";
+import SizedInCSS from 'components/SizedInCSS';
 
 interface CrewCardProps {
   crew: Crew,
@@ -22,21 +23,34 @@ const CrewCard: React.FC<CrewCardProps> = ({className, crew}) => {
         slugify(crew.name)
       )}>
 
-      <div className="crew-profile-picture">
-      </div>
-      <h3>_____________</h3>
-      <h4>
-        {crew.name}
-      </h4>
-      <p className="power">
-        <strong>Power:</strong> {crew.power}
-      </p>
-      <div className="exhaust">
-        <div>Then: Exhaust</div>
-        <div className="flip-icon">
-          <IonIcon size="large" icon={ returnDownForwardOutline } />
+      <IonGrid>
+        <IonRow>
+          <IonCol size="5">
+            <div className="crew-profile-picture">
+
+            </div>
+          </IonCol>
+          <IonCol size="7" className="right-column">
+            <SizedInCSS>
+              <h3>_____________</h3>
+              <h4>{crew.name}</h4>
+            </SizedInCSS>
+          </IonCol>
+        </IonRow>
+      </IonGrid>
+
+      <SizedInCSS className="power">
+        <div><strong>Power:</strong> {crew.power}</div>
+      </SizedInCSS>
+
+      <SizedInCSS className="exhaust">
+        <div>
+          <div>Then: Exhaust</div>
+          <div className="flip-icon">
+            <IonIcon icon={ returnDownForwardOutline } />
+          </div>
         </div>
-      </div>
+      </SizedInCSS>
     </SquareCard>
   );
 };

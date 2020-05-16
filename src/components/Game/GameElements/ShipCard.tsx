@@ -22,7 +22,7 @@ const ShipCard: React.FC<ShipCardProps> = ({className, module}) => {
         <h3>{module.name}</h3>
       }
       {module.basicEffects.map((effect, i) =>
-        <p className={classNames('effect', `effect-${i}`)}>
+        <p key={i} className={classNames('effect', `effect-${i}`)}>
           {effect}
         </p>
       )}
