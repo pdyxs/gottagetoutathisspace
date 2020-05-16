@@ -1,3 +1,18 @@
+.card {
+}
+
 .card.ship-card {
   background: var(--ion-color-light);
+
+  .square-content {
+    padding: 6%;
+
+    h3 {
+      font-size: calc(var(--element-width) * 0.18);
+    }
+
+    .effect {
+      font-size: calc(var(--element-width) * 0.06);
+    }
+  }
 }

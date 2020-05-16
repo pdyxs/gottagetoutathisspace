@@ -20,22 +20,31 @@
 }
 
 .space-card {
+  .square-content {
+    padding: 6%;
 
-  .ggo-icon {
-    position: absolute;
-    left: calc(50% - var(--size)/2);
-    top: calc(50% - var(--size)/2);
+    .ggo-icon {
+      position: absolute;
+      left: calc(50% - var(--size)/2);
+      top: calc(50% - var(--size)/2);
 
-    &.ggo-icon-planet-gas {
-      --size: 35%;
+      &.ggo-icon-planet-gas {
+        --size: 35%;
+      }
     }
-  }
 
-  .space-card-effect {
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    font-size: 1.5em;
-    padding: 5% 5%;
+    h3 {
+      font-size: calc(var(--element-width) * 0.18);
+    }
+
+    .space-card-effect {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: calc(var(--element-width) * 0.06);
+      padding: 6%;
+    }
   }
 }

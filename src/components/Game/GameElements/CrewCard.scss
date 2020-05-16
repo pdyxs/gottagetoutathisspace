@@ -23,7 +23,7 @@
     .crew-profile-picture {
       width: 100%;
       border: solid;
-      border-width: 5%;
+      border-width: calc(var(--element-width) * 0.03);
       border-radius: 10%;
       margin-right: 4%;
 

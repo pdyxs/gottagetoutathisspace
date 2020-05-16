@@ -26,9 +26,9 @@ const CrewCard: React.FC<CrewCardProps> = ({className, crew}) => {
       <IonGrid>
         <IonRow>
           <IonCol size="5">
-            <div className="crew-profile-picture">
+            <SizedInCSS className="crew-profile-picture">
 
-            </div>
+            </SizedInCSS>
           </IonCol>
           <IonCol size="7" className="right-column">
             <SizedInCSS>

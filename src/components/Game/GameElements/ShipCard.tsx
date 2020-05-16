@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import ShipModule from 'model/Module';
 
 import slugify from 'slugify';
+import SizedInCSS from 'components/SizedInCSS';
 
 interface ShipCardProps {
   module: ShipModule,
@@ -18,14 +19,16 @@ const ShipCard: React.FC<ShipCardProps> = ({className, module}) => {
         "card", "ship-card",  className,
         slugify(module.name)
       )}>
-      {module && module.name &&
-        <h3>{module.name}</h3>
-      }
-      {module.basicEffects.map((effect, i) =>
-        <p key={i} className={classNames('effect', `effect-${i}`)}>
-          {effect}
-        </p>
-      )}
+      <SizedInCSS>
+        {module && module.name &&
+            <h3>{module.name}</h3>
+        }
+        {module.basicEffects.map((effect, i) =>
+          <p key={i} className={classNames('effect', `effect-${i}`)}>
+            {effect}
+          </p>
+        )}
+      </SizedInCSS>
     </SquareCard>
   );
 };

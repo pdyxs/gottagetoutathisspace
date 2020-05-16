@@ -1,7 +1,7 @@
 import React, { useEffect, ReactNode, useCallback, createRef } from 'react';
 import classNames from 'classnames';
 
-interface ReactFitTextProps {
+interface SizedInCssProps {
   children: ReactNode;
   className?: string;
 }
@@ -9,7 +9,7 @@ interface ReactFitTextProps {
 const refreshRate = 500;
 const elementClass = 'sized-in-css';
 
-const SizedInCss = (props: ReactFitTextProps) => {
+const SizedInCSS = (props: SizedInCssProps) => {
   const containerRef = createRef<HTMLDivElement>();
 
   const isClient = typeof window === 'object';
@@ -42,4 +42,4 @@ const SizedInCss = (props: ReactFitTextProps) => {
   </div>);
 };
 
-export default SizedInCss;
+export default SizedInCSS;

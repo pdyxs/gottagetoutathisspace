@@ -9,6 +9,7 @@ import pieces from '../Pieces/SpecificPieces';
 import MarkdownComponent from 'components/MarkdownComponent';
 import classNames from 'classnames';
 import { isString } from 'lodash';
+import SizedInCSS from 'components/SizedInCSS';
 
 interface SpaceCardProps {
   type: CellContentTypes,
@@ -22,20 +23,22 @@ const SpaceCard: React.FC<SpaceCardProps> = ({className, type, subtype, variety}
   return (
     <SquareCard className={classNames("card", "space-card", className)}>
       <CellContentIcon className="detail" content={{type, subtype, variety}} />
-      {piece && piece.name &&
-        <h3>
-          {isString(piece.name) ? piece.name : piece.name[subtype || '']}
-        </h3>
-      }
-      {piece?.cardText &&
-        <MarkdownComponent
-          className={classNames(`space-card-effect`, type, {
-            [`${type}-${subtype}`]: subtype,
-            [`${type}-${subtype}-${variety}`]: variety
-          })}
-          transformations={{type, subtype, variety}}
-          source={piece.cardText || ''} />
-      }
+      <SizedInCSS>
+        {piece && piece.name &&
+          <h3>
+            {isString(piece.name) ? piece.name : piece.name[subtype || '']}
+          </h3>
+        }
+        {piece?.cardText &&
+          <MarkdownComponent
+            className={classNames(`space-card-effect`, type, {
+              [`${type}-${subtype}`]: subtype,
+              [`${type}-${subtype}-${variety}`]: variety
+            })}
+            transformations={{type, subtype, variety}}
+            source={piece.cardText || ''} />
+        }
+      </SizedInCSS>
     </SquareCard>
   );
 };
