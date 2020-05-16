@@ -28,20 +28,30 @@ import '@ionic/react/css/display.css';
 import './theme/fonts.css';
 import './theme/variables.css';
 import './theme/variables.scss';
+import './theme/print.scss';
+import Print from 'pages/Print';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/start" component={Start} exact={true} />
-        <Route path={continueURL} component={Continue} />
-        <Route path={newURL} component={NewGame} />
-        <Route path={trainingURL} component={Training} />
-        <Route path={gameURL} component={Game} />
-        <Route exact path="/" render={() => <Redirect to="/start" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  if (window.location.pathname.startsWith("/print")) {
+    return (
+      <Print></Print>
+    )
+  }
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/start" component={Start} exact={true} />
+          <Route path={continueURL} component={Continue} />
+          <Route path={newURL} component={NewGame} />
+          <Route path={trainingURL} component={Training} />
+          <Route path={gameURL} component={Game} />
+          <Route exact path="/" render={() => <Redirect to="/start" />} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
