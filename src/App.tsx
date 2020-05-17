@@ -34,7 +34,11 @@ import Print from 'pages/Print';
 const App: React.FC = () => {
   if (window.location.pathname.startsWith("/print")) {
     return (
-      <Print></Print>
+      <IonApp>
+        <IonReactRouter>
+          <Print></Print>
+        </IonReactRouter>
+      </IonApp>
     )
   }
 

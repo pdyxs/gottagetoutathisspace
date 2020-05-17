@@ -26,6 +26,13 @@
     --ion-background-color: white;
   }
 
+  .ion-page {
+    position: relative;
+    display: block;
+    contain: unset;
+    height: max-content;
+  }
+
   #root {
     position: relative;
   }
