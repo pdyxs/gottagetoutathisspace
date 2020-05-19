@@ -5,9 +5,26 @@
   box-sizing: border-box;
 }
 
+@media screen {
+  .only-print {
+    opacity: 0 !important;
+
+    .card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(0)
+    }
+  }
+}
+
 @media print {
   * {
     -webkit-print-color-adjust:exact;
+  }
+
+  .no-print {
+    display: none !important;
   }
 
   html {
@@ -26,7 +43,8 @@
     --ion-background-color: white;
   }
 
-  .ion-page {
+  .ion-page,
+  ion-router-outlet {
     position: relative;
     display: block;
     contain: unset;

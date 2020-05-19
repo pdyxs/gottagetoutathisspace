@@ -1,4 +1,4 @@
-import { IonLoading, IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonButton } from '@ionic/react';
+import { IonLoading, IonPage } from '@ionic/react';
 import React, { useState, useEffect, Fragment } from 'react';
 import { Route, Redirect, useHistory, Switch } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import { retrieveShipCode, clearShipCode } from '../storage';
 import { getShipData } from '../firebaseConfig';
 import { setShipData, ShipData, clearShipData } from '../redux/actions';
 import { findIndex, take, drop } from 'lodash';
+import Header from './Header';
 
 export interface InstructionPageProps {
   baseUrl: string,
@@ -92,22 +93,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
       }
       {!busy &&
         <IonPage>
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonBackButton defaultHref="/" />
-              </IonButtons>
-              <IonTitle>Gotta Get Outta This Space</IonTitle>
-              {shipCode &&
-                <Fragment>
-                  <IonTitle size="small" slot="end">Ship: {shipCode}</IonTitle>
-                  <IonButtons slot="end">
-                    <IonButton href="/" onClick={resetShip}>Reset</IonButton>
-                  </IonButtons>
-                </Fragment>
-              }
-            </IonToolbar>
-          </IonHeader>
+          <Header shipCode={shipCode} resetShip={resetShip} />
 
           <Switch>
             {pages.map(Page =>

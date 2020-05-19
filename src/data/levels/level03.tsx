@@ -29,7 +29,7 @@ const grid = new Level([
       contents: [
         { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky },
         { type: CellContentTypes.Fuel, count: 1 },
-        { type: 'upgrade' }
+        { type: CellContentTypes.Upgrade }
       ]
     },
     { type: CellTypes.Space },

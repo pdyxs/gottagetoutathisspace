@@ -18,7 +18,7 @@ const MakeGame: React.FC<InstructionPageProps> = () => {
         <IonGrid>
           <IonRow>
             {materials.map((material, i) =>
-              <IonCol key={i} size="12" size-md="6" size-lg="4">
+              <IonCol key={i} size="12" size-sm="6" size-lg="4" size-xl="3">
                 <MakeMaterialsCard material={material} />
               </IonCol>
             )}

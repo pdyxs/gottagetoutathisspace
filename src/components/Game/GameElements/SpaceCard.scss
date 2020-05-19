@@ -1,11 +1,11 @@
 .printer-friendly {
-  &.card {
-    background-color: white;
-    color: black;
+  &.card, .card {
+    background-color: white !important;
+    color: black !important;
     border: 1px black solid;
 
-    h3 {
-      color: black;
+    h1, h2, h3, h4 {
+      color: black !important;
     }
   }
 }

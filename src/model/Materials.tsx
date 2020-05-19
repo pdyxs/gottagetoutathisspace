@@ -1,4 +1,5 @@
 import { ShipData } from "../redux/actions";
+import classNames from "classnames";
 
 export enum MaterialBuildOptionType {
   Buy = "Buy",
@@ -43,8 +44,12 @@ export const BuildOptionTypeDetails : {[id: string]: MaterialBuildOptionTypeDeta
 
 export interface MaterialComponentProps {
   material: Material,
-  buildOption: MaterialBuildOption,
-  className?: string
+  buildOptionType: MaterialBuildOptionType,
+  className?: string 
+}
+
+export interface PrintComponentProps extends MaterialComponentProps {
+
 }
 
 export interface MaterialBuildOption {
@@ -53,13 +58,24 @@ export interface MaterialBuildOption {
   preview?: string | React.FC<MaterialComponentProps>
 }
 
+export function buildOptionClasses(type:MaterialBuildOptionType) {
+  return classNames(
+    `material-build-${type}`, {
+    'printable': BuildOptionTypeDetails[type].isPrinted,
+    'no-print': !BuildOptionTypeDetails[type].isPrinted,
+    'printer-friendly': BuildOptionTypeDetails[type].isFriendly,
+    'show-detail': BuildOptionTypeDetails[type].hasDetails
+  });
+}
+
 interface Material {
   count: number | string,
   name: string,
   description: string,
   buildDescription?: string,
   notes: (d: ShipData) => string,
-  buildOptions: MaterialBuildOption[]
+  buildOptions: MaterialBuildOption[],
+  printComponent?: React.FC<PrintComponentProps>
 };
 
 export default Material;

@@ -1,22 +1,8 @@
 import { ShipData } from "../redux/actions";
-import Material, { MaterialBuildOptionType, MaterialComponentProps } from "model/Materials";
-import SpaceCard from "components/Game/GameElements/SpaceCard";
-import React from "react";
-import { CellContentTypes, PlanetTypes } from "model/Level";
-import ShipCard from "components/Game/GameElements/ShipCard";
-import modules from "./modules";
-import CrewCard from "components/Game/GameElements/CrewCard";
-import crew from "./crew";
-
-const SpaceCardPreviewComponent : React.FC<MaterialComponentProps> = ({className}) =>
-  <SpaceCard type={CellContentTypes.Planet} subtype={PlanetTypes.GasGiant}
-    className={className} />;
-
-const ShipCardPreviewComponent : React.FC<MaterialComponentProps> = ({className}) =>
-  <ShipCard module={modules[0]} className={className} />;
-
-const CrewCardPreviewComponent : React.FC<MaterialComponentProps> = ({className}) =>
-  <CrewCard crew={crew[0]} className={className} />;
+import Material, { MaterialBuildOptionType } from "model/Materials";
+import { SpaceCardPreviewComponent, PrintSpaceCardsComponent } from "components/Game/Printing/Space";
+import { ShipCardPreviewComponent, PrintShipCardsComponent } from "components/Game/Printing/Ship";
+import { CrewCardPreviewComponent, PrintCrewCardsComponent } from "components/Game/Printing/Crew";
 
 const materials: Material[] = [
   {
@@ -49,7 +35,8 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.Build,
         description: "I want to make them myself"
       }
-    ]
+    ],
+    printComponent: PrintSpaceCardsComponent
   },
   {
     count: "5-10",
@@ -82,7 +69,8 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.Build,
         description: "I want to make them myself"
       }
-    ]
+    ],
+    printComponent: PrintShipCardsComponent
   },
   {
     count: "1 or more",
@@ -115,7 +103,8 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.Build,
         description: "I want to make them myself"
       }
-    ]
+    ],
+    printComponent: PrintCrewCardsComponent
   },
   {
     count: 20,

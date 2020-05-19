@@ -32,20 +32,11 @@ import './theme/print.scss';
 import Print from 'pages/Print';
 
 const App: React.FC = () => {
-  if (window.location.pathname.startsWith("/print")) {
-    return (
-      <IonApp>
-        <IonReactRouter>
-          <Print></Print>
-        </IonReactRouter>
-      </IonApp>
-    )
-  }
-
   return (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
+          <Route path="/print" component={Print} />
           <Route path="/start" component={Start} exact={true} />
           <Route path={continueURL} component={Continue} />
           <Route path={newURL} component={NewGame} />

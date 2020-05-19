@@ -1,14 +1,14 @@
 import { cloneDeep, find, isNil, isArray, without } from "lodash";
 
 export interface GameCellContent {
-  type: string,
-  subtype?: string,
+  type: CellContentTypes,
+  subtype?: PlanetTypes | StarTypes,
   count?: number,
   variety?: number
 }
 
 export interface GameCellSettings {
-  type: string,
+  type: CellTypes,
   contents?: Array<GameCellContent>
 }
 
@@ -40,13 +40,15 @@ export enum CellContentTypes {
   RobotFactory = 'robotFactory',
   Crew = 'crew',
   Upgrade = 'upgrade',
-  Module = 'module'
+  Module = 'module',
+  SpaceStation = 'spaceStation'
 }
 
 export enum StarTypes {
   BlueGiant = 'blue',
   Yellow = 'yellow',
-  RedDwarf = 'red'
+  RedDwarf = 'red',
+  BlackHole = 'blackHole'
 }
 
 export enum PlanetTypes {
@@ -79,7 +81,7 @@ class Level {
     return true;
   }
 
-  cellIsInGrid(coordinates: Coords | GameCellContent) : boolean {
+  cellIsInGrid(coordinates: Coords | GameCellSettings) : boolean {
     return this.getCell(coordinates)?.type !== CellTypes.Blank;
   }
 
