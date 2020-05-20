@@ -13,10 +13,9 @@ import LoseContent from 'content/Training/Lose.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 import { useHistory } from 'react-router-dom';
 
-import { baseUrl as gameURL } from '../game';
 import { baseUrl as trainingURL } from './';
 
-const Game: React.FC<InstructionPageProps> = () => {
+const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const [showWinPopover, setShowWinPopover] = useState(false);
   const [showLosePopover, setShowLosePopover] = useState(false);
   const history = useHistory();
@@ -35,7 +34,7 @@ const Game: React.FC<InstructionPageProps> = () => {
   }
 
   function playFull() {
-    history.push(gameURL);
+    history.push(nextUrl);
   }
 
   return (

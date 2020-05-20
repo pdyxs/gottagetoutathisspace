@@ -3,7 +3,8 @@ import Intro from './Intro';
 import Materials from './Materials';
 // import History from './History';
 import Ship from './Ship';
-import TrainingIntro from './Training';
+import { baseUrl as trainingUrl } from '../training';
+// import TrainingIntro from './Training';
 
 import InstructionFlow,
   { InstructionPagesInfo }
@@ -31,18 +32,18 @@ const flow : InstructionPagesInfo = [
     url: 'assembleShip',
     requiresShipCode: true,
     component: Ship
-  },
-  {
-    url: 'trainingIntro',
-    requiresShipCode: true,
-    component: TrainingIntro
+  // },
+  // {
+  //   url: 'trainingIntro',
+  //   requiresShipCode: true,
+  //   component: TrainingIntro
   }
 ]
 
 const Continue: React.FC = () => {
 
   return (
-    <InstructionFlow pages={flow} baseUrl={baseUrl} />
+    <InstructionFlow pages={flow} baseUrl={baseUrl} nextUrl={trainingUrl} />
   );
 };
 

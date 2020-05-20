@@ -28,11 +28,12 @@ export interface InstructionPagesInfo extends Array<InstructionPageInfo> {}
 
 interface InstructionFlowProps {
   baseUrl: string,
-  pages: InstructionPagesInfo
+  pages: InstructionPagesInfo,
+  nextUrl?: string
 }
 
 const InstructionFlow: React.FC<InstructionFlowProps> =
-  ({baseUrl, pages}) => {
+  ({baseUrl, pages, nextUrl}) => {
   const [busy, setBusy] = useState(false);
   const dispatch = useDispatch();
 
@@ -42,7 +43,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
   let currentPageIndex = findIndex(pages, page => history.location.pathname === `${baseUrl}/${page.url}`);
   let currentPage = currentPageIndex < 0 ? null : pages[currentPageIndex];
   let nextPage = (currentPageIndex >= pages.length - 1) ? null : pages[currentPageIndex + 1];
-  let nextUrl = `${baseUrl}/${nextPage?.url}`;
+  let nextPageUrl = (nextPage ? `${baseUrl}/${nextPage.url}` : nextUrl) || `${baseUrl}/`;
 
   function gotoPageWithoutShipCode() {
     if (!pages[0].requiresShipCode) {
@@ -103,7 +104,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
                     resetShip={resetShip}
                     baseUrl={baseUrl}
                     nextPage={nextPage}
-                    nextUrl={nextUrl}
+                    nextUrl={nextPageUrl}
                     pastPages={take(pages, currentPageIndex)}
                     futurePages={drop(pages, currentPageIndex + 1)} />}
                 exact={true} />

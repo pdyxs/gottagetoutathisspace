@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
+import { random } from 'lodash';
 
 const config = {
   apiKey: "AIzaSyA9pGC2STMiBzpSbNjVxwY-LPYNljeRx6A",
@@ -16,6 +17,20 @@ firebase.initializeApp(config);
 
 var db = firebase.firestore();
 
+const codeLength = 7;
+const dashPosition = 3;
+
+export function GetRandomShipCode() : string {
+  return [...Array(codeLength)].map((_, i) => {
+    var ret = (i === dashPosition ? '-' : '');
+    var ran = random(1, 35);
+    if (ran < 10) ret += ran.toString();
+    else ret += String.fromCharCode('A'.charCodeAt(0) + ran - 10);
+    return ret;
+  }).join('');
+
+}
+
 export async function getShipData(id: string) : Promise<firebase.firestore.DocumentData | null> {
   return db.collection("ships").doc(id).get().then(function(doc) {
     if (!doc.exists) return null;
@@ -23,6 +38,14 @@ export async function getShipData(id: string) : Promise<firebase.firestore.Docum
   }).catch(function(error) {
     console.log(`Error reading ship doc ${id}: ${error}`);
     return null;
+  });
+}
+
+export async function checkIfShipExists(id: string) : Promise<boolean> {
+  return db.collection("ships").doc(id).get().then(function(doc) {
+    return (doc.exists);
+  }).catch(function(_e) {
+    return false;
   });
 }
 
