@@ -1,4 +1,10 @@
-.card {
+
+
+.material-build-preview-container
+.material-build-preview {
+  .card.ship-card {
+    box-shadow: #000 4px 4px ;
+  }
 }
 
 .card.ship-card {
@@ -8,11 +14,199 @@
     padding: 6%;
 
     h3 {
-      font-size: calc(var(--element-width) * 0.18);
+      --outline-width: calc(var(--element-width) * 0.002);
+      --outline-colour: rgba(0,0,0,0.25);
+      --noutline-width: calc(var(--outline-width) * -1);
+      font-size: calc(var(--element-width) * 0.19);
+      text-shadow: var(--noutline-width)  var(--outline-width) 0 var(--outline-colour),
+				            var(--outline-width)  var(--outline-width) 0 var(--outline-colour),
+				            var(--outline-width) var(--noutline-width) 0 var(--outline-colour),
+				           var(--noutline-width) var(--noutline-width) 0 var(--outline-colour);
     }
 
     .effect {
       font-size: calc(var(--element-width) * 0.06);
+      color: var(--ion-text-color);
+    }
+
+    .module-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .target-img {
+      position: absolute;
+      width: 30%;
+      height: 30%;
+    }
+
+    .damage-text {
+      position: absolute;
+      font-size: calc(var(--element-width) * 0.07);
+      color: var(--ion-color-danger);
+      bottom: calc(var(--element-width) * 0.18);
+      right: calc(var(--element-width) * 0.08);
+    }
+
+    .damage-container {
+      position: absolute;
+      bottom: calc(var(--element-width) * 0.08);
+      right: calc(var(--element-width) * 0.08);
+
+      .damage-square {
+        display: inline-block;
+        width: calc(var(--element-width) * 0.08);
+        height: calc(var(--element-width) * 0.08);
+        border-width: calc(var(--element-width) * 0.01);
+        border-color: var(--ion-color-danger);
+        border-style: solid;
+        margin: 0 calc(var(--element-width) * 0.01);
+        background: rgba(255,255,255,0.9);
+      }
+    }
+  }
+}
+
+.card.ship-card-basic {
+  h3 {
+    position: absolute;
+  }
+
+  .effect {
+    position: absolute;
+  }
+
+  &.Cockpit {
+    h3 {
+      left: calc(var(--element-width) * 0.08);
+      top: calc(var(--element-width) * 0.06);
+    }
+
+    .effect {
+      text-align: left;
+      bottom: calc(var(--element-width) * 0.08);
+      left: calc(var(--element-width) * 0.08);
+      right: calc(var(--element-width) * 0.3);
+    }
+
+    .damage-text {
+      top: calc(var(--element-width) * 0.06);
+      right: calc(var(--element-width) * 0.08);
+    }
+
+    .damage-container {
+      top: calc(var(--element-width) * 0.16);
+      right: calc(var(--element-width) * 0.08);
+    }
+  }
+
+  &.Crew-Quarters {
+    h3 {
+      bottom: calc(var(--element-width) * 0.2);
+      left: calc(var(--element-width) * 0.1);
+      right: 0;
+    }
+
+    .effect {
+      left: calc(var(--element-width) * 0.35);
+      right: calc(var(--element-width) * 0.35);
+      bottom: calc(var(--element-width) * 0.44);
+    }
+
+    .damage-text {
+      text-align: left;
+      bottom: calc(var(--element-width) * 0.08);
+      left: calc(var(--element-width) * 0.47);
+    }
+  }
+
+  &.Cargo-Bay {
+    h3 {
+      bottom: calc(var(--element-width) * 0.02);
+      left: 0;
+      right: 0;
+    }
+
+    .damage-text {
+      text-align: left;
+      top: calc(var(--element-width) * 0.06);
+      left: calc(var(--element-width) * 0.08);
+    }
+
+    .damage-container {
+      top: calc(var(--element-width) * 0.16);
+      left: calc(var(--element-width) * 0.08);
+      text-align: left;
+    }
+
+    .effect-0 {
+      text-align: left;
+      bottom: calc(var(--element-width) * 0.45);
+      width: calc(var(--element-width) * 0.25);
+      right: calc(var(--element-width) * 0.3);
+    }
+
+    .effect-1 {
+      text-align: left;
+      top: calc(var(--element-width) * 0.3);
+      width: calc(var(--element-width) * 0.35);
+      left: calc(var(--element-width) * 0.08);
+    }
+
+    .effect-2 {
+      text-align: right;
+      top: calc(var(--element-width) * 0.08);
+      width: calc(var(--element-width) * 0.4);
+      right: calc(var(--element-width) * 0.08);
+    }
+  }
+
+  &.Thruster {
+    .target-img {
+      bottom: 8%;
+      right: 8%;
+    }
+
+    h3 {
+      top: calc(var(--element-width) * 0.08);
+      right: calc(var(--element-width) * 0.08);
+    }
+
+    .effect {
+      text-align: right;
+      top: calc(var(--element-width) * 0.28);
+      left: calc(var(--element-width) * 0.4);
+      right: calc(var(--element-width) * 0.08);
+    }
+
+    .damage-text {
+      right: calc(var(--element-width) * 0.45);
+    }
+
+    .damage-container {
+      right: calc(var(--element-width) * 0.45);
+    }
+  }
+
+  &.Gun {
+    .target-img {
+      top: 8%;
+      left: 8%;
+    }
+
+    h3 {
+      bottom: calc(var(--element-width) * 0.05);
+      left: calc(var(--element-width) * 0.08);
+    }
+
+    .effect {
+      text-align: left;
+      top: calc(var(--element-width) * 0.08);
+      left: calc(var(--element-width) * 0.45);
+      right: calc(var(--element-width) * 0.08);
     }
   }
 }

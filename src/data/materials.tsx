@@ -7,6 +7,9 @@ import { CrewCardPreviewComponent, PrintCrewCardsComponent } from "components/Ga
 const materials: Material[] = [
   {
     count: 16,
+    printCountMin: 16,
+    printCountMax: 32,
+    extraComponentDescription: "Extra cards are for the backs (used to denote empty space)",
     name: "Space Cards",
     description: "These are used to make the map that you'll play on",
     notes: (d : ShipData) => d.spaceCards,
@@ -40,6 +43,9 @@ const materials: Material[] = [
   },
   {
     count: "5-10",
+    printCountMin: 5,
+    printCountMax: 12,
+    extraComponentDescription: "Cards 6-8 are advanced modules that you don't start with, 9+ are blanks",
     name: "Ship Module Cards",
     description: "These modules come together to make your ship. Each affects what you can do or what your ship can contain in some way.",
     buildDescription: "The full deck includes 10 blank ship module cards that you and your friends can use to expand the ship",
@@ -74,6 +80,9 @@ const materials: Material[] = [
   },
   {
     count: "1 or more",
+    printCountMin: 1,
+    printCountMax: 10,
+    extraComponentDescription: "Extra cards are for crew members you'll pick up along the way",
     name: "Crew Cards",
     description: "Your crew. Each comes with an ability that can be used once per game",
     buildDescription: "",
@@ -108,6 +117,8 @@ const materials: Material[] = [
   },
   {
     count: 20,
+    printCountMin: 20,
+    printCountMax: 20,
     name: "Robot Tokens",
     description: "The robots that are coming to destroy you",
     buildDescription: "",
@@ -116,6 +127,8 @@ const materials: Material[] = [
   },
   {
     count: 1,
+    printCountMin: 1,
+    printCountMax: 1,
     name: "Ship Token",
     description: "The representation of the ship on the map",
     buildDescription: "",
@@ -124,6 +137,8 @@ const materials: Material[] = [
   },
   {
     count: 1,
+    printCountMin: 1,
+    printCountMax: 1,
     name: "Survivor Token",
     description: "Represents you!",
     buildDescription: "",
@@ -132,6 +147,8 @@ const materials: Material[] = [
   },
   {
     count: 1,
+    printCountMin: 1,
+    printCountMax: 1,
     name: "Upgrade Token",
     description: "An upgrade for one of your ship's modules that you might be able to collect",
     buildDescription: "",
@@ -140,6 +157,8 @@ const materials: Material[] = [
   },
   {
     count: 1,
+    printCountMin: 1,
+    printCountMax: 1,
     name: "New Module Token",
     description: "A new module you might be able to pick up",
     buildDescription: "",
@@ -148,6 +167,8 @@ const materials: Material[] = [
   },
   {
     count: "Some",
+    printCountMin: 6,
+    printCountMax: 10,
     name: "Fuel Tokens",
     description: "Fuel that you have, or can collect.",
     buildDescription: "",

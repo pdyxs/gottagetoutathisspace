@@ -11,6 +11,8 @@ import classNames from 'classnames';
 import { isString } from 'lodash';
 import SizedInCSS from 'components/SizedInCSS';
 
+import BackgroundImage from 'content/Pieces/space_background.svg';
+
 interface SpaceCardProps {
   type?: CellContentTypes,
   subtype?: StarTypes | PlanetTypes,
@@ -21,7 +23,9 @@ interface SpaceCardProps {
 const SpaceCard: React.FC<SpaceCardProps> = ({className, type, subtype, variety}) => {
   var piece = type ? pieces[type] : null;
   return (
-    <SquareCard className={classNames("card", "space-card", className)}>
+    <SquareCard className={classNames("card", "space-card", className)}
+      style={{background: `url(${BackgroundImage})`}}
+    >
       {piece && type &&
         <>
           <CellContentIcon className="detail" content={{type, subtype, variety}} />

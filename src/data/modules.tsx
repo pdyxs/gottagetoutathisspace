@@ -1,4 +1,11 @@
 import ShipModule, { ShipModuleType } from "model/Module";
+import CockpitImage from 'content/Pieces/cockpit.svg';
+import CrewQuartersImage from 'content/Pieces/crew_quarters.svg';
+import GunImage from 'content/Pieces/gun.svg';
+import GunSquaresImage from 'content/Pieces/shoot_squares.svg';
+import CargoBayImage from 'content/Pieces/storage_bay.svg';
+import ThrusterImage from 'content/Pieces/thruster.svg';
+import ThrusterSquaresImage from 'content/Pieces/move_squares.svg';
 
 const modules: ShipModule[] = [
   {
@@ -25,7 +32,8 @@ const modules: ShipModule[] = [
         detail: 'To effect repairs, colour in the damage square',
         icon: ['fas', 'slash']
       }
-    ]
+    ],
+    imageURL: CockpitImage
   },
   {
     name: 'Crew Quarters',
@@ -58,7 +66,8 @@ const modules: ShipModule[] = [
         detail: 'Turn over a crew card. If all of your crew are already exhausted, one of your crew dies',
         icon: ['fas', 'snooze']
       }
-    ]
+    ],
+    imageURL: CrewQuartersImage
   },
   {
     name: 'Cargo Bay',
@@ -95,13 +104,14 @@ const modules: ShipModule[] = [
         effect: 'You may only use 1 fuel from this Cargo Bay per turn',
         icon: ['far', 'tint']
       }
-    ]
+    ],
+    imageURL: CargoBayImage
   },
   {
     name: 'Thruster',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Move to one of these movement squares'
+      'Action: Move to one of these movement squares'
     ],
     upgrades: [
       {
@@ -127,7 +137,9 @@ const modules: ShipModule[] = [
         detail: 'To effect repairs, colour in the damage square',
         icon: ['fas', 'slash']
       }
-    ]
+    ],
+    imageURL: ThrusterImage,
+    targetImageURL: ThrusterSquaresImage
   },
   {
     name: 'Gun',
@@ -159,7 +171,9 @@ const modules: ShipModule[] = [
         detail: 'To effect repairs, colour in the damage square',
         icon: ['fas', 'slash']
       }
-    ]
+    ],
+    imageURL: GunImage,
+    targetImageURL: GunSquaresImage
   },
   {
     name: 'Armour Plating',

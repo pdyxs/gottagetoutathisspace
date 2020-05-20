@@ -12,7 +12,7 @@ import { returnDownForwardOutline } from "ionicons/icons";
 import SizedInCSS from 'components/SizedInCSS';
 
 interface CrewCardProps {
-  crew: Crew,
+  crew?: Crew,
   className?: string
 }
 
@@ -20,7 +20,7 @@ const CrewCard: React.FC<CrewCardProps> = ({className, crew}) => {
   return (
     <SquareCard className={classNames(
         "card", "crew-card",  className,
-        slugify(crew.name)
+        slugify(crew?.name || '')
       )}>
 
       <IonGrid>
@@ -33,15 +33,17 @@ const CrewCard: React.FC<CrewCardProps> = ({className, crew}) => {
           <IonCol size="7" className="right-column">
             <SizedInCSS>
               <h3>_____________</h3>
-              <h4>{crew.name}</h4>
+              <h4>{crew?.name}</h4>
             </SizedInCSS>
           </IonCol>
         </IonRow>
       </IonGrid>
 
-      <SizedInCSS className="power">
-        <div><strong>Power:</strong> {crew.power}</div>
-      </SizedInCSS>
+      {crew &&
+        <SizedInCSS className="power">
+          <div><strong>Power:</strong> {crew?.power}</div>
+        </SizedInCSS>
+      }
 
       <SizedInCSS className="exhaust">
         <div>

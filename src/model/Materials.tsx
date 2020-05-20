@@ -45,11 +45,11 @@ export const BuildOptionTypeDetails : {[id: string]: MaterialBuildOptionTypeDeta
 export interface MaterialComponentProps {
   material: Material,
   buildOptionType: MaterialBuildOptionType,
-  className?: string 
+  className?: string
 }
 
 export interface PrintComponentProps extends MaterialComponentProps {
-
+  count?: number
 }
 
 export interface MaterialBuildOption {
@@ -70,6 +70,9 @@ export function buildOptionClasses(type:MaterialBuildOptionType) {
 
 interface Material {
   count: number | string,
+  printCountMin: number,
+  printCountMax: number,
+  extraComponentDescription?: string,
   name: string,
   description: string,
   buildDescription?: string,

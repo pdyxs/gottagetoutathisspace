@@ -11,7 +11,9 @@ interface ShipModule {
   basicEffects: string[],
   upgrades: ShipModuleUpgrade[],
   damageSlots: number,
-  damage: ShipModuleDamage[]
+  damage: ShipModuleDamage[],
+  imageURL?: string,
+  targetImageURL?: string
 }
 
 export interface ShipModuleUpgrade {

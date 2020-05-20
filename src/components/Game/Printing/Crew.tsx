@@ -1,19 +1,16 @@
-import { MaterialComponentProps, buildOptionClasses } from "model/Materials";
+import { MaterialComponentProps, buildOptionClasses, PrintComponentProps } from "model/Materials";
 import CrewCard from "../GameElements/CrewCard";
 import React from "react";
-import crew from "data/crew";
-import slugify from "slugify";
 import classNames from "classnames";
 
 export const CrewCardPreviewComponent : React.FC<MaterialComponentProps> = ({className}) =>
-  <CrewCard crew={crew[0]} className={className} />;
+  <CrewCard className={className} />;
 
-export const PrintCrewCardsComponent : React.FC<MaterialComponentProps> =
-  ({className, buildOptionType}) =>
+export const PrintCrewCardsComponent : React.FC<PrintComponentProps> =
+  ({className, buildOptionType, count}) =>
   <div className={classNames(className, buildOptionClasses(buildOptionType))}>
-    {crew.map(crew => (
-      <CrewCard key={slugify(crew.name)} className="default-square"
-        crew={crew}>
+    {[...Array(count)].map((_, i) => (
+      <CrewCard key={i} className="default-square">
       </CrewCard>
     ))}
   </div>;
