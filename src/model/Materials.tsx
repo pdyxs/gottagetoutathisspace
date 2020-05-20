@@ -2,6 +2,7 @@ import { ShipData } from "../redux/actions";
 import classNames from "classnames";
 
 export enum MaterialBuildOptionType {
+  None = "None",
   Buy = "Buy",
   PrintNormal = "PrintNormal",
   PrintFriendly = "PrintFriendly",

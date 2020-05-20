@@ -7,10 +7,11 @@ import Material, { MaterialBuildOption, buildOptionClasses } from 'model/Materia
 import { isNil, first, isString } from 'lodash';
 
 interface MakeMaterialsCardProps {
-  material: Material
+  material: Material,
+  onBuildOptionChanged: (index:number) => void
 }
 
-const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
+const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material, onBuildOptionChanged}) => {
   let select = React.useRef<HTMLIonSelectElement>(null);
   let [buildOption, setBuildOption] =
     useState<MaterialBuildOption|undefined>(first(material.buildOptions))
@@ -23,6 +24,11 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
     }
   });
 
+  function updateBuildOption(newVal : MaterialBuildOption) {
+    setBuildOption(newVal);
+    onBuildOptionChanged(material.buildOptions.indexOf(newVal));
+  }
+
   const Preview = buildOption?.preview;
 
   return (
@@ -33,9 +39,6 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
       </IonCardHeader>
       <IonCardContent>
         <p>{material.description}</p>
-        {material.buildDescription &&
-          <p className="ion-padding-top">{material.buildDescription}</p>
-        }
       </IonCardContent>
       {buildOption && Preview &&
         <div className="material-build-preview-container">
@@ -54,13 +57,18 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material}) => {
         interface="action-sheet"
         interfaceOptions={{header: material.name}}
         value={buildOption}
-        onIonChange={e => setBuildOption(e.detail.value)}>
+        onIonChange={e => updateBuildOption(e.detail.value)}>
         {material.buildOptions.map(buildOption =>
           <IonSelectOption value={buildOption} key={buildOption.type}>
             {buildOption.description}
           </IonSelectOption>
         )}
       </IonSelect>
+      {material.buildDescription &&
+        <IonCardContent>
+          {material.buildDescription}
+        </IonCardContent>
+      }
     </IonCard>
   );
 };

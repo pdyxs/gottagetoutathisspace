@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import './Start.scss';
 import slugify from 'slugify';
 import './Print.scss';
 import { useLocation } from 'react-router-dom';
 import materials from 'data/materials';
-import Material, { PrintComponentProps, MaterialBuildOptionType, MaterialBuildOption, buildOptionClasses } from 'model/Materials';
+import Material, { PrintComponentProps, MaterialBuildOptionType, MaterialBuildOption, buildOptionClasses, BuildOptionTypeDetails } from 'model/Materials';
 import { IonPage, IonContent, IonGrid, IonCol, IonRow, IonImg, IonInput, IonItem, IonLabel } from '@ionic/react';
 import Header from 'components/Header';
 import MarkdownComponent from 'components/MarkdownComponent';
@@ -89,34 +89,42 @@ const Print: React.FC = () => {
             <IonGrid>
               <IonRow>
                 {materialsWithBuildOptions.map((material, i) =>
-                  <IonCol key={i} size="4">
-                    <div>
-                      <h5 className="ion-text-center">
-                        {material.name} (x{material.printCountMin}{material.printCountMax > material.printCountMin && `-${material.printCountMax}`})
-                      </h5>
-                      {material.printCountMax > material.printCountMin &&
-                        <>
-                          {material.extraComponentDescription &&
-                            <p className="ion-padding-horizontal ion-no-margin">{material.extraComponentDescription}</p>
+                  <Fragment key={i}>
+                    {BuildOptionTypeDetails[buildOptions[i]]?.isPrinted &&
+                      <IonCol size="4">
+                        <div>
+                          <h5 className="ion-text-center">
+                            {material.name} (x{material.printCountMin}{material.printCountMax > material.printCountMin && `-${material.printCountMax}`})
+                          </h5>
+                          {material.printCountMax > material.printCountMin &&
+                            <>
+                              {material.extraComponentDescription &&
+                                <p className="ion-padding-horizontal ion-no-margin">{material.extraComponentDescription}</p>
+                              }
+                              <IonItem color="clear" style={{"--border-width": "0"}}>
+                                <IonLabel># to print:</IonLabel>
+                                <IonInput type="number"
+                                  min={material.printCountMin?.toString()}
+                                  max={material.printCountMax?.toString()}
+                                  onIonChange={(e) => updateCount(i, e.detail.value!)}
+                                  value={materialCounts[i]} />
+                              </IonItem>
+                            </>
                           }
-                          <IonItem color="clear" style={{"--border-width": "0"}}>
-                            <IonLabel># to print:</IonLabel>
-                            <IonInput type="number"
-                              min={material.printCountMin?.toString()}
-                              max={material.printCountMax?.toString()}
-                              onIonChange={(e) => updateCount(i, e.detail.value!)}
-                              value={materialCounts[i]} />
-                          </IonItem>
-                        </>
-                      }
-                      <PrintPreview key={slugify(material.name)} material={material}
-                        buildOptionType={buildOptions.length > i ? buildOptions[i] : ""} />
+                          <PrintPreview key={slugify(material.name)} material={material}
+                            buildOptionType={buildOptions.length > i ? buildOptions[i] : ""} />
 
-                    </div>
-                  </IonCol>
+                        </div>
+                      </IonCol>
+                    }
+                  </Fragment>
                 )}
               </IonRow>
             </IonGrid>
+
+            <p className="ion-text-center">
+              Once you're finished, close this window to return.
+            </p>
           </div>
         </IonContent>
       </IonPage>

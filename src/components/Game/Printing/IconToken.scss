@@ -1,0 +1,41 @@
+.card.token {
+  width: 24mm;
+
+  .icon {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+  }
+
+  &.robot {
+    width: 16mm;
+    background: grey;
+  }
+
+  &.playerShip {
+    background: white;
+    color: rgb(0,150,0);
+  }
+
+  &.crew {
+    background: white;
+    color: var(--ion-color-secondary);
+  }
+
+  &.upgrade {
+    background: var(--ion-color-tertiary);
+    color: white;
+  }
+
+  &.module {
+    background: orange;
+    color: white;
+  }
+
+  &.fuel {
+    width: 16mm;
+    background: grey;
+  }
+}

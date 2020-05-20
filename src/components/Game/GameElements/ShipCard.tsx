@@ -28,7 +28,7 @@ const ShipCard: React.FC<ShipCardProps> = ({className, module}) => {
       {module &&
         <>
           {module.imageURL &&
-            <IonImg src={module.imageURL} className="module-img" />
+            <IonImg src={module.imageURL} className="module-img detail" />
           }
           {module.targetImageURL &&
             <IonImg src={module.targetImageURL} className="target-img" />

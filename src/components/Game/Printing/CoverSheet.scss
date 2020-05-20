@@ -1,0 +1,79 @@
+.cover-sheet {
+  --aspect-ratio: 0.7;
+
+  background: #010058;
+  color: var(--ion-text-color);
+
+  font-family: "Tulpen One";
+
+  .header {
+    padding-top: calc(var(--element-width) * 0.05);
+    p {
+      margin: calc(var(--element-width) * 0.01) 0;
+      font-size: calc(var(--element-width) * 0.05);
+    }
+
+    h1 {
+      --shadow-size: calc(var(--element-width) * 0.003);
+      transform: rotate(6.9deg);
+      margin-top: calc(var(--element-width) * -0.01);
+      line-height: calc(var(--element-width) * 0.11);
+      font-size: calc(var(--element-width) * 0.13);
+      text-shadow: var(--shadow-size) var(--shadow-size) rgba(0,0,0,0.6);
+    }
+  }
+
+  .star {
+    --size: calc(var(--element-width) * 0.3);
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    top: calc(var(--size) * -0.3);
+    left: calc(var(--size) * -0.3);
+  }
+
+  .planet {
+    --size: calc(var(--element-width) * 0.2);
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    top: calc(var(--size) * -0.3);
+    right: calc(var(--size) * -0.3);
+  }
+
+  .instructions {
+    position: absolute;
+    bottom: calc(var(--element-width) * 0.08);
+    left: 0;
+    right: 0;
+
+    .website {
+      font-size: calc(var(--element-width) * 0.06);
+      margin-bottom: calc(var(--element-width) * -0.01);
+    }
+
+    .shipCodeInstructions {
+      font-size: calc(var(--element-width) * 0.05);
+
+      .shipCodeSpace {
+        width: calc(var(--element-width) * 0.3);
+        height: calc(var(--element-width) * 0.075);
+        border: inset calc(var(--element-width) * 0.01) var(--ion-text-color);
+        display: inline-block;
+        border-radius: calc(var(--element-width) * 0.02);
+        background: white;
+        position: relative;
+        margin-left: calc(var(--element-width)*0.02);
+        top: calc(var(--element-width) * 0.015);
+      }
+    }
+  }
+
+}
+
+
+.print-page {
+  .cover-sheet {
+    width: 190mm;
+  }
+}
