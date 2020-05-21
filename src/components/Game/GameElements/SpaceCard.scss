@@ -45,6 +45,27 @@
       &.ggo-icon-planet-gas {
         --size: 35%;
       }
+
+      &.ggo-icon-planet-rocky {
+        --size: 20%;
+      }
+
+      &.ggo-icon-star-red {
+        --size: 35%;
+      }
+
+      &.ggo-icon-star-yellow {
+        --size: 40%;
+      }
+
+      &.ggo-icon-star-blue {
+        --size: 50%;
+      }
+
+      &.ggo-icon-robotFactory {
+        transform: scale(5);
+        // font-size: calc(var(--element-width) * 20);
+      }
     }
 
     h3 {

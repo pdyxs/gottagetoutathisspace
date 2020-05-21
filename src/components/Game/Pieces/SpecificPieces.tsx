@@ -3,12 +3,12 @@ import { ControlProps, IconProps } from ".";
 import { set } from "lodash";
 import { CellContentTypes, PlanetTypes, StarTypes } from "../../../model/Level";
 
-import PlayerControls from "../Controls/PlayerControls";
+// import PlayerControls from "../Controls/PlayerControls";
 import PlayerDescription from 'content/Descriptions/PlayerDescription.md'
 import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon, RobotFactoryIcon } from "../Icons";
 
 import RobotDescription from 'content/Descriptions/RobotDescription.md';
-import RobotControls from "../Controls/RobotControls";
+// import RobotControls from "../Controls/RobotControls";
 
 import CrewDescription from 'content/Descriptions/CrewDescription.md';
 import CrewControls from "../Controls/CrewControls";
@@ -21,11 +21,16 @@ import UpgradeDescription from 'content/Descriptions/UpgradeDescription.md';
 import ModuleDescription from 'content/Descriptions/ModuleDescription.md';
 
 import StarDescription from 'content/Descriptions/StarDescription.md';
+import StarCardText from 'content/CardText/Star.md';
 
 import PlanetDescription from 'content/Descriptions/PlanetDescription.md';
 import PlanetCardText from 'content/CardText/Planet.md';
 
 import RobotFactoryDescription from 'content/Descriptions/RobotFactoryDescription.md';
+import RobotFactoryCardText from 'content/CardText/RobotFactory.md';
+
+import SpaceStationCardText from 'content/CardText/SpaceStation.md';
+
 import UpgradeControls from "../Controls/UpgradeControls";
 import NewModuleControls from "../Controls/NewModuleControls";
 import ImageIcon from "../Icons/ImageIcon";
@@ -54,7 +59,7 @@ const pieces = setAll([
   {
     key: CellContentTypes.Player,
     val: {
-      controls: PlayerControls,
+      // controls: PlayerControls,
       description: PlayerDescription,
       icon: PlayerIcon
     }
@@ -62,7 +67,7 @@ const pieces = setAll([
   {
     key: CellContentTypes.Robot,
     val: {
-      controls: RobotControls,
+      // controls: RobotControls,
       description: RobotDescription,
       icon: RobotIcon
     }
@@ -105,10 +110,12 @@ const pieces = setAll([
       name: {
         [StarTypes.BlueGiant]: "Blue Giant",
         [StarTypes.Yellow]: "Yellow Star",
-        [StarTypes.RedDwarf]: "Red Dwarf"
+        [StarTypes.RedDwarf]: "Red Dwarf",
+        [StarTypes.BlackHole]: "Black Hole"
       },
       icon: ImageIcon,
-      description: StarDescription
+      description: StarDescription,
+      cardText: StarCardText
     }
   },
   {
@@ -128,7 +135,15 @@ const pieces = setAll([
     val: {
       name: "Robot Factory",
       icon: RobotFactoryIcon,
-      description: RobotFactoryDescription
+      description: RobotFactoryDescription,
+      cardText: RobotFactoryCardText
+    }
+  },
+  {
+    key: CellContentTypes.SpaceStation,
+    val: {
+      name: "Space Station",
+      cardText: SpaceStationCardText
     }
   }
 ]);

@@ -11,6 +11,18 @@ import { ModuleTokenPreviewComponent, PrintModuleTokenComponent } from "componen
 import { FuelPreviewComponent, PrintFuelComponent } from "components/Game/Printing/Fuel";
 import { CoverSheetPreviewComponent, PrintCoverSheetComponent } from "components/Game/Printing/CoverSheet";
 
+import HandmadeSpace from 'content/Handmade/space.jpg';
+import HandmadeShipCards from 'content/Handmade/shipCards.jpg';
+import HandmadeCrew from 'content/Handmade/crew.jpg';
+
+import HandmadeFuel from 'content/Handmade/fuel.jpg';
+import HandmadeModule from 'content/Handmade/module.jpg';
+import HandmadeRobot from 'content/Handmade/robot.jpg';
+import HandmadeShip from 'content/Handmade/ship.jpg';
+import HandmadeSurvivors from 'content/Handmade/survivors.jpg';
+import HandmadeUpgrade from 'content/Handmade/upgrade.jpg';
+import { CaptainsLogPreviewComponent, PrintCaptainsLogComponent } from "components/Game/Printing/CaptainsLog";
+
 const materials: Material[] = [
   {
     count: 1,
@@ -29,13 +41,32 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
         preview: CoverSheetPreviewComponent
-      },
-      {
-        type: MaterialBuildOptionType.Build,
-        description: "I want to make my own"
       }
     ],
-    printComponent: PrintCoverSheetComponent
+    printComponent: PrintCoverSheetComponent,
+    hideFromLog: true
+  },
+  {
+    count: 1,
+    printCountMin: 1,
+    printCountMax: 1,
+    name: "Captain's Log",
+    description: "A log of the ship, and the components used for the game",
+    notes: (d : ShipData) => "",
+    buildOptions: [
+      {
+        type: MaterialBuildOptionType.PrintNormal,
+        description: "I want to print it",
+        preview: CaptainsLogPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintFriendly,
+        description: "I want to print it, but be friendly to my printer",
+        preview: CaptainsLogPreviewComponent
+      }
+    ],
+    printComponent: PrintCaptainsLogComponent,
+    hideFromLog: true
   },
   {
     count: 16,
@@ -68,7 +99,8 @@ const materials: Material[] = [
       },
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to make them myself"
+        description: "I want to make them myself",
+        preview: HandmadeSpace
       }
     ],
     printComponent: PrintSpaceCardsComponent
@@ -105,7 +137,8 @@ const materials: Material[] = [
       },
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to make them myself"
+        description: "I want to make them myself",
+        preview: HandmadeShipCards
       }
     ],
     printComponent: PrintShipCardsComponent
@@ -137,7 +170,8 @@ const materials: Material[] = [
       },
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to make them myself"
+        description: "I want to make them myself",
+        preview: HandmadeCrew
       }
     ],
     printComponent: PrintCrewCardsComponent
@@ -153,7 +187,8 @@ const materials: Material[] = [
     buildOptions: [
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to use my own tokens"
+        description: "I want to use my own tokens",
+        preview: HandmadeRobot
       },
       {
         type: MaterialBuildOptionType.PrintNormal,
@@ -179,7 +214,8 @@ const materials: Material[] = [
     buildOptions: [
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to use my own token"
+        description: "I want to use my own token",
+        preview: HandmadeShip
       },
       {
         type: MaterialBuildOptionType.PrintNormal,
@@ -206,7 +242,8 @@ const materials: Material[] = [
     buildOptions: [
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to use my own tokens"
+        description: "I want to use my own tokens",
+        preview: HandmadeSurvivors
       },
       {
         type: MaterialBuildOptionType.PrintNormal,
@@ -232,7 +269,8 @@ const materials: Material[] = [
     buildOptions: [
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to use my own token"
+        description: "I want to use my own token",
+        preview: HandmadeUpgrade
       },
       {
         type: MaterialBuildOptionType.PrintNormal,
@@ -258,7 +296,8 @@ const materials: Material[] = [
     buildOptions: [
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to use my own token"
+        description: "I want to use my own token",
+        preview: HandmadeModule
       },
       {
         type: MaterialBuildOptionType.PrintNormal,
@@ -274,9 +313,9 @@ const materials: Material[] = [
     printComponent: PrintModuleTokenComponent
   },
   {
-    count: 10,
-    printCountMin: 10,
-    printCountMax: 10,
+    count: 8,
+    printCountMin: 8,
+    printCountMax: 8,
     name: "Fuel Tokens",
     description: "Fuel that you have, or can collect.",
     buildDescription: "",
@@ -284,7 +323,8 @@ const materials: Material[] = [
     buildOptions: [
       {
         type: MaterialBuildOptionType.Build,
-        description: "I want to use my own token"
+        description: "I want to use my own tokens",
+        preview: HandmadeFuel
       },
       {
         type: MaterialBuildOptionType.PrintNormal,

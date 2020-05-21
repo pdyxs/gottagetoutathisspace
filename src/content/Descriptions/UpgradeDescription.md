@@ -1,1 +1,1 @@
-An Upgrade for one of your ship's modules ___{upgradeToken}___
+An Upgrade for one of your ship's modules

@@ -8,7 +8,8 @@ import Rounds from 'content/Rules/Rounds.md';
 import End from 'content/Rules/End.md';
 import EnvironmentalEffects from 'content/Rules/EnvironmentalEffects.md';
 import ReactMarkdown from 'react-markdown';
-import { IonItem } from '@ionic/react';
+import { IonItem, IonImg } from '@ionic/react';
+import RobotSpread from 'content/Rules/robot-spread.gif';
 
 import './Rules.scss';
 
@@ -19,7 +20,7 @@ interface GameRulesProps {
 
 const GameRules: React.FC<GameRulesProps> = ({specialInstructions}) => {
   return (
-    <div>
+    <div className="ion-margin-bottom">
       <h2>Rules</h2>
       <IonItem color="dark">
         <div>
@@ -38,6 +39,7 @@ const GameRules: React.FC<GameRulesProps> = ({specialInstructions}) => {
           <ReactMarkdown className="strong-em-as-success-button" source={TakeActions} />
         </AccordionItem>
         <AccordionItem title="2. Robots Move">
+          <IonImg className="robots-move-img" src={RobotSpread} />
           <ReactMarkdown className="robots-move strong-em-as-warning-button" source={RobotsMove} />
         </AccordionItem>
         <AccordionItem title="3. Robots Attack">

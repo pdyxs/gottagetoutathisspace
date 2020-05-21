@@ -1,1 +1,1 @@
-Your ship! ___{shipToken}___
+Where your ship starts

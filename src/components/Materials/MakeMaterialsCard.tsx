@@ -44,7 +44,7 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material, onBuildO
         <div className="material-build-preview-container">
           <div className="material-build-preview">
             {isString(Preview) ?
-              <IonImg src={Preview || ''} />
+              <a href={Preview} target="blank"><IonImg src={Preview || ''} /></a>
               :
               <Preview className={buildOptionClasses(buildOption.type)}
                 buildOptionType={buildOption.type} material={material} />

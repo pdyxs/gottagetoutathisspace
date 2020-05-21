@@ -1,3 +1,13 @@
+.printer-friendly {
+  .instructions {
+    .shipCodeInstructions {
+      .shipCodeSpace {
+        border-color: black !important;
+      }
+    }
+  }
+}
+
 .cover-sheet {
   --aspect-ratio: 0.7;
 
@@ -68,9 +78,7 @@
       }
     }
   }
-
 }
-
 
 .print-page {
   .cover-sheet {

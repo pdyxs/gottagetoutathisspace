@@ -1,0 +1,62 @@
+.captains-log {
+  background: var(--ion-color-notebook);
+  color: black;
+  border: black solid thin !important;
+  --aspect-ratio: 0.7;
+
+  h2 {
+    font-size: calc(var(--element-width) * 0.06);
+    color: black;
+  }
+
+  .log {
+    position: absolute;
+    left: calc(var(--element-width) * 0.02);
+    right: calc(var(--element-width) * 0.51);
+    top: calc(var(--element-width) * 0.02);
+    bottom: calc(var(--element-width) * 0.02);
+
+    font-size: calc(var(--element-width) * 0.02);
+    text-align: left;
+
+    .log-table {
+      font-size: calc(var(--element-width) * 0.015);
+      width: 100%;
+      td, th {
+        border: black solid thin;
+        padding: calc(var(--element-width) * 0.005);
+        height: calc(var(--element-width) * 0.035);
+      }
+
+    }
+  }
+
+  .materials {
+    position: absolute;
+    left: calc(var(--element-width) * 0.51);
+    right: calc(var(--element-width) * 0.02);
+    top: calc(var(--element-width) * 0.02);
+    bottom: calc(var(--element-width) * 0.02);
+
+    font-size: calc(var(--element-width) * 0.02);
+    text-align: left;
+    .materials-table {
+
+      td {
+        border: black solid thin;
+        padding: calc(var(--element-width) * 0.013) calc(var(--element-width) * 0.008);
+      }
+
+      .material-space {
+        width: 55%;
+      }
+    }
+
+  }
+}
+
+.print-page {
+  .captains-log {
+    width: 190mm;
+  }
+}

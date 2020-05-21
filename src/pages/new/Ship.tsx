@@ -9,6 +9,7 @@ import { GetRandomShipCode, checkIfShipExists, saveShipData } from 'firebaseConf
 import { clone } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { storeShipCode, clearShipCode } from 'storage';
+import BuiltShip from 'content/BuiltShip.png';
 
 import './Ship.scss';
 
@@ -55,7 +56,7 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
     <IonContent>
       <div className="page-container">
         <MarkdownComponent source={Content} transformations={{...shipData}} />
-        <img alt="the state of this ship left by the last player " src="/assets/last_ship.jpg" />
+        <img alt="How your ship should start" src={BuiltShip} />
         <div>
           <p>
             This ship's official designation will be

@@ -79,7 +79,8 @@ interface Material {
   buildDescription?: string,
   notes: (d: ShipData) => string,
   buildOptions: MaterialBuildOption[],
-  printComponent?: React.FC<PrintComponentProps>
+  printComponent?: React.FC<PrintComponentProps>,
+  hideFromLog?: boolean
 };
 
 export default Material;

@@ -26,7 +26,7 @@ const GameControls: React.FC<GameControlsProps> = (props) => {
   return (
     <Fragment>
       <div>
-        <IonButton color="warning" onClick={updateRobots}>
+        <IonButton style={{display: "none"}} color="warning" onClick={updateRobots}>
           Move Robots
         </IonButton>
         <TakeDamageControl {...props} />
