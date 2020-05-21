@@ -19,7 +19,7 @@ const flow : InstructionPagesInfo = [
   }
 ]
 
-export const baseUrl = '/play';
+export const baseUrl = '/game';
 
 const GameFlow: React.FC = () => {
   return (

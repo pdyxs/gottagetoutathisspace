@@ -1,5 +1,8 @@
 %popoverWithCard {
   width: 500px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: scroll !important;
 
   .markdown-content p,
   .markdown-content h2,

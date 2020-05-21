@@ -13,8 +13,6 @@ import LoseContent from 'content/Training/Lose.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 import { useHistory } from 'react-router-dom';
 
-import { baseUrl as trainingURL } from './';
-
 const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const [showWinPopover, setShowWinPopover] = useState(false);
   const [showLosePopover, setShowLosePopover] = useState(false);
@@ -28,13 +26,12 @@ const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
     setShowLosePopover(true);
   }
 
-  function restart() {
-    trainingLevel.reset();
-    history.push(trainingURL);
-  }
-
   function playFull() {
     history.push(nextUrl);
+  }
+
+  function returnHome() {
+    history.push('/');
   }
 
   return (
@@ -79,11 +76,8 @@ const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
           <IonCardContent>
             <MarkdownComponent className="markdown-content" source={LoseContent} />
-            <IonItem button color="tertiary" onClick={restart}>
-              I should probably try that again
-            </IonItem>
-            <IonItem button color="danger" onClick={playFull}>
-              I've learned what I need to. Let's play the full game!
+            <IonItem button color="danger" onClick={returnHome}>
+              Spacerats!
             </IonItem>
             <IonItem button onClick={() => setShowLosePopover(false)}>
               Whoops, pressed the wrong button

@@ -2,13 +2,15 @@ import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
-import { ShipData, DefaultShipData, setShipData } from '../../redux/actions';
+import { ShipData, DefaultShipData, setShipData, clearShipData } from '../../redux/actions';
 import Content from 'content/New/Ship.md';
 import MarkdownComponent from '../../components/MarkdownComponent';
 import { GetRandomShipCode, checkIfShipExists, saveShipData } from 'firebaseConfig';
 import { clone } from 'lodash';
 import { useHistory } from 'react-router-dom';
-import { storeShipCode } from 'storage';
+import { storeShipCode, clearShipCode } from 'storage';
+
+import './Ship.scss';
 
 const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const shipData = useSelector((state: any) => state.shipData) as ShipData;
@@ -27,6 +29,9 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
       }
       return testShipCode;
     }
+
+    clearShipCode();
+    clearShipData();
 
     findRandomCode().then((code: string) => {
       setShipCode(code);
@@ -54,8 +59,9 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
         <div>
           <p>
             This ship's official designation will be
-            <span>{shipCode}</span>
+            <span className="ship-code">{shipCode}</span>
             - you and those who come after you can enter that to see its progress.
+            Write it on your cover sheet, so you don't lose it.
           </p>
           <p>
             But before we start, you need to give it a name.
