@@ -28,8 +28,8 @@ const SpaceCard: React.FC<SpaceCardProps> = ({className, type, subtype, variety}
     >
       {piece && type &&
         <>
-          <CellContentIcon className="detail" content={{type, subtype, variety}} />
           <SizedInCSS>
+            <CellContentIcon className="detail" content={{type, subtype, variety}} />
             {piece && piece.name &&
               <h3>
                 {isString(piece.name) ? piece.name : piece.name[subtype || '']}

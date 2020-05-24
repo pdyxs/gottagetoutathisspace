@@ -9,7 +9,7 @@ import slugify from 'slugify';
 import SizedInCSS from 'components/SizedInCSS';
 import { IonImg } from '@ionic/react';
 
-import BackgroundImage from 'content/Pieces/ship_background.svg';
+// import BackgroundImage from 'content/Pieces/ship_background.svg';
 
 interface ShipCardProps {
   module?: ShipModule,
@@ -23,7 +23,7 @@ const ShipCard: React.FC<ShipCardProps> = ({className, module}) => {
         slugify(module?.name || ''), {
         [`ship-card-${module?.type}`]: module
       })}
-      style={{background: `url(${BackgroundImage})`}}
+      // style={{background: `url(${BackgroundImage})`}}
       >
       {module &&
         <>

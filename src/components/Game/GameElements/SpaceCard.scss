@@ -63,7 +63,8 @@
       }
 
       &.ggo-icon-robotFactory {
-        transform: scale(5);
+        --size: calc(var(--element-width) * 0.3);
+        // transform: scale(5);
         // font-size: calc(var(--element-width) * 20);
       }
     }
