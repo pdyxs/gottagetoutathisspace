@@ -1,6 +1,5 @@
-import { IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol, IonButton, IonItem } from '@ionic/react';
+import { IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 import materials from 'data/materials';
 
@@ -8,7 +7,6 @@ import Content from 'content/Continue/Materials.md';
 import MarkdownComponent from '../../components/MarkdownComponent';
 
 const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
-  const shipData = useSelector((state: any) => state.shipData);
 
   return (
     <IonContent>
@@ -26,11 +24,6 @@ const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
                     <IonCardTitle>{material.name}</IonCardTitle>
                   </IonCardHeader>
                   <IonCardContent>
-                    <IonItem color="notebook" className="handwritten note">
-                      <div className="ion-text-center" style={{margin: "0 auto"}}>
-                        {material.notes(shipData)}
-                      </div>
-                    </IonItem>
                     <p>{material.description}</p>
                   </IonCardContent>
                 </IonCard>

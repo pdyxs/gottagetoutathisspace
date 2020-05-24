@@ -1,5 +1,5 @@
 .ggo-icon {
-  --size: 1em;
+  --size: calc(var(--element-width) * 0.2);
 }
 
 .ggo-icon-planet, .ggo-icon-star {

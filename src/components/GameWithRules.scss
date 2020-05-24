@@ -40,6 +40,9 @@
 
     .textContainer {
       flex-basis: 100%;
+
+      min-width: 0;
+      max-width: 95%;
     }
   }
 }

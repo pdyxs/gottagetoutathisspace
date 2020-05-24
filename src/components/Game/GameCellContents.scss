@@ -40,21 +40,21 @@
 
 .game-cell-contents .ggo-icon-playerShip
 {
-  --size: 30px;
-  left: 31.25px;
-  top: 31.25px;
+  --size: calc(var(--element-width) * 0.3);
+  left: calc(var(--element-width) * 0.32);
+  top: calc(var(--element-width) * 0.35);
 }
 
 .game-cell-contents .ggo-icon-robotFactory
 {
-  --size: 40px;
-  left: 26px;
-  top: 26px;
+  --size: calc(var(--element-width) * 0.4);
+  left: calc(var(--element-width) * 0.2);
+  top: calc(var(--element-width) * 0.2);
 }
 
 .game-cell-contents .ggo-icon-planet
 {
-  --size: 2em;
+  --size: calc(var(--element-width) * 0.3);
 }
 
 .game-cell-contents .ggo-icon-planet,
@@ -65,15 +65,15 @@
 }
 
 .game-cell-contents .ggo-icon-star {
-  --size: 50%;
+  --size: calc(var(--element-width) * 0.5);
 }
 
 .game-cell-contents .ggo-icon-planet-gas {
-  --size: 40%;
+  --size: calc(var(--element-width) * 0.4);
 }
 
 .game-cell-contents .ggo-icon-planet-rocky {
-  --size: 30%;
+  --size: calc(var(--element-width) * 0.3);
 }
 
 .game-cell-contents .ggo-icon-container {
@@ -88,12 +88,11 @@
 .game-cell-contents .ggo-icon-container-enemy {
   width: 100%;
   bottom: 0;
-  height: 1.5em;
 }
 
 .game-cell-contents .ggo-icon-container-fuel {
   width: 100%;
-  top: var(--margin);
+  top: calc(var(--element-width) * 0.05);
 }
 
 .game-cell-contents .ggo-icon-container-crew,

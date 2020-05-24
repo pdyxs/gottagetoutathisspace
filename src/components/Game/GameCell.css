@@ -1,6 +1,6 @@
 :root {
   --game-cell-size: 100px;
-  --game-cell-margin: 5px;
+  --game-cell-margin: calc(var(--game-cell-size) * 0.05);
 }
 
 .game-cell-container {

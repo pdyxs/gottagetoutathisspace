@@ -15,7 +15,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({nextUrl}) => {
     shipData,
     shipCode
   } = useSelector((state: any) => state);
-  
+
   return (
     <IonContent>
       <div className="gameAndTextContainer">
