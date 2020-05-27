@@ -8,3 +8,14 @@
   transform: rotate(6deg);
   display: inline-block;
 }
+
+.ship-tour {
+  .top, .middle, .bottom {
+    text-align: center;
+  }
+  .card {
+    width: 30%;
+    display: inline-block;
+    margin: 0.2% 0.4%;
+  }
+}

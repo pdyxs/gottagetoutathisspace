@@ -8,44 +8,19 @@ export const clearShipData = () => {
   return { type: SET_SHIP_DATA, payload: {} };
 }
 
-export interface LevelData {
-  playerName: string,
-  fuelAtEnd: number
+export interface HistoryData {
+  nextCodeName: string,
+  robotsAtEnd: number
+}
+
+export interface SystemData {
+  systemName: string
 }
 
 export interface ShipData {
-  shipName: string,
-
-  levelsComplete: number,
-  robotTokens: string,
-  shipToken: string,
-  survivorToken: string,
-  upgradeToken: string,
-  newModuleToken: string,
-  fuelTokens: string,
-
-  shipCards: string,
-  spaceCards: string,
-  crewCards: string,
-
-  levels: Array<LevelData>
+  shipName: string
 }
 
 export const DefaultShipData : ShipData = {
-  shipName: '',
-
-  levelsComplete: 0,
-
-  robotTokens: '',
-  shipToken: '',
-  survivorToken: '',
-  upgradeToken: '',
-  newModuleToken: '',
-  fuelTokens: '',
-
-  shipCards: '',
-  spaceCards: '',
-  crewCards: '',
-
-  levels: []
+  shipName: ''
 }

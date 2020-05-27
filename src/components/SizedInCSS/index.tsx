@@ -29,6 +29,9 @@ const SizedInCSS = (props: SizedInCssProps) => {
     window.addEventListener("resize", doUpdate);
     window.addEventListener("load", doUpdate);
     doUpdate();
+    setTimeout(doUpdate, refreshRate/4);
+    setTimeout(doUpdate, refreshRate/2);
+    setTimeout(doUpdate, 3*refreshRate/4);
     setInterval(doUpdate, refreshRate);
     return () => {
       window.removeEventListener("resize", doUpdate);

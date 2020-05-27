@@ -9,9 +9,10 @@ import { GetRandomShipCode, checkIfShipExists, saveShipData } from 'firebaseConf
 import { clone } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { storeShipCode, clearShipCode } from 'storage';
-import BuiltShip from 'content/BuiltShip.png';
 
 import './Ship.scss';
+import ShipCard from 'components/Game/GameElements/ShipCard';
+import modules from 'data/modules';
 
 const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const shipData = useSelector((state: any) => state.shipData) as ShipData;
@@ -56,7 +57,19 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
     <IonContent>
       <div className="page-container">
         <MarkdownComponent source={Content} transformations={{...shipData}} />
-        <img alt="How your ship should start" src={BuiltShip} />
+        <div className="ship-tour">
+          <div className="top">
+            <ShipCard module={modules[4]} className="show-detail" />
+          </div>
+          <div className="middle">
+            <ShipCard module={modules[0]} className="show-detail" />
+            <ShipCard module={modules[1]} className="show-detail" />
+            <ShipCard module={modules[3]} className="show-detail" />
+          </div>
+          <div className="bottom">
+            <ShipCard module={modules[2]} className="show-detail" />
+          </div>
+        </div>
         <div>
           <p>
             This ship's official designation will be
