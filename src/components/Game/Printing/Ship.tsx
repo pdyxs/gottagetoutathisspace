@@ -15,10 +15,12 @@ export const PrintShipCardsComponent : React.FC<PrintComponentProps> =
 {
   const basicModules = filter(modules, m=>m.type === ShipModuleType.Basic);
   const nonBasicLength = max([0, (count || 0) - basicModules.length]) || 0;
+  console.log(nonBasicLength);
   let advancedModules = filter(modules, m=>m.type === ShipModuleType.Advanced);
-  if (advancedModules.length < nonBasicLength) {
+  if (advancedModules.length > nonBasicLength) {
     advancedModules = take(advancedModules, nonBasicLength);
   }
+  console.log(advancedModules.length);
   const extrasLength = max([0, nonBasicLength - advancedModules.length]) || 0;
   return (
     <div className={classNames(className, buildOptionClasses(buildOptionType))}>

@@ -30,6 +30,7 @@ import './theme/variables.css';
 import './theme/variables.scss';
 import './theme/print.scss';
 import Print from 'pages/Print';
+import Make from 'pages/Make';
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/print" component={Print} />
+          <Route path="/make" component={Make} />
           <Route path="/start" component={Start} exact={true} />
           <Route path={continueURL} component={Continue} />
           <Route path={newURL} component={NewGame} />

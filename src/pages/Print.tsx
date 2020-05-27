@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from 'react';
-import './Start.scss';
 import slugify from 'slugify';
 import './Print.scss';
 import { useLocation } from 'react-router-dom';

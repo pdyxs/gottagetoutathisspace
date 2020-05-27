@@ -1,4 +1,3 @@
-import { ShipData } from "../redux/actions";
 import classNames from "classnames";
 
 export enum MaterialBuildOptionType {
@@ -7,13 +6,15 @@ export enum MaterialBuildOptionType {
   PrintNormal = "PrintNormal",
   PrintFriendly = "PrintFriendly",
   PrintTemplate = "PrintTemplate",
-  Build = "Build"
+  Build = "Build",
+  UseMyOwn = "UseMyOwn"
 }
 
 export interface MaterialBuildOptionTypeDetail {
   isPrinted: boolean,
   isFriendly?: boolean,
-  hasDetails?: boolean
+  hasDetails?: boolean,
+  needsBuildInstructions?: boolean
 }
 
 export const BuildOptionTypeDetails : {[id: string]: MaterialBuildOptionTypeDetail} = {
@@ -39,6 +40,11 @@ export const BuildOptionTypeDetails : {[id: string]: MaterialBuildOptionTypeDeta
   },
 
   [MaterialBuildOptionType.Build]: {
+    isPrinted: false,
+    needsBuildInstructions: true
+  },
+
+  [MaterialBuildOptionType.UseMyOwn]: {
     isPrinted: false
   }
 }
@@ -77,7 +83,6 @@ interface Material {
   name: string,
   description: string,
   buildDescription?: string,
-  notes: (d: ShipData) => string,
   buildOptions: MaterialBuildOption[],
   printComponent?: React.FC<PrintComponentProps>,
   hideFromLog?: boolean

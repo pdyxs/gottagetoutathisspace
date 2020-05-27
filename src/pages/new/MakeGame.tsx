@@ -30,6 +30,10 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
     bot => BuildOptionTypeDetails[bot].isPrinted
   ));
 
+  const needsBuildInstructions = !isNil(materialBuildOptionTypes.find(
+    bot => BuildOptionTypeDetails[bot].needsBuildInstructions
+  ));
+
   return (
     <IonContent>
       <div className="ion-text-center ion-padding">
@@ -55,6 +59,16 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
               </p>
               <IonButton href={`/print/${printurl}`}
                 target="blank">Print</IonButton>
+            </div>
+          }
+
+          {needsBuildInstructions &&
+            <div className="ion-text-center">
+              <p>
+                You've chosen to make some cards. Click here to see the details of the cards you want to make!
+              </p>
+              <IonButton href={`/make/${printurl}`}
+                target="blank">Make</IonButton>
             </div>
           }
 

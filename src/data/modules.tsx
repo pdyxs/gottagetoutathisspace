@@ -52,7 +52,7 @@ const modules: ShipModule[] = [
         effect: 'Add 1 more damage square to this module'
       }
     ],
-    damageSlots: 3,
+    damageSlots: 2,
     damage: [
       {
         name: 'Loss of Atmosphere',
@@ -91,7 +91,7 @@ const modules: ShipModule[] = [
         effect: 'Add 1 more damage square to this module'
       }
     ],
-    damageSlots: 3,
+    damageSlots: 2,
     damage: [
       {
         name: 'Broken Drum',
@@ -157,7 +157,7 @@ const modules: ShipModule[] = [
         effect: 'Add 1 more damage square to this module'
       }
     ],
-    damageSlots: 3,
+    damageSlots: 2,
     damage: [
       {
         name: 'Reduced Aim',
@@ -187,7 +187,7 @@ const modules: ShipModule[] = [
         effect: 'Add 2 more damage squares to this module'
       }
     ],
-    damageSlots: 2,
+    damageSlots: 1,
     damage: [
       {
         compulsory: true,
@@ -210,7 +210,7 @@ const modules: ShipModule[] = [
         effect: 'Destroy 1 extra robot when you use this module'
       }
     ],
-    damageSlots: 2,
+    damageSlots: 1,
     damage: [
       {
         name: 'Collateral Damage',
@@ -237,7 +237,7 @@ const modules: ShipModule[] = [
         effect: 'You may take other Actions when you repair'
       }
     ],
-    damageSlots: 2,
+    damageSlots: 1,
     damage: [
       {
         name: 'Loss of Spare Parts',

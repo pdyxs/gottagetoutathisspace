@@ -1,4 +1,3 @@
-import { ShipData } from "../redux/actions";
 import Material, { MaterialBuildOptionType } from "model/Materials";
 import { SpaceCardPreviewComponent, PrintSpaceCardsComponent } from "components/Game/Printing/Space";
 import { ShipCardPreviewComponent, PrintShipCardsComponent } from "components/Game/Printing/Ship";
@@ -30,7 +29,6 @@ const materials: Material[] = [
     printCountMax: 1,
     name: "Cover Sheet",
     description: "Introduces the game, and gives you a Ship Code",
-    notes: (d : ShipData) => "",
     buildOptions: [
       {
         type: MaterialBuildOptionType.PrintNormal,
@@ -41,6 +39,10 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
         preview: CoverSheetPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Build,
+        description: "I want to make it myself"
       }
     ],
     printComponent: PrintCoverSheetComponent,
@@ -52,7 +54,6 @@ const materials: Material[] = [
     printCountMax: 1,
     name: "Captain's Log",
     description: "A log of the ship, and the components used for the game",
-    notes: (d : ShipData) => "",
     buildOptions: [
       {
         type: MaterialBuildOptionType.PrintNormal,
@@ -63,6 +64,10 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
         preview: CaptainsLogPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Build,
+        description: "I want to make it myself"
       }
     ],
     printComponent: PrintCaptainsLogComponent,
@@ -75,7 +80,6 @@ const materials: Material[] = [
     extraComponentDescription: "Extra cards are for the backs (used to denote empty space)",
     name: "Space Cards",
     description: "These are used to make the map that you'll play on",
-    notes: (d : ShipData) => d.spaceCards,
     buildOptions: [
       // {
       //   type: MaterialBuildOptionType.Buy,
@@ -113,7 +117,6 @@ const materials: Material[] = [
     name: "Ship Module Cards",
     description: "These modules come together to make your ship. Each affects what you can do or what your ship can contain in some way.",
     // buildDescription: "The full deck includes 10 blank ship module cards that you and your friends can use to expand the ship",
-    notes: (d : ShipData) => d.shipCards,
     buildOptions: [
       // {
       //   type: MaterialBuildOptionType.Buy,
@@ -151,7 +154,6 @@ const materials: Material[] = [
     name: "Crew Cards",
     description: "Your crew. Each comes with an ability that can be used once per game",
     buildDescription: "",
-    notes: (d : ShipData) => d.crewCards,
     buildOptions: [
       // {
       //   type: MaterialBuildOptionType.Buy,
@@ -183,10 +185,9 @@ const materials: Material[] = [
     name: "Robot Tokens",
     description: "The robots that are coming to destroy you",
     buildDescription: "",
-    notes: (d : ShipData) => d.robotTokens,
     buildOptions: [
       {
-        type: MaterialBuildOptionType.Build,
+        type: MaterialBuildOptionType.UseMyOwn,
         description: "I want to use my own tokens",
         preview: HandmadeRobot
       },
@@ -210,10 +211,9 @@ const materials: Material[] = [
     name: "Ship Token",
     description: "The representation of the ship on the map",
     buildDescription: "",
-    notes: (d : ShipData) => d.shipToken,
     buildOptions: [
       {
-        type: MaterialBuildOptionType.Build,
+        type: MaterialBuildOptionType.UseMyOwn,
         description: "I want to use my own token",
         preview: HandmadeShip
       },
@@ -238,10 +238,9 @@ const materials: Material[] = [
     name: "Survivor Tokens",
     description: "Represents you!",
     buildDescription: "",
-    notes: (d : ShipData) => d.survivorToken,
     buildOptions: [
       {
-        type: MaterialBuildOptionType.Build,
+        type: MaterialBuildOptionType.UseMyOwn,
         description: "I want to use my own tokens",
         preview: HandmadeSurvivors
       },
@@ -265,10 +264,9 @@ const materials: Material[] = [
     name: "Upgrade Token",
     description: "An upgrade for one of your ship's modules that you might be able to collect",
     buildDescription: "",
-    notes: (d : ShipData) => d.upgradeToken,
     buildOptions: [
       {
-        type: MaterialBuildOptionType.Build,
+        type: MaterialBuildOptionType.UseMyOwn,
         description: "I want to use my own token",
         preview: HandmadeUpgrade
       },
@@ -292,10 +290,9 @@ const materials: Material[] = [
     name: "New Module Token",
     description: "A new module you might be able to pick up",
     buildDescription: "",
-    notes: (d : ShipData) => d.newModuleToken,
     buildOptions: [
       {
-        type: MaterialBuildOptionType.Build,
+        type: MaterialBuildOptionType.UseMyOwn,
         description: "I want to use my own token",
         preview: HandmadeModule
       },
@@ -319,10 +316,9 @@ const materials: Material[] = [
     name: "Fuel Tokens",
     description: "Fuel that you have, or can collect.",
     buildDescription: "",
-    notes: (d : ShipData) => d.fuelTokens,
     buildOptions: [
       {
-        type: MaterialBuildOptionType.Build,
+        type: MaterialBuildOptionType.UseMyOwn,
         description: "I want to use my own tokens",
         preview: HandmadeFuel
       },
