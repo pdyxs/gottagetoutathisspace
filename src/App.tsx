@@ -8,6 +8,7 @@ import NewGame, {baseUrl as newURL} from './pages/new';
 import GameFuel, {baseUrl as gameFuelURL} from './pages/game-fuel';
 import GameUpgrade, {baseUrl as gameUpgradeURL} from './pages/game-upgrade';
 import GameSurvivor, {baseUrl as gameSurvivorURL} from './pages/game-survivor';
+import EndGame, {baseUrl as endURL} from './pages/end';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -43,6 +44,7 @@ const App: React.FC = () => {
           <Route path="/start" component={Start} exact={true} />
           <Route path={continueURL} component={Continue} />
           <Route path={newURL} component={NewGame} />
+          <Route path={endURL} component={EndGame} />
           <Route path={gameFuelURL} component={GameFuel} />
           <Route path={gameUpgradeURL} component={GameUpgrade} />
           <Route path={gameSurvivorURL} component={GameSurvivor} />

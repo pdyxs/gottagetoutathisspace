@@ -3,6 +3,8 @@ import React from 'react';
 import './Start.scss';
 import Content from 'content/Start.md';
 import ReactMarkdown from 'react-markdown';
+import { CellContentIcon } from 'components/Game/Pieces';
+import { CellContentTypes, StarTypes, PlanetTypes } from 'model/Level';
 
 const Start: React.FC = () => {
   return (
@@ -27,6 +29,16 @@ const Start: React.FC = () => {
               I didn't, but this sounds fun
             </IonButton>
           </div>
+
+          <CellContentIcon className="star" content={{
+            type: CellContentTypes.Star,
+            subtype: StarTypes.Yellow
+          }} />
+          <CellContentIcon className="planet" content={{
+            type: CellContentTypes.Planet,
+            subtype: PlanetTypes.Rocky,
+            variety: 2
+          }} />
 
         </div>
 

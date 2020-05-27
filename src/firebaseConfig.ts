@@ -53,6 +53,12 @@ export async function checkIfShipExists(id: string) : Promise<boolean> {
   });
 }
 
+export async function saveGameData(shipId: string, data: Object) : Promise<void> {
+  return db.collection("ships").doc(shipId).collection('games').get().then(snap => {
+    db.collection("ships").doc(shipId).collection('games').doc((snap.size + 1).toString()).set(data);
+  });
+}
+
 export async function saveShipData(id: string, data: Object) : Promise<void> {
   return db.collection("ships").doc(id).set(data);
 }

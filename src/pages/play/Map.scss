@@ -22,22 +22,35 @@
     font-size: calc(var(--element-width) * var(--size) * 0.75);
   }
 
-  .fuelStar {
+  .fuelStar, .upgradeStar, .survivorStar {
+    top: calc(var(--element-width) * var(--top));
+  }
+
+  .ggo-icon-star-blue {
     --size: 0.1;
+  }
+
+  .ggo-icon-star-red {
+    --size: 0.06;
+  }
+
+  .ggo-icon-star-yellow {
+    --size: 0.075;
+  }
+
+  .fuelStar {
     --left: 0.15;
-    --top: 0.2;
+    --top: 0.15;
   }
 
   .upgradeStar {
-    --size: 0.06;
     --left: 0.45;
-    --top: 0.1;
+    --top: 0.07;
   }
 
   .survivorStar {
-    --size: 0.075;
     --left: 0.9;
-    --top: 0.32;
+    --top: 0.2825;
   }
 
   .ship {

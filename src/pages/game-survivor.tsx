@@ -17,6 +17,8 @@ import GameInstructions from 'content/Game-Survivor/ScenarioInstructions.md';
 import WinContent from 'content/Game-Survivor/Win.md';
 import LoseContent from 'content/Game-Survivor/Lose.md';
 
+import { baseUrl as nextURL } from './end';
+
 const flow : InstructionPagesInfo = [
   {
     url: 'map',
@@ -54,7 +56,7 @@ export const baseUrl = '/game/c';
 
 const GameFlow: React.FC = () => {
   return (
-    <InstructionFlow pages={flow} baseUrl={baseUrl} />
+    <InstructionFlow pages={flow} baseUrl={baseUrl} nextUrl={nextURL} />
   );
 };
 

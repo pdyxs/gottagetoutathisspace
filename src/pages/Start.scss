@@ -6,17 +6,54 @@ ion-content ion-toolbar {
   text-align: center;
 }
 
-.startPage p{
-  margin: 0.8em 0;
-  font-size: 25pt;
-  font-family: 'Tulpen One';
+.startPage {
+  p{
+    margin: 0.8em 0;
+    font-size: 25pt;
+    font-family: 'Tulpen One';
+  }
+
+  h1 {
+    transform: rotate(6.9deg);
+    margin-top: -0.2em;
+    line-height: .8em;
+    font-size: 80pt;
+    text-shadow: 4px 4px rgba(0,0,0,0.6);
+    margin-bottom: 0.4em;
+  }
+
+  .star {
+    --size: 30vw;
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    top: calc(var(--size) * -0.3);
+    left: calc(var(--size) * -0.3);
+  }
+
+  .planet {
+    --size: 20vw;
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    top: calc(var(--size) * -0.3);
+    right: calc(var(--size) * -0.3);
+  }
 }
 
-.startPage h1 {
-  transform: rotate(6.9deg);
-  margin-top: -0.2em;
-  line-height: .8em;
-  font-size: 80pt;
-  text-shadow: 4px 4px rgba(0,0,0,0.6);
-  margin-bottom: 0.4em;
+@media(max-width: 430px) {
+  .startPage {
+    .star {
+      top: calc(var(--size) * 0.25);
+    }
+  }
+}
+
+
+@media(max-width: 410px) {
+  .startPage {
+    .star {
+      top: calc(var(--size) * 0.45);
+    }
+  }
 }
