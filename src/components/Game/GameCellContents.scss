@@ -48,9 +48,13 @@
 .game-cell-contents .ggo-icon-robotFactory
 {
   --size: calc(var(--element-width) * 0.4);
+}
+
+.game-cell-contents .ggo-icon-container-robotFactory
+{
   left: 0;
   width: 100%;
-  top: calc(var(--element-width) * 0.2);
+  top: calc(var(--element-width) * 0.25);
 }
 
 .game-cell-contents .ggo-icon-planet
