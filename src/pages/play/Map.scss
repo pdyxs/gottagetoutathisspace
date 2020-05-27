@@ -68,46 +68,46 @@
       stroke: yellow;
     }
   }
+}
 
-  &.map-survivor {
-    .ship {
-      --left: 0.86;
-      --top: 0.24;
-      transform: rotate(37deg);
-    }
-
-    .lines {
-      .progress-line {
-        stroke-dasharray: 115 100000;
-      }
-    }
+.map-survivor {
+  .ship {
+    --left: 0.86;
+    --top: 0.24;
+    transform: rotate(37deg);
   }
 
-  &.map-upgrade {
-    .ship {
-      --left: 0.45;
-      --top: 0.075;
-      transform: rotate(0deg);
-    }
-
-    .lines {
-      .progress-line {
-        stroke-dasharray: 63 100000;
-      }
+  .lines {
+    .progress-line {
+      stroke-dasharray: 115 100000;
     }
   }
+}
 
-  &.map-fuel {
-    .ship {
-      --left: 0.148;
-      --top: 0.148;
-      transform: rotate(-25deg);
+.map-upgrade {
+  .ship {
+    --left: 0.45;
+    --top: 0.075;
+    transform: rotate(0deg);
+  }
+
+  .lines {
+    .progress-line {
+      stroke-dasharray: 63 100000;
     }
+  }
+}
 
-    .lines {
-      .progress-line {
-        stroke-dasharray: 30 100000;
-      }
+.map-fuel {
+  .ship {
+    --left: 0.148;
+    --top: 0.148;
+    transform: rotate(-25deg);
+  }
+
+  .lines {
+    .progress-line {
+      stroke-dasharray: 30 100000;
     }
   }
 }

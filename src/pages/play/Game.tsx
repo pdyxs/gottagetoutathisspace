@@ -2,18 +2,20 @@ import { IonContent, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardCo
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
-import trainingLevel from 'data/levels/training';
-
 import GameWithRules from '../../components/GameWithRules';
 
-import SpecialInstructions from 'content/Training/ScenarioInstructions.md';
-
-import WinContent from 'content/Training/Win.md';
-import LoseContent from 'content/Training/Lose.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 import { useHistory } from 'react-router-dom';
 
-const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
+const Game: React.FC<InstructionPageProps> = ({
+    nextUrl,
+    extraProps: {
+      level,
+      instructions,
+      win,
+      lose
+    }
+}) => {
   const [showWinPopover, setShowWinPopover] = useState(false);
   const [showLosePopover, setShowLosePopover] = useState(false);
   const history = useHistory();
@@ -26,7 +28,7 @@ const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
     setShowLosePopover(true);
   }
 
-  function playFull() {
+  function playNext() {
     history.push(nextUrl);
   }
 
@@ -36,8 +38,8 @@ const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
   return (
     <IonContent>
-      <GameWithRules level={trainingLevel}
-        includeControls={true} specialInstructions={SpecialInstructions}
+      <GameWithRules level={level}
+        includeControls={true} specialInstructions={instructions}
         winLevel={winLevel}
         loseLevel={loseLevel} />
       <IonPopover isOpen={showWinPopover}
@@ -52,8 +54,8 @@ const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
           </IonCardHeader>
 
           <IonCardContent>
-            <MarkdownComponent className="markdown-content" source={WinContent} />
-            <IonItem button color="tertiary" onClick={playFull}>
+            <MarkdownComponent className="markdown-content" source={win} />
+            <IonItem button color="tertiary" onClick={playNext}>
               Onward!
             </IonItem>
             <IonItem button onClick={() => setShowWinPopover(false)}>
@@ -75,7 +77,7 @@ const Game: React.FC<InstructionPageProps> = ({nextUrl}) => {
           </IonCardHeader>
 
           <IonCardContent>
-            <MarkdownComponent className="markdown-content" source={LoseContent} />
+            <MarkdownComponent className="markdown-content" source={lose} />
             <IonItem button color="danger" onClick={returnHome}>
               Spacerats!
             </IonItem>

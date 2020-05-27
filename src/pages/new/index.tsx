@@ -2,7 +2,7 @@ import React from 'react';
 import Intro from './Intro';
 import MakeGame from './MakeGame';
 import Ship from './Ship';
-import { baseUrl as trainingUrl } from '../training';
+import { baseUrl as trainingUrl } from '../game-fuel';
 
 import InstructionFlow,
   { InstructionPagesInfo }

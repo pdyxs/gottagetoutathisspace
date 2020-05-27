@@ -15,13 +15,17 @@ export interface InstructionPageProps {
   nextPage: InstructionPageInfo | null,
   pastPages: Array<InstructionPageInfo>,
   futurePages: Array<InstructionPageInfo>,
-  resetShip: () => void
+  resetShip: () => void,
+  className?: string,
+  extraProps?: any
 }
 
 interface InstructionPageInfo {
   url: string,
   requiresShipCode : boolean,
-  component: React.FC | React.FC<InstructionPageProps>
+  component: React.FC | React.FC<InstructionPageProps>,
+  className?: string,
+  extraProps?: any
 }
 
 export interface InstructionPagesInfo extends Array<InstructionPageInfo> {}
@@ -101,6 +105,8 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
               <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
                 render={(props) =>
                   <Page.component {...props}
+                    extraProps={Page.extraProps || {}}
+                    className={Page.className}
                     resetShip={resetShip}
                     baseUrl={baseUrl}
                     nextPage={nextPage}
@@ -109,7 +115,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
                     futurePages={drop(pages, currentPageIndex + 1)} />}
                 exact={true} />
             )}
-            <Route exact path={baseUrl} render={() => <Redirect to={`${baseUrl}/${pages[0].url}`} />} />
+            <Redirect push={true} to={`${baseUrl}/${pages[0].url}`} from={baseUrl} />
           </Switch>
         </IonPage>
       }

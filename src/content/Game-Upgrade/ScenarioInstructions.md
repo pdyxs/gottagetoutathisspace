@@ -1,0 +1,3 @@
+Again, you just need to get out of this system using the Star.
+
+If you can get the extra ship module and upgrades, though, they will come in handy. Especially if you're running out of room in your Crew Quarters - no-one wants to leave someone behind, or throw someone overboard...

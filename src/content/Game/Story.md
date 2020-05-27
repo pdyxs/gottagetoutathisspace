@@ -1,3 +1,0 @@
-You've successfully moved the __{shipName}__ towards you, and it's entered your star system. As it enters your solar system, you look to the night's sky, excited to get out.
-
-The Robots, however, are here in force, ready to attack at a moment's notice. Hopefully you can get out without too many problems...

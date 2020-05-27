@@ -5,28 +5,32 @@ import { InstructionPageProps } from '../../components/InstructionFlow';
 import MarkdownComponent from '../../components/MarkdownComponent';
 import { useSelector } from 'react-redux';
 
-import StoryContent from 'content/Training/Story.md';
-
 import './Map.scss';
 import SquareCard from 'components/Cards/SquareCard';
 import { CellContentIcon } from 'components/Game/Pieces';
 import { CellContentTypes, StarTypes } from 'model/Level';
 import SizedInCSS from 'components/SizedInCSS';
 
-const MapSetup: React.FC<InstructionPageProps> = ({nextUrl}) => {
+const MapSetup: React.FC<InstructionPageProps> = ({
+    nextUrl, className,
+    extraProps: {
+      header,
+      story
+    }
+  }) => {
   const {
     shipData,
     shipCode
   } = useSelector((state: any) => state);
 
   return (
-    <IonContent>
+    <IonContent className={className}>
       <div className="page-container ion-text-center">
-        <h2>It's a cold night in the Robot Apocalypse...</h2>
+        <MarkdownComponent source={header} transformations={{shipCode, ...shipData}} />
         <IonItem color="notebook" className="handwritten">
-          <MarkdownComponent source={StoryContent} transformations={{shipCode, ...shipData}} />
+          <MarkdownComponent source={story} transformations={{shipCode, ...shipData}} />
         </IonItem>
-        <SquareCard className="map map-fuel">
+        <SquareCard className="map">
           <SizedInCSS>
             <CellContentIcon className="fuelStar map-object"
               content={{type: CellContentTypes.Star, subtype: StarTypes.BlueGiant}} />

@@ -2,7 +2,7 @@
   width: 500px;
   max-width: 90%;
   max-height: 90%;
-  overflow: scroll !important;
+  overflow: auto !important;
 
   .markdown-content p,
   .markdown-content h2,
@@ -91,6 +91,10 @@
 
   .section {
     margin: 0 auto;
+  }
+
+  .ggo-icon {
+    --size: 1em !important;
   }
 }
 

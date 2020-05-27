@@ -3,7 +3,7 @@ import Intro from './Intro';
 import Materials from './Materials';
 // import History from './History';
 import Ship from './Ship';
-import { baseUrl as trainingUrl } from '../training';
+import { baseUrl as trainingUrl } from '../game-fuel';
 // import TrainingIntro from './Training';
 
 import InstructionFlow,

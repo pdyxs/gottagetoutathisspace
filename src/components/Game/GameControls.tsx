@@ -18,10 +18,14 @@ const GameControls: React.FC<GameControlsProps> = (props) => {
     refresh();
   }
 
-  function resetLevel() {
-    level.reset();
-    refresh();
-  }
+  // <IonButton color="light" onClick={resetLevel}>
+  //   Reset Map
+  // </IonButton>
+  //
+  // function resetLevel() {
+  //   level.reset();
+  //   refresh();
+  // }
 
   return (
     <Fragment>
@@ -30,9 +34,6 @@ const GameControls: React.FC<GameControlsProps> = (props) => {
           Move Robots
         </IonButton>
         <TakeDamageControl {...props} />
-        <IonButton color="light" onClick={resetLevel}>
-          Reset Map
-        </IonButton>
       </div>
       <div className="ion-margin-top">
         {winLevel &&
