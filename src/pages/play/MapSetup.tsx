@@ -5,7 +5,7 @@ import GameGrid from '../../components/Game/GameGrid';
 
 import MarkdownComponent from '../../components/MarkdownComponent';
 import { flatten, filter, find, isNil, floor } from 'lodash';
-import Level, { CellTypes, CellContentTypes, GameCellSettings } from 'model/Level';
+import Level, { CellTypes, CellContentTypes } from 'model/Level';
 import { useSelector, useDispatch } from 'react-redux';
 import { add, remove } from "ionicons/icons";
 import { setPlayerCount } from 'redux/actions';
@@ -46,13 +46,13 @@ const MapSetup: React.FC<InstructionPageProps> = ({
       if (!content) return;
       var position = content.variety || (i + 1);
       if (position > playerCount) {
-        if (content.count != 0) {
+        if (content.count !== 0) {
           content.count = 0;
           hasChanged = true;
         }
       } else {
-        var newVal = floor((playerCount - position) / playerPositions.length) + 1;
-        if (content.count != newVal) {
+        let newVal = floor((playerCount - position) / playerPositions.length) + 1;
+        if (content.count !== newVal) {
           content.count = newVal;
           hasChanged = true;
         }
@@ -61,7 +61,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     if (hasChanged) {
       setRefresh(refreshCount + 1);
     }
-  }, [playerCount, playerPositions])
+  }, [playerCount, playerPositions, refreshCount])
 
   return (
     <IonContent>
