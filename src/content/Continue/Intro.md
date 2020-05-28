@@ -12,4 +12,4 @@ Once you've finished (assuming you do, in fact, get outta this space), you'll pa
 
 Together, you’re charting a path out of the galaxy - if you make it, you can escape the grasp of the new robot overlords!
 
-To begin, please enter the serial number of the ship.
+To begin, please enter the serial number of the ship (on the game's Cover Sheet), and the codename that you've been assigned (in the Ship's Log).

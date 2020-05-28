@@ -1,5 +1,5 @@
 import {
-  SET_SHIP_DATA,
+  SET_PLAY_DATA,
   SET_PLAYER_COUNT
 } from "./actions";
 import { clamp } from "lodash";
@@ -9,11 +9,12 @@ export default function reducer(
   {type, payload} : {type: string, payload: any}
 ) : any {
   switch (type) {
-    case SET_SHIP_DATA:
+    case SET_PLAY_DATA:
       return {
         ...state,
-        shipCode: payload.code || null,
-        shipData: payload.data || state.shipData
+        shipCode: payload.shipCode || null,
+        shipData: payload.ship || state.shipData,
+        isCurrentPlayer: payload.isCurrentPlayer
       };
     case SET_PLAYER_COUNT:
       return {

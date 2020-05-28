@@ -3,9 +3,9 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { Route, Redirect, useHistory, Switch } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { retrieveShipCode, clearShipCode } from '../storage';
+import { retrieveCodes, clearCodes } from '../storage';
 import { getShipData } from '../firebaseConfig';
-import { setShipData, ShipData, clearShipData } from '../redux/actions';
+import { setPlayData, clearPlayData } from '../redux/actions';
 import { findIndex, take, drop } from 'lodash';
 import Header from './Header';
 
@@ -60,13 +60,13 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
   async function checkLocalStorage() {
     if (!shipCode && currentPage != null)
     {
-      const code = await retrieveShipCode();
+      const {shipCode, codeName} = await retrieveCodes();
 
-      if (code) {
-        const shipData = await getShipData(code);
-        if (shipData)
+      if (shipCode) {
+        const resultData = await getShipData(shipCode, codeName);
+        if (resultData)
         {
-          dispatch(setShipData(code, shipData as ShipData));
+          dispatch(setPlayData(resultData));
         } else if (currentPage.requiresShipCode) {
           gotoPageWithoutShipCode();
         }
@@ -87,8 +87,8 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
   });
 
   function resetShip() {
-    dispatch(clearShipData());
-    clearShipCode();
+    dispatch(clearPlayData());
+    clearCodes();
   }
 
   return (

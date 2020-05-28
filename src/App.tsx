@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonLoading } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Start from './pages/Start';
 import Continue, {baseUrl as continueURL} from './pages/continue';
@@ -31,12 +31,48 @@ import './theme/fonts.css';
 import './theme/variables.css';
 import './theme/variables.scss';
 import './theme/print.scss';
+
 import Print from 'pages/Print';
 import Make from 'pages/Make';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { retrieveCodes } from 'storage';
+import { getShipData } from 'firebaseConfig';
+import { setPlayData } from 'redux/actions';
+
 const App: React.FC = () => {
+  const [busy, setBusy] = useState(false);
+  const { shipCode, shipData } = useSelector((state: any) => state);
+  const dispatch = useDispatch();
+
+  async function checkLocalStorage() {
+    if (!shipCode)
+    {
+      const {shipCode, codeName} = await retrieveCodes();
+
+      if (shipCode) {
+        setBusy(true);
+        const resultData = await getShipData(shipCode, codeName);
+        if (resultData)
+        {
+          dispatch(setPlayData(resultData));
+        }
+      }
+      setBusy(false);
+    }
+    return;
+  }
+
+  useEffect(() => {
+    if (!shipData)
+      checkLocalStorage();
+  });
+
   return (
     <IonApp>
+      {busy &&
+        <IonLoading isOpen={busy} message="Loading previous code" />
+      }
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/print" component={Print} />

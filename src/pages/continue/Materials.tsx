@@ -10,27 +10,25 @@ const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
   return (
     <IonContent>
-      <div className="ion-text-center ion-padding">
-        <div className="page-container">
+      <div className="ion-text-center page-container">
           <MarkdownComponent source={Content} />
-        </div>
-        <IonGrid>
-          <IonRow>
-            {materials.map((material, i) =>
-              <IonCol key={i} size="12" size-md="6" size-lg="4">
-                <IonCard>
-                  <IonCardHeader>
-                    <IonCardSubtitle>{material.count}</IonCardSubtitle>
-                    <IonCardTitle>{material.name}</IonCardTitle>
-                  </IonCardHeader>
-                  <IonCardContent>
-                    <p>{material.description}</p>
-                  </IonCardContent>
-                </IonCard>
-              </IonCol>
-            )}
-          </IonRow>
-        </IonGrid>
+          <IonGrid>
+            <IonRow>
+              {materials.map((material, i) =>
+                <IonCol key={i} size="12" size-md="6" size-lg="4">
+                  <IonCard>
+                    <IonCardHeader>
+                      <IonCardSubtitle>{material.count}</IonCardSubtitle>
+                      <IonCardTitle>{material.name}</IonCardTitle>
+                    </IonCardHeader>
+                    <IonCardContent>
+                      <p>{material.description}</p>
+                    </IonCardContent>
+                  </IonCard>
+                </IonCol>
+              )}
+            </IonRow>
+          </IonGrid>
         <IonButton routerLink={nextUrl}>
           I've got everything, let's go!
         </IonButton>

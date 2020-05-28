@@ -1,31 +1,45 @@
-export const SET_SHIP_DATA = 'SET_SHIP_DATA';
+export const SET_PLAY_DATA = 'SET_PLAY_DATA';
 export const SET_PLAYER_COUNT = 'SET_PLAYER_COUNT';
 
-export const setShipData = (code: string, data: ShipData) => {
-  return { type: SET_SHIP_DATA, payload: {code, data} };
+export const setPlayData = (data: ReturnData) => {
+  return { type: SET_PLAY_DATA, payload: {...data} };
 }
 
 export const setPlayerCount = (count: number) => {
   return { type: SET_PLAYER_COUNT, payload: {count} };
 }
 
-export const clearShipData = () => {
-  return { type: SET_SHIP_DATA, payload: {} };
-}
-
-export interface HistoryData {
-  nextCodeName: string,
-  robotsAtEnd: number
-}
-
-export interface SystemData {
-  systemName: string
+export const clearPlayData = () => {
+  return { type: SET_PLAY_DATA, payload: {} };
 }
 
 export interface ShipData {
-  shipName: string
+  shipName: string,
+  created: Date,
+  games: GameData[]
+}
+
+export interface ReturnData {
+  shipCode: string,
+  ship: ShipData,
+  isCurrentPlayer: boolean
+}
+
+export interface GameData {
+  created: Date,
+  codeName?: string,
+  systems: SystemData[],
+  finalShipURL?: string
+}
+
+export interface SystemData {
+  created: Date,
+  name?: string,
+  won?: boolean
 }
 
 export const DefaultShipData : ShipData = {
-  shipName: ''
+  shipName: '',
+  created: new Date(),
+  games: []
 }
