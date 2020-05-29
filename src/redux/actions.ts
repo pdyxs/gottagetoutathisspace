@@ -1,31 +1,26 @@
-export const SET_SHIP_DATA = 'SET_SHIP_DATA';
-export const SET_PLAYER_COUNT = 'SET_PLAYER_COUNT';
+import { ReturnData } from "model/Phases";
 
-export const setShipData = (code: string, data: ShipData) => {
-  return { type: SET_SHIP_DATA, payload: {code, data} };
+export const SET_PLAY_DATA = 'SET_PLAY_DATA';
+export const SET_CODENAME = 'SET_CODENAME';
+export const SET_PLAYER_COUNT = 'SET_PLAYER_COUNT';
+export const SET_LOADING = 'SET_LOADING';
+
+export const setCodename = (codename: string) => {
+  return { type: SET_CODENAME, payload: {codename} };
+}
+
+export const setPlayData = (data: ReturnData) => {
+  return { type: SET_PLAY_DATA, payload: {...data} };
 }
 
 export const setPlayerCount = (count: number) => {
   return { type: SET_PLAYER_COUNT, payload: {count} };
 }
 
-export const clearShipData = () => {
-  return { type: SET_SHIP_DATA, payload: {} };
+export const clearPlayData = () => {
+  return { type: SET_PLAY_DATA, payload: {} };
 }
 
-export interface HistoryData {
-  nextCodeName: string,
-  robotsAtEnd: number
-}
-
-export interface SystemData {
-  systemName: string
-}
-
-export interface ShipData {
-  shipName: string
-}
-
-export const DefaultShipData : ShipData = {
-  shipName: ''
+export const setLoading = (isLoading: boolean) => {
+  return { type: SET_LOADING, payload: { isLoading } }
 }

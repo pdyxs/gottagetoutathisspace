@@ -17,11 +17,16 @@ import GameInstructions from 'content/Game-Fuel/ScenarioInstructions.md';
 
 import WinContent from 'content/Game-Fuel/Win.md';
 import LoseContent from 'content/Game-Fuel/Lose.md';
+import { PlayPhase } from 'model/Phases';
+
+export const baseUrl = '/game/a';
+const setup = 'setup';
+export const gameUrl = `${baseUrl}/${setup}`;
 
 const flow : InstructionPagesInfo = [
   {
     url: 'map',
-    requiresShipCode: true,
+    phase: PlayPhase.GameAStart,
     component: Map,
     className: 'map-fuel',
     extraProps: {
@@ -30,8 +35,8 @@ const flow : InstructionPagesInfo = [
     }
   },
   {
-    url: 'setup',
-    requiresShipCode: true,
+    url: setup,
+    phase: PlayPhase.GameA,
     component: MapSetup,
     extraProps: {
       level: trainingLevel,
@@ -40,7 +45,7 @@ const flow : InstructionPagesInfo = [
   },
   {
     url: 'play',
-    requiresShipCode: true,
+    phase: PlayPhase.GameA,
     component: Game,
     extraProps: {
       level: trainingLevel,
@@ -50,8 +55,6 @@ const flow : InstructionPagesInfo = [
     }
   }
 ];
-
-export const baseUrl = '/game/a';
 
 const GameFlow: React.FC = () => {
   return (

@@ -1,56 +1,37 @@
-import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
-import React, { useState, useEffect } from 'react';
+import { IonContent, IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem } from '@ionic/react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
-import { ShipData, DefaultShipData, setShipData, clearShipData } from '../../redux/actions';
+import { setPlayData } from '../../redux/actions';
 import Content from 'content/New/Ship.md';
 import MarkdownComponent from '../../components/MarkdownComponent';
-import { GetRandomShipCode, checkIfShipExists, saveShipData } from 'firebaseConfig';
-import { clone } from 'lodash';
+import { createNewShip } from 'firebaseConfig';
 import { useHistory } from 'react-router-dom';
-import { storeShipCode, clearShipCode } from 'storage';
+import { storeCodes } from 'storage';
 
 import './Ship.scss';
 import ShipCard from 'components/Game/GameElements/ShipCard';
 import modules from 'data/modules';
+import { ShipData } from 'model/Phases';
 
 const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const shipData = useSelector((state: any) => state.shipData) as ShipData;
-  const [shipCode, setShipCode] = useState<string>();
   const [nameInput, setNameInput] = useState<string>('');
   const [busy, setBusy] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
+  const [shipCode, setShipCode] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    async function findRandomCode() : Promise<string> {
-      const testShipCode = GetRandomShipCode();
-      const exists = await checkIfShipExists(testShipCode);
-      if (exists) {
-        return findRandomCode();
-      }
-      return testShipCode;
-    }
-
-    clearShipCode();
-    clearShipData();
-
-    findRandomCode().then((code: string) => {
-      setShipCode(code);
-    });
-  }, []);
-
-  async function setName(name : string) {
-    if (!shipCode) return;
+  async function makeShip(name : string) {
     setBusy(true);
-    const shipData : ShipData = clone(DefaultShipData);
-    shipData.shipName = name;
-    await saveShipData(shipCode, shipData);
+    let playData = await createNewShip(name);
 
-    dispatch(setShipData(shipCode, shipData as ShipData));
-    storeShipCode(shipCode);
+    dispatch(setPlayData(playData));
+    storeCodes(playData.shipCode);
     setBusy(false);
-    history.push(nextUrl);
+    setShipCode(playData.shipCode);
+    setShowPopover(true);
   }
 
   return (
@@ -71,25 +52,48 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
           </div>
         </div>
         <div>
-          <p>
-            This ship's official designation will be
-            <span className="ship-code">{shipCode}</span>
-            - you and those who come after you can enter that to see its progress.
-            Write it on your cover sheet, so you don't lose it.
-          </p>
-          <p>
-            But before we start, you need to give it a name.
+          <p className="centre">
+            To get started, you need to give the ship a name.
           </p>
         </div>
         <form className="centre"
-          onSubmit={(e) => {setName(nameInput); e.preventDefault();}}>
+          onSubmit={(e) => {makeShip(nameInput); e.preventDefault();}}>
           <IonLoading isOpen={busy} message="Creating Ship Record" />
           <IonInput
             value={nameInput} placeholder="Your Ship Name Here"
             onIonChange={e => setNameInput(e.detail.value!)} />
-          <IonButton disabled={shipCode === undefined || nameInput.length === 0} onClick={() => setName(nameInput)}>Enter</IonButton>
+          <IonButton disabled={nameInput.length < 3} onClick={() => makeShip(nameInput)}>Enter</IonButton>
         </form>
       </div>
+
+      <IonPopover
+        isOpen={showPopover}
+        backdropDismiss={false}
+        cssClass="popoverWithCard"
+        onDidDismiss={() => setShowPopover(false)}>
+        <IonCard color="success">
+          <IonCardHeader>
+            <IonCardTitle>Ship Connected!</IonCardTitle>
+          </IonCardHeader>
+
+          <IonCardContent>
+            <p>
+              The ship's serial number appears on your screen:
+              <span className="ship-code">{shipCode}</span>
+            </p>
+            <p className="ion-margin-bottom">
+              Before you continue, make sure you write it down on the Cover Sheet
+               - without it, your friends won't be able to continue your journey.
+            </p>
+            <IonItem button onClick={() => {
+              setShowPopover(false);
+              history.replace(nextUrl);
+            }}>
+              Onward!
+            </IonItem>
+          </IonCardContent>
+        </IonCard>
+      </IonPopover>
     </IonContent>
   );
 };

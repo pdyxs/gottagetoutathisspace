@@ -1,8 +1,9 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
 import 'firebase/analytics';
 import 'firebase/performance';
-import { random } from 'lodash';
+import 'firebase/storage';
+import 'firebase/functions';
+import { ReturnData } from 'model/Phases';
 
 const config = {
   apiKey: "AIzaSyA9pGC2STMiBzpSbNjVxwY-LPYNljeRx6A",
@@ -19,46 +20,41 @@ firebase.initializeApp(config);
 firebase.analytics();
 firebase.performance();
 
-var db = firebase.firestore();
+var storage = firebase.storage().ref();
+const functions = firebase.functions();
 
-const codeLength = 7;
-const dashPosition = 3;
-
-export function GetRandomShipCode() : string {
-  return [...Array(codeLength)].map((_, i) => {
-    var ret = (i === dashPosition ? '-' : '');
-    var ran = random(1, 35);
-    if (ran < 10) ret += ran.toString();
-    else ret += String.fromCharCode('A'.charCodeAt(0) + ran - 10);
-    return ret;
-  }).join('');
-
+export async function getShipData(id: string, codeName: string) : Promise<ReturnData> {
+  const func = functions.httpsCallable('getCurrentData');
+  const result = await func({shipCode: id, codeName});
+  return result.data;
 }
 
-export async function getShipData(id: string) : Promise<firebase.firestore.DocumentData | null> {
-  return db.collection("ships").doc(id).get().then(function(doc) {
-    if (!doc.exists) return null;
-    return doc.data() || null;
-  }).catch(function(error) {
-    console.log(`Error reading ship doc ${id}: ${error}`);
-    return null;
+export async function startNewSystem(id: string, codeName: string, systemNumber: number, systemName: string) : Promise<ReturnData> {
+  const func = functions.httpsCallable('startNewSystem');
+  const result = await func({shipCode: id, codeName, systemNumber, systemName});
+  return result.data;
+}
+
+export async function registerSystemResult(id: string, codeName: string, systemNumber: number, result: boolean) : Promise<ReturnData> {
+  const func = functions.httpsCallable('registerSystemResult');
+  const res = await func({shipCode: id, codeName, systemNumber, result});
+  return res.data;
+}
+
+export async function createNewShip(name: string) : Promise<ReturnData> {
+  const func = functions.httpsCallable('createShip');
+  const result = await func({shipName: name});
+  return result.data;
+}
+
+export async function saveGameData(id: string, codeName: string, finalShipURL: string, nextCodename: string) : Promise<ReturnData> {
+  const func = functions.httpsCallable('saveGameData');
+  const result = await func({shipCode: id, codeName, finalShipURL, nextCodename});
+  return result.data;
+}
+
+export async function uploadFile(shipCode: string, game: number, file: File) : Promise<string> {
+  return storage.child(`${shipCode}`).child(`${game}`).child("finalShip").put(file).then((snapshot) => {
+    return snapshot.ref.getDownloadURL();
   });
-}
-
-export async function checkIfShipExists(id: string) : Promise<boolean> {
-  return db.collection("ships").doc(id).get().then(function(doc) {
-    return (doc.exists);
-  }).catch(function(_e) {
-    return false;
-  });
-}
-
-export async function saveGameData(shipId: string, data: Object) : Promise<void> {
-  return db.collection("ships").doc(shipId).collection('games').get().then(snap => {
-    db.collection("ships").doc(shipId).collection('games').doc((snap.size + 1).toString()).set(data);
-  });
-}
-
-export async function saveShipData(id: string, data: Object) : Promise<void> {
-  return db.collection("ships").doc(id).set(data);
 }

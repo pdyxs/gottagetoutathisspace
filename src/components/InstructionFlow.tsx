@@ -1,13 +1,15 @@
-import { IonLoading, IonPage } from '@ionic/react';
-import React, { useState, useEffect, Fragment } from 'react';
+import { IonPage } from '@ionic/react';
+import React, { useEffect, Fragment, useState } from 'react';
 import { Route, Redirect, useHistory, Switch } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { retrieveShipCode, clearShipCode } from '../storage';
-import { getShipData } from '../firebaseConfig';
-import { setShipData, ShipData, clearShipData } from '../redux/actions';
+import { clearCodes } from '../storage';
+import { clearPlayData } from '../redux/actions';
 import { findIndex, take, drop } from 'lodash';
 import Header from './Header';
+import { PlayPhase, isAllowedIn } from 'model/Phases';
+import { StateData } from 'redux/reducer';
+import defaultPage from 'pages/defaults';
 
 export interface InstructionPageProps {
   baseUrl: string,
@@ -22,7 +24,7 @@ export interface InstructionPageProps {
 
 interface InstructionPageInfo {
   url: string,
-  requiresShipCode : boolean,
+  phase : PlayPhase,
   component: React.FC | React.FC<InstructionPageProps>,
   className?: string,
   extraProps?: any
@@ -38,87 +40,56 @@ interface InstructionFlowProps {
 
 const InstructionFlow: React.FC<InstructionFlowProps> =
   ({baseUrl, pages, nextUrl}) => {
-  const [busy, setBusy] = useState(false);
   const dispatch = useDispatch();
+  const [checkedUrl, setCheckedUrl] = useState('');
 
   const history = useHistory();
-  const shipCode = useSelector((state: any) => state.shipCode);
+  const stateData : StateData = useSelector((state: any) => state);
+  const shipCode = stateData.shipCode;
 
   let currentPageIndex = findIndex(pages, page => history.location.pathname === `${baseUrl}/${page.url}`);
   let currentPage = currentPageIndex < 0 ? null : pages[currentPageIndex];
   let nextPage = (currentPageIndex >= pages.length - 1) ? null : pages[currentPageIndex + 1];
   let nextPageUrl = (nextPage ? `${baseUrl}/${nextPage.url}` : nextUrl) || `${baseUrl}/`;
 
-  function gotoPageWithoutShipCode() {
-    if (!pages[0].requiresShipCode) {
-      history.replace(`${baseUrl}/${pages[0].url}`);
-    } else {
-      history.replace(`/start`);
-    }
-  }
-
-  async function checkLocalStorage() {
-    if (!shipCode && currentPage != null)
-    {
-      const code = await retrieveShipCode();
-
-      if (code) {
-        const shipData = await getShipData(code);
-        if (shipData)
-        {
-          dispatch(setShipData(code, shipData as ShipData));
-        } else if (currentPage.requiresShipCode) {
-          gotoPageWithoutShipCode();
-        }
-      } else if (currentPage.requiresShipCode) {
-        gotoPageWithoutShipCode();
-      }
-      setBusy(false);
-    }
-    return;
-  }
-
-  if (!busy && !shipCode && currentPage !== null && currentPage.requiresShipCode) {
-    setBusy(true);
-  }
-
   useEffect(() => {
-    checkLocalStorage();
-  });
+    if (!stateData.isLoading && currentPage !== null && checkedUrl !== currentPage.url) {
+      if (!isAllowedIn(currentPage.phase, stateData)) {
+        history.replace(defaultPage(stateData));
+      } else {
+        setCheckedUrl(currentPage.url);
+      }
+    }
+  }, [stateData, currentPage, checkedUrl, history]);
 
   function resetShip() {
-    dispatch(clearShipData());
-    clearShipCode();
+    dispatch(clearPlayData());
+    clearCodes();
   }
 
   return (
     <Fragment>
-      {busy &&
-        <IonLoading isOpen={busy} message="Loading previous code" />
-      }
-      {!busy &&
-        <IonPage>
-          <Header shipCode={shipCode} resetShip={resetShip} />
+      <IonPage>
+        <Header shipCode={shipCode} resetShip={resetShip} />
 
-          <Switch>
-            {pages.map(Page =>
-              <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
-                render={(props) =>
-                  <Page.component {...props}
-                    extraProps={Page.extraProps || {}}
-                    className={Page.className}
-                    resetShip={resetShip}
-                    baseUrl={baseUrl}
-                    nextPage={nextPage}
-                    nextUrl={nextPageUrl}
-                    pastPages={take(pages, currentPageIndex)}
-                    futurePages={drop(pages, currentPageIndex + 1)} />}
-                exact={true} />
-            )}
-            <Redirect push={true} to={`${baseUrl}/${pages[0].url}`} from={baseUrl} />
-          </Switch>
-        </IonPage>
-      }
+        <Switch>
+          {pages.map(Page =>
+            <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
+              render={(props) =>
+                <Page.component {...props}
+                  extraProps={Page.extraProps || {}}
+                  className={Page.className}
+                  resetShip={resetShip}
+                  baseUrl={baseUrl}
+                  nextPage={nextPage}
+                  nextUrl={nextPageUrl}
+                  pastPages={take(pages, currentPageIndex)}
+                  futurePages={drop(pages, currentPageIndex + 1)} />}
+              exact={true} />
+          )}
+          <Redirect push={true} to={`${baseUrl}/${pages[0].url}`} from={baseUrl} />
+        </Switch>
+      </IonPage>
     </Fragment>
 
   );

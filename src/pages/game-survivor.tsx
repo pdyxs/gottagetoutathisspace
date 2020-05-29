@@ -18,11 +18,16 @@ import WinContent from 'content/Game-Survivor/Win.md';
 import LoseContent from 'content/Game-Survivor/Lose.md';
 
 import { baseUrl as nextURL } from './end';
+import { PlayPhase } from 'model/Phases';
+
+export const baseUrl = '/game/c';
+const setup = 'setup';
+export const gameUrl = `${baseUrl}/${setup}`;
 
 const flow : InstructionPagesInfo = [
   {
     url: 'map',
-    requiresShipCode: true,
+    phase: PlayPhase.GameCStart,
     component: Map,
     className: 'map-survivor',
     extraProps: {
@@ -31,8 +36,8 @@ const flow : InstructionPagesInfo = [
     }
   },
   {
-    url: 'setup',
-    requiresShipCode: true,
+    url: setup,
+    phase: PlayPhase.GameC,
     component: MapSetup,
     extraProps: {
       level: level,
@@ -41,7 +46,7 @@ const flow : InstructionPagesInfo = [
   },
   {
     url: 'play',
-    requiresShipCode: true,
+    phase: PlayPhase.GameC,
     component: Game,
     extraProps: {
       level: level,
@@ -50,9 +55,7 @@ const flow : InstructionPagesInfo = [
       lose: LoseContent
     }
   }
-]
-
-export const baseUrl = '/game/c';
+];
 
 const GameFlow: React.FC = () => {
   return (

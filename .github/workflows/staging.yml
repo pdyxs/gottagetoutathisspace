@@ -1,12 +1,14 @@
-name: deploy
+# This is a basic workflow to help you get started with Actions
+
+name: staging
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: [ deploy ]
+    branches: [ master ]
   pull_request:
-    branches: [ deploy ]
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,7 +32,7 @@ jobs:
     - name: Deploy to gottagetouttathis.space
       uses: dswistowski/surge-sh-action@v1
       with:
-        domain: 'https://gottagetouttathis.space'
+        domain: 'https://evasive-automatons.surge.sh'
         project: './build/'
         login: ${{ secrets.surge_login }}
         token: ${{ secrets.surge_token }}

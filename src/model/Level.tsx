@@ -41,7 +41,9 @@ export enum CellContentTypes {
   Crew = 'crew',
   Upgrade = 'upgrade',
   Module = 'module',
-  SpaceStation = 'spaceStation'
+  SpaceStation = 'spaceStation',
+  AsteroidField = 'asteroidField',
+  GasCloud = 'gasCloud'
 }
 
 export enum StarTypes {

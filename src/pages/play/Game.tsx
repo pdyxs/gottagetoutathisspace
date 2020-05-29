@@ -1,4 +1,4 @@
-import { IonContent, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem } from '@ionic/react';
+import { IonContent, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLoading } from '@ionic/react';
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
@@ -6,6 +6,9 @@ import GameWithRules from '../../components/GameWithRules';
 
 import MarkdownComponent from 'components/MarkdownComponent';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPlayData } from 'redux/actions';
+import { registerSystemResult } from 'firebaseConfig';
 
 const Game: React.FC<InstructionPageProps> = ({
     nextUrl,
@@ -19,6 +22,13 @@ const Game: React.FC<InstructionPageProps> = ({
   const [showWinPopover, setShowWinPopover] = useState(false);
   const [showLosePopover, setShowLosePopover] = useState(false);
   const history = useHistory();
+  const [busy, setBusy] = useState(false);
+  const dispatch = useDispatch();
+  const {
+    shipData,
+    shipCode,
+    codeName
+  } = useSelector((state: any) => state);
 
   function winLevel() {
     setShowWinPopover(true);
@@ -28,16 +38,27 @@ const Game: React.FC<InstructionPageProps> = ({
     setShowLosePopover(true);
   }
 
-  function playNext() {
-    history.push(nextUrl);
+  async function confirm(win: boolean, url: string) {
+    setBusy(true);
+    var game = shipData.games[shipData.games.length - 1];
+    var systemCount = game.systems ? game.systems.length : 0;
+    let data = await registerSystemResult(shipCode, codeName, systemCount, win);
+    dispatch(setPlayData(data));
+    history.push(url);
+    setBusy(false);
   }
 
-  function returnHome() {
-    history.push('/');
+  async function confirmWin() {
+    confirm(true, nextUrl);
+  }
+
+  async function confirmLose() {
+    confirm(false, '/');
   }
 
   return (
     <IonContent>
+      <IonLoading isOpen={busy} message="Saving Game Result..." />
       <GameWithRules level={level}
         includeControls={true} specialInstructions={instructions}
         winLevel={winLevel}
@@ -55,7 +76,7 @@ const Game: React.FC<InstructionPageProps> = ({
 
           <IonCardContent>
             <MarkdownComponent className="markdown-content" source={win} />
-            <IonItem button color="tertiary" onClick={playNext}>
+            <IonItem button color="tertiary" onClick={confirmWin}>
               Onward!
             </IonItem>
             <IonItem button onClick={() => setShowWinPopover(false)}>
@@ -78,7 +99,7 @@ const Game: React.FC<InstructionPageProps> = ({
 
           <IonCardContent>
             <MarkdownComponent className="markdown-content" source={lose} />
-            <IonItem button color="danger" onClick={returnHome}>
+            <IonItem button color="danger" onClick={confirmLose}>
               Spacerats!
             </IonItem>
             <IonItem button onClick={() => setShowLosePopover(false)}>

@@ -17,17 +17,17 @@ const Header: React.FC<HeaderProps> = ({shipCode, resetShip, title}) => {
       <IonToolbar>
         <IonButtons slot="start">
           <IonBackButton defaultHref="/" />
+          <IonButton href="/">
+
+            <IonTitle>
+              <span onClick={() => history.push("/")}>Gotta Get Outta This Space</span>
+              {title && `- ${title}`}
+            </IonTitle>
+          </IonButton>
         </IonButtons>
-        <IonTitle>
-          <span onClick={() => history.push("/")}>Gotta Get Outta This Space</span>
-          {title && `- ${title}`}
-        </IonTitle>
         {shipCode &&
           <Fragment>
             <IonTitle size="small" slot="end">Ship: {shipCode}</IonTitle>
-            <IonButtons slot="end">
-              <IonButton href="/" onClick={resetShip}>Reset</IonButton>
-            </IonButtons>
           </Fragment>
         }
       </IonToolbar>

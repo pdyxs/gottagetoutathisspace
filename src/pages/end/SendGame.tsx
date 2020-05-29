@@ -2,7 +2,7 @@ import { IonContent, IonButton, IonItem } from '@ionic/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
-import { ShipData } from '../../redux/actions';
+import { ShipData } from 'model/Phases';
 import Content from 'content/End/SendGame.md';
 import Story from 'content/End/SendGameStory.md';
 import MarkdownComponent from '../../components/MarkdownComponent';
