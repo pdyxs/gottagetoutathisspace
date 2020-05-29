@@ -1,5 +1,13 @@
+import { ReturnData } from "model/Phases";
+
 export const SET_PLAY_DATA = 'SET_PLAY_DATA';
+export const SET_CODENAME = 'SET_CODENAME';
 export const SET_PLAYER_COUNT = 'SET_PLAYER_COUNT';
+export const SET_LOADING = 'SET_LOADING';
+
+export const setCodename = (codename: string) => {
+  return { type: SET_CODENAME, payload: {codename} };
+}
 
 export const setPlayData = (data: ReturnData) => {
   return { type: SET_PLAY_DATA, payload: {...data} };
@@ -13,33 +21,6 @@ export const clearPlayData = () => {
   return { type: SET_PLAY_DATA, payload: {} };
 }
 
-export interface ShipData {
-  shipName: string,
-  created: Date,
-  games: GameData[]
-}
-
-export interface ReturnData {
-  shipCode: string,
-  ship: ShipData,
-  isCurrentPlayer: boolean
-}
-
-export interface GameData {
-  created: Date,
-  codeName?: string,
-  systems: SystemData[],
-  finalShipURL?: string
-}
-
-export interface SystemData {
-  created: Date,
-  name?: string,
-  won?: boolean
-}
-
-export const DefaultShipData : ShipData = {
-  shipName: '',
-  created: new Date(),
-  games: []
+export const setLoading = (isLoading: boolean) => {
+  return { type: SET_LOADING, payload: { isLoading } }
 }

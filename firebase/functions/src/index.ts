@@ -14,8 +14,8 @@ const dashPosition = 3;
 
 function GetRandomShipCode() : string {
   return [...Array(codeLength)].map((_, i) => {
-    var ret = (i === dashPosition ? '-' : '');
-    var ran = randomIntFromInterval(1, 35);
+    let ret = (i === dashPosition ? '-' : '');
+    const ran = randomIntFromInterval(1, 35);
     if (ran < 10) ret += ran.toString();
     else ret += String.fromCharCode('A'.charCodeAt(0) + ran - 10);
     return ret;
@@ -44,6 +44,7 @@ interface GameData {
 interface SystemData {
   created: Date,
   name?: string,
+  finished: boolean,
   won?: boolean
 }
 
@@ -53,8 +54,8 @@ interface SystemData {
 export const createShip = functions.https.onCall(async (data, _) : Promise<ReturnData|undefined> => {
   const {shipName} = data;
   const newID = await getNewShipId();
-  let newShipDoc = db.collection("ships").doc(newID);
-  let newShipData : ShipData = {
+  const newShipDoc = db.collection("ships").doc(newID);
+  const newShipData : ShipData = {
     shipName: shipName,
     created: new Date(),
     games: [{
@@ -63,7 +64,7 @@ export const createShip = functions.https.onCall(async (data, _) : Promise<Retur
     }]
   };
   await newShipDoc.set(newShipData);
-  let returnData : ReturnData = {
+  const returnData : ReturnData = {
     shipCode: newID,
     ship: newShipData,
     isCurrentPlayer: true
@@ -73,10 +74,10 @@ export const createShip = functions.https.onCall(async (data, _) : Promise<Retur
 
 export const getCurrentData = functions.https.onCall(async (data, _) : Promise<ReturnData|undefined> => {
   const {shipCode, codeName} = data;
-  let shipDoc = await db.collection("ships").doc(shipCode).get();
+  const shipDoc = await db.collection("ships").doc(shipCode).get();
   if (!shipDoc.exists) return;
 
-  var shipData : ShipData = shipDoc.data() as ShipData;
+  const shipData : ShipData = shipDoc.data() as ShipData;
   const isCurrentPlayer = checkIfCurrentPlayer(shipData, codeName);
 
   return {
@@ -95,15 +96,15 @@ function checkIfCurrentPlayer(shipData: ShipData, codeName: string) : boolean {
 }
 
 function sanitiseData(shipData: ShipData) : ShipData {
-  let newShipData : ShipData = {
+  const newShipData : ShipData = {
     ...shipData,
     games: []
   };
   if (shipData.games)
   {
-    for (var i = 0; i !== shipData.games.length; ++i) {
+    for (let i = 0; i !== shipData.games.length; ++i) {
       newShipData.games.push({
-        ...newShipData.games[i],
+        ...shipData.games[i],
         codeName: undefined
       });
     };
@@ -111,8 +112,99 @@ function sanitiseData(shipData: ShipData) : ShipData {
   return newShipData;
 }
 
-export const uploadImage = functions.https.onCall(async (data, _) => {
-  return data.file;
+export const startNewSystem = functions.https.onCall(async (data, _) => {
+  const {shipCode, codeName, systemNumber, systemName} = data;
+  const shipDoc = db.collection("ships").doc(shipCode);
+  const ship = await shipDoc.get();
+  if (!ship.exists) return;
+
+  const shipData : ShipData = ship.data() as ShipData;
+  const isCurrentPlayer = checkIfCurrentPlayer(shipData, codeName);
+  if (isCurrentPlayer) {
+    if (!shipData.games || shipData.games.length === 0) {
+      shipData.games = [{
+        created: new Date(),
+        systems: []
+      }];
+    }
+
+    const game = shipData.games[shipData.games.length - 1];
+    //only create this if there's 1 less than the current system
+    if (game.systems.length === systemNumber - 1) {
+      game.systems.push({
+        created: new Date(),
+        name: systemName,
+        finished: false
+      });
+    }
+
+    await shipDoc.set(shipData);
+  }
+
+  return {
+    shipCode,
+    ship: sanitiseData(shipData),
+    isCurrentPlayer
+  }
+});
+
+export const registerSystemResult = functions.https.onCall(async (data, _) => {
+  const {shipCode, codeName, systemNumber, result} = data;
+  const shipDoc = db.collection("ships").doc(shipCode);
+  const ship = await shipDoc.get();
+  if (!ship.exists) return;
+
+  const shipData : ShipData = ship.data() as ShipData;
+  const isCurrentPlayer = checkIfCurrentPlayer(shipData, codeName);
+  if (isCurrentPlayer && shipData.games && shipData.games.length > 0) {
+    const game = shipData.games[shipData.games.length - 1];
+    //only do this if there's the right number of systems
+    if (game.systems.length === systemNumber) {
+      const system = game.systems[systemNumber - 1];
+
+      system.finished = true;
+      system.won = result;
+
+      await shipDoc.set(shipData);
+    }
+  }
+
+  return {
+    shipCode,
+    ship: sanitiseData(shipData),
+    isCurrentPlayer
+  }
+});
+
+export const saveGameData = functions.https.onCall(async (data, _) => {
+  const {shipCode, codeName, finalShipURL, nextCodename} = data;
+  const shipDoc = db.collection("ships").doc(shipCode);
+  const ship = await shipDoc.get();
+  if (!ship.exists) return;
+
+  const shipData : ShipData = ship.data() as ShipData;
+  const isCurrentPlayer = checkIfCurrentPlayer(shipData, codeName);
+  if (isCurrentPlayer && shipData.games && shipData.games.length > 0) {
+    const game = shipData.games[shipData.games.length - 1];
+    //only do this if there's the right number of systems
+    if (nextCodename.length >= 5 && game.systems.length === 3 && game.systems[2].won) {
+      game.finalShipURL = finalShipURL;
+
+      shipData.games.push({
+        created: new Date(),
+        codeName: nextCodename,
+        systems: []
+      });
+
+      await shipDoc.set(shipData);
+    }
+  }
+
+  return {
+    shipCode,
+    ship: sanitiseData(shipData),
+    isCurrentPlayer: false
+  }
 });
 
 async function getNewShipId() : Promise<string> {

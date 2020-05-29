@@ -1,5 +1,15 @@
 
-.map {
+.map-page {
+  .systemInputContainer {
+    .systemInput {
+      display: inline-block;
+      width: 200px;
+      font-family: 'Tulpen One' !important;
+    }
+  }
+}
+
+.square-box.map {
   --aspect-ratio: 0.5;
   border-radius: 0;
   margin: 0.5em 0;
@@ -19,6 +29,7 @@
     top: calc(var(--element-width) * (var(--top) - var(--size)/2));
     left: calc(var(--element-width) * (var(--left) - var(--size)/2));
     width: calc(var(--element-width) * var(--size));
+    height: calc(var(--element-width) * var(--size));
     font-size: calc(var(--element-width) * var(--size) * 0.75);
   }
 

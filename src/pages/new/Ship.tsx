@@ -2,7 +2,7 @@ import { IonContent, IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCa
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
-import { ShipData, setPlayData } from '../../redux/actions';
+import { setPlayData } from '../../redux/actions';
 import Content from 'content/New/Ship.md';
 import MarkdownComponent from '../../components/MarkdownComponent';
 import { createNewShip } from 'firebaseConfig';
@@ -12,6 +12,7 @@ import { storeCodes } from 'storage';
 import './Ship.scss';
 import ShipCard from 'components/Game/GameElements/ShipCard';
 import modules from 'data/modules';
+import { ShipData } from 'model/Phases';
 
 const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const shipData = useSelector((state: any) => state.shipData) as ShipData;
@@ -31,7 +32,6 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
     setBusy(false);
     setShipCode(playData.shipCode);
     setShowPopover(true);
-    // history.push(nextUrl);
   }
 
   return (

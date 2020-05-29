@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, IonLoading } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Start from './pages/Start';
@@ -38,53 +38,55 @@ import Make from 'pages/Make';
 import { useSelector, useDispatch } from 'react-redux';
 import { retrieveCodes } from 'storage';
 import { getShipData } from 'firebaseConfig';
-import { setPlayData } from 'redux/actions';
+import { setPlayData, setLoading, setCodename } from 'redux/actions';
 
 const App: React.FC = () => {
-  const [busy, setBusy] = useState(false);
-  const { shipCode, shipData } = useSelector((state: any) => state);
+  const { shipCode, shipData, isLoading } = useSelector((state: any) => state);
   const dispatch = useDispatch();
-
-  async function checkLocalStorage() {
-    if (!shipCode)
-    {
-      const {shipCode, codeName} = await retrieveCodes();
-
-      if (shipCode) {
-        setBusy(true);
-        const resultData = await getShipData(shipCode, codeName);
-        if (resultData)
-        {
-          dispatch(setPlayData(resultData));
-        }
-      }
-      setBusy(false);
-    }
-    return;
-  }
+  const [hasChecked, setHasChecked] = useState(false);
 
   useEffect(() => {
-    if (!shipData)
+    async function checkLocalStorage() {
+      if (!shipCode)
+      {
+        dispatch(setLoading(true));
+        const {shipCode, codeName} = await retrieveCodes();
+
+        if (shipCode) {
+          console.log('asking for server stuff')
+          const resultData = await getShipData(shipCode, codeName);
+          if (resultData)
+          {
+            dispatch(setPlayData(resultData));
+            dispatch(setCodename(codeName));
+          }
+        }
+        dispatch(setLoading(false));
+      }
+      return;
+    }
+
+    if (!shipData && !isLoading && !hasChecked)
+    {
       checkLocalStorage();
-  });
+      setHasChecked(true);
+    }
+  }, [dispatch, hasChecked, isLoading, shipCode, shipData]);
 
   return (
     <IonApp>
-      {busy &&
-        <IonLoading isOpen={busy} message="Loading previous code" />
-      }
+      <IonLoading isOpen={isLoading} message="Loading previous game data" />
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/print" component={Print} />
           <Route path="/make" component={Make} />
-          <Route path="/start" component={Start} exact={true} />
           <Route path={continueURL} component={Continue} />
           <Route path={newURL} component={NewGame} />
           <Route path={endURL} component={EndGame} />
           <Route path={gameFuelURL} component={GameFuel} />
           <Route path={gameUpgradeURL} component={GameUpgrade} />
           <Route path={gameSurvivorURL} component={GameSurvivor} />
-          <Route exact path="/" render={() => <Redirect to="/start" />} />
+          <Route path="/" component={Start} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

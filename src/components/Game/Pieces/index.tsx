@@ -7,9 +7,9 @@ import MarkdownComponent from "../../MarkdownComponent";
 
 import pieces from './SpecificPieces';
 import { useSelector } from "react-redux";
-import { ShipData } from "redux/actions";
 
 import './Pieces.scss';
+import { ShipData } from "model/Phases";
 
 export interface IconProps {
   className?: string,

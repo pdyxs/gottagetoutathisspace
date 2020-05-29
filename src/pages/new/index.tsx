@@ -7,21 +7,22 @@ import { baseUrl as trainingUrl } from '../game-fuel';
 import InstructionFlow,
   { InstructionPagesInfo }
   from '../../components/InstructionFlow';
+import { PlayPhase } from 'model/Phases';
 
 const flow : InstructionPagesInfo = [
   {
     url: 'intro',
-    requiresShipCode: false,
+    phase: PlayPhase.Introduction,
     component: Intro
   },
   {
     url: 'make',
-    requiresShipCode: false,
+    phase: PlayPhase.Introduction,
     component: MakeGame
   },
   {
     url: 'assembleShip',
-    requiresShipCode: false,
+    phase: PlayPhase.Introduction,
     component: Ship
   }
 ];

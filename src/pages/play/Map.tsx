@@ -1,15 +1,18 @@
-import { IonContent, IonButton, IonItem } from '@ionic/react';
-import React from 'react';
+import { IonContent, IonButton, IonItem, IonInput, IonLoading } from '@ionic/react';
+import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
 import MarkdownComponent from '../../components/MarkdownComponent';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './Map.scss';
 import SquareCard from 'components/Cards/SquareCard';
 import { CellContentIcon } from 'components/Game/Pieces';
 import { CellContentTypes, StarTypes } from 'model/Level';
 import SizedInCSS from 'components/SizedInCSS';
+import { startNewSystem } from 'firebaseConfig';
+import { setPlayData } from 'redux/actions';
+import { useHistory } from 'react-router-dom';
 
 const MapSetup: React.FC<InstructionPageProps> = ({
     nextUrl, className,
@@ -20,16 +23,42 @@ const MapSetup: React.FC<InstructionPageProps> = ({
   }) => {
   const {
     shipData,
-    shipCode
+    shipCode,
+    codeName
   } = useSelector((state: any) => state);
+  const [systemName, setSystemName] = useState('');
+  const transformations = {
+    shipCode,
+    ...shipData,
+    systemName: systemName !== '' ? systemName : 'Unknown'
+  };
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [busy, setBusy] = useState(false);
+
+  async function onClickNext() {
+    setBusy(true);
+    var game = shipData.games[shipData.games.length - 1];
+    var systemCount = game.systems ? game.systems.length : 0;
+    let data = await startNewSystem(shipCode, codeName, systemCount + 1, systemName);
+    dispatch(setPlayData(data));
+    history.push(nextUrl);
+    setBusy(false);
+  }
 
   return (
     <IonContent className={className}>
-      <div className="page-container ion-text-center">
-        <MarkdownComponent source={header} transformations={{shipCode, ...shipData}} />
+      <IonLoading isOpen={busy} message="Getting System Data..." />
+      <div className="page-container ion-text-center map-page">
+        <MarkdownComponent source={header} transformations={transformations} />
         <IonItem color="notebook" className="handwritten">
-          <MarkdownComponent source={story} transformations={{shipCode, ...shipData}} />
+          <MarkdownComponent source={story} transformations={transformations} />
         </IonItem>
+        <h4 className="systemInputContainer">
+          This System's Name:
+          <IonInput onIonChange={e => setSystemName(e.detail.value || '')}
+            className="systemInput" type="text" placeholder="Unknown" />
+        </h4>
         <SquareCard className="map">
           <SizedInCSS>
             <CellContentIcon className="fuelStar map-object"
@@ -48,7 +77,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
             </svg>
           </SizedInCSS>
         </SquareCard>
-        <IonButton routerLink={nextUrl}>
+        <IonButton onClick={onClickNext}>
           Let's Set This Space Up
         </IonButton>
       </div>

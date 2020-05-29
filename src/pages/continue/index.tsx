@@ -9,13 +9,16 @@ import { baseUrl as trainingUrl } from '../game-fuel';
 import InstructionFlow,
   { InstructionPagesInfo }
   from '../../components/InstructionFlow';
+import { PlayPhase } from 'model/Phases';
 
 export const baseUrl = '/continue';
+const materialsName = 'materials';
+export const materialsURL = `${baseUrl}/${materialsName}`;
 
 const flow : InstructionPagesInfo = [
   {
     url: 'intro',
-    requiresShipCode: false,
+    phase: PlayPhase.Introduction,
     component: Intro
   },
   // {
@@ -24,13 +27,13 @@ const flow : InstructionPagesInfo = [
   //   component: History
   // },
   {
-    url: 'materials',
-    requiresShipCode: true,
+    url: materialsName,
+    phase: PlayPhase.Setup,
     component: Materials
   },
   {
-    url: 'assembleShip',
-    requiresShipCode: true,
+    url: 'ship',
+    phase: PlayPhase.Setup,
     component: Ship
   // },
   // {

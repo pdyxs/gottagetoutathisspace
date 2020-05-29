@@ -1,8 +1,7 @@
 import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
-import { ShipData } from '../../redux/actions';
 import Content from 'content/End/RecordLogs.md';
 import Content2 from 'content/End/RecordLogs2.md';
 import MarkdownComponent from '../../components/MarkdownComponent';
@@ -11,15 +10,17 @@ import { useHistory } from 'react-router-dom';
 import {useDropzone} from 'react-dropzone'
 import classNames from 'classnames';
 import './RecordLogs.scss';
+import { StateData } from 'redux/reducer';
+import { setPlayData } from 'redux/actions';
 
 const minCodeLength = 5;
 
 const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
-  const shipData = useSelector((state: any) => state.shipData) as ShipData;
-  const shipCode = useSelector((state: any) => state.shipCode);
+  const {shipCode, codeName, shipData} = useSelector((state: any) => state) as StateData;
   const [codenameInput, setCodenameInput] = useState('');
   const [busy, setBusy] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [chosenFileURL, setChosenFileURL] = useState('');
   const [chosenFile, setChosenFile] = useState<File>();
@@ -34,12 +35,17 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
   async function updateRecords(code : string) {
-    if (!chosenFile) return;
+    if (!chosenFile || !shipCode) return;
     setBusy(true);
-    let imageURL = await uploadFile(shipCode, 1, chosenFile);
-    await saveGameData(shipCode, {survived: true, nextCodename: code});
+    let imageURL = await uploadFile(shipCode, shipData?.games.length || 1, chosenFile);
+    let data = await saveGameData(shipCode, codeName || '', imageURL, code);
+    dispatch(setPlayData(data));
     setBusy(false);
     history.push(nextUrl);
+  }
+
+  function updateCodenameInput(newCode: string) {
+    setCodenameInput(newCode.replace(/\s/g,''));
   }
 
   return (
@@ -62,7 +68,7 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
           <IonLoading isOpen={busy} message="Updating Database" />
           <IonInput
             value={codenameInput} placeholder="Enter Codename Here"
-            onIonChange={e => setCodenameInput(e.detail.value!)} />
+            onIonChange={e => updateCodenameInput(e.detail.value!)} />
           <IonButton disabled={codenameInput.length < minCodeLength || chosenFile === null}
             onClick={() => updateRecords(codenameInput)}>Records Complete!</IonButton>
         </form>

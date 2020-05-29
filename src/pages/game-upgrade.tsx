@@ -18,11 +18,16 @@ import GameInstructions from 'content/Game-Upgrade/ScenarioInstructions.md';
 
 import WinContent from 'content/Game-Upgrade/Win.md';
 import LoseContent from 'content/Game-Upgrade/Lose.md';
+import { PlayPhase } from 'model/Phases';
+
+export const baseUrl = '/game/b';
+const setup = 'setup';
+export const gameUrl = `${baseUrl}/${setup}`;
 
 const flow : InstructionPagesInfo = [
   {
     url: 'map',
-    requiresShipCode: true,
+    phase: PlayPhase.GameBStart,
     component: Map,
     className: 'map-upgrade',
     extraProps: {
@@ -31,8 +36,8 @@ const flow : InstructionPagesInfo = [
     }
   },
   {
-    url: 'setup',
-    requiresShipCode: true,
+    url: setup,
+    phase: PlayPhase.GameB,
     component: MapSetup,
     extraProps: {
       level: level,
@@ -41,7 +46,7 @@ const flow : InstructionPagesInfo = [
   },
   {
     url: 'play',
-    requiresShipCode: true,
+    phase: PlayPhase.GameB,
     component: Game,
     extraProps: {
       level: level,
@@ -50,9 +55,7 @@ const flow : InstructionPagesInfo = [
       lose: LoseContent
     }
   }
-]
-
-export const baseUrl = '/game/b';
+];
 
 const GameFlow: React.FC = () => {
   return (

@@ -6,18 +6,19 @@ import InstructionFlow,
 
 import RecordLogs from './RecordLogs';
 import SendGame from './SendGame';
+import { PlayPhase } from 'model/Phases';
 
 export const baseUrl = '/end';
 
 const flow : InstructionPagesInfo = [
   {
     url: 'record',
-    requiresShipCode: true,
+    phase: PlayPhase.PostGame,
     component: RecordLogs
   },
   {
     url: 'send',
-    requiresShipCode: true,
+    phase: PlayPhase.Checkup,
     component: SendGame
   }
 ]
