@@ -90,6 +90,6 @@ const grid = new Level([
     { type: CellTypes.Space },
     { type: CellTypes.Blank }
   ]
-]);
+], StarTypes.BlueGiant);
 
 export default grid;

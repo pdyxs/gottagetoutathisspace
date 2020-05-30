@@ -95,6 +95,6 @@ const grid = new Level([
     },
     { type: CellTypes.Blank }
   ]
-]);
+], StarTypes.BlackHole);
 
 export default grid;

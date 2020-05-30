@@ -105,6 +105,6 @@ const grid = new Level([
       ]
     }
   ]
-]);
+], StarTypes.Yellow);
 
 export default grid;

@@ -65,7 +65,7 @@
   }
 
   .ship {
-    --size: 0.06;
+    --size: 0.12;
     color: orange !important;
     filter: drop-shadow( 3px 3px 0 rgba(0, 0, 0, .7));
   }
@@ -73,7 +73,7 @@
   .survivor {
     --size: 0.05;
     --left: 0.9;
-    --top: 0.275;
+    --top: 0.265;
     filter: drop-shadow( 2px -2px 0 rgba(0, 0, 0, .7));
   }
 
@@ -96,9 +96,9 @@
 
 .map-survivor {
   .ship {
-    --left: 0.86;
-    --top: 0.24;
-    transform: rotate(37deg);
+    --left: 0.83;
+    --top: 0.215;
+    transform: rotate(-143deg);
   }
 
   .lines {
@@ -111,8 +111,8 @@
 .map-upgrade {
   .ship {
     --left: 0.45;
-    --top: 0.075;
-    transform: rotate(0deg);
+    --top: 0.07;
+    transform: rotate(180deg);
   }
 
   .lines {
@@ -126,7 +126,7 @@
   .ship {
     --left: 0.148;
     --top: 0.148;
-    transform: rotate(-25deg);
+    transform: rotate(155deg);
   }
 
   .lines {

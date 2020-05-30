@@ -51,6 +51,6 @@ const grid = new Level([
       ]
     },
   ]
-]);
+], StarTypes.BlueGiant);
 
 export default grid;

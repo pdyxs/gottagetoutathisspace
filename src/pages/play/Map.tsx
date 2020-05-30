@@ -13,6 +13,8 @@ import SizedInCSS from 'components/SizedInCSS';
 import { startNewSystem } from 'firebaseConfig';
 import { setPlayData } from 'redux/actions';
 import { useHistory } from 'react-router-dom';
+import { upgradeLevel, survivorLevel } from 'data/levels';
+import { StateData } from 'redux/reducer';
 
 const MapSetup: React.FC<InstructionPageProps> = ({
     nextUrl, className,
@@ -25,7 +27,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     shipData,
     shipCode,
     codeName
-  } = useSelector((state: any) => state);
+  } = useSelector((state: any) => state) as StateData;
   const [systemName, setSystemName] = useState('');
   const transformations = {
     shipCode,
@@ -37,14 +39,18 @@ const MapSetup: React.FC<InstructionPageProps> = ({
   const [busy, setBusy] = useState(false);
 
   async function onClickNext() {
+    if (!shipData || !shipCode) return;
     setBusy(true);
     var game = shipData.games[shipData.games.length - 1];
     var systemCount = game.systems ? game.systems.length : 0;
-    let data = await startNewSystem(shipCode, codeName, systemCount + 1, systemName);
+    let data = await startNewSystem(shipCode, codeName || '', systemCount + 1, systemName);
     dispatch(setPlayData(data));
     history.push(nextUrl);
     setBusy(false);
   }
+
+  const uLevelStar = upgradeLevel(shipData?.games.length || 0)?.mainStar;
+  const sLevelStar = survivorLevel(shipData?.games.length || 0)?.mainStar;
 
   return (
     <IonContent className={className}>
@@ -57,16 +63,16 @@ const MapSetup: React.FC<InstructionPageProps> = ({
         <h4 className="systemInputContainer">
           This System's Name:
           <IonInput onIonChange={e => setSystemName(e.detail.value || '')}
-            className="systemInput" type="text" placeholder="Unknown" />
+            className="systemInput" type="text" placeholder="Enter system name here" />
         </h4>
         <SquareCard className="map">
           <SizedInCSS>
             <CellContentIcon className="fuelStar map-object"
               content={{type: CellContentTypes.Star, subtype: StarTypes.BlueGiant}} />
             <CellContentIcon className="upgradeStar map-object"
-              content={{type: CellContentTypes.Star, subtype: StarTypes.RedDwarf}} />
+              content={{type: CellContentTypes.Star, subtype: uLevelStar}} />
             <CellContentIcon className="survivorStar map-object"
-              content={{type: CellContentTypes.Star, subtype: StarTypes.Yellow}} />
+              content={{type: CellContentTypes.Star, subtype: sLevelStar}} />
             <CellContentIcon className="ship map-object"
               content={{type: CellContentTypes.Player}} />
             <CellContentIcon className="survivor map-object"
