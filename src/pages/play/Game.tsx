@@ -9,6 +9,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlayData } from 'redux/actions';
 import { registerSystemResult } from 'firebaseConfig';
+import { isFunction } from 'lodash';
+import { StateData } from 'redux/reducer';
 
 const Game: React.FC<InstructionPageProps> = ({
     nextUrl,
@@ -28,7 +30,9 @@ const Game: React.FC<InstructionPageProps> = ({
     shipData,
     shipCode,
     codeName
-  } = useSelector((state: any) => state);
+  } = useSelector((state: any) => state) as StateData;
+
+  level = isFunction(level) ? level(shipData?.games.length) : level;
 
   function winLevel() {
     setShowWinPopover(true);
@@ -40,9 +44,9 @@ const Game: React.FC<InstructionPageProps> = ({
 
   async function confirm(win: boolean, url: string) {
     setBusy(true);
-    var game = shipData.games[shipData.games.length - 1];
-    var systemCount = game.systems ? game.systems.length : 0;
-    let data = await registerSystemResult(shipCode, codeName, systemCount, win);
+    var game = shipData?.games[shipData.games.length - 1];
+    var systemCount = game?.systems ? game.systems.length : 0;
+    let data = await registerSystemResult(shipCode || '', codeName || '', systemCount, win);
     dispatch(setPlayData(data));
     history.push(url);
     setBusy(false);
@@ -59,10 +63,12 @@ const Game: React.FC<InstructionPageProps> = ({
   return (
     <IonContent>
       <IonLoading isOpen={busy} message="Saving Game Result..." />
-      <GameWithRules level={level}
-        includeControls={true} specialInstructions={instructions}
-        winLevel={winLevel}
-        loseLevel={loseLevel} />
+      {level &&
+        <GameWithRules level={level}
+          includeControls={true} specialInstructions={instructions}
+          winLevel={winLevel}
+          loseLevel={loseLevel} />
+      }
       <IonPopover isOpen={showWinPopover}
         backdropDismiss={false}
         cssClass="popoverWithCard"

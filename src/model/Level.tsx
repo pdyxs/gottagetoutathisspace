@@ -188,6 +188,10 @@ class Level {
     return null;
   }
 
+  generateOptions() {
+    
+  }
+
   updateRobots() {
     let toGrow : Array<Coords> = [];
     let robotCells : Array<Coords> = [];

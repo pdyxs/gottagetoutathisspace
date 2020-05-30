@@ -13,7 +13,6 @@ const grid = new Level([
       contents: [
         { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky, variety: 1 },
         { type: CellContentTypes.Module },
-        { type: CellContentTypes.Crew, variety: 2 }
       ]
     },
     {
@@ -27,7 +26,6 @@ const grid = new Level([
       contents: [
         { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky, variety: 2 },
         { type: CellContentTypes.Upgrade },
-        { type: CellContentTypes.Crew, variety: 1 }
       ]
     },
     {
@@ -41,8 +39,7 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.RobotFactory },
-        { type: CellContentTypes.Robot, count: 1 }
+        { type: CellContentTypes.Robot, count: 2 }
       ]
     },
     { type: CellTypes.Blank },

@@ -45,7 +45,7 @@ const NewModuleControls : React.FC<ControlProps> = ({className, level, coordinat
   return (
     <div slot="end" className={className}>
       <IonButton color="success" size="default" onClick={setupModule}>
-        Pick up
+        Install
       </IonButton>
       <IonPopover
         isOpen={showIntroPopover}

@@ -4,7 +4,7 @@ import { InstructionPageProps } from '../../components/InstructionFlow';
 import GameGrid from '../../components/Game/GameGrid';
 
 import MarkdownComponent from '../../components/MarkdownComponent';
-import { flatten, filter, find, isNil, floor } from 'lodash';
+import { flatten, filter, find, isNil, floor, isFunction } from 'lodash';
 import Level, { CellTypes, CellContentTypes } from 'model/Level';
 import { useSelector, useDispatch } from 'react-redux';
 import { add, remove } from "ionicons/icons";
@@ -18,18 +18,19 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     }
 }) => {
   let {
-    playerCount
+    playerCount,
+    shipData
   } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const [refreshCount, setRefresh] = useState(0);
 
   playerCount = playerCount || 1;
-  const level:Level = l;
+  const level:Level = isFunction(l) ? l(shipData?.games.length) : l;
 
-  const playerPositions = filter(flatten(level.grid),
+  const playerPositions = level ? filter(flatten(level.grid),
     cell => cell.type !== CellTypes.Blank &&
             !isNil(find(cell.contents, c => c.type === CellContentTypes.Crew))
-  );
+  ) : [];
 
   function addPlayer() {
     dispatch(setPlayerCount(playerCount + 1));
@@ -67,7 +68,9 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     <IonContent>
       <div className="gameAndTextContainer">
         <div className="gameContainer">
-          <GameGrid level={level} />
+          {level &&
+            <GameGrid level={level} />
+          }
         </div>
         <div className="textContainer">
           <MarkdownComponent source={instructions} />

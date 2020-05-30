@@ -11,14 +11,13 @@ import { baseUrl as nextURL } from './game-survivor';
 
 import StoryContent from 'content/Game-Upgrade/Story.md';
 
-import level from 'data/levels/level01';
-
 import SetupInstructions from 'content/Game-Upgrade/MapSetup.md';
 import GameInstructions from 'content/Game-Upgrade/ScenarioInstructions.md';
 
 import WinContent from 'content/Game-Upgrade/Win.md';
 import LoseContent from 'content/Game-Upgrade/Lose.md';
 import { PlayPhase } from 'model/Phases';
+import { upgradeLevel } from 'data/levels';
 
 export const baseUrl = '/game/b';
 const setup = 'setup';
@@ -40,7 +39,7 @@ const flow : InstructionPagesInfo = [
     phase: PlayPhase.GameB,
     component: MapSetup,
     extraProps: {
-      level: level,
+      level: (game: number) => upgradeLevel(game),
       instructions: SetupInstructions
     }
   },
@@ -49,7 +48,7 @@ const flow : InstructionPagesInfo = [
     phase: PlayPhase.GameB,
     component: Game,
     extraProps: {
-      level: level,
+      level: (game: number) => upgradeLevel(game),
       instructions: GameInstructions,
       win: WinContent,
       lose: LoseContent
