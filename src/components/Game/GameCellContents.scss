@@ -40,24 +40,32 @@
 
 .game-cell-contents .ggo-icon-playerShip
 {
-  --size: calc(var(--element-width) * 0.3);
-  left: calc(var(--element-width) * 0.32);
-  top: calc(var(--element-width) * 0.35);
+  --size: calc(var(--element-width) * 0.8);
+  left: calc(var(--element-width) * 0.1);
+  top: calc(var(--element-width) * 0.1);
 }
 
 .game-cell-contents .ggo-icon-robotFactory
 {
-  --size: calc(var(--element-width) * 0.4);
+  --size: calc(var(--element-width) * 0.6);
   left: 0;
   width: 100%;
-  top: calc(var(--element-width) * 0.25);
+  top: calc(var(--element-width) * 0.1);
+}
+
+.game-cell-contents .ggo-icon-spaceStation
+{
+  --size: calc(var(--element-width) * 0.75);
+  left: 0;
+  width: 100%;
+  top: calc(var(--element-width) * 0.125);
 }
 
 .game-cell-contents .ggo-icon-container-robotFactory
 {
   left: 0;
   width: 100%;
-  top: calc(var(--element-width) * 0.25);
+  top: calc(var(--element-width) * 0.1);
 }
 
 .game-cell-contents .ggo-icon-planet
@@ -72,8 +80,26 @@
   top: calc((var(--game-cell-size) - var(--size)) / 2);
 }
 
+.game-cell-contents .ggo-icon-asteroidField {
+  --size: calc(var(--element-width) * 0.9);
+  left: 0;
+  width: 100%;
+  top: calc(var(--element-width) * 0.05);
+}
+
+.game-cell-contents .ggo-icon-gasCloud {
+  --size: calc(var(--element-width) * 0.8);
+  left: 0;
+  width: 100%;
+  top: calc(var(--element-width) * 0.1);
+}
+
 .game-cell-contents .ggo-icon-star {
   --size: calc(var(--element-width) * 0.5);
+}
+
+.game-cell-contents .ggo-icon-star-blackHole {
+  --size: calc(var(--element-width) * 0.8);
 }
 
 .game-cell-contents .ggo-icon-planet-gas {
@@ -84,9 +110,17 @@
   --size: calc(var(--element-width) * 0.3);
 }
 
+.game-cell-contents .ggo-icon-enemy {
+  --size: calc(var(--element-width) * 0.3);
+}
+
 .game-cell-contents .ggo-icon-container {
   position: absolute;
   text-align: center;
+
+  .img-icon {
+    display: inline-block;
+  }
 }
 
 .game-cell-contents .ggo-icon-container .ggo-icon {
@@ -103,11 +137,19 @@
   top: calc(var(--element-width) * 0.05);
 }
 
+.game-cell-contents .ggo-icon-container-crew {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .game-cell-contents .ggo-icon-container-crew,
 .game-cell-contents .ggo-icon-crew {
   left: var(--margin);
-  height: 100%;
-  margin: auto;
+  height: calc(var(--element-height)*0.23);
 }
 
 .game-cell-contents .ggo-icon-container-module,

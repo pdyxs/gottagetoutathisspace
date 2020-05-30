@@ -94,7 +94,14 @@
   }
 
   .ggo-icon {
-    --size: 1em !important;
+    --size: 3em !important;
+
+    &.ggo-icon-playerShip,
+    &.ggo-icon-robotFactory,
+    &.ggo-icon-spaceStation
+    {
+      --size: 4em !important;
+    }
   }
 }
 

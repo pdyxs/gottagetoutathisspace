@@ -14,26 +14,17 @@ library.add(far);
 library.add(fasp);
 library.add(farp);
 
-export const RobotIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'user-robot']} />
-
-export const RobotFactoryIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'robot']} />
-
-export const PlayerIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'space-shuttle']} rotation={270} />
-
 export const FuelIcon : React.FC<IconProps> = ({className}) =>
   <FontAwesomeIcon className={className} icon={['fas', 'bolt']} />
 
 export const CrewIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'user']} />
+  <FontAwesomeIcon className={className} icon={['fas', 'user-astronaut']} />
 
 export const UpgradeIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'tools']} />
+  <FontAwesomeIcon className={className} icon={['fas', 'wrench']} />
 
 export const ModuleIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['far', 'plus-square']} />
+  <FontAwesomeIcon className={className} icon={['fas', 'plus-octagon']} />
 
 export const DivIcon : React.FC<IconProps> = ({className}) =>
   <div className={className}  />

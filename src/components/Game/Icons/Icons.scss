@@ -2,7 +2,7 @@
   --size: calc(var(--element-width) * 0.2);
 }
 
-.ggo-icon-planet, .ggo-icon-star {
+.img-icon {
   font-size: initial;
   width: var(--size);
   height: var(--size);
@@ -28,4 +28,16 @@
 
 .ggo-icon-fuel {
     color: yellow;
+}
+
+.ggo-icon-crew {
+  color: var(--ion-color-secondary);
+}
+
+.ggo-icon-upgrade {
+  color: var(--ion-color-tertiary);
+}
+
+.ggo-icon-module {
+  color: orange;
 }

@@ -8,7 +8,8 @@
 }
 
 .card.ship-card {
-  background: #afdaea;
+  background: white;
+  border-color: black;
 
   .square-content {
     padding: 6%;
@@ -17,16 +18,19 @@
       --outline-width: calc(var(--element-width) * 0.002);
       --outline-colour: rgba(0,0,0,0.25);
       --noutline-width: calc(var(--outline-width) * -1);
+      --shadow-width: calc(var(--element-width) * 0.005);
+      --shadow-colour: rgba(0,0,0,0.5);
       font-size: calc(var(--element-width) * 0.19);
       text-shadow: var(--noutline-width)  var(--outline-width) 0 var(--outline-colour),
 				            var(--outline-width)  var(--outline-width) 0 var(--outline-colour),
 				            var(--outline-width) var(--noutline-width) 0 var(--outline-colour),
-				           var(--noutline-width) var(--noutline-width) 0 var(--outline-colour);
+				           var(--noutline-width) var(--noutline-width) 0 var(--outline-colour),
+                   var(--shadow-width)  var(--shadow-width) 0 var(--shadow-colour);
     }
 
     .effect {
-      font-size: calc(var(--element-width) * 0.06);
-      color: #666;
+      font-size: calc(var(--element-width) * 0.05);
+      color: #222;
     }
 
     .module-img {
@@ -85,7 +89,21 @@
       top: calc(var(--element-width) * 0.06);
     }
 
-    .effect {
+    .effect-0 {
+      text-align: left;
+      bottom: calc(var(--element-width) * 0.5);
+      left: calc(var(--element-width) * 0.08);
+      right: calc(var(--element-width) * 0.6);
+    }
+
+    .effect-1 {
+      text-align: left;
+      bottom: calc(var(--element-width) * 0.25);
+      left: calc(var(--element-width) * 0.08);
+      right: calc(var(--element-width) * 0.6);
+    }
+
+    .effect-2 {
       text-align: left;
       bottom: calc(var(--element-width) * 0.08);
       left: calc(var(--element-width) * 0.08);
@@ -110,7 +128,14 @@
       right: 0;
     }
 
-    .effect {
+    .effect-0 {
+      left: calc(var(--element-width) * 0.06);
+      right: calc(var(--element-width) * 0.55);
+      top: calc(var(--element-width) * 0.06);
+      text-align: left;
+    }
+
+    .effect-1 {
       left: calc(var(--element-width) * 0.35);
       right: calc(var(--element-width) * 0.35);
       bottom: calc(var(--element-width) * 0.44);
@@ -119,14 +144,15 @@
     .damage-text {
       text-align: left;
       bottom: calc(var(--element-width) * 0.08);
-      left: calc(var(--element-width) * 0.47);
+      left: calc(var(--element-width) * 0.57);
     }
   }
 
   &.Cargo-Bay {
     h3 {
       bottom: calc(var(--element-width) * 0.02);
-      left: 0;
+      text-align: left;
+      left: calc(var(--element-width) * 0.08);
       right: 0;
     }
 
@@ -143,22 +169,22 @@
     }
 
     .effect-0 {
-      text-align: left;
-      bottom: calc(var(--element-width) * 0.45);
-      width: calc(var(--element-width) * 0.25);
-      right: calc(var(--element-width) * 0.3);
+      text-align: right;
+      top: calc(var(--element-width) * 0.08);
+      width: calc(var(--element-width) * 0.45);
+      right: calc(var(--element-width) * 0.08);
     }
 
     .effect-1 {
       text-align: left;
-      top: calc(var(--element-width) * 0.3);
-      width: calc(var(--element-width) * 0.35);
+      top: calc(var(--element-width) * 0.5);
+      width: calc(var(--element-width) * 0.2);
       left: calc(var(--element-width) * 0.08);
     }
 
     .effect-2 {
       text-align: right;
-      top: calc(var(--element-width) * 0.08);
+      bottom: calc(var(--element-width) * 0.08);
       width: calc(var(--element-width) * 0.4);
       right: calc(var(--element-width) * 0.08);
     }

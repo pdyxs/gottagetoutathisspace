@@ -43,20 +43,20 @@ const ShipCard: React.FC<ShipCardProps> = ({className, module}) => {
               </p>
             )}
           </SizedInCSS>
+
+          <SizedInCSS>
+            <div className="damage-text">
+              Damage
+            </div>
+            <div className="damage-container">
+              {[...Array(module?.damageSlots || 3)].map((_,i) => (
+                <div key={i} className={`damage-square damage-square-${i}`}>
+                </div>
+              ))}
+            </div>
+          </SizedInCSS>
         </>
       }
-
-      <SizedInCSS>
-        <div className="damage-text">
-          Damage
-        </div>
-        <div className="damage-container">
-          {[...Array(module?.damageSlots || 3)].map((_,i) => (
-            <div key={i} className={`damage-square damage-square-${i}`}>
-            </div>
-          ))}
-        </div>
-      </SizedInCSS>
     </SquareCard>
   );
 };

@@ -44,7 +44,7 @@ const space : Space[] = [
   },
   {
     type: CellContentTypes.RobotFactory,
-    count: 2
+    count: 3
   },
   {
     type: CellContentTypes.SpaceStation,
@@ -54,6 +54,14 @@ const space : Space[] = [
     type: CellContentTypes.Star,
     subtype: StarTypes.BlackHole,
     count: 1
+  },
+  {
+    type: CellContentTypes.AsteroidField,
+    count: 2
+  },
+  {
+    type: CellContentTypes.GasCloud,
+    count: 2
   }
 ];
 

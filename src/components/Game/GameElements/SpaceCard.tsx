@@ -41,7 +41,12 @@ const SpaceCard: React.FC<SpaceCardProps> = ({className, type, subtype, variety}
                   [`${type}-${subtype}`]: subtype,
                   [`${type}-${subtype}-${variety}`]: variety
                 })}
-                transformations={{type, subtype, variety}}
+                transformations={{
+                  type,
+                  subtype,
+                  variety,
+                  spec: `${type}-${subtype}-${variety}`
+                }}
                 source={piece.cardText || ''} />
             }
           </SizedInCSS>

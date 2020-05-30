@@ -17,7 +17,9 @@ export const SurvivorTokenPreviewComponent : React.FC<MaterialComponentProps> = 
   </div>;
 
 export const PrintSurvivorTokenComponent : React.FC<PrintComponentProps> =
-  ({className, buildOptionType}) =>
-  <div className={classNames(className, buildOptionClasses(buildOptionType))}>
-    <SurvivorComponent />
+  ({className, buildOptionType, count}) =>
+  <div className={classNames("crewTokens", className, buildOptionClasses(buildOptionType))}>
+    {[...Array(count)].map((_, i) => (
+      <SurvivorComponent key={i} />
+    ))}
   </div>;

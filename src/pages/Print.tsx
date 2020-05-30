@@ -64,7 +64,7 @@ const Print: React.FC = () => {
   const [,, ...buildOptions] = location.pathname.split('/');
 
   const materialsWithBuildOptions = take(materials, buildOptions.length);
-  const [materialCounts, setMaterialCounts] = useState(map(materialsWithBuildOptions, m => m.printCountMax));
+  const [materialCounts, setMaterialCounts] = useState(map(materialsWithBuildOptions, m => m.printCountDefault || m.printCountMax));
 
   function updateCount(index: number, countString: string) {
     var count : number = parseInt(countString);

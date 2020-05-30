@@ -12,7 +12,9 @@ const modules: ShipModule[] = [
     name: 'Cockpit',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Action: If you are at a star, leave this solar system'
+      "Action: Install an upgrade on this square",
+      "Action: Install a new module on this square",
+      "Action: When at a star, leave the solar system"
     ],
     upgrades: [
       {
@@ -39,7 +41,8 @@ const modules: ShipModule[] = [
     name: 'Crew Quarters',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Hold up to 3 Crew Members'
+      'Action: Pick up a survivor on this square',
+      'Holds 3 Crew Members'
     ],
     upgrades: [
       {
@@ -73,9 +76,9 @@ const modules: ShipModule[] = [
     name: 'Cargo Bay',
     type: ShipModuleType.Basic,
     basicEffects: [
-      'Hold up to 3 fuel',
-      'Spend 1 fuel to do 1 Action',
-      'Action: Pick up 1 Survivor, Upgrade or Module from a planet'
+      'Action: Pick up all fuel on this square',
+      'Holds 3 fuel',
+      'Spend 1 fuel to do 1 Action'
     ],
     upgrades: [
       {

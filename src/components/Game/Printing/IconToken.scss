@@ -9,29 +9,48 @@
     height: 90%;
   }
 
-  &.robot {
+  &.enemy {
     width: 16mm;
-    background: grey;
-  }
-
-  &.playerShip {
-    background: white;
-    color: rgb(0,150,0);
+    background: lightgrey;
   }
 
   &.crew {
     background: white;
-    color: var(--ion-color-secondary);
+    border-color: black;
+
+    &:nth-child(2) .ggo-icon {
+      color: orange;
+    }
+
+    &:nth-child(3) .ggo-icon {
+      color: darkgreen;
+    }
+
+    &:nth-child(4) .ggo-icon {
+      color: red;
+    }
   }
 
   &.upgrade {
     background: var(--ion-color-tertiary);
-    color: white;
+
+    .ggo-icon {
+      color: white;
+    }
   }
 
   &.module {
     background: orange;
-    color: white;
+    .ggo-icon {
+      color: white;
+    }
+  }
+
+  &.playerShip {
+    background: white;
+    border-color: black;
+    width: 36mm;
+    --aspect-ratio: 0.66;
   }
 
   &.fuel {
