@@ -59,7 +59,12 @@ export const CellContentDescription : React.FC<CellContentDescriptionProps> = ({
         `ggo-description-${content.type}-${content.subtype || 'default'}`
       )}
       source={description}
-      transformations={{...shipData, ...content, includeControls}} />
+      transformations={
+        { ...shipData,
+          ...content,
+          includeControls,
+          spec: `${content.type}-${content.subtype}-${content.variety}`
+        }} />
   );
 }
 

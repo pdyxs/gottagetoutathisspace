@@ -39,6 +39,7 @@ const Start: React.FC = () => {
             <IonButton
               size="large"
               routerLink="/new"
+              onClick={reset}
               color="primary">
               I didn't, but this sounds fun
             </IonButton>

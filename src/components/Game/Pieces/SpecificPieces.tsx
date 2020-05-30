@@ -3,18 +3,15 @@ import { ControlProps, IconProps } from ".";
 import { set } from "lodash";
 import { CellContentTypes, PlanetTypes, StarTypes } from "../../../model/Level";
 
-// import PlayerControls from "../Controls/PlayerControls";
 import PlayerDescription from 'content/Descriptions/PlayerDescription.md'
-import { PlayerIcon, RobotIcon, CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon, RobotFactoryIcon } from "../Icons";
+import { CrewIcon, FuelIcon, UpgradeIcon, ModuleIcon } from "../Icons";
 
 import RobotDescription from 'content/Descriptions/RobotDescription.md';
-// import RobotControls from "../Controls/RobotControls";
 
 import CrewDescription from 'content/Descriptions/CrewDescription.md';
 import CrewControls from "../Controls/CrewControls";
 
 import FuelDescription from 'content/Descriptions/FuelDescription.md';
-// import FuelControls from "../Controls/FuelControls";
 
 import UpgradeDescription from 'content/Descriptions/UpgradeDescription.md';
 
@@ -30,6 +27,13 @@ import RobotFactoryDescription from 'content/Descriptions/RobotFactoryDescriptio
 import RobotFactoryCardText from 'content/CardText/RobotFactory.md';
 
 import SpaceStationCardText from 'content/CardText/SpaceStation.md';
+import SpaceStationDescription from 'content/Descriptions/SpaceStation.md';
+
+import AsteroidFieldCardText from 'content/CardText/AsteroidField.md';
+import AsteroidFieldDescription from 'content/Descriptions/AsteroidField.md';
+
+import GasCloudDescription from 'content/Descriptions/GasCloud.md';
+import GasCloudCardText from 'content/CardText/GasCloud.md';
 
 import UpgradeControls from "../Controls/UpgradeControls";
 import NewModuleControls from "../Controls/NewModuleControls";
@@ -59,17 +63,15 @@ const pieces = setAll([
   {
     key: CellContentTypes.Player,
     val: {
-      // controls: PlayerControls,
       description: PlayerDescription,
-      icon: PlayerIcon
+      icon: ImageIcon
     }
   },
   {
     key: CellContentTypes.Robot,
     val: {
-      // controls: RobotControls,
       description: RobotDescription,
-      icon: RobotIcon
+      icon: ImageIcon
     }
   },
   {
@@ -83,7 +85,6 @@ const pieces = setAll([
   {
     key: CellContentTypes.Fuel,
     val: {
-      // controls: FuelControls,
       description: FuelDescription,
       icon: FuelIcon
     }
@@ -108,9 +109,9 @@ const pieces = setAll([
     key: CellContentTypes.Star,
     val: {
       name: {
-        [StarTypes.BlueGiant]: "Blue Giant",
+        [StarTypes.BlueGiant]: "Blue Star",
         [StarTypes.Yellow]: "Yellow Star",
-        [StarTypes.RedDwarf]: "Red Dwarf",
+        [StarTypes.RedDwarf]: "Red Star",
         [StarTypes.BlackHole]: "Black Hole"
       },
       icon: ImageIcon,
@@ -134,7 +135,7 @@ const pieces = setAll([
     key: CellContentTypes.RobotFactory,
     val: {
       name: "Robot Factory",
-      icon: RobotFactoryIcon,
+      icon: ImageIcon,
       description: RobotFactoryDescription,
       cardText: RobotFactoryCardText
     }
@@ -143,7 +144,27 @@ const pieces = setAll([
     key: CellContentTypes.SpaceStation,
     val: {
       name: "Space Station",
-      cardText: SpaceStationCardText
+      cardText: SpaceStationCardText,
+      description: SpaceStationDescription,
+      icon: ImageIcon
+    }
+  },
+  {
+    key: CellContentTypes.AsteroidField,
+    val: {
+      name: "Asteroid Field",
+      description: AsteroidFieldDescription,
+      cardText: AsteroidFieldCardText,
+      icon: ImageIcon
+    }
+  },
+  {
+    key: CellContentTypes.GasCloud,
+    val: {
+      name: "Gas Cloud",
+      description: GasCloudDescription,
+      cardText: GasCloudCardText,
+      icon: ImageIcon
     }
   }
 ]);

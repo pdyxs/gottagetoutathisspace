@@ -14,20 +14,11 @@ library.add(far);
 library.add(fasp);
 library.add(farp);
 
-export const RobotIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'user-robot']} />
-
-export const RobotFactoryIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'robot']} />
-
-export const PlayerIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'space-shuttle']} rotation={270} />
-
 export const FuelIcon : React.FC<IconProps> = ({className}) =>
   <FontAwesomeIcon className={className} icon={['fas', 'bolt']} />
 
 export const CrewIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'user']} />
+  <FontAwesomeIcon className={className} icon={['fas', 'user-astronaut']} />
 
 export const UpgradeIcon : React.FC<IconProps> = ({className}) =>
   <FontAwesomeIcon className={className} icon={['fas', 'tools']} />

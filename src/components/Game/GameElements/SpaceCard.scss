@@ -63,9 +63,27 @@
       }
 
       &.ggo-icon-robotFactory {
-        --size: calc(var(--element-width) * 0.3);
-        // transform: scale(5);
-        // font-size: calc(var(--element-width) * 20);
+        --size: 60%;
+      }
+
+      &.ggo-icon-star-blackHole {
+        --size: 44%;
+        position: absolute;
+        top: 23%;
+      }
+
+      &.ggo-icon-spaceStation {
+        --size: 50%;
+      }
+
+      &.ggo-icon-asteroidField {
+        --size: 70%;
+        position: absolute;
+        top: 13%;
+      }
+
+      &.ggo-icon-gasCloud {
+        --size: 60%;
       }
     }
 
@@ -74,12 +92,15 @@
     }
 
     .space-card-effect {
+      --shadow-size: calc(var(--element-width) * 0.004);
+      color: var(--ion-text-color);
+      text-shadow: var(--shadow-size) var(--shadow-size) rgba(0,0,0,0.7);
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
       text-align: center;
-      font-size: calc(var(--element-width) * 0.06);
+      font-size: calc(var(--element-width) * 0.065);
       padding: 6%;
     }
   }
