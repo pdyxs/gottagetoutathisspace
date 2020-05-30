@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1,0,0,1,-4545,-458)">
-        <g id="Gun-Target" serif:id="Gun Target" transform="matrix(0.507614,0,0,0.552486,2381.55,204.961)">
+    <g transform="matrix(1,0,0,1,-8008.59,-458)">
+        <g id="Gun-Target" serif:id="Gun Target" transform="matrix(0.507614,0,0,0.552486,5845.14,204.961)">
             <rect x="4262" y="458" width="591" height="543" style="fill:none;"/>
             <clipPath id="_clip1">
                 <rect x="4262" y="458" width="591" height="543"/>
@@ -10,24 +10,48 @@
             <g clip-path="url(#_clip1)">
                 <g transform="matrix(2.15469,0,0,1.81,3085.91,-396.32)">
                     <g id="Active-Squares" serif:id="Active Squares">
-                        <g transform="matrix(0.645378,0,0,0.705882,-792.686,-441.412)">
-                            <g id="Target-Square" serif:id="Target Square" transform="matrix(1.41667,-0,-0,1.41667,2074,1294)">
-                                <use xlink:href="#_Image2" x="181.601" y="120.715" width="62.083px" height="62.083px" transform="matrix(0.98545,0,0,0.98545,0,0)"/>
+                        <g id="Target-Square" serif:id="Target Square" transform="matrix(0.914286,0,0,1,-2259.2,-532)">
+                            <g id="Active-Square" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square1" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,635.303,1100.3)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(172,25,25);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-847.543,-501.412)">
-                            <g id="Target-Square1" serif:id="Target Square" transform="matrix(1.41667,-0,-0,1.41667,2159,1379)">
-                                <use xlink:href="#_Image2" x="120.715" y="59.829" width="62.083px" height="62.083px" transform="matrix(0.98545,0,0,0.98545,0,0)"/>
+                        <g id="Target-Square1" serif:id="Target Square" transform="matrix(0.914286,0,0,1,-2314.06,-592)">
+                            <g id="Active-Square2" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square3" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,635.303,1100.3)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(172,25,25);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-847.543,-381.412)">
-                            <g id="Target-Square2" serif:id="Target Square" transform="matrix(1.41667,-0,-0,1.41667,2159,1209)">
-                                <use xlink:href="#_Image2" x="120.715" y="181.601" width="62.083px" height="62.083px" transform="matrix(0.98545,0,0,0.98545,0,0)"/>
+                        <g id="Target-Square2" serif:id="Target Square" transform="matrix(0.914286,0,0,1,-2314.06,-472)">
+                            <g id="Active-Square4" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square5" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,635.303,1100.3)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(172,25,25);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-902.4,-441.412)">
-                            <g id="Target-Square3" serif:id="Target Square" transform="matrix(1.41667,-0,-0,1.41667,2244,1294)">
-                                <use xlink:href="#_Image2" x="59.829" y="120.715" width="62.083px" height="62.083px" transform="matrix(0.98545,0,0,0.98545,0,0)"/>
+                        <g id="Target-Square3" serif:id="Target Square" transform="matrix(0.914286,0,0,1,-2368.91,-532)">
+                            <g id="Active-Square6" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square7" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1604,90.5882)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,635.303,1100.3)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(172,25,25);stroke-width:3.33px;"/>
                             </g>
                         </g>
                     </g>
@@ -193,9 +217,15 @@
                             </g>
                         </g>
                     </g>
-                    <g transform="matrix(0.645378,0,0,0.705882,-847.543,-441.412)">
-                        <g id="Centre-Square" serif:id="Centre Square" transform="matrix(1.41667,-0,-0,1.41667,2159,1294)">
-                            <use xlink:href="#_Image2" x="120.715" y="120.715" width="62.083px" height="62.083px" transform="matrix(0.98545,0,0,0.98545,0,0)"/>
+                    <g id="Centre-Square-Damage" serif:id="Centre Square Damage" transform="matrix(0.914286,0,0,1,-2163.66,-562)">
+                        <g id="Active-Square8" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1439.5,120.588)">
+                            <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                        </g>
+                        <g id="Active-Square9" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1439.5,120.588)">
+                            <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                        </g>
+                        <g transform="matrix(1,0,0,1,470.803,1130.3)">
+                            <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(172,25,25);stroke-width:3.33px;"/>
                         </g>
                     </g>
                     <g transform="matrix(1.69648e-17,0.30303,-0.421683,2.82413e-17,1082.73,36.5455)">
@@ -222,14 +252,11 @@
                             <path d="M150,150L99,150" style="fill:none;stroke:rgb(221,31,38);stroke-width:3.75px;"/>
                         </g>
                     </g>
-                    <g transform="matrix(0.896359,0,0,0.980392,-2194.79,-556.922)">
-                        <circle cx="3210.5" cy="1202.5" r="25.5" style="fill:rgb(113,111,111);stroke:white;stroke-width:1.91px;"/>
+                    <g transform="matrix(0.537815,0,0,0.588235,-1043.68,-85.3529)">
+                        <circle cx="3210.5" cy="1202.5" r="25.5" style="fill:rgb(113,111,111);"/>
                     </g>
                 </g>
             </g>
         </g>
     </g>
-    <defs>
-        <image id="_Image2" width="63px" height="63px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAA/CAYAAABXXxDfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAtElEQVRoge3bsRGCYBAF4QdYgwZWQDdGtGM/RnZDBQ4DNcj8RjJW4AW7X3Th2wKua61NScbwzH2Y4Ukynr7X6zZlX7fKMX8xXM65Ph9JkiN+X7e8l6VsVIW+ekAl46mMpzKeyngq46mMpzKeyngq46mMpzKeyngq46mMpzKeyngq46mMpzKeyngq46mMpzKeyngq46mMpzKeCh1/PBUOl3Pljr/57exaa/fCLaX6JHP1iCLzBwASFkxf3vhCAAAAAElFTkSuQmCC"/>
-    </defs>
 </svg>

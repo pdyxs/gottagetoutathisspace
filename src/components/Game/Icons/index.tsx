@@ -21,10 +21,10 @@ export const CrewIcon : React.FC<IconProps> = ({className}) =>
   <FontAwesomeIcon className={className} icon={['fas', 'user-astronaut']} />
 
 export const UpgradeIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['fas', 'tools']} />
+  <FontAwesomeIcon className={className} icon={['fas', 'wrench']} />
 
 export const ModuleIcon : React.FC<IconProps> = ({className}) =>
-  <FontAwesomeIcon className={className} icon={['far', 'plus-square']} />
+  <FontAwesomeIcon className={className} icon={['fas', 'plus-octagon']} />
 
 export const DivIcon : React.FC<IconProps> = ({className}) =>
   <div className={className}  />

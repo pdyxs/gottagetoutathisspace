@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1,0,0,1,-4545,-1110.75)">
-        <g id="Thruster-Squares" serif:id="Thruster Squares" transform="matrix(0.507614,0,0,0.552486,2381.55,857.716)">
+    <g transform="matrix(1,0,0,1,-8008.59,-1110.75)">
+        <g id="Thruster-Squares" serif:id="Thruster Squares" transform="matrix(0.507614,0,0,0.552486,5845.14,857.716)">
             <rect x="4262" y="458" width="591" height="543" style="fill:none;"/>
             <clipPath id="_clip1">
                 <rect x="4262" y="458" width="591" height="543"/>
@@ -10,52 +10,103 @@
             <g clip-path="url(#_clip1)">
                 <g transform="matrix(2.15469,0,0,1.81,3085.91,-396.32)">
                     <g id="Centre-Square" serif:id="Centre Square" transform="matrix(0.914286,0,0,1,-2120.23,-281)">
-                        <g id="Centre-Square1" serif:id="Centre Square" transform="matrix(0.705882,0,0,0.705882,1392,-160.412)">
-                            <rect x="2329" y="1464" width="85" height="85" style="fill:white;stroke:white;stroke-width:2.95px;"/>
+                        <g transform="matrix(0.588235,0,0,0.588235,1177.47,195.647)">
+                            <circle cx="3210.5" cy="1202.5" r="25.5" style="fill:rgb(113,111,111);stroke:white;stroke-width:3.19px;"/>
                         </g>
-                        <g transform="matrix(0.980392,0,0,0.980392,-81.549,-275.922)">
-                            <circle cx="3210.5" cy="1202.5" r="25.5" style="fill:rgb(113,111,111);stroke:white;stroke-width:1.91px;"/>
+                        <g id="Active-Square" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1392,-160.412)">
+                            <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                        </g>
+                        <g id="Active-Square1" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1392,-160.412)">
+                            <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
                         </g>
                     </g>
                     <g id="Active-Squares" serif:id="Active Squares">
-                        <g transform="matrix(0.645378,0,0,0.705882,-847.543,-501.412)">
-                            <g id="Active-Square" serif:id="Active Square">
-                                <rect id="Active-Square1" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square2" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2368.91,-485)">
+                            <g id="Active-Square3" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square4" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-792.686,-441.412)">
-                            <g id="Active-Square2" serif:id="Active Square">
-                                <rect id="Active-Square3" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square5" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2314.06,-425)">
+                            <g id="Active-Square6" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square7" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-792.686,-501.412)">
-                            <g id="Active-Square4" serif:id="Active Square">
-                                <rect id="Active-Square5" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square8" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2314.06,-485)">
+                            <g id="Active-Square9" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square10" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-902.4,-501.412)">
-                            <g id="Active-Square6" serif:id="Active Square">
-                                <rect id="Active-Square7" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square11" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2423.77,-485)">
+                            <g id="Active-Square12" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square13" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-902.4,-441.412)">
-                            <g id="Active-Square8" serif:id="Active Square">
-                                <rect id="Active-Square9" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square14" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2423.77,-425)">
+                            <g id="Active-Square15" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square16" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-902.4,-381.412)">
-                            <g id="Active-Square10" serif:id="Active Square">
-                                <rect id="Active-Square11" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square17" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2423.77,-365)">
+                            <g id="Active-Square18" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square19" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-847.543,-381.412)">
-                            <g id="Active-Square12" serif:id="Active Square">
-                                <rect id="Active-Square13" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square20" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2368.91,-365)">
+                            <g id="Active-Square21" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square22" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
-                        <g transform="matrix(0.645378,0,0,0.705882,-792.686,-381.412)">
-                            <g id="Active-Square14" serif:id="Active Square">
-                                <rect id="Active-Square15" serif:id="Active Square" x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);stroke:white;stroke-width:2.95px;"/>
+                        <g id="Active-Square23" serif:id="Active Square" transform="matrix(0.914286,0,0,1,-2314.06,-365)">
+                            <g id="Active-Square24" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:black;stroke-width:1.77px;"/>
+                            </g>
+                            <g id="Active-Square25" serif:id="Active Square" transform="matrix(0.705882,0,0,0.705882,1664,-16.4118)">
+                                <rect x="2329" y="1464" width="85" height="85" style="fill:rgb(235,211,124);fill-opacity:0;stroke:white;stroke-opacity:0.44;stroke-width:2.95px;"/>
+                            </g>
+                            <g transform="matrix(1,0,0,1,695.303,993.303)">
+                                <circle cx="2642.7" cy="53.697" r="27.697" style="fill:rgb(235,211,124);fill-opacity:0;stroke:rgb(42,141,31);stroke-width:3.33px;"/>
                             </g>
                         </g>
                     </g>

@@ -78,6 +78,7 @@ export function buildOptionClasses(type:MaterialBuildOptionType) {
 interface Material {
   count: number | string,
   printCountMin: number,
+  printCountDefault?: number,
   printCountMax: number,
   extraComponentDescription?: string,
   name: string,

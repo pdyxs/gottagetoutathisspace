@@ -76,6 +76,7 @@ const materials: Material[] = [
   {
     count: 16,
     printCountMin: 16,
+    printCountDefault: 16,
     printCountMax: 32,
     extraComponentDescription: "Extra cards are for the backs (used to denote empty space)",
     name: "Space Cards",
@@ -112,11 +113,11 @@ const materials: Material[] = [
   {
     count: "5-10",
     printCountMin: 5,
-    printCountMax: 12,
-    extraComponentDescription: "Cards 6-8 are advanced modules that you don't start with, 9+ are blanks",
+    printCountDefault: 5,
+    printCountMax: 18,
+    extraComponentDescription: "Cards after the first 5 are blanks",
     name: "Ship Module Cards",
     description: "These modules come together to make your ship. Each affects what you can do or what your ship can contain in some way.",
-    // buildDescription: "The full deck includes 10 blank ship module cards that you and your friends can use to expand the ship",
     buildOptions: [
       // {
       //   type: MaterialBuildOptionType.Buy,
@@ -149,7 +150,8 @@ const materials: Material[] = [
   {
     count: "1 or more",
     printCountMin: 1,
-    printCountMax: 10,
+    printCountDefault: 8,
+    printCountMax: 14,
     extraComponentDescription: "Extra cards are for crew members you'll pick up along the way",
     name: "Crew Cards",
     description: "Your crew. Each comes with an ability that can be used once per game",
