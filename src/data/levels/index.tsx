@@ -27,10 +27,14 @@ const survivors: Level[] = [
   survivor_final
 ]
 
+const overrideGame = undefined;
+
 export function upgradeLevel(game: number) : Level {
+  game = overrideGame || game;
   return upgrades[(game - 1) % upgrades.length];
 }
 
 export function survivorLevel(game: number) : Level {
+  game = overrideGame || game;
   return survivors[(game - 1) % survivors.length];
 }
