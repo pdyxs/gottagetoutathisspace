@@ -10,6 +10,6 @@ As the ship gets improved and damaged, you’ll change the board game components
 
 Once you've finished (assuming you do, in fact, get outta this space), you'll pack up the game and send it to someone else, who'll then do the same.
 
-Together, you’re charting a path out of the galaxy - if you make it, you can escape the grasp of the new robot overlords!
+Together, you might just be able to stay alive and out of reach of the new robot overlords!
 
 To begin, please enter the serial number of the ship (on the game's Cover Sheet), and the codename that you've been assigned (in the Ship's Log).

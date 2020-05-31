@@ -4,7 +4,7 @@ import { IonButton, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardCon
 import { ControlProps } from "../Pieces";
 import MarkdownComponent from "components/MarkdownComponent";
 import ShipModule from "model/Module";
-import { take, shuffle, times } from "lodash";
+import { take, shuffle } from "lodash";
 import ShipModules from 'data/modules';
 import classNames from "classnames";
 
@@ -13,7 +13,7 @@ import MakeModuleContent from 'content/Controls/MakeModule.md';
 import { CellContentTypes } from "model/Level";
 
 import './NewModuleControls.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ShipCard from "../GameElements/ShipCard";
 
 const moduleOptionCount = 3;
 
@@ -45,7 +45,7 @@ const NewModuleControls : React.FC<ControlProps> = ({className, level, coordinat
   return (
     <div slot="end" className={className}>
       <IonButton color="success" size="default" onClick={setupModule}>
-        Pick up
+        Install
       </IonButton>
       <IonPopover
         isOpen={showIntroPopover}
@@ -101,19 +101,8 @@ const NewModuleControls : React.FC<ControlProps> = ({className, level, coordinat
               className="markdown-content"
               source={MakeModuleContent}
               transformations={{moduleName: moduleChosen?.name || ''}} />
-            <IonItem color="notebook" class="effectNote note handwritten">
-              <div slot="start" className="full-width">
-                <div className="note-heading">{moduleChosen?.name}</div>
-                {moduleChosen?.basicEffects.map((effect,i) =>
-                  <div key={i} className="note-content ion-padding-bottom">{effect}</div>
-                )}
-                <div className="damage-squares-container">
-                  Damage:
-                  {times(moduleChosen?.damageSlots || 0).map((_d,i) =>
-                    <FontAwesomeIcon className="damage-square" key={i} icon={['far', 'square']} />
-                  )}
-                </div>
-              </div>
+            <IonItem color="clear" class="effectNote note handwritten">
+              <ShipCard module={moduleChosen || undefined} />
             </IonItem>
             <IonItem button onClick={() => {setModuleChosen(null); setShowIntroPopover(true);}}>
               Actually, I might build something else

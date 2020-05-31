@@ -5,7 +5,7 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant, variety: 1 },
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant, variety: 2 },
         { type: CellContentTypes.Fuel, count: 3 }
       ]
     },
@@ -60,6 +60,6 @@ const grid = new Level([
       ]
     }
   ]
-]);
+], StarTypes.Yellow);
 
 export default grid;

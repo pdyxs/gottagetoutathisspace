@@ -94,6 +94,6 @@ const grid = new Level([
     { type: CellTypes.Blank },
     { type: CellTypes.Blank }
   ]
-]);
+], StarTypes.RedDwarf);
 
 export default grid;

@@ -1,4 +1,12 @@
+.handwritten {
+  .card.ship-card {
+    background-color: var(--ion-color-notebook);
 
+    .damage-text {
+      margin-bottom: calc(var(--element-width)*0.03) !important;
+    }
+  }
+}
 
 .material-build-preview-container
 .material-build-preview {

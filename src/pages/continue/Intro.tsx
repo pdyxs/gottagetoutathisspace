@@ -1,4 +1,4 @@
-import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
+import { IonButton, IonInput, IonLoading } from '@ionic/react';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPlayData, setCodename } from '../../redux/actions';
@@ -36,21 +36,19 @@ const ContinueIntro: React.FC<InstructionPageProps> = ({nextUrl}) => {
   }
 
   return (
-    <IonContent>
-      <div className="page-container">
-        <MarkdownComponent source={Content} />
-        <form className="centre">
-          <IonLoading isOpen={busy} message="Checking Ship Code" />
-          <IonInput
-            value={shipCodeInput} placeholder="Enter Ship Code Here"
-            onIonChange={e => setShipCodeInput(e.detail.value!)} />
-          <IonInput
-            value={codeNameInput} placeholder="Enter Codename Here"
-            onIonChange={e => setCodeNameInput(e.detail.value!)} />
-          <IonButton disabled={shipCodeInput.length < minCodeLength} onClick={() => setCode()}>Enter</IonButton>
-        </form>
-      </div>
-    </IonContent>
+    <div className="page-container">
+      <MarkdownComponent source={Content} />
+      <form className="centre">
+        <IonLoading isOpen={busy} message="Checking Ship Code" />
+        <IonInput
+          value={shipCodeInput} placeholder="Enter Ship Code Here"
+          onIonChange={e => setShipCodeInput(e.detail.value!)} />
+        <IonInput
+          value={codeNameInput} placeholder="Enter Codename Here"
+          onIonChange={e => setCodeNameInput(e.detail.value!)} />
+        <IonButton disabled={shipCodeInput.length < minCodeLength} onClick={() => setCode()}>Enter</IonButton>
+      </form>
+    </div>
   );
 };
 

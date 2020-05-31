@@ -1,4 +1,4 @@
-import { IonContent, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLoading } from '@ionic/react';
+import { IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLoading } from '@ionic/react';
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
@@ -9,6 +9,10 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlayData } from 'redux/actions';
 import { registerSystemResult } from 'firebaseConfig';
+import { isFunction } from 'lodash';
+import { StateData } from 'redux/reducer';
+
+import { baseUrl as lossUrl } from 'pages/loss';
 
 const Game: React.FC<InstructionPageProps> = ({
     nextUrl,
@@ -28,7 +32,9 @@ const Game: React.FC<InstructionPageProps> = ({
     shipData,
     shipCode,
     codeName
-  } = useSelector((state: any) => state);
+  } = useSelector((state: any) => state) as StateData;
+
+  level = isFunction(level) ? level(shipData?.games.length) : level;
 
   function winLevel() {
     setShowWinPopover(true);
@@ -39,30 +45,35 @@ const Game: React.FC<InstructionPageProps> = ({
   }
 
   async function confirm(win: boolean, url: string) {
+    if (!shipData) return;
     setBusy(true);
-    var game = shipData.games[shipData.games.length - 1];
-    var systemCount = game.systems ? game.systems.length : 0;
-    let data = await registerSystemResult(shipCode, codeName, systemCount, win);
+    var game = shipData?.games[shipData.games.length - 1];
+    var systemCount = game?.systems ? game.systems.length : 0;
+    let data = await registerSystemResult(shipCode || '', codeName || '', systemCount, win);
     dispatch(setPlayData(data));
     history.push(url);
     setBusy(false);
   }
 
   async function confirmWin() {
+    setShowWinPopover(false);
     confirm(true, nextUrl);
   }
 
   async function confirmLose() {
-    confirm(false, '/');
+    setShowLosePopover(false);
+    confirm(false, lossUrl);
   }
 
   return (
-    <IonContent>
+    <>
       <IonLoading isOpen={busy} message="Saving Game Result..." />
-      <GameWithRules level={level}
-        includeControls={true} specialInstructions={instructions}
-        winLevel={winLevel}
-        loseLevel={loseLevel} />
+      {level &&
+        <GameWithRules level={level}
+          includeControls={true} specialInstructions={instructions}
+          winLevel={winLevel}
+          loseLevel={loseLevel} />
+      }
       <IonPopover isOpen={showWinPopover}
         backdropDismiss={false}
         cssClass="popoverWithCard"
@@ -108,7 +119,7 @@ const Game: React.FC<InstructionPageProps> = ({
           </IonCardContent>
         </IonCard>
       </IonPopover>
-    </IonContent>
+    </>
   );
 };
 

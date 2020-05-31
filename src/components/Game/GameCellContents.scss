@@ -144,12 +144,19 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+
+  .ggo-icon-crew {
+    height: calc(var(--element-height)*0.23);
+  }
+}
+
+.game-cell-contents .ggo-icon-crew {
+  height: 100%;
 }
 
 .game-cell-contents .ggo-icon-container-crew,
 .game-cell-contents .ggo-icon-crew {
   left: var(--margin);
-  height: calc(var(--element-height)*0.23);
 }
 
 .game-cell-contents .ggo-icon-container-module,

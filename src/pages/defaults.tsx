@@ -6,7 +6,7 @@ import { baseUrl as gameCStartUrl, gameUrl as gameCUrl } from "pages/game-surviv
 import { baseUrl as postGameUrl } from "pages/end";
 import { materialsURL } from "pages/continue";
 
-const checkupURL = "/";
+import { baseUrl as checkupURL } from "pages/post";
 
 function defaultPage(data: StateData) : string {
   //If no code or data

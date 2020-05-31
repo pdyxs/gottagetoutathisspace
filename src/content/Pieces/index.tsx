@@ -7,6 +7,7 @@ import StarBlueGiant from './star_blue_giant.svg';
 import StarRed from './star_red.svg';
 import StarYellow from './star_yellow.svg';
 import BlackHole from './black-hole.svg';
+import BlackHolePrinterFriendly from './black-hole-pf.svg';
 
 import RobotFactory from './robot-factory.svg';
 import RobotIcon from './robot-icon.svg';
@@ -21,7 +22,7 @@ import GasCloud from './gas-cloud.svg';
 
 import { GameCellContent, CellContentTypes, PlanetTypes, StarTypes } from 'model/Level';
 
-export default function GetImageURL(content: GameCellContent) : string | undefined {
+export default function GetImageURL(content: GameCellContent, isPrinterFriendly: boolean|undefined) : string | undefined {
   switch (content.type) {
     case CellContentTypes.Planet:
       switch (content.subtype) {
@@ -41,7 +42,7 @@ export default function GetImageURL(content: GameCellContent) : string | undefin
         case StarTypes.RedDwarf:
           return StarRed;
         case StarTypes.BlackHole:
-          return BlackHole;
+          return isPrinterFriendly ? BlackHolePrinterFriendly : BlackHole;
       }
       break;
 

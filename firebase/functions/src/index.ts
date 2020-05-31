@@ -1,5 +1,18 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+
+import nodemailer = require('nodemailer');
+
+const gmailEmail = functions.config().gmail.email;
+const gmailPassword = functions.config().gmail.password;
+const mailTransport = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: gmailEmail,
+    pass: gmailPassword
+  }
+});
+
 admin.initializeApp();
 
 const db = admin.firestore();
@@ -174,6 +187,22 @@ export const registerSystemResult = functions.https.onCall(async (data, _) => {
     ship: sanitiseData(shipData),
     isCurrentPlayer
   }
+});
+
+export const sendEmail = functions.https.onCall(async (data, _) => {
+  const {from, email, subject, body} = data;
+  console.error(gmailEmail);
+  const mailOptions = {
+    from: email,
+    replyTo: email,
+    to: gmailEmail,
+    subject: `GGOTS [${from}]: ${subject}`,
+    text: body,
+    html: `<p>${body}`
+  };
+
+  await mailTransport.sendMail(mailOptions);
+  console.error("sent");
 });
 
 export const saveGameData = functions.https.onCall(async (data, _) => {

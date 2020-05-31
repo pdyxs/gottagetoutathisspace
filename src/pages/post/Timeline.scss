@@ -1,0 +1,152 @@
+.timeline {
+
+  .middle, .middle-top {
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &.continuing {
+      margin-bottom: 2em;
+    }
+
+    .line {
+      height: 4em;
+    }
+
+    .line-dotted {
+      height: 2em;
+    }
+
+    .dead {
+      position: absolute;
+      top: 1em;
+      width: 100%;
+      font-size: 2em;
+      margin: 0 auto;
+      left: 0;
+    }
+
+    .dead-describe {
+      margin-top: 2em;
+    }
+
+    .line, .line-dotted {
+      margin: 0 auto;
+      width: 5px;
+      background-color: var(--ion-color-primary);
+    }
+
+    .hline {
+      position: absolute;
+      height: 2px;
+      width: 50%;
+      background-color: var(--ion-color-tertiary);
+      top: calc(2em - 1px);
+    }
+
+    .hline-left {
+      left: 0;
+    }
+
+    .hline-right {
+      right: 0;
+    }
+  }
+
+  .middle .line {
+    &:before {
+      content: "";
+      background-color: var(--ion-color-primary);
+      width: 1em;
+      height: 1em;
+      position: absolute;
+      border-radius: 0.5em;
+      left: calc(50% - 0.5em);
+      top: 1.5em;
+    }
+  }
+
+  .middle-top {
+    .line {
+      margin-top: 2em;
+      height: 2em;
+
+      &:before {
+        content: "";
+        background-color: var(--ion-color-primary);
+        width: 2em;
+        height: 2em;
+        position: absolute;
+        border-radius: 1em;
+        left: calc(50% - 1em);
+        top: 1em;
+      }
+    }
+  }
+
+  .side {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+
+    .description {
+      width: 100%;
+      position: absolute;
+    }
+
+    .finalShipImage {
+      height: 4em;
+      cursor: pointer;
+    }
+  }
+
+  .left {
+    text-align: right;
+    flex-direction: row-reverse;
+
+    .description {
+      left: 0;
+      right: 0.5em;
+      font-size: 0.8em;
+      &.hasImage {
+        top: -1.6em;
+      }
+    }
+
+    .finalShipImage {
+      margin-right: -5px;
+      margin-left: 0.5em;
+    }
+  }
+
+  .right {
+    text-align: left;
+    flex-direction: row;
+
+    .description {
+      left: 0.5em;
+      right: 0;
+      font-size: 0.8em;
+      &.hasImage {
+        top: -1.6em;
+      }
+    }
+
+    .finalShipImage {
+      margin-left: -5px;
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.image-popover .popover-content {
+  max-width: 70vw;
+  max-height: 70vh;
+  min-width: 50vh;
+  min-height: 50vh;
+  .image {
+    max-width: 70vh;
+    max-height: 70vh;
+  }
+}

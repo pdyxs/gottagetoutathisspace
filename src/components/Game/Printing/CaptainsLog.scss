@@ -16,6 +16,10 @@
     top: calc(var(--element-width) * 0.02);
     bottom: calc(var(--element-width) * 0.02);
 
+    &.manifest {
+      right: calc(var(--element-width) * 0.02);
+    }
+
     font-size: calc(var(--element-width) * 0.02);
     text-align: left;
 
@@ -26,6 +30,10 @@
         border: black solid thin;
         padding: calc(var(--element-width) * 0.005);
         height: calc(var(--element-width) * 0.035);
+      }
+
+      .handwritten {
+        font-size: calc(var(--element-width) * 0.012);
       }
 
     }

@@ -44,11 +44,11 @@ const space : Space[] = [
   },
   {
     type: CellContentTypes.RobotFactory,
-    count: 3
+    count: 2
   },
   {
     type: CellContentTypes.SpaceStation,
-    count: 1
+    count: 2
   },
   {
     type: CellContentTypes.Star,

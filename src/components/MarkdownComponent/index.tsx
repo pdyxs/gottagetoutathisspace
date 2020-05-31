@@ -63,7 +63,16 @@ const MarkdownComponent : React.FC<MarkdownComponentProps> =
         });
     }
 
-    return <ReactMarkdown className={classNames('default-markdown', className)} source={source}  />
+    function linkTarget(url: string): string {
+      if (url.startsWith("http://") || url.startsWith("https://")) {
+        return '_blank';
+      }
+      return '';
+    }
+
+    return <ReactMarkdown
+      linkTarget={linkTarget}
+      className={classNames('default-markdown', className)} source={source}  />
   }
 
 export default MarkdownComponent;

@@ -13,10 +13,11 @@ import SizedInCSS from 'components/SizedInCSS';
 
 interface CrewCardProps {
   crew?: Crew,
-  className?: string
+  className?: string,
+  name?: string
 }
 
-const CrewCard: React.FC<CrewCardProps> = ({className, crew}) => {
+const CrewCard: React.FC<CrewCardProps> = ({className, name, crew}) => {
   return (
     <SquareCard className={classNames(
         "card", "crew-card",  className,
@@ -32,7 +33,7 @@ const CrewCard: React.FC<CrewCardProps> = ({className, crew}) => {
           </IonCol>
           <IonCol size="7" className="right-column">
             <SizedInCSS>
-              <h3>_____________</h3>
+              <h3>{name ? name : "_____________"}</h3>
               <h4>{crew?.name}</h4>
             </SizedInCSS>
           </IonCol>

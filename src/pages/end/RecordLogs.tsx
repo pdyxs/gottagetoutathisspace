@@ -1,4 +1,4 @@
-import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
+import { IonButton, IonInput, IonLoading } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
@@ -49,31 +49,29 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
   }
 
   return (
-    <IonContent>
-      <div className="page-container record-logs">
-        <MarkdownComponent source={Content} transformations={{...shipData}} />
-        <div {...getRootProps()} className={classNames('dropzone', {
-            isDragging: isDragActive
-          })}>
-          <input {...getInputProps()} />
-          <div className="preview" style={{
-            backgroundImage: `url(${chosenFileURL})`}} />
-          <div className="instructions">
-            Drag and drop the image of your ship here, or click to choose a file
-          </div>
+    <div className="page-container record-logs">
+      <MarkdownComponent source={Content} transformations={{...shipData}} />
+      <div {...getRootProps()} className={classNames('dropzone', {
+          isDragging: isDragActive
+        })}>
+        <input {...getInputProps()} />
+        <div className="preview" style={{
+          backgroundImage: `url(${chosenFileURL})`}} />
+        <div className="instructions">
+          Drag and drop the image of your ship here, or click to choose a file
         </div>
-        <MarkdownComponent source={Content2} transformations={{...shipData}} />
-        <form className="centre"
-          onSubmit={(e) => {codenameInput.length >= minCodeLength && updateRecords(codenameInput); e.preventDefault();}}>
-          <IonLoading isOpen={busy} message="Updating Database" />
-          <IonInput
-            value={codenameInput} placeholder="Enter Codename Here"
-            onIonChange={e => updateCodenameInput(e.detail.value!)} />
-          <IonButton disabled={codenameInput.length < minCodeLength || chosenFile === null}
-            onClick={() => updateRecords(codenameInput)}>Records Complete!</IonButton>
-        </form>
       </div>
-    </IonContent>
+      <MarkdownComponent source={Content2} transformations={{...shipData}} />
+      <form className="centre"
+        onSubmit={(e) => {codenameInput.length >= minCodeLength && updateRecords(codenameInput); e.preventDefault();}}>
+        <IonLoading isOpen={busy} message="Updating Database" />
+        <IonInput
+          value={codenameInput} placeholder="Enter Codename Here"
+          onIonChange={e => updateCodenameInput(e.detail.value!)} />
+        <IonButton disabled={(codenameInput.length < minCodeLength) || (!chosenFile)}
+          onClick={() => updateRecords(codenameInput)}>Records Complete!</IonButton>
+      </form>
+    </div>
   );
 };
 

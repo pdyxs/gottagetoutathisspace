@@ -27,7 +27,9 @@ export interface ShipModuleDamage {
   compulsory?: boolean,
   effect: string,
   icon?: [IconPrefix, IconName],
-  detail?: string
+  immediateInstructions?: string,
+  longTermInstructions?: string,
+  canLoseCrew?: boolean
 }
 
 export default ShipModule;

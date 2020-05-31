@@ -1,4 +1,4 @@
-import { IonContent, IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem } from '@ionic/react';
+import { IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem } from '@ionic/react';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
@@ -35,7 +35,7 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
   }
 
   return (
-    <IonContent>
+    <>
       <div className="page-container">
         <MarkdownComponent source={Content} transformations={{...shipData}} />
         <div className="ship-tour">
@@ -94,7 +94,7 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
           </IonCardContent>
         </IonCard>
       </IonPopover>
-    </IonContent>
+    </>
   );
 };
 

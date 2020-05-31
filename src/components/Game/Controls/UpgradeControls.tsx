@@ -58,7 +58,7 @@ const UpgradeControls : React.FC<ControlProps> = ({className, level, coordinates
   return (
     <div slot="end" className={className}>
       <IonButton color="success" size="default" onClick={setupUpgrade}>
-        Pick up
+        Install
       </IonButton>
       <IonPopover
         isOpen={showIntroPopover}

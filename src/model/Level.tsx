@@ -67,9 +67,12 @@ class Level {
 
   currentShipLocation: Coordinates | undefined;
 
-  constructor(grid: LevelGrid) {
+  mainStar : StarTypes;
+
+  constructor(grid: LevelGrid, starType: StarTypes) {
     this.originalGrid = grid;
     this.grid = cloneDeep(grid);
+    this.mainStar = starType;
   }
 
   reset() {
@@ -186,6 +189,10 @@ class Level {
       }
     }
     return null;
+  }
+
+  generateOptions() {
+    
   }
 
   updateRobots() {

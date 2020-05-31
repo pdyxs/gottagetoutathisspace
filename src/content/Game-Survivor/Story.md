@@ -1,4 +1,4 @@
-The time is finally here - __{shipName}__ has entered your star system.
+The time is finally here - __{shipName}__ has entered __{systemName}__ - your star system.
 
 You look to the night's sky, excited at the prospect of escape.
 

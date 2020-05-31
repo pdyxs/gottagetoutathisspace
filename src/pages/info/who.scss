@@ -1,0 +1,33 @@
+.who-page {
+  .profile-container {
+    --border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 1em;
+  }
+}
+
+.social {
+  text-align: center;
+  margin-top: 1em;
+
+  a {
+    margin: 0 0.5em;
+  }
+}
+
+.emailSignup {
+  div {
+    button {
+      font-size: 1.5em;
+      background: var(--ion-color-primary);
+      border-radius: 0 10px 10px 0;
+      position: relative;
+      top: 1px;
+    }
+    input {
+      color: black
+    }
+  }
+}

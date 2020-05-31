@@ -39,6 +39,40 @@ ion-content ion-toolbar {
     top: calc(var(--size) * -0.3);
     right: calc(var(--size) * -0.3);
   }
+
+  .robot {
+    --size: min(10vw, 6em);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .robot-1 {
+    left: calc(50vw - 10em - var(--size) * 0.5);
+    transform: rotate(100deg);
+  }
+
+  .robot-2 {
+    left: calc(50vw - 12em - var(--size) * 0.5);
+    margin-top: -5em;
+    transform: rotate(90deg);
+  }
+
+  .robot-3 {
+    left: calc(50vw - 16em - var(--size) * 0.5);
+    margin-top: -1.5em;
+    transform: rotate(97deg);
+  }
+
+  .ship {
+    --size: min(20vw, 12em);
+    position: absolute;
+    left: calc(58vw + 5em - var(--size) * 0.5);
+    transform: rotate(160deg);
+    pointer-events: none;
+    margin-top: -5em;
+  }
+
+  margin-bottom: 8em;
 }
 
 @media(max-width: 430px) {

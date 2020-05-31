@@ -22,6 +22,14 @@ const modules: ShipModule[] = [
         effect: 'You can leave the solar system without using an Action'
       },
       {
+        name: 'Advanced Renovation',
+        effect: 'You can install a module upgrade without using an Action'
+      },
+      {
+        name: 'Advanced Construction',
+        effect: 'You can install a new module without using an Action'
+      },
+      {
         name: 'Improved Resilience',
         effect: 'Add 1 more damage square to this module'
       }
@@ -30,8 +38,8 @@ const modules: ShipModule[] = [
     damage: [
       {
         name: 'System Shutdown',
-        effect: 'Spend your next free action repairing this',
-        detail: 'To effect repairs, colour in the damage square',
+        effect: 'Spend your next free action repairing the ship',
+        longTermInstructions: 'For your next free action, colour in this damage square',
         icon: ['fas', 'slash']
       }
     ],
@@ -46,8 +54,16 @@ const modules: ShipModule[] = [
     ],
     upgrades: [
       {
+        name: 'Improved Grabber',
+        effect: 'Once a turn, you may pick up a Survivor without using an Action'
+      },
+      {
+        name: 'Swedish Design',
+        effect: 'Add 1 crew capacity'
+      },
+      {
         name: 'Rejuvination Suite',
-        effect: 'For 2 Actions, rest a Crew Member',
+        effect: 'Action: Rest a Crew Member',
         detail: 'This Allows you to use their ability again'
       },
       {
@@ -60,14 +76,18 @@ const modules: ShipModule[] = [
       {
         name: 'Loss of Atmosphere',
         effect: 'Lose 1 crew capacity',
-        detail: 'Cross out one room. If you now have less crew capacity than crew, one of your crew dies',
-        icon: ['far', 'window-close']
+        immediateInstructions: 'Cross out one room. If you now have less crew capacity than crew, one of your crew dies.',
+        longTermInstructions: 'If this is repaired, regain 1 Crew Capacity',
+        icon: ['far', 'window-close'],
+        canLoseCrew: true
       },
       {
         name: 'Trapped Crew',
-        effect: 'Exhaust one crew member immediately',
-        detail: 'Turn over a crew card. If all of your crew are already exhausted, one of your crew dies',
-        icon: ['fas', 'snooze']
+        effect: 'One crew member is exhausted',
+        immediateInstructions: 'Turn over a crew card immediately. If all of your crew are already exhausted, one of your crew dies',
+        longTermInstructions: "At the start of each Star System, one crew member starts exhausted",
+        icon: ['fas', 'snooze'],
+        canLoseCrew: true
       }
     ],
     imageURL: CrewQuartersImage
@@ -86,8 +106,8 @@ const modules: ShipModule[] = [
         effect: 'Add capacity for 2 more fuel'
       },
       {
-        name: 'Improved Pickup',
-        effect: 'Pick up 2 things from a planet for 1 action'
+        name: 'Improved Pump',
+        effect: 'Pick up all fuel in a square when you enter it, without spending an action'
       },
       {
         name: 'Improved Resilience',
@@ -99,13 +119,21 @@ const modules: ShipModule[] = [
       {
         name: 'Broken Drum',
         effect: 'Lose 1 fuel capacity',
-        detail: 'Cross out some capacity. If you now have less capacity than fuel, lose 1 fuel',
+        immediateInstructions: 'Cross out a capacity. If you now have less capacity than fuel, lose 1 fuel',
+        longTermInstructions: "If repaired, add 1 fuel capacity",
         icon: ['far', 'window-close']
       },
       {
-        name: 'Broken Pipe',
+        name: 'Broken Intake',
         effect: 'You may only use 1 fuel from this Cargo Bay per turn',
+        longTermInstructions: 'You may only use 1 fuel from this Cargo Bay per turn',
         icon: ['far', 'tint']
+      },
+      {
+        name: 'Broken Pump',
+        effect: 'You may only bring 1 fuel into the Cargo Bay per turn',
+        longTermInstructions: 'You may only bring 1 fuel into the Cargo Bay per turn',
+        icon: ['far', 'unlink']
       }
     ],
     imageURL: CargoBayImage
@@ -131,13 +159,14 @@ const modules: ShipModule[] = [
       {
         name: 'Loss of Maneuverability',
         effect: 'You can move to one less movement square',
-        detail: 'Put an "X" through a movement square',
+        immediateInstructions: 'Put an "X" through a movement square',
+        longTermInstructions: "You cannot move to squares with an 'X'. If repaired, remove an X from a movement square.",
         icon: ['far', 'window-close']
       },
       {
         name: 'Thruster Failed',
         effect: 'Spend an Action to repair this before you can move again',
-        detail: 'To effect repairs, colour in the damage square',
+        longTermInstructions: 'You cannot move. Take 1 action to repair this by colouring in the damage square',
         icon: ['fas', 'slash']
       }
     ],
@@ -165,13 +194,14 @@ const modules: ShipModule[] = [
       {
         name: 'Reduced Aim',
         effect: 'You can shoot at one less target square',
-        detail: 'Put an "X" through a target square',
+        immediateInstructions: 'Put an "X" through a target square',
+        longTermInstructions: "You cannot shoot at squares with an 'X'. If repaired, remove an X from a target square.",
         icon: ['far', 'window-close']
       },
       {
         name: 'Weapons Failure',
         effect: 'Spend an Action to repair this before you can shoot again',
-        detail: 'To effect repairs, colour in the damage square',
+        longTermInstructions: 'You cannot shoot. Take 1 action to repair this by colouring in the damage square',
         icon: ['fas', 'slash']
       }
     ],
@@ -196,7 +226,6 @@ const modules: ShipModule[] = [
         compulsory: true,
         name: 'Take Damage',
         effect: 'No effect',
-        detail: "You don't have to write this on the module card",
         icon: ['fas', 'square']
       }
     ]
@@ -223,7 +252,7 @@ const modules: ShipModule[] = [
       {
         name: 'Weapons Failure',
         effect: 'Spend an Action to repair this before you use it again',
-        detail: 'To effect repairs, colour in the damage square',
+        longTermInstructions: 'You cannot use this module. Take 1 action to repair this by colouring in the damage square',
         icon: ['fas', 'slash']
       }
     ]
@@ -245,7 +274,7 @@ const modules: ShipModule[] = [
       {
         name: 'Loss of Spare Parts',
         effect: 'When you repair a module, you must damage another',
-        detail: 'To do this, colour in a blank damage square on any module',
+        longTermInstructions: 'When repairing any module, colour in a blank square on any other module',
         icon: ['far', 'clone']
       }
     ]
