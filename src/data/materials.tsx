@@ -21,6 +21,7 @@ import HandmadeShip from 'content/Handmade/ship.jpg';
 import HandmadeSurvivors from 'content/Handmade/survivors.jpg';
 import HandmadeUpgrade from 'content/Handmade/upgrade.jpg';
 import { CaptainsLogPreviewComponent, PrintCaptainsLogComponent } from "components/Game/Printing/CaptainsLog";
+import { PrintShipsManifestComponent, ShipsManifestPreviewComponent } from "components/Game/Printing/ShipsManifest";
 
 const materials: Material[] = [
   {
@@ -71,6 +72,31 @@ const materials: Material[] = [
       }
     ],
     printComponent: PrintCaptainsLogComponent,
+    hideFromLog: true
+  },
+  {
+    count: 1,
+    printCountMin: 1,
+    printCountMax: 1,
+    name: "Ship's Manifest",
+    description: "A log of the ship's crew, and the components used in the game",
+    buildOptions: [
+      {
+        type: MaterialBuildOptionType.PrintNormal,
+        description: "I want to print it",
+        preview: ShipsManifestPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.PrintFriendly,
+        description: "I want to print it, but be friendly to my printer",
+        preview: ShipsManifestPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Build,
+        description: "I want to make it myself"
+      }
+    ],
+    printComponent: PrintShipsManifestComponent,
     hideFromLog: true
   },
   {
