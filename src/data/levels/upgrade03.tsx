@@ -30,8 +30,8 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky, variety: 1 },
-        { type: CellContentTypes.Module }
+        { type: CellContentTypes.Planet, subtype:PlanetTypes.GasGiant, variety: 2 },
+        { type: CellContentTypes.Fuel, count: 3 }
       ]
     },
     { type: CellTypes.Blank }
@@ -49,8 +49,8 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.Planet, subtype:PlanetTypes.GasGiant, variety: 2 },
-        { type: CellContentTypes.Fuel, count: 2 }
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky, variety: 1 },
+        { type: CellContentTypes.Module }
       ]
     }
   ],
@@ -58,8 +58,8 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant, variety: 1 },
-        { type: CellContentTypes.Fuel, count: 2 }
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky, variety: 2 },
+        { type: CellContentTypes.Upgrade }
       ]
     },
     { type: CellTypes.Space },
@@ -72,8 +72,8 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.Planet, subtype: PlanetTypes.Rocky, variety: 2 },
-        { type: CellContentTypes.Upgrade }
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant, variety: 1 },
+        { type: CellContentTypes.Fuel, count: 2 }
       ]
     },
     { type: CellTypes.Blank }

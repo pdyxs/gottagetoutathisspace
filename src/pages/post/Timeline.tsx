@@ -8,7 +8,7 @@ import './Timeline.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 
-const Timeline: React.FC<InstructionPageProps> = () => {
+const Timeline: React.FC<InstructionPageProps> = ({nextUrl, extraProps: { buttonText }}) => {
   const shipData = useSelector((state: any) => state.shipData) as ShipData;
   const [popupImage, setPopupImage] = useState("");
 
@@ -16,7 +16,7 @@ const Timeline: React.FC<InstructionPageProps> = () => {
   return (
     <>
       <div className="page-container timeline">
-        <h2 className="centre">The journey so far...</h2>
+        <h2 className="centre">The journey of {shipData.shipName}</h2>
         <IonGrid>
           <IonRow>
             <IonCol size="5" className="left side">
@@ -69,8 +69,7 @@ const Timeline: React.FC<InstructionPageProps> = () => {
                   <div className="line-dotted" />
                   <FontAwesomeIcon className="dead" icon={['fas', 'tombstone']} />
                   <p className="dead-describe">
-                    {shipData.shipName} was destroyed in the system
-                    {game.systems[game.systems.length - 1].name || '(Unknown)'}
+                    {shipData.shipName} was destroyed in the system {game.systems[game.systems.length - 1].name || '(Unknown)'}
                   </p>
                 </IonCol>
               }
@@ -86,7 +85,7 @@ const Timeline: React.FC<InstructionPageProps> = () => {
         </IonGrid>
 
         <div className="centre">
-          <IonButton routerLink={'/'}>Return to homepage</IonButton>
+          <IonButton routerLink={nextUrl}>{buttonText}</IonButton>
         </div>
       </div>
       <IonPopover isOpen={popupImage !== ''}

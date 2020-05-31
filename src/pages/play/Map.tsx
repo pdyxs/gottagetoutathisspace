@@ -39,7 +39,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
   const [busy, setBusy] = useState(false);
 
   async function onClickNext() {
-    if (!shipData || !shipCode) return;
+    if (!shipData || !shipCode || !shipData.games) return;
     setBusy(true);
     var game = shipData.games[shipData.games.length - 1];
     var systemCount = game.systems ? game.systems.length : 0;
@@ -47,6 +47,10 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     dispatch(setPlayData(data));
     history.push(nextUrl);
     setBusy(false);
+  }
+
+  if (!shipData || !shipData.games) {
+    return <></>;
   }
 
   const uLevelStar = upgradeLevel(shipData?.games.length || 0)?.mainStar;

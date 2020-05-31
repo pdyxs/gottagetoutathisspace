@@ -65,7 +65,7 @@ export async function saveGameData(id: string, codeName: string, finalShipURL: s
   const result = await func({shipCode: id, codeName, finalShipURL, nextCodename});
   analytics.logEvent(`game-completed`, {
     code: (result.data as ReturnData).shipCode,
-    gameNumber: (result.data as ReturnData).ship.games.length
+    gameNumber: (result.data as ReturnData).ship.games?.length
   });
   return result.data;
 }

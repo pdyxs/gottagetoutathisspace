@@ -1,7 +1,7 @@
 import React from 'react';
 import Intro from './Intro';
 import Materials from './Materials';
-// import History from './History';
+// import Timeline from '../post/Timeline';
 import Ship from './Ship';
 import { baseUrl as trainingUrl } from '../game-fuel';
 // import TrainingIntro from './Training';
@@ -21,16 +21,19 @@ const pages : InstructionPagesInfo = [
     phase: PlayPhase.Introduction,
     component: Intro
   },
-  // {
-  //   url: 'history',
-  //   requiresShipCode: true,
-  //   component: History
-  // },
   {
     url: materialsName,
     phase: PlayPhase.Setup,
     component: Materials
   },
+  // {
+  //   url: 'history',
+  //   phase: PlayPhase.Setup,
+  //   component: Timeline,
+  //   extraProps: {
+  //     buttonText: "Well let's continue it then!"
+  //   }
+  // },
   {
     url: 'ship',
     phase: PlayPhase.Setup,

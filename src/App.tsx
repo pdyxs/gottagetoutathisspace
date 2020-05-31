@@ -40,6 +40,8 @@ import Why from 'pages/info/why';
 import Contact from 'pages/info/contact';
 import More from 'pages/info/more';
 
+import Loss from 'pages/loss';
+
 const App: React.FC = () => {
 
   return (
@@ -59,6 +61,7 @@ const App: React.FC = () => {
           {GameUpgrade}
           {GameSurvivor}
           {PostGame}
+          {Loss}
           <Route path="/" component={Start} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>

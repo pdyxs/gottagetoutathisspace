@@ -4,25 +4,24 @@ import InstructionFlow,
   { InstructionPagesInfo }
   from '../../components/InstructionFlow';
 
-import Timeline from './Timeline';
+import LossIntro from './LossIntro';
 import { PlayPhase } from 'model/Phases';
 
-export const baseUrl = '/post';
+import { baseUrl as postUrl } from 'pages/post/index';
+
+export const baseUrl = '/loss';
 
 const pages : InstructionPagesInfo = [
   {
-    url: 'timeline',
+    url: 'intro',
     phase: PlayPhase.Checkup,
-    component: Timeline,
-    extraProps: {
-      buttonText: 'Return to Homepage' 
-    }
+    component: LossIntro
   }
 ];
 
 const PostGame: React.FC[] =
   InstructionFlow({
-    pages, baseUrl, nextUrl: '/'
+    pages, baseUrl, nextUrl: postUrl
   });
 
 export default PostGame;

@@ -53,8 +53,8 @@ const grid = new Level([
     {
       type: CellTypes.Space,
       contents: [
-        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant, variety: 1 },
-        { type: CellContentTypes.Fuel, count: 2 }
+        { type: CellContentTypes.Planet, subtype: PlanetTypes.GasGiant, variety: 2 },
+        { type: CellContentTypes.Fuel, count: 3 }
       ]
     },
     { type: CellTypes.Space },

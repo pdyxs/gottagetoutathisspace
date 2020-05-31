@@ -12,6 +12,8 @@ import { registerSystemResult } from 'firebaseConfig';
 import { isFunction } from 'lodash';
 import { StateData } from 'redux/reducer';
 
+import { baseUrl as lossUrl } from 'pages/loss';
+
 const Game: React.FC<InstructionPageProps> = ({
     nextUrl,
     extraProps: {
@@ -60,7 +62,7 @@ const Game: React.FC<InstructionPageProps> = ({
 
   async function confirmLose() {
     setShowLosePopover(false);
-    confirm(false, '/');
+    confirm(false, lossUrl);
   }
 
   return (

@@ -65,7 +65,12 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     }
   }, [playerCount, playerPositions, refreshCount]);
 
+  if (!shipData || !shipData.games) return <></>;
+
   const game = shipData.games[shipData.games.length - 1];
+
+  if (!game || !game.systems || game.systems.length === 0) return <></>;
+
   const systemName = game.systems[game.systems.length - 1].name;
   const transformations = {
     shipCode,
