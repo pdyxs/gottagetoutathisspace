@@ -53,7 +53,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
   const sLevelStar = survivorLevel(shipData?.games.length || 0)?.mainStar;
 
   return (
-    <IonContent className={className}>
+    <>
       <IonLoading isOpen={busy} message="Getting System Data..." />
       <div className="page-container ion-text-center map-page">
         <MarkdownComponent source={header} transformations={transformations} />
@@ -87,7 +87,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
           Let's Set This Space Up
         </IonButton>
       </div>
-    </IonContent>
+    </>
   );
 };
 

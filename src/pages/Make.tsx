@@ -40,7 +40,7 @@ const Make: React.FC = () => {
     <div>
       <IonPage>
         <Header />
-        <IonContent>
+        <IonContent id="page">
           <div className="page-container">
             <MarkdownComponent source={MakeInstructions} />
 

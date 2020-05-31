@@ -29,7 +29,7 @@ const Start: React.FC = () => {
           <div>
             <IonButton
               size="large"
-              routerLink="/continue"
+              href="/continue"
               onClick={reset}
               color="primary">
               I got a strange package in the mail
@@ -38,7 +38,7 @@ const Start: React.FC = () => {
           <div>
             <IonButton
               size="large"
-              routerLink="/new"
+              href="/new"
               onClick={reset}
               color="primary">
               I didn't, but this sounds fun
@@ -48,7 +48,7 @@ const Start: React.FC = () => {
             <div>
               <IonButton
                 size="large"
-                routerLink={defaultPage(stateData)}
+                href={defaultPage(stateData)}
                 color="light">
                 I want to continue with ship {shipCode}
               </IonButton>

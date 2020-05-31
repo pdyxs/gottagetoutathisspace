@@ -61,7 +61,7 @@ const Game: React.FC<InstructionPageProps> = ({
   }
 
   return (
-    <IonContent>
+    <>
       <IonLoading isOpen={busy} message="Saving Game Result..." />
       {level &&
         <GameWithRules level={level}
@@ -114,7 +114,7 @@ const Game: React.FC<InstructionPageProps> = ({
           </IonCardContent>
         </IonCard>
       </IonPopover>
-    </IonContent>
+    </>
   );
 };
 

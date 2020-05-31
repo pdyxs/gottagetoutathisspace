@@ -81,7 +81,7 @@ const Print: React.FC = () => {
     <div>
       <IonPage className="no-print">
         <Header />
-        <IonContent>
+        <IonContent id="page">
           <div className="page-container">
             <MarkdownComponent source={PrintInstructions} />
 

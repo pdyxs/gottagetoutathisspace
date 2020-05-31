@@ -35,52 +35,50 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
   ));
 
   return (
-    <IonContent>
-      <div className="ion-text-center ion-padding">
-        <div className="page-container">
-          <MarkdownComponent source={Content} />
+    <div className="ion-text-center ion-padding">
+      <div className="page-container">
+        <MarkdownComponent source={Content} />
 
-          <IonGrid>
-            <IonRow>
-              {materials.map((material, i) =>
-                <IonCol key={i} size="12" size-sm="6">
-                  <MakeMaterialsCard material={material}
-                    onBuildOptionChanged={(j) => updateBuildOption(i, j)}
-                    />
-                </IonCol>
-              )}
-            </IonRow>
-          </IonGrid>
+        <IonGrid>
+          <IonRow>
+            {materials.map((material, i) =>
+              <IonCol key={i} size="12" size-sm="6">
+                <MakeMaterialsCard material={material}
+                  onBuildOptionChanged={(j) => updateBuildOption(i, j)}
+                  />
+              </IonCol>
+            )}
+          </IonRow>
+        </IonGrid>
 
-          {isPrintable &&
-            <div className="ion-text-center">
-              <p>
-                You've chosen to print some items. Click this button to do that!
-              </p>
-              <IonButton href={`/print/${printurl}`}
-                target="blank">Print</IonButton>
-            </div>
-          }
-
-          {needsBuildInstructions &&
-            <div className="ion-text-center">
-              <p>
-                You've chosen to make some cards. Click here to see the details of the cards you want to make!
-              </p>
-              <IonButton href={`/make/${printurl}`}
-                target="blank">Make</IonButton>
-            </div>
-          }
-
+        {isPrintable &&
           <div className="ion-text-center">
             <p>
-              Once you've finished making components, click here to continue
+              You've chosen to print some items. Click this button to do that!
             </p>
-            <IonButton routerLink={nextUrl}>Great, let's start!</IonButton>
+            <IonButton href={`/print/${printurl}`}
+              target="_blank">Print</IonButton>
           </div>
+        }
+
+        {needsBuildInstructions &&
+          <div className="ion-text-center">
+            <p>
+              You've chosen to make some cards. Click here to see the details of the cards you want to make!
+            </p>
+            <IonButton href={`/make/${printurl}`}
+              target="_blank">Make</IonButton>
+          </div>
+        }
+
+        <div className="ion-text-center">
+          <p>
+            Once you've finished making components, click here to continue
+          </p>
+          <IonButton href={nextUrl}>Great, let's start!</IonButton>
         </div>
       </div>
-    </IonContent>
+    </div>
   );
 };
 

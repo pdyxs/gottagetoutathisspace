@@ -65,30 +65,28 @@ const MapSetup: React.FC<InstructionPageProps> = ({
   }, [playerCount, playerPositions, refreshCount])
 
   return (
-    <IonContent>
-      <div className="gameAndTextContainer">
-        <div className="gameContainer">
-          {level &&
-            <GameGrid level={level} />
-          }
-        </div>
-        <div className="textContainer">
-          <MarkdownComponent source={instructions} />
-          {playerPositions.length > 0 &&
-            <IonItem color="notebook" style={{width: "300px", margin: "0 auto"}}>
-              <IonLabel>There are</IonLabel>
-              <IonButton onClick={removePlayer} disabled={playerCount <= 1} size="small"><IonIcon icon={remove} /></IonButton>
-              <IonLabel style={{maxWidth: "20px", textAlign: 'center'}}>{playerCount}</IonLabel>
-              <IonButton onClick={addPlayer} disabled={playerCount >= 4} size="small"><IonIcon icon={add} /></IonButton>
-              <IonLabel className="ion-padding-start">players</IonLabel>
-            </IonItem>
-          }
-          <IonButton routerLink={nextUrl}>
-            I've made the space, can I please now get out of it?
-          </IonButton>
-        </div>
+    <div className="gameAndTextContainer">
+      <div className="gameContainer">
+        {level &&
+          <GameGrid level={level} />
+        }
       </div>
-    </IonContent>
+      <div className="textContainer">
+        <MarkdownComponent source={instructions} />
+        {playerPositions.length > 0 &&
+          <IonItem color="notebook" style={{width: "300px", margin: "0 auto"}}>
+            <IonLabel>There are</IonLabel>
+            <IonButton onClick={removePlayer} disabled={playerCount <= 1} size="small"><IonIcon icon={remove} /></IonButton>
+            <IonLabel style={{maxWidth: "20px", textAlign: 'center'}}>{playerCount}</IonLabel>
+            <IonButton onClick={addPlayer} disabled={playerCount >= 4} size="small"><IonIcon icon={add} /></IonButton>
+            <IonLabel className="ion-padding-start">players</IonLabel>
+          </IonItem>
+        }
+        <IonButton href={nextUrl}>
+          I've made the space, can I please now get out of it?
+        </IonButton>
+      </div>
+    </div>
   );
 };
 

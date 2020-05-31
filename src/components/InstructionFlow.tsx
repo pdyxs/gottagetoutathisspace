@@ -1,4 +1,4 @@
-import { IonPage } from '@ionic/react';
+import { IonPage, IonContent } from '@ionic/react';
 import React, { useEffect, Fragment, useState } from 'react';
 import { Route, Redirect, useHistory, Switch } from 'react-router-dom';
 
@@ -10,6 +10,8 @@ import Header from './Header';
 import { PlayPhase, isAllowedIn } from 'model/Phases';
 import { StateData } from 'redux/reducer';
 import defaultPage from 'pages/defaults';
+import slugify from 'slugify';
+import classNames from 'classnames';
 
 export interface InstructionPageProps {
   baseUrl: string,
@@ -60,6 +62,9 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
         setCheckedUrl(currentPage.url);
       }
     }
+    if (!stateData.isLoading && !currentPage) {
+      history.replace(`${baseUrl}/${pages[0].url}`);
+    }
   }, [stateData, currentPage, checkedUrl, history]);
 
   function resetShip() {
@@ -67,28 +72,34 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
     clearCodes();
   }
 
+  if (!currentPage || checkedUrl !== currentPage.url) {
+    return <></>;
+  }
+
+  const contentid = slugify(currentPage?.url || '');
+
   return (
     <Fragment>
       <IonPage>
-        <Header shipCode={shipCode} resetShip={resetShip} />
-
-        <Switch>
-          {pages.map(Page =>
-            <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
-              render={(props) =>
-                <Page.component {...props}
-                  extraProps={Page.extraProps || {}}
-                  className={Page.className}
-                  resetShip={resetShip}
-                  baseUrl={baseUrl}
-                  nextPage={nextPage}
-                  nextUrl={nextPageUrl}
-                  pastPages={take(pages, currentPageIndex)}
-                  futurePages={drop(pages, currentPageIndex + 1)} />}
-              exact={true} />
-          )}
-          <Redirect push={true} to={`${baseUrl}/${pages[0].url}`} from={baseUrl} />
-        </Switch>
+        <Header shipCode={shipCode} menuid={contentid} resetShip={resetShip} />
+        <IonContent id={contentid} className={classNames("main-content", currentPage?.className)}>
+          <Switch>
+            {pages.map(Page =>
+              <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
+                render={(props) =>
+                  <Page.component {...props}
+                    extraProps={Page.extraProps || {}}
+                    className={Page.className}
+                    resetShip={resetShip}
+                    baseUrl={baseUrl}
+                    nextPage={nextPage}
+                    nextUrl={nextPageUrl}
+                    pastPages={take(pages, currentPageIndex)}
+                    futurePages={drop(pages, currentPageIndex + 1)} />
+                } exact={true} />
+              )}
+          </Switch>
+        </IonContent>
       </IonPage>
     </Fragment>
 
