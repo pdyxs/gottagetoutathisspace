@@ -41,6 +41,7 @@ import Contact from 'pages/info/contact';
 import More from 'pages/info/more';
 
 const App: React.FC = () => {
+
   return (
     <IonApp>
       <IonReactRouter>

@@ -17,7 +17,7 @@ const config = {
 };
 
 firebase.initializeApp(config);
-firebase.analytics();
+export const analytics = firebase.analytics();
 firebase.performance();
 
 var storage = firebase.storage().ref();
@@ -32,24 +32,41 @@ export async function getShipData(id: string, codeName: string) : Promise<Return
 export async function startNewSystem(id: string, codeName: string, systemNumber: number, systemName: string) : Promise<ReturnData> {
   const func = functions.httpsCallable('startNewSystem');
   const result = await func({shipCode: id, codeName, systemNumber, systemName});
+  analytics.logEvent(`system-started`, {
+    codeName,
+    systemNumber,
+    gameNumber: (result.data as ReturnData).ship.games.length
+  });
   return result.data;
 }
 
 export async function registerSystemResult(id: string, codeName: string, systemNumber: number, result: boolean) : Promise<ReturnData> {
   const func = functions.httpsCallable('registerSystemResult');
   const res = await func({shipCode: id, codeName, systemNumber, result});
+  analytics.logEvent(`system-${result ? 'won' : 'lost'}`, {
+    codeName,
+    systemNumber,
+    gameNumber: (res.data as ReturnData).ship.games.length
+  });
   return res.data;
 }
 
 export async function createNewShip(name: string) : Promise<ReturnData> {
   const func = functions.httpsCallable('createShip');
   const result = await func({shipName: name});
+  analytics.logEvent(`createShip`, {
+    code: (result.data as ReturnData).shipCode
+  });
   return result.data;
 }
 
 export async function saveGameData(id: string, codeName: string, finalShipURL: string, nextCodename: string) : Promise<ReturnData> {
   const func = functions.httpsCallable('saveGameData');
   const result = await func({shipCode: id, codeName, finalShipURL, nextCodename});
+  analytics.logEvent(`game-completed`, {
+    code: (result.data as ReturnData).shipCode,
+    gameNumber: (result.data as ReturnData).ship.games.length
+  });
   return result.data;
 }
 
@@ -62,6 +79,9 @@ export async function uploadFile(shipCode: string, game: number, file: File) : P
 export async function sendEmail(from: string, email: string, subject: string, body: string, doSubscribe: boolean) : Promise<void> {
   // const func = functions.httpsCallable('sendEmail');
   // await func({from, email, subject, body});
+  analytics.logEvent(`sent-email`, {
+    subscribed: doSubscribe
+  });
 
   //using simpleform for now, as functions are a pain in the ass
   const data = new URLSearchParams();

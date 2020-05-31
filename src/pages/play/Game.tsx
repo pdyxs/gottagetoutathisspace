@@ -43,6 +43,7 @@ const Game: React.FC<InstructionPageProps> = ({
   }
 
   async function confirm(win: boolean, url: string) {
+    if (!shipData) return;
     setBusy(true);
     var game = shipData?.games[shipData.games.length - 1];
     var systemCount = game?.systems ? game.systems.length : 0;
