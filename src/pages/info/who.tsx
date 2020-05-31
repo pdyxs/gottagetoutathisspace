@@ -20,7 +20,8 @@ const Who: React.FC = () => {
         <Header />
         <IonContent id="ggots-content">
           <div className="page-container who-page">
-            Gotta Get Outta This Space was made by Paul Sztajer and Alistair Magee
+            <h2>Who Made This?</h2>
+            <p>Gotta Get Outta This Space was made by Paul Sztajer and Alistair Magee</p>
 
             <IonGrid>
               <IonRow>

@@ -35,6 +35,7 @@ import './theme/print.scss';
 import Print from 'pages/Print';
 import Make from 'pages/Make';
 import Who from 'pages/info/who';
+import Why from 'pages/info/why';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { retrieveCodes } from 'storage';
@@ -54,7 +55,6 @@ const App: React.FC = () => {
         const {shipCode, codeName} = await retrieveCodes();
 
         if (shipCode) {
-          console.log('asking for server stuff')
           const resultData = await getShipData(shipCode, codeName);
           if (resultData)
           {
@@ -82,6 +82,7 @@ const App: React.FC = () => {
           <Route path="/print" component={Print} />
           <Route path="/make" component={Make} />
           <Route path="/who" exact component={Who} />
+          <Route path="/why" exact component={Why} />
           <Route path={continueURL} component={Continue} />
           <Route path={newURL} component={NewGame} />
           <Route path={endURL} component={EndGame} />
