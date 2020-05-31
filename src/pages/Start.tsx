@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonButton, IonFooter, IonItem, IonIcon, IonLabel, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonContent, IonPage, IonButton, IonItem, IonIcon, IonLabel, IonGrid, IonRow, IonCol } from '@ionic/react';
 import React from 'react';
 import './Start.scss';
 import Content from 'content/Start.md';
