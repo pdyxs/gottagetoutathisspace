@@ -36,6 +36,8 @@ import Print from 'pages/Print';
 import Make from 'pages/Make';
 import Who from 'pages/info/who';
 import Why from 'pages/info/why';
+import Contact from 'pages/info/contact';
+import More from 'pages/info/more';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { retrieveCodes } from 'storage';
@@ -83,6 +85,8 @@ const App: React.FC = () => {
           <Route path="/make" component={Make} />
           <Route path="/who" exact component={Who} />
           <Route path="/why" exact component={Why} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/more" exact component={More} />
           <Route path={continueURL} component={Continue} />
           <Route path={newURL} component={NewGame} />
           <Route path={endURL} component={EndGame} />

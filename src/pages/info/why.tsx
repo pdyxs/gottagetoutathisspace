@@ -5,7 +5,7 @@ import Header from 'components/Header';
 import WhyContent from 'content/Info/Why.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 
-const Who: React.FC = () => {
+const Why: React.FC = () => {
   return (
     <div>
       <IonPage>
@@ -20,4 +20,4 @@ const Who: React.FC = () => {
   );
 };
 
-export default Who;
+export default Why;

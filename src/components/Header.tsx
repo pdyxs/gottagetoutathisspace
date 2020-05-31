@@ -29,26 +29,26 @@ const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
               <IonIcon slot="start" icon={peopleOutline} />
               <IonLabel>Who made this</IonLabel>
             </IonItem>
-            <IonItem href="/">
+            <IonItem href="/why">
               <IonIcon slot="start" icon={helpOutline} />
               <IonLabel>Why?</IonLabel>
             </IonItem>
-            <IonItem href="/">
+            <IonItem href="/contact">
               <IonIcon slot="start" icon={chatbubbleEllipsesOutline} />
               <IonLabel>I want to talk to you</IonLabel>
             </IonItem>
-            <IonItem href="/">
+            <IonItem href="/more">
               <IonIcon slot="start" icon={ellipsisHorizontalOutline} />
               <IonLabel>I want more</IonLabel>
             </IonItem>
             <IonItem color="tertiary">
               <IonTitle>Money Stuff</IonTitle>
             </IonItem>
-            <IonItem href="/">
+            <IonItem href="/buy">
               <IonIcon slot="start" icon={cardOutline} />
               <IonLabel>Buy a nice deck</IonLabel>
             </IonItem>
-            <IonItem href="/">
+            <IonItem href="/support-us">
               <IonIcon slot="start" icon={cashOutline} />
               <IonLabel>Support Us</IonLabel>
             </IonItem>

@@ -20,9 +20,12 @@ const Who: React.FC = () => {
         <Header />
         <IonContent id="ggots-content">
           <div className="page-container who-page">
+            <div className="centre">
             <h2>Who Made This?</h2>
-            <p>Gotta Get Outta This Space was made by Paul Sztajer and Alistair Magee</p>
-
+              <p>Gotta Get Outta This Space was made by Paul Sztajer (me) and Alistair Magee</p>
+              <p>The <a href="https://open.spotify.com/playlist/4cOim4pWFKu5r55hteThnZ?si=imaxOctlS5m4NowIxw7zZQ" target="_blank" rel="noopener noreferrer">
+                  Official Playlist</a> was created by Yasmin Clarke</p>
+            </div>
             <IonGrid>
               <IonRow>
                 <IonCol size="12" sizeMd="6">
