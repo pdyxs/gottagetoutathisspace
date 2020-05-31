@@ -22,6 +22,14 @@ const modules: ShipModule[] = [
         effect: 'You can leave the solar system without using an Action'
       },
       {
+        name: 'Advanced Renovation',
+        effect: 'You can install a module upgrade without using an Action'
+      },
+      {
+        name: 'Advanced Construction',
+        effect: 'You can install a new module without using an Action'
+      },
+      {
         name: 'Improved Resilience',
         effect: 'Add 1 more damage square to this module'
       }
@@ -46,8 +54,16 @@ const modules: ShipModule[] = [
     ],
     upgrades: [
       {
+        name: 'Improved Grabber',
+        effect: 'Once a turn, you may pick up a Survivor without using an Action'
+      },
+      {
+        name: 'Swedish Design',
+        effect: 'Add 1 crew capacity'
+      },
+      {
         name: 'Rejuvination Suite',
-        effect: 'For 2 Actions, rest a Crew Member',
+        effect: 'Action: Rest a Crew Member',
         detail: 'This Allows you to use their ability again'
       },
       {
@@ -65,8 +81,8 @@ const modules: ShipModule[] = [
       },
       {
         name: 'Trapped Crew',
-        effect: 'Exhaust one crew member immediately',
-        detail: 'Turn over a crew card. If all of your crew are already exhausted, one of your crew dies',
+        effect: 'One crew member starts exhausted',
+        detail: 'Turn over a crew card immediately. If all of your crew are already exhausted, one of your crew dies',
         icon: ['fas', 'snooze']
       }
     ],
@@ -86,8 +102,8 @@ const modules: ShipModule[] = [
         effect: 'Add capacity for 2 more fuel'
       },
       {
-        name: 'Improved Pickup',
-        effect: 'Pick up 2 things from a planet for 1 action'
+        name: 'Improved Pump',
+        effect: 'Pick up all fuel in a square when you enter it, without spending an action'
       },
       {
         name: 'Improved Resilience',
@@ -99,13 +115,18 @@ const modules: ShipModule[] = [
       {
         name: 'Broken Drum',
         effect: 'Lose 1 fuel capacity',
-        detail: 'Cross out some capacity. If you now have less capacity than fuel, lose 1 fuel',
+        detail: 'Cross out a capacity. If you now have less capacity than fuel, lose 1 fuel',
         icon: ['far', 'window-close']
       },
       {
-        name: 'Broken Pipe',
+        name: 'Broken Intake',
         effect: 'You may only use 1 fuel from this Cargo Bay per turn',
         icon: ['far', 'tint']
+      },
+      {
+        name: 'Broken Pump',
+        effect: 'You may only bring 1 fuel into the Cargo Bay per turn',
+        icon: ['far', 'unlink']
       }
     ],
     imageURL: CargoBayImage

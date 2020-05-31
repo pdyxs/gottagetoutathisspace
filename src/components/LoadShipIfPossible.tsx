@@ -6,7 +6,11 @@ import { retrieveCodes } from 'storage';
 import { getShipData } from 'firebaseConfig';
 import { setPlayData, setLoading, setCodename } from 'redux/actions';
 
-const LoadShipIfPossible : React.FC = () => {
+interface LoadShipIfPossibleProps {
+  onChecked?: () => void;
+}
+
+const LoadShipIfPossible : React.FC<LoadShipIfPossibleProps> = ({onChecked}) => {
   const { shipCode, shipData, isLoading } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const [hasChecked, setHasChecked] = useState(false);
@@ -15,7 +19,6 @@ const LoadShipIfPossible : React.FC = () => {
     async function checkLocalStorage() {
       if (!shipCode)
       {
-        dispatch(setLoading(true));
         const {shipCode, codeName} = await retrieveCodes();
 
         if (shipCode) {
@@ -26,17 +29,24 @@ const LoadShipIfPossible : React.FC = () => {
             dispatch(setCodename(codeName));
           }
         }
-        dispatch(setLoading(false));
       }
       return;
     }
 
     if (!shipData && !isLoading && !hasChecked)
     {
-      checkLocalStorage();
-      setHasChecked(true);
+      dispatch(setLoading(true));
+      checkLocalStorage().then(() => {
+        setHasChecked(true);
+        dispatch(setLoading(false));
+        console.log("checked");
+        if (onChecked) onChecked();
+      });
+    } else if (!isLoading && !hasChecked) {
+      console.log("checked 2");
+      if (onChecked) onChecked();
     }
-  }, [dispatch, hasChecked, isLoading, shipCode, shipData]);
+  }, [onChecked, dispatch, hasChecked, isLoading, shipCode, shipData]);
 
   return (
     <IonLoading isOpen={isLoading} message="Loading previous game data" />

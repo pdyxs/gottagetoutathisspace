@@ -5,10 +5,10 @@ import { IonReactRouter } from '@ionic/react-router';
 import Start from './pages/Start';
 import Continue from './pages/continue';
 import NewGame from './pages/new';
-import GameFuel, {baseUrl as gameFuelURL} from './pages/game-fuel';
-import GameUpgrade, {baseUrl as gameUpgradeURL} from './pages/game-upgrade';
-import GameSurvivor, {baseUrl as gameSurvivorURL} from './pages/game-survivor';
-import EndGame, {baseUrl as endURL} from './pages/end';
+import GameFuel from './pages/game-fuel';
+import GameUpgrade from './pages/game-upgrade';
+import GameSurvivor from './pages/game-survivor';
+import EndGame from './pages/end';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

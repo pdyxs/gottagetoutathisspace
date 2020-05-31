@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { IonButton, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel, IonNote } from '@ionic/react';
 import './TakeDamageControl.scss';
 import TakeDamageIntroContent from 'content/Controls/TakeDamageIntro.md';
@@ -27,27 +27,29 @@ const TakeDamageControl: React.FC<TakeDamageControlProps> = () => {
   const [damageChosen, setDamageChosen] = useState<DamageOption | null>(null);
   const [damageOptions, setDamageOptions] = useState<DamageOption[]>([]);
 
-  function setupDamage() {
+  useEffect(() => {
     var compulsoryModules = filter(ShipModules,
       module => !isNil(find(module.damage, d => d.compulsory)));
+
     var extraModules = take(shuffle(without(ShipModules, ...compulsoryModules)), damageOptionCount);
-
-    function getRandomDamage(modules: ShipModule[]) : DamageOption[] {
-      return reduce<ShipModule, DamageOption[]>(modules, (acc, m) => {
-        var damage = first(shuffle(m.damage));
-        if (damage) return [...acc, {
-          module: m,
-          damage
-        }];
-        return acc;
-      }, []);
-    }
-
     setDamageOptions([
       ...getRandomDamage(extraModules),
       ...getRandomDamage(compulsoryModules)
     ]);
+  }, [])
 
+  function getRandomDamage(modules: ShipModule[]) : DamageOption[] {
+    return reduce<ShipModule, DamageOption[]>(modules, (acc, m) => {
+      var damage = first(shuffle(m.damage));
+      if (damage) return [...acc, {
+        module: m,
+        damage
+      }];
+      return acc;
+    }, []);
+  }
+
+  function setupDamage() {
     setDamageChosen(null);
 
     setShowDamagePopover(true);
@@ -56,6 +58,15 @@ const TakeDamageControl: React.FC<TakeDamageControlProps> = () => {
   function chooseDamage(damage: DamageOption) {
     setShowDamagePopover(false);
     setDamageChosen(damage);
+    
+    var compulsoryModules = filter(ShipModules,
+      module => !isNil(find(module.damage, d => d.compulsory)));
+
+    var extraModules = take(shuffle(without(ShipModules, ...compulsoryModules)), damageOptionCount);
+    setDamageOptions([
+      ...getRandomDamage(extraModules),
+      ...getRandomDamage(compulsoryModules)
+    ]);
   }
 
   return (

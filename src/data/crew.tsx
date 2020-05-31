@@ -3,7 +3,7 @@ import Crew from "model/Crew";
 const crew: Crew[] = [
   {
     name: 'Pilot',
-    power: 'Take 1 extra action'
+    power: 'Spend 1 Action to take the same action twice'
   },
   {
     name: 'Gunner',
