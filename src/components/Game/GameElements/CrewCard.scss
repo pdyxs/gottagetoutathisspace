@@ -1,3 +1,25 @@
+.popoverWithCard .popover-content .note
+.card.crew-card {
+  h4 {
+    font-family: "Indie Flower";
+    font-size: calc(var(--element-width) * 0.16);
+  }
+
+  div:first-child {
+    margin-top: 0 !important;
+  }
+
+  div:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  h3 {
+    font-family: "Indie Flower";
+    font-size: calc(var(--element-width) * 0.19);
+    font-weight: bold;
+  }
+}
+
 .card * {
   margin: 0;
   padding: 0;

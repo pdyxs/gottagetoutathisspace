@@ -19,7 +19,8 @@ const MapSetup: React.FC<InstructionPageProps> = ({
 }) => {
   let {
     playerCount,
-    shipData
+    shipData,
+    shipCode
   } = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const [refreshCount, setRefresh] = useState(0);
@@ -62,7 +63,15 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     if (hasChanged) {
       setRefresh(refreshCount + 1);
     }
-  }, [playerCount, playerPositions, refreshCount])
+  }, [playerCount, playerPositions, refreshCount]);
+
+  const game = shipData.games[shipData.games.length - 1];
+  const systemName = game.systems[game.systems.length - 1].name;
+  const transformations = {
+    shipCode,
+    ...shipData,
+    systemName: systemName !== '' ? systemName : 'Unknown'
+  };
 
   return (
     <div className="gameAndTextContainer">
@@ -72,7 +81,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
         }
       </div>
       <div className="textContainer">
-        <MarkdownComponent source={instructions} />
+        <MarkdownComponent source={instructions} transformations={transformations} />
         {playerPositions.length > 0 &&
           <IonItem color="notebook" style={{width: "300px", margin: "0 auto"}}>
             <IonLabel>There are</IonLabel>

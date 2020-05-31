@@ -39,11 +39,9 @@ const LoadShipIfPossible : React.FC<LoadShipIfPossibleProps> = ({onChecked}) => 
       checkLocalStorage().then(() => {
         setHasChecked(true);
         dispatch(setLoading(false));
-        console.log("checked");
         if (onChecked) onChecked();
       });
     } else if (!isLoading && !hasChecked) {
-      console.log("checked 2");
       if (onChecked) onChecked();
     }
   }, [onChecked, dispatch, hasChecked, isLoading, shipCode, shipData]);

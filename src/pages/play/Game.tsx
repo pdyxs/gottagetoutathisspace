@@ -53,10 +53,12 @@ const Game: React.FC<InstructionPageProps> = ({
   }
 
   async function confirmWin() {
+    setShowWinPopover(false);
     confirm(true, nextUrl);
   }
 
   async function confirmLose() {
+    setShowLosePopover(false);
     confirm(false, '/');
   }
 

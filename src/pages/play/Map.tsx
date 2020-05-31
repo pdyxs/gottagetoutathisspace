@@ -17,7 +17,7 @@ import { upgradeLevel, survivorLevel } from 'data/levels';
 import { StateData } from 'redux/reducer';
 
 const MapSetup: React.FC<InstructionPageProps> = ({
-    nextUrl, className,
+    nextUrl,
     extraProps: {
       header,
       story
