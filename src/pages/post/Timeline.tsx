@@ -38,7 +38,7 @@ const Timeline: React.FC<InstructionPageProps> = () => {
                   <IonCol size="5" className="left side">
                     {(i % 2 === 1) &&
                       <>
-                        <img onClick={() => setPopupImage(game.finalShipURL || '')} className="finalShipImage" src={game.finalShipURL} />
+                        <img alt="The state of the ship at the end of this game" onClick={() => setPopupImage(game.finalShipURL || '')} className="finalShipImage" src={game.finalShipURL} />
                         <div className="description hasImage">
                           {game.systems[game.systems.length - 1].name || '(Unnamed System)'}
                         </div>
@@ -47,15 +47,15 @@ const Timeline: React.FC<InstructionPageProps> = () => {
                   </IonCol>
                   <IonCol size="2" className="middle">
                     <div className={classNames("hline", {
-                      "hline-right": i % 2 == 0,
-                      "hline-left": i % 2 == 1
+                      "hline-right": i % 2 === 0,
+                      "hline-left": i % 2 === 1
                     })} />
                     <div className="line" />
                   </IonCol>
                   <IonCol size="5" className="right side">
                     {(i % 2 === 0) &&
                       <>
-                        <img onClick={() => setPopupImage(game.finalShipURL || '')} className="finalShipImage" src={game.finalShipURL} />
+                        <img alt="The state of the ship at the end of this game" onClick={() => setPopupImage(game.finalShipURL || '')} className="finalShipImage" src={game.finalShipURL} />
                         <div className="description hasImage">
                           {game.systems[game.systems.length - 1].name || '(Unnamed System)'}
                         </div>
