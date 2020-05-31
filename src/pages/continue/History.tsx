@@ -13,7 +13,7 @@ const ContinueHistory: React.FC<InstructionPageProps> = ({nextUrl}) => {
     <div className="page-container">
       <MarkdownComponent source={Content}
         transformations={{...shipData}} />
-      <IonButton href={nextUrl}>
+      <IonButton routerLink={nextUrl}>
         Enough with the history, let's save humanity already!
       </IonButton>
     </div>

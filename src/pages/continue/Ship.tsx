@@ -21,7 +21,7 @@ const ContinueShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
               src={lastGame.finalShipURL} />
           </div>
         }
-        <IonButton className="ion-margin-bottom" href={nextUrl}>
+        <IonButton className="ion-margin-bottom" routerLink={nextUrl}>
           Great! Let's do this!
         </IonButton>
       </div>

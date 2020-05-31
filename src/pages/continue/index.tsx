@@ -15,7 +15,7 @@ export const baseUrl = '/continue';
 const materialsName = 'materials';
 export const materialsURL = `${baseUrl}/${materialsName}`;
 
-const flow : InstructionPagesInfo = [
+const pages : InstructionPagesInfo = [
   {
     url: 'intro',
     phase: PlayPhase.Introduction,
@@ -43,11 +43,9 @@ const flow : InstructionPagesInfo = [
   }
 ]
 
-const Continue: React.FC = () => {
-
-  return (
-    <InstructionFlow pages={flow} baseUrl={baseUrl} nextUrl={trainingUrl} />
-  );
-};
+const Continue: React.FC[] =
+  InstructionFlow({
+    pages, baseUrl, nextUrl: trainingUrl
+  });
 
 export default Continue;

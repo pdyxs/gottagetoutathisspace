@@ -11,7 +11,7 @@ const NewIntro: React.FC<InstructionPageProps> = ({baseUrl, nextUrl, futurePages
     <div className="page-container">
       <MarkdownComponent source={Content} />
       <div className="centre">
-        <IonButton href={nextUrl}>Great, how do I make a copy of the game?</IonButton>
+        <IonButton routerLink={nextUrl}>Great, how do I make a copy of the game?</IonButton>
       </div>
     </div>
   );

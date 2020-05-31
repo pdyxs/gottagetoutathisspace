@@ -10,7 +10,7 @@ import { PlayPhase } from 'model/Phases';
 
 export const baseUrl = '/end';
 
-const flow : InstructionPagesInfo = [
+const pages : InstructionPagesInfo = [
   {
     url: 'record',
     phase: PlayPhase.PostGame,
@@ -23,11 +23,9 @@ const flow : InstructionPagesInfo = [
   }
 ]
 
-const Continue: React.FC = () => {
+const EndGame: React.FC[] =
+  InstructionFlow({
+    pages, baseUrl, nextUrl: '/'
+  });
 
-  return (
-    <InstructionFlow pages={flow} baseUrl={baseUrl} nextUrl={'/'} />
-  );
-};
-
-export default Continue;
+export default EndGame;

@@ -11,6 +11,7 @@ import { PlayPhase, isAllowedIn } from 'model/Phases';
 import { StateData } from 'redux/reducer';
 import defaultPage from 'pages/defaults';
 import classNames from 'classnames';
+import LoadShipIfPossible from './LoadShipIfPossible';
 
 export interface InstructionPageProps {
   baseUrl: string,
@@ -39,8 +40,16 @@ interface InstructionFlowProps {
   nextUrl?: string
 }
 
-const InstructionFlow: React.FC<InstructionFlowProps> =
-  ({baseUrl, pages, nextUrl}) => {
+interface InstructionFlowPageProps {
+  CurrentPage: InstructionPageInfo,
+  currentPageIndex: number,
+  baseUrl: string,
+  pages: InstructionPagesInfo,
+  nextUrl?: string
+}
+
+const InstructionFlowPage: React.FC<InstructionFlowPageProps> =
+  ({CurrentPage, currentPageIndex, baseUrl, pages, nextUrl}) => {
   const dispatch = useDispatch();
   const [checkedUrl, setCheckedUrl] = useState('');
 
@@ -48,57 +57,62 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
   const stateData : StateData = useSelector((state: any) => state);
   const shipCode = stateData.shipCode;
 
-  let currentPageIndex = findIndex(pages, page => history.location.pathname === `${baseUrl}/${page.url}`);
-  let currentPage = currentPageIndex < 0 ? null : pages[currentPageIndex];
   let nextPage = (currentPageIndex >= pages.length - 1) ? null : pages[currentPageIndex + 1];
   let nextPageUrl = (nextPage ? `${baseUrl}/${nextPage.url}` : nextUrl) || `${baseUrl}/`;
 
   useEffect(() => {
-    if (!stateData.isLoading && currentPage !== null && checkedUrl !== currentPage.url) {
-      if (!isAllowedIn(currentPage.phase, stateData)) {
+    if (!stateData.isLoading && CurrentPage !== null && checkedUrl !== CurrentPage.url) {
+      if (!isAllowedIn(CurrentPage.phase, stateData)) {
         history.replace(defaultPage(stateData));
       } else {
-        setCheckedUrl(currentPage.url);
+        setCheckedUrl(CurrentPage.url);
       }
     }
-  }, [stateData, currentPage, checkedUrl, history]);
+  }, [stateData, CurrentPage, checkedUrl, history]);
 
   function resetShip() {
     dispatch(clearPlayData());
     clearCodes();
   }
 
-  if (currentPage && checkedUrl !== currentPage.url) {
+  if (!CurrentPage || checkedUrl !== CurrentPage.url) {
     return <></>;
   }
 
   return (
-    <Fragment>
-      <IonPage>
-        <Header shipCode={shipCode} resetShip={resetShip} />
-        <IonContent id="ggots-content" className={classNames("main-content", currentPage?.className)}>
-          <Switch>
-            {pages.map(Page =>
-              <Route key={Page.url} path={`${baseUrl}/${Page.url}`}
-                render={(props) =>
-                  <Page.component {...props}
-                    extraProps={Page.extraProps || {}}
-                    className={Page.className}
-                    resetShip={resetShip}
-                    baseUrl={baseUrl}
-                    nextPage={nextPage}
-                    nextUrl={nextPageUrl}
-                    pastPages={take(pages, currentPageIndex)}
-                    futurePages={drop(pages, currentPageIndex + 1)} />
-                } exact={true} />
-              )}
-              <Redirect push={true} to={`${baseUrl}/${pages[0].url}`} from={baseUrl} exact />
-          </Switch>
-        </IonContent>
-      </IonPage>
-    </Fragment>
+    <IonPage>
+      <LoadShipIfPossible />
+      <Header shipCode={shipCode} resetShip={resetShip} />
+      <IonContent id="ggots-content" className={classNames("main-content", CurrentPage.className)}>
+      <CurrentPage.component
+        extraProps={CurrentPage.extraProps || {}}
+        className={CurrentPage.className}
+        resetShip={resetShip}
+        baseUrl={baseUrl}
+        nextPage={nextPage}
+        nextUrl={nextPageUrl}
+        pastPages={take(pages, currentPageIndex)}
+        futurePages={drop(pages, currentPageIndex + 1)} />
+      </IonContent>
+    </IonPage>
 
   );
 };
+
+function InstructionFlow(data: InstructionFlowProps): any {
+  const {baseUrl, pages, nextUrl} = data;
+  return [
+    ...pages.map((page, i) => (
+      <Route key={`${baseUrl}/${page.url}`} path={`${baseUrl}/${page.url}`} render={() => (
+        <InstructionFlowPage baseUrl={baseUrl} pages={pages} nextUrl={nextUrl}
+          CurrentPage={page} currentPageIndex={i} />
+      )} />
+    )),
+    <Route key={`${baseUrl}/`} path={`${baseUrl}/`} render={() => (
+      <InstructionFlowPage baseUrl={baseUrl} pages={pages} nextUrl={nextUrl}
+        CurrentPage={pages[0]} currentPageIndex={0} />
+    )} />
+  ];
+}
 
 export default InstructionFlow;

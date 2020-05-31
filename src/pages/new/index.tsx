@@ -9,7 +9,7 @@ import InstructionFlow,
   from '../../components/InstructionFlow';
 import { PlayPhase } from 'model/Phases';
 
-const flow : InstructionPagesInfo = [
+const pages : InstructionPagesInfo = [
   {
     url: 'intro',
     phase: PlayPhase.Introduction,
@@ -29,10 +29,9 @@ const flow : InstructionPagesInfo = [
 
 export const baseUrl = '/new';
 
-const NewGame: React.FC = () => {
-  return (
-    <InstructionFlow pages={flow} baseUrl={baseUrl} nextUrl={trainingUrl} />
-  );
-};
+const NewGame: React.FC[] =
+  InstructionFlow({
+    pages, baseUrl, nextUrl: trainingUrl
+  });
 
 export default NewGame;

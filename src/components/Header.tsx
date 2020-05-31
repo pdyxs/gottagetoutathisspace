@@ -21,34 +21,34 @@ const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonItem href="/">
+            <IonItem routerLink="/">
               <IonIcon slot="start" icon={home} />
               <IonLabel>Home</IonLabel>
             </IonItem>
-            <IonItem href="/who">
+            <IonItem routerLink="/who">
               <IonIcon slot="start" icon={peopleOutline} />
               <IonLabel>Who made this</IonLabel>
             </IonItem>
-            <IonItem href="/why">
+            <IonItem routerLink="/why">
               <IonIcon slot="start" icon={helpOutline} />
               <IonLabel>Why?</IonLabel>
             </IonItem>
-            <IonItem href="/contact">
+            <IonItem routerLink="/contact">
               <IonIcon slot="start" icon={chatbubbleEllipsesOutline} />
               <IonLabel>I want to talk to you</IonLabel>
             </IonItem>
-            <IonItem href="/more">
+            <IonItem routerLink="/more">
               <IonIcon slot="start" icon={ellipsisHorizontalOutline} />
               <IonLabel>I want more</IonLabel>
             </IonItem>
             <IonItem color="tertiary">
               <IonTitle>Money Stuff</IonTitle>
             </IonItem>
-            <IonItem href="/buy">
+            <IonItem routerLink="/buy">
               <IonIcon slot="start" icon={cardOutline} />
               <IonLabel>Buy a nice deck</IonLabel>
             </IonItem>
-            <IonItem href="/support-us">
+            <IonItem routerLink="/support-us">
               <IonIcon slot="start" icon={cashOutline} />
               <IonLabel>Support Us</IonLabel>
             </IonItem>

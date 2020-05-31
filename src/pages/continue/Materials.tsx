@@ -28,7 +28,7 @@ const Materials: React.FC<InstructionPageProps> = ({nextUrl}) => {
             )}
           </IonRow>
         </IonGrid>
-      <IonButton href={nextUrl}>
+      <IonButton routerLink={nextUrl}>
         I've got everything, let's go!
       </IonButton>
     </div>

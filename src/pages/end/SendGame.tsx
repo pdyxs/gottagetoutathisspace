@@ -18,7 +18,7 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
       </IonItem>
       <MarkdownComponent source={Content} transformations={{...shipData}} />
       <div className="centre">
-        <IonButton className="ion-margin-bottom" href={nextUrl}>
+        <IonButton className="ion-margin-bottom" routerLink={nextUrl}>
           End
         </IonButton>
       </div>

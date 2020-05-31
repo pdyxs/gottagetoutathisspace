@@ -75,7 +75,7 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
           <p>
             Once you've finished making components, click here to continue
           </p>
-          <IonButton href={nextUrl}>Great, let's start!</IonButton>
+          <IonButton routerLink={nextUrl}>Great, let's start!</IonButton>
         </div>
       </div>
     </div>

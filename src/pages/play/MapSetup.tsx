@@ -82,7 +82,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
             <IonLabel className="ion-padding-start">players</IonLabel>
           </IonItem>
         }
-        <IonButton href={nextUrl}>
+        <IonButton routerLink={nextUrl}>
           I've made the space, can I please now get out of it?
         </IonButton>
       </div>

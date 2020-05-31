@@ -56,10 +56,9 @@ const flow : InstructionPagesInfo = [
   }
 ];
 
-const GameFlow: React.FC = () => {
-  return (
-    <InstructionFlow pages={flow} baseUrl={baseUrl} nextUrl={nextURL} />
-  );
-};
-
+const GameFlow: React.FC[] =
+  InstructionFlow({
+    pages: flow, baseUrl, nextUrl: nextURL
+  });
+  
 export default GameFlow;

@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import defaultPage from './defaults';
 import { clearCodes } from 'storage';
 import { clearPlayData } from 'redux/actions';
+import LoadShipIfPossible from 'components/LoadShipIfPossible';
 
 const Start: React.FC = () => {
   const stateData = useSelector((state: any) => state);
@@ -22,6 +23,7 @@ const Start: React.FC = () => {
 
   return (
     <IonPage>
+      <LoadShipIfPossible />
       <IonContent>
         <div className="startPage ion-text-center startPage">
           <ReactMarkdown source={Content} />
@@ -29,7 +31,7 @@ const Start: React.FC = () => {
           <div>
             <IonButton
               size="large"
-              href="/continue"
+              routerLink="/continue"
               onClick={reset}
               color="primary">
               I got a strange package in the mail
@@ -38,7 +40,7 @@ const Start: React.FC = () => {
           <div>
             <IonButton
               size="large"
-              href="/new"
+              routerLink="/new"
               onClick={reset}
               color="primary">
               I didn't, but this sounds fun
@@ -48,7 +50,7 @@ const Start: React.FC = () => {
             <div>
               <IonButton
                 size="large"
-                href={defaultPage(stateData)}
+                routerLink={defaultPage(stateData)}
                 color="light">
                 I want to continue with ship {shipCode}
               </IonButton>
