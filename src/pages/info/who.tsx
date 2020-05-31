@@ -32,19 +32,19 @@ const Who: React.FC = () => {
                       </IonAvatar>
                       <MarkdownComponent source={PaulInfo} />
                       <div className="social">
-                        <a href="https://www.instagram.com/pdyxs/" target="_blank">
+                        <a href="https://www.instagram.com/pdyxs/" target="_blank" rel="noopener noreferrer">
                           <IonIcon size="large" icon={logoInstagram} />
                         </a>
-                        <a href="https://twitter.com/pdyxs" target="_blank">
+                        <a href="https://twitter.com/pdyxs" target="_blank" rel="noopener noreferrer">
                           <IonIcon size="large" icon={logoTwitter} />
                         </a>
-                        <a href="https://github.com/pdyxs" target="_blank">
+                        <a href="https://github.com/pdyxs" target="_blank" rel="noopener noreferrer">
                           <IonIcon size="large" icon={logoGithub} />
                         </a>
-                        <a href="https://pdyxs.wtf" target="_blank">
+                        <a href="https://pdyxs.wtf" target="_blank" rel="noopener noreferrer">
                           <IonIcon size="large" icon={globeOutline} />
                         </a>
-                        <a href="mailto:talk@pdyxs.wtf" target="_blank">
+                        <a href="mailto:talk@pdyxs.wtf" target="_blank" rel="noopener noreferrer">
                           <IonIcon size="large" icon={mailOutline} />
                         </a>
                       </div>

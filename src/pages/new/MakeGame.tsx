@@ -1,4 +1,4 @@
-import { IonContent, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
+import { IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
@@ -57,7 +57,7 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
               You've chosen to print some items. Click this button to do that!
             </p>
             <IonButton href={`/print/${printurl}`}
-              target="_blank">Print</IonButton>
+              target="_blank" rel="noopener noreferrer">Print</IonButton>
           </div>
         }
 
@@ -67,7 +67,7 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
               You've chosen to make some cards. Click here to see the details of the cards you want to make!
             </p>
             <IonButton href={`/make/${printurl}`}
-              target="_blank">Make</IonButton>
+              target="_blank" rel="noopener noreferrer">Make</IonButton>
           </div>
         }
 

@@ -1,4 +1,4 @@
-import { IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
 import React from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 import materials from 'data/materials';

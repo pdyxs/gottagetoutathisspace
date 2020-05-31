@@ -1,6 +1,5 @@
-import { IonHeader, IonToolbar, IonButtons, IonTitle, IonButton, IonMenu, IonContent, IonList, IonItem, IonMenuButton, IonIcon, IonLabel } from '@ionic/react';
+import { IonHeader, IonToolbar, IonButtons, IonTitle, IonMenu, IonContent, IonList, IonItem, IonMenuButton, IonIcon, IonLabel } from '@ionic/react';
 import React, { Fragment } from 'react';
-import { useHistory } from 'react-router-dom';
 import { home, helpOutline, chatbubbleEllipsesOutline, peopleOutline, ellipsisHorizontalOutline, cardOutline, cashOutline, musicalNotesOutline, codeSlashOutline } from "ionicons/icons";
 
 interface HeaderProps {
@@ -10,7 +9,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
-  var history = useHistory();
 
 
   return (
@@ -57,11 +55,11 @@ const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
             <IonItem color="tertiary">
               <IonTitle>Just Coz</IonTitle>
             </IonItem>
-            <IonItem href="https://open.spotify.com/playlist/4cOim4pWFKu5r55hteThnZ?si=-Gqj5cjURO2WVQ4cuaCV9Q" target="_blank">
+            <IonItem href="https://open.spotify.com/playlist/4cOim4pWFKu5r55hteThnZ?si=-Gqj5cjURO2WVQ4cuaCV9Q" target="_blank" rel="noopener noreferrer">
               <IonIcon slot="start" icon={musicalNotesOutline} />
               <IonLabel>Official Playlist</IonLabel>
             </IonItem>
-            <IonItem href="https://github.com/pdyxs/gottagetouttathisspace" target="_blank">
+            <IonItem href="https://github.com/pdyxs/gottagetouttathisspace" target="_blank" rel="noopener noreferrer">
               <IonIcon slot="start" icon={codeSlashOutline} />
               <IonLabel>Source Code</IonLabel>
             </IonItem>

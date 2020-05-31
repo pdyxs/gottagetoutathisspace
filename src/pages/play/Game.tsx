@@ -1,4 +1,4 @@
-import { IonContent, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLoading } from '@ionic/react';
+import { IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLoading } from '@ionic/react';
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 

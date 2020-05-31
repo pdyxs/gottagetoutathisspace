@@ -1,4 +1,4 @@
-import { IonContent, IonButton, IonInput, IonLoading } from '@ionic/react';
+import { IonButton, IonInput, IonLoading } from '@ionic/react';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPlayData, setCodename } from '../../redux/actions';

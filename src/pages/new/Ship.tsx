@@ -1,4 +1,4 @@
-import { IonContent, IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem } from '@ionic/react';
+import { IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem } from '@ionic/react';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';

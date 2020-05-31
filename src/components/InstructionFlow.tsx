@@ -1,6 +1,6 @@
 import { IonPage, IonContent } from '@ionic/react';
 import React, { useEffect, Fragment, useState } from 'react';
-import { Route, Redirect, useHistory, Switch } from 'react-router-dom';
+import { Route, useHistory, Switch, Redirect } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCodes } from '../storage';
@@ -10,7 +10,6 @@ import Header from './Header';
 import { PlayPhase, isAllowedIn } from 'model/Phases';
 import { StateData } from 'redux/reducer';
 import defaultPage from 'pages/defaults';
-import slugify from 'slugify';
 import classNames from 'classnames';
 
 export interface InstructionPageProps {
@@ -62,9 +61,6 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
         setCheckedUrl(currentPage.url);
       }
     }
-    if (!stateData.isLoading && !currentPage) {
-      history.replace(`${baseUrl}/${pages[0].url}`);
-    }
   }, [stateData, currentPage, checkedUrl, history]);
 
   function resetShip() {
@@ -72,7 +68,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
     clearCodes();
   }
 
-  if (!currentPage || checkedUrl !== currentPage.url) {
+  if (currentPage && checkedUrl !== currentPage.url) {
     return <></>;
   }
 
@@ -96,6 +92,7 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
                     futurePages={drop(pages, currentPageIndex + 1)} />
                 } exact={true} />
               )}
+              <Redirect push={true} to={`${baseUrl}/${pages[0].url}`} from={baseUrl} exact />
           </Switch>
         </IonContent>
       </IonPage>

@@ -1,4 +1,4 @@
-import { IonContent, IonButton, IonItem, IonIcon, IonLabel } from '@ionic/react';
+import { IonButton, IonItem, IonIcon, IonLabel } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 import GameGrid from '../../components/Game/GameGrid';

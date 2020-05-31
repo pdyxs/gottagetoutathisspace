@@ -1,4 +1,4 @@
-import { IonContent, IonButton } from '@ionic/react';
+import { IonButton } from '@ionic/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
