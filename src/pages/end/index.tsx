@@ -8,6 +8,8 @@ import RecordLogs from './RecordLogs';
 import SendGame from './SendGame';
 import { PlayPhase } from 'model/Phases';
 
+import { baseUrl as postUrl } from 'pages/post/index';
+
 export const baseUrl = '/end';
 
 const pages : InstructionPagesInfo = [
@@ -25,7 +27,7 @@ const pages : InstructionPagesInfo = [
 
 const EndGame: React.FC[] =
   InstructionFlow({
-    pages, baseUrl, nextUrl: '/'
+    pages, baseUrl, nextUrl: postUrl
   });
 
 export default EndGame;

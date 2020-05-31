@@ -9,6 +9,7 @@ import GameFuel from './pages/game-fuel';
 import GameUpgrade from './pages/game-upgrade';
 import GameSurvivor from './pages/game-survivor';
 import EndGame from './pages/end';
+import PostGame from './pages/post';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -56,6 +57,7 @@ const App: React.FC = () => {
           {GameFuel}
           {GameUpgrade}
           {GameSurvivor}
+          {PostGame}
           <Route path="/" component={Start} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>

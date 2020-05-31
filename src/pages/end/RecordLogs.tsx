@@ -68,7 +68,7 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
         <IonInput
           value={codenameInput} placeholder="Enter Codename Here"
           onIonChange={e => updateCodenameInput(e.detail.value!)} />
-        <IonButton disabled={codenameInput.length < minCodeLength || chosenFile === null}
+        <IonButton disabled={(codenameInput.length < minCodeLength) || (!chosenFile)}
           onClick={() => updateRecords(codenameInput)}>Records Complete!</IonButton>
       </form>
     </div>
