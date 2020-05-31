@@ -44,11 +44,11 @@ const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
             <IonItem color="tertiary">
               <IonTitle>Money Stuff</IonTitle>
             </IonItem>
-            <IonItem routerLink="/buy">
+            <IonItem disabled routerLink="/buy">
               <IonIcon slot="start" icon={cardOutline} />
               <IonLabel>Buy a nice deck</IonLabel>
             </IonItem>
-            <IonItem routerLink="/support-us">
+            <IonItem disabled routerLink="/support-us">
               <IonIcon slot="start" icon={cashOutline} />
               <IonLabel>Support Us</IonLabel>
             </IonItem>
