@@ -17,10 +17,11 @@ interface SpaceCardProps {
   type?: CellContentTypes,
   subtype?: StarTypes | PlanetTypes,
   variety?: number,
-  className?: string
+  className?: string,
+  isPrinterFriendly?: boolean
 }
 
-const SpaceCard: React.FC<SpaceCardProps> = ({className, type, subtype, variety}) => {
+const SpaceCard: React.FC<SpaceCardProps> = ({className, isPrinterFriendly, type, subtype, variety}) => {
   var piece = type ? pieces[type] : null;
   return (
     <SquareCard className={classNames("card", "space-card", className)}
@@ -29,7 +30,7 @@ const SpaceCard: React.FC<SpaceCardProps> = ({className, type, subtype, variety}
       {piece && type &&
         <>
           <SizedInCSS>
-            <CellContentIcon className="detail" content={{type, subtype, variety}} />
+            <CellContentIcon isPrinterFriendly={isPrinterFriendly} className="detail" content={{type, subtype, variety}} />
             {piece && piece.name &&
               <h3>
                 {isString(piece.name) ? piece.name : piece.name[subtype || '']}

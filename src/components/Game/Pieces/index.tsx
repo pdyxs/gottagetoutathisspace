@@ -13,7 +13,8 @@ import { ShipData } from "model/Phases";
 
 export interface IconProps {
   className?: string,
-  content: GameCellContent
+  content: GameCellContent,
+  isPrinterFriendly?: boolean
 }
 
 export interface ControlProps {
@@ -26,14 +27,16 @@ export interface ControlProps {
 
 interface CellContentIconProps {
   className?: string,
-  content: GameCellContent
+  content: GameCellContent,
+  isPrinterFriendly?: boolean
 }
 
-export const CellContentIcon : React.FC<CellContentIconProps> = ({className, content}) => {
+export const CellContentIcon : React.FC<CellContentIconProps> = ({className, isPrinterFriendly, content}) => {
   if (!has(pieces, content.type)) return (<></>);
   const IconComponent = pieces[content.type].icon;
   if (!IconComponent) return (<></>);
   return <IconComponent
+      isPrinterFriendly={isPrinterFriendly}
       content={content}
       className={classNames(className, 'ggo-icon', `ggo-icon-${content.type}`, `ggo-icon-${content.type}-${content.subtype || 'default'}`)} />
 }
