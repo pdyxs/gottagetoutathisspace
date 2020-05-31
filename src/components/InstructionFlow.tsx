@@ -76,13 +76,11 @@ const InstructionFlow: React.FC<InstructionFlowProps> =
     return <></>;
   }
 
-  const contentid = slugify(currentPage?.url || '');
-
   return (
     <Fragment>
       <IonPage>
-        <Header shipCode={shipCode} menuid={contentid} resetShip={resetShip} />
-        <IonContent id={contentid} className={classNames("main-content", currentPage?.className)}>
+        <Header shipCode={shipCode} resetShip={resetShip} />
+        <IonContent id="ggots-content" className={classNames("main-content", currentPage?.className)}>
           <Switch>
             {pages.map(Page =>
               <Route key={Page.url} path={`${baseUrl}/${Page.url}`}

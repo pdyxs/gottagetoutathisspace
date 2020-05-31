@@ -34,6 +34,7 @@ import './theme/print.scss';
 
 import Print from 'pages/Print';
 import Make from 'pages/Make';
+import Who from 'pages/info/who';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { retrieveCodes } from 'storage';
@@ -80,6 +81,7 @@ const App: React.FC = () => {
         <IonRouterOutlet>
           <Route path="/print" component={Print} />
           <Route path="/make" component={Make} />
+          <Route path="/who" exact component={Who} />
           <Route path={continueURL} component={Continue} />
           <Route path={newURL} component={NewGame} />
           <Route path={endURL} component={EndGame} />

@@ -6,16 +6,16 @@ import { home, helpOutline, chatbubbleEllipsesOutline, peopleOutline, ellipsisHo
 interface HeaderProps {
   shipCode?: any;
   resetShip?: () => void;
-  title?: string;
-  menuid?: string;
+  title?: string
 }
 
-const Header: React.FC<HeaderProps> = ({shipCode, menuid, resetShip, title}) => {
+const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
   var history = useHistory();
+
 
   return (
     <>
-      <IonMenu side="start" contentId={menuid}>
+      <IonMenu side="start" contentId="ggots-content">
         <IonHeader>
           <IonToolbar color="primary">
             <IonTitle>Gotta Get Outta This Menu</IonTitle>
@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({shipCode, menuid, resetShip, title}) => 
               <IonIcon slot="start" icon={home} />
               <IonLabel>Home</IonLabel>
             </IonItem>
-            <IonItem href="/">
+            <IonItem href="/who">
               <IonIcon slot="start" icon={peopleOutline} />
               <IonLabel>Who made this</IonLabel>
             </IonItem>
@@ -57,11 +57,11 @@ const Header: React.FC<HeaderProps> = ({shipCode, menuid, resetShip, title}) => 
             <IonItem color="tertiary">
               <IonTitle>Just Coz</IonTitle>
             </IonItem>
-            <IonItem href="/" target="_blank">
+            <IonItem href="https://open.spotify.com/playlist/4cOim4pWFKu5r55hteThnZ?si=-Gqj5cjURO2WVQ4cuaCV9Q" target="_blank">
               <IonIcon slot="start" icon={musicalNotesOutline} />
               <IonLabel>Official Playlist</IonLabel>
             </IonItem>
-            <IonItem href="/" target="_blank">
+            <IonItem href="https://github.com/pdyxs/gottagetouttathisspace" target="_blank">
               <IonIcon slot="start" icon={codeSlashOutline} />
               <IonLabel>Source Code</IonLabel>
             </IonItem>
@@ -72,13 +72,11 @@ const Header: React.FC<HeaderProps> = ({shipCode, menuid, resetShip, title}) => 
         <IonToolbar>
           <IonButtons slot="start">
             <IonMenuButton />
-            <IonButton href="/">
-              <IonTitle>
-                <span onClick={() => history.push("/")}>Gotta Get Outta This Space</span>
-                {title && `- ${title}`}
-              </IonTitle>
-            </IonButton>
           </IonButtons>
+          <IonTitle>
+            Gotta Get Outta This Space
+            {title && `- ${title}`}
+          </IonTitle>
           {shipCode &&
             <Fragment>
               <IonTitle size="small" slot="end">Ship: {shipCode}</IonTitle>
