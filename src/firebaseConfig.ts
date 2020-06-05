@@ -76,7 +76,9 @@ export async function uploadFile(shipCode: string, game: number, file: File) : P
   });
 }
 
-export async function sendEmail(from: string, email: string, subject: string, body: string, doSubscribe: boolean) : Promise<void> {
+//returns: whether it sent or not
+export async function sendEmail(captcha: string, from: string, email: string, subject: string, body: string, doSubscribe: boolean) : Promise<any> {
   const func = functions.httpsCallable('sendEmail');
-  await func({from, email, subject, body});
+  const resp = await func({from, email, subject, body, doSubscribe, captcha});
+  return resp.data;
 }
