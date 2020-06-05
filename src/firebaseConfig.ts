@@ -77,25 +77,6 @@ export async function uploadFile(shipCode: string, game: number, file: File) : P
 }
 
 export async function sendEmail(from: string, email: string, subject: string, body: string, doSubscribe: boolean) : Promise<void> {
-  // const func = functions.httpsCallable('sendEmail');
-  // await func({from, email, subject, body});
-  analytics.logEvent(`sent-email`, {
-    subscribed: doSubscribe
-  });
-
-  //using simpleform for now, as functions are a pain in the ass
-  const data = new URLSearchParams();
-  data.append('source', 'GGOTS contact form');
-  data.append('from', from);
-  data.append('email', email);
-  data.append('subject', subject);
-  data.append('body', body);
-  data.append('subscribe', doSubscribe.toString());
-
-  const requestOptions : RequestInit = {
-    method: 'POST',
-    mode: 'no-cors',
-    body: data
-  };
-  await fetch('https://getsimpleform.com/messages?form_api_token=74d3ef7c011705a088d446e29a329297', requestOptions);
+  const func = functions.httpsCallable('sendEmail');
+  await func({from, email, subject, body});
 }

@@ -1,17 +1,8 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+import rp = require('request-promise');
 
-import nodemailer = require('nodemailer');
-
-const gmailEmail = functions.config().gmail.email;
-const gmailPassword = functions.config().gmail.password;
-const mailTransport = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: gmailEmail,
-    pass: gmailPassword
-  }
-});
+const slackWebhook = functions.config().slack.webhook;
 
 admin.initializeApp();
 
@@ -189,20 +180,49 @@ export const registerSystemResult = functions.https.onCall(async (data, _) => {
   }
 });
 
-export const sendEmail = functions.https.onCall(async (data, _) => {
+export const sendEmail = functions.https.onCall((data, _) => {
   const {from, email, subject, body} = data;
-  console.error(gmailEmail);
-  const mailOptions = {
-    from: email,
-    replyTo: email,
-    to: gmailEmail,
-    subject: `GGOTS [${from}]: ${subject}`,
-    text: body,
-    html: `<p>${body}`
-  };
 
-  await mailTransport.sendMail(mailOptions);
-  console.error("sent");
+  return rp({
+    method: 'POST',
+    uri: slackWebhook,
+    body: {
+    	blocks: [
+    		{
+    			type: "section",
+    			text: {
+    				"type": "mrkdwn",
+    				"text": "Someone has just filled in the *_Gotta Get Outta This Space_* Contact Form!"
+    			}
+    		},
+    		{
+    			"type": "divider"
+    		},
+    		{
+    			"type": "section",
+    			"text": {
+    				"type": "mrkdwn",
+    				"text": `*Name:* ${from}\n*Email:* ${email}\n*Subjeect:* ${subject}\n${body}`
+    			}
+    		},
+    		{
+    			"type": "actions",
+    			"elements": [
+    				{
+    					"type": "button",
+    					"text": {
+    						"type": "plain_text",
+    						"text": "Reply",
+    						"emoji": true
+    					},
+    					"url": `mailto:${email}?subject=${encodeURIComponent("Re: " + subject)}&body=${encodeURIComponent('\n\n------------------------------\n> ' + body.replace('\n', '\n> '))}`
+    				}
+    			]
+    		}
+    	]
+    },
+    json: true
+  });
 });
 
 export const saveGameData = functions.https.onCall(async (data, _) => {
