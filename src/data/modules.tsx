@@ -147,7 +147,7 @@ const modules: ShipModule[] = [
     upgrades: [
       {
         name: 'Extra Maneuverability',
-        effect: 'Colour in another movement square - you can now move there'
+        effect: 'Draw a circle in another movement square - you can now move there'
       },
       {
         name: 'Improved Resilience',
@@ -182,7 +182,7 @@ const modules: ShipModule[] = [
     upgrades: [
       {
         name: 'Improved Aim',
-        effect: 'Circle in a target square - you can now shoot there'
+        effect: 'Draw a circle in a target square - you can now shoot there'
       },
       {
         name: 'Improved Resilience',
