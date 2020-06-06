@@ -1,4 +1,4 @@
-import { IonGrid, IonRow, IonCol, IonButton, IonFooter, IonToolbar, IonItem } from '@ionic/react';
+import { IonGrid, IonRow, IonCol, IonButton, IonFooter, IonItem } from '@ionic/react';
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
