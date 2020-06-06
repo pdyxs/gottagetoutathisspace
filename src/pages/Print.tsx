@@ -1,14 +1,15 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import slugify from 'slugify';
 import './Print.scss';
 import { useLocation } from 'react-router-dom';
 import materials from 'data/materials';
 import Material, { PrintComponentProps, MaterialBuildOptionType, MaterialBuildOption, buildOptionClasses, BuildOptionTypeDetails } from 'model/Materials';
-import { IonPage, IonContent, IonGrid, IonCol, IonRow, IonImg, IonInput, IonItem, IonLabel } from '@ionic/react';
+import { IonPage, IonContent, IonGrid, IonCol, IonRow, IonImg, IonInput, IonItem, IonLabel, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
 import Header from 'components/Header';
 import MarkdownComponent from 'components/MarkdownComponent';
 
 import PrintInstructions from 'content/Print/PrintInstructions.md';
+import PrintPopup from 'content/Print/PrintPopup.md';
 import { find, isString, take, map, clone } from 'lodash';
 
 interface PrintMaterialProps {
@@ -59,12 +60,20 @@ const PrintPreview: React.FC<PrintPreviewProps> = ({material, buildOptionType}) 
 }
 
 const Print: React.FC = () => {
-  var location = useLocation();
+  const location = useLocation();
+  const [showPopover, setShowPopover] = useState(true);
 
   const [,, ...buildOptions] = location.pathname.split('/');
 
   const materialsWithBuildOptions = take(materials, buildOptions.length);
   const [materialCounts, setMaterialCounts] = useState(map(materialsWithBuildOptions, m => m.printCountDefault || m.printCountMax));
+
+  function doPrint() {
+    window.print();
+  }
+  // useEffect(() => {
+  //   setTimeout(() => window.print(), 2000);
+  // }, []);
 
   function updateCount(index: number, countString: string) {
     var count : number = parseInt(countString);
@@ -82,9 +91,32 @@ const Print: React.FC = () => {
       <IonPage className="no-print">
         <Header />
         <IonContent id="ggots-content">
+          <IonPopover isOpen={showPopover}
+            cssClass="popoverWithCard"
+            onDidDismiss={()=>setShowPopover(false)}>
+            <IonCard color="success">
+              <IonCardHeader>
+                <IonCardTitle>Printing your pieces</IonCardTitle>
+              </IonCardHeader>
+              <IonCardContent>
+                <MarkdownComponent source={PrintPopup} />
+                <IonItem button onClick={doPrint}>
+                  Let's Print these already!
+                </IonItem>
+                <IonItem button onClick={() => setShowPopover(false)}>
+                  Let me choose how many I want
+                </IonItem>
+              </IonCardContent>
+            </IonCard>
+          </IonPopover>
+
           <div className="page-container">
             <MarkdownComponent source={PrintInstructions} />
-
+            <div className="centre">
+              <IonButton onClick={doPrint}>
+                Print
+              </IonButton>
+            </div>
             <IonGrid>
               <IonRow>
                 {materialsWithBuildOptions.map((material, i) =>

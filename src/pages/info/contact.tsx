@@ -95,6 +95,12 @@ const Contact: React.FC = () => {
                         <IonItem>
                           <IonTextarea rows={5} value={body} onIonChange={e => setBody(e.detail.value!)} autoGrow placeholder="What do you want to say?" />
                         </IonItem>
+                        <IonItem>
+                          <IonText color="medium" className="text-small camo-links">
+                            This site is protected from robots by reCAPTCHA and the
+                            Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                          </IonText>
+                        </IonItem>
                         <IonButton type="submit" expand="block">Send</IonButton>
                       </form>
                     </IonCardContent>

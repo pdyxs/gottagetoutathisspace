@@ -1,4 +1,4 @@
-import { IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
+import { IonGrid, IonRow, IonCol, IonButton, IonFooter, IonToolbar, IonItem } from '@ionic/react';
 import React, { useState } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
@@ -35,50 +35,62 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
   ));
 
   return (
-    <div className="ion-text-center ion-padding">
-      <div className="page-container">
-        <MarkdownComponent source={Content} />
-
-        <IonGrid>
-          <IonRow>
-            {materials.map((material, i) =>
-              <IonCol key={i} size="12" size-sm="6">
-                <MakeMaterialsCard material={material}
-                  onBuildOptionChanged={(j) => updateBuildOption(i, j)}
-                  />
-              </IonCol>
-            )}
-          </IonRow>
-        </IonGrid>
-
-        {isPrintable &&
+    <>
+      <div className="ion-text-center ion-padding">
+        <div className="page-container">
+          <MarkdownComponent source={Content} />
           <div className="ion-text-center">
+            <p>
+              Once you've finished making components, click here to continue
+            </p>
+            <IonButton routerLink={nextUrl}>Great, let's start!</IonButton>
+          </div>
+
+          <IonGrid>
+            <IonRow>
+              {materials.map((material, i) =>
+                <IonCol key={i} size="12" size-sm="6">
+                  <MakeMaterialsCard material={material}
+                    onBuildOptionChanged={(j) => updateBuildOption(i, j)}
+                    />
+                </IonCol>
+              )}
+            </IonRow>
+          </IonGrid>
+
+          <div className="ion-text-center">
+            <p>
+              Once you've finished making components, click here to continue
+            </p>
+            <IonButton routerLink={nextUrl}>Great, let's start!</IonButton>
+          </div>
+
+          <div className="pad-large" />
+        </div>
+      </div>
+      <IonFooter className="footer-fixed">
+        {isPrintable &&
+          <IonItem color="dark" className="ion-text-center page-container">
             <p>
               You've chosen to print some items. Click this button to do that!
             </p>
-            <IonButton href={`/print/${printurl}`}
+            <IonButton slot="end" size="large" href={`/print/${printurl}`}
               target="_blank" rel="noopener noreferrer">Print</IonButton>
-          </div>
+          </IonItem>
         }
+
 
         {needsBuildInstructions &&
-          <div className="ion-text-center">
+          <IonItem color="dark" className="ion-text-center page-container">
             <p>
-              You've chosen to make some cards. Click here to see the details of the cards you want to make!
+              You've chosen to make some cards. Click here to see the details of the pieces you want to make!
             </p>
-            <IonButton href={`/make/${printurl}`}
+            <IonButton slot="end" size="large" href={`/make/${printurl}`}
               target="_blank" rel="noopener noreferrer">Make</IonButton>
-          </div>
+          </IonItem>
         }
-
-        <div className="ion-text-center">
-          <p>
-            Once you've finished making components, click here to continue
-          </p>
-          <IonButton routerLink={nextUrl}>Great, let's start!</IonButton>
-        </div>
-      </div>
-    </div>
+      </IonFooter>
+    </>
   );
 };
 
