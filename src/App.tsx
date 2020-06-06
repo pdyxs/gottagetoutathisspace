@@ -39,13 +39,17 @@ import Who from 'pages/info/who';
 import Why from 'pages/info/why';
 import Contact from 'pages/info/contact';
 import More from 'pages/info/more';
-
 import Loss from 'pages/loss';
+
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 const App: React.FC = () => {
 
   return (
     <IonApp>
+    <GoogleReCaptchaProvider
+        reCaptchaKey="6LdBqgAVAAAAANesMZ5jG7nbK_w03ToXCNx0SO3A">
+
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/print" component={Print} />
@@ -65,6 +69,7 @@ const App: React.FC = () => {
           <Route path="/" component={Start} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>
+      </GoogleReCaptchaProvider>
     </IonApp>
   );
 };

@@ -6,6 +6,8 @@ import ContactContent from 'content/Info/Contact.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 import { sendEmail } from 'firebaseConfig';
 import { logoInstagram, logoTwitter, logoGithub, globeOutline, mailOutline } from 'ionicons/icons';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { toast } from 'toast';
 
 const Contact: React.FC = () => {
   const [name, setName] = useState('');
@@ -14,10 +16,29 @@ const Contact: React.FC = () => {
   const [body, setBody] = useState('');
   const [subscribe, setSubscribe] = useState(true);
   const [busy, setBusy] = useState(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   async function doSendEmail() {
+    if (!executeRecaptcha) {
+      return;
+    }
     setBusy(true);
-    await sendEmail(name, email, subject, body, subscribe);
+    const captcha = await executeRecaptcha("homepage");
+    const didSendEmail : boolean = await sendEmail(captcha, name, email, subject, body, subscribe);
+    let message = "Message failed to send :(. Are you a robot?";
+    if (didSendEmail) {
+      if (!subscribe) {
+        message = "Message Sent! We'll get back to you shortly!";
+      } else {
+        message = "Message Sent! Check your email to confirm your subscription to the mailing list."
+      }
+    }
+    toast(message);
+    setName('');
+    setEmail('');
+    setSubject('');
+    setBody('');
+    setSubscribe(true);
     setBusy(false);
   }
 
@@ -73,6 +94,12 @@ const Contact: React.FC = () => {
                         </IonItem>
                         <IonItem>
                           <IonTextarea rows={5} value={body} onIonChange={e => setBody(e.detail.value!)} autoGrow placeholder="What do you want to say?" />
+                        </IonItem>
+                        <IonItem>
+                          <IonText color="medium" className="text-small camo-links">
+                            This site is protected from robots by reCAPTCHA and the
+                            Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                          </IonText>
                         </IonItem>
                         <IonButton type="submit" expand="block">Send</IonButton>
                       </form>

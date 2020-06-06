@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonButton, IonItem, IonIcon, IonLabel, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonContent, IonPage, IonButton, IonItem, IonIcon, IonLabel, IonGrid, IonRow, IonCol, IonText } from '@ionic/react';
 import React from 'react';
 import './Start.scss';
 import Content from 'content/Start.md';
@@ -126,8 +126,14 @@ const Start: React.FC = () => {
               </IonItem>
             </IonCol>
           </IonRow>
-
         </IonGrid>
+
+        <div className="ion-text-center  page-container">
+          <IonText color="tertiary" className="text-small camo-links">
+            This site is protected from robots by reCAPTCHA and the
+            Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+          </IonText>
+        </div>
       </IonContent>
     </IonPage>
   );

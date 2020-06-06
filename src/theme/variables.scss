@@ -1,5 +1,37 @@
 $font-size: 20pt;
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.text-small {
+  font-size: 0.7em;
+}
+
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+  ion-item {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.pad-large {
+  width: 100%;
+  padding-top: 8em;
+  padding-bottom: 8em;
+}
+
+.camo-links {
+  a {
+    color: inherit;
+  }
+}
+
 .page-container {
   max-width: 800px;
   margin: 0 auto;

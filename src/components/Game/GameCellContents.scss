@@ -98,6 +98,14 @@
   --size: calc(var(--element-width) * 0.5);
 }
 
+.game-cell-contents .ggo-icon-star.ggo-icon-star-red {
+  --size: calc(var(--element-width) * 0.35);
+}
+
+.game-cell-contents .ggo-icon-star.ggo-icon-star-yellow {
+  --size: calc(var(--element-width) * 0.45);
+}
+
 .game-cell-contents .ggo-icon-star-blackHole {
   --size: calc(var(--element-width) * 0.8);
 }

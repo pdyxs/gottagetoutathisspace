@@ -1,17 +1,10 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+import rp = require('request-promise');
 
-import nodemailer = require('nodemailer');
-
-const gmailEmail = functions.config().gmail.email;
-const gmailPassword = functions.config().gmail.password;
-const mailTransport = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: gmailEmail,
-    pass: gmailPassword
-  }
-});
+const slackWebhook = functions.config().slack.webhook;
+const captchaSecret = functions.config().captcha.secret;
+const mailchimpApiKey = functions.config().mailchimp.apikey;
 
 admin.initializeApp();
 
@@ -189,20 +182,116 @@ export const registerSystemResult = functions.https.onCall(async (data, _) => {
   }
 });
 
-export const sendEmail = functions.https.onCall(async (data, _) => {
-  const {from, email, subject, body} = data;
-  console.error(gmailEmail);
-  const mailOptions = {
-    from: email,
-    replyTo: email,
-    to: gmailEmail,
-    subject: `GGOTS [${from}]: ${subject}`,
-    text: body,
-    html: `<p>${body}`
-  };
+interface MailData {
+  from: string,
+  email: string,
+  subject: string,
+  body: string
+};
 
-  await mailTransport.sendMail(mailOptions);
-  console.error("sent");
+async function doSend({from, email, subject, body} : MailData) : Promise<void> {
+  await rp({
+    method: 'POST',
+    uri: slackWebhook,
+    body: {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            "type": "mrkdwn",
+            "text": "Someone has just filled in the *_Gotta Get Outta This Space_* Contact Form!"
+          }
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "mrkdwn",
+            "text": `*Name:* ${from}\n*Email:* ${email}\n*Subjeect:* ${subject}\n${body}`
+          }
+        },
+        {
+          "type": "actions",
+          "elements": [
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Reply",
+                "emoji": true
+              },
+              "url": `mailto:${email}?subject=${encodeURIComponent("Re: " + subject)}&body=${encodeURIComponent('\n\n------------------------------\n> ' + body.replace('\n', '\n> '))}`
+            }
+          ]
+        }
+      ]
+    },
+    json: true
+  });
+}
+
+interface CaptchaData {
+  captcha: string
+};
+
+async function checkCaptcha({captcha} : CaptchaData) : Promise<boolean> {
+  const resp = await rp({
+    method: 'POST',
+    uri: "https://www.google.com/recaptcha/api/siteverify",
+    form: {
+      secret: captchaSecret,
+      response: captcha
+    }
+  });
+
+  const captchaData = JSON.parse(resp);
+  return captchaData.success;
+}
+
+interface SubscribeData {
+  from: string,
+  email: string,
+  source: string
+}
+
+
+async function doSubscription({from, email, source} : SubscribeData) {
+  const names = from.split(' ');
+  return await rp({
+    method: 'POST',
+    uri: 'https://us2.api.mailchimp.com/3.0/lists/2807bd4d82/members/',
+    auth: {
+      user: 'anystring',
+      pass: mailchimpApiKey
+    },
+    body: {
+      email_address: email,
+      status: "pending",
+      merge_fields: {
+        "FNAME": names[0],
+        "LNAME": names.length > 1 ? names[names.length - 1] : ""
+      },
+      source
+    },
+    json: true
+  })
+}
+
+
+export const sendEmail = functions.https.onCall(async (data, _) => {
+  const {doSubscribe} = data;
+  const captchaCheck = await checkCaptcha(data);
+  if (!captchaCheck) return false;
+
+  await doSend(data);
+
+  if (doSubscribe) {
+    await doSubscription({...data, source: "Gotta Get Outta This Space contact form"});
+  }
+
+  return true;
 });
 
 export const saveGameData = functions.https.onCall(async (data, _) => {

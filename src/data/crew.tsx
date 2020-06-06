@@ -11,7 +11,7 @@ const crew: Crew[] = [
   },
   {
     name: 'Engineer',
-    power: 'Repair 1 damage'
+    power: 'Repair 1 damage, by filling in a Damage Square with a symbol'
   },
   {
     name: 'Miner',

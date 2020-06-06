@@ -1,8 +1,8 @@
 ## What This Is
 
-"Gotta Get Outta This Space" is a print, play and post game.
+"Gotta Get Outta This Space" is a print, play and post game for 1-4 players.
 
-You're stuck on a planet in the robot apocalypse, and one of the last human ships has just arrived in your solar system!
+You're each stuck on a planet in the robot apocalypse, and one of the last human ships has just arrived in a nearby solar system!
 
 Your goal: to guide the ship to pick you up, and then to Get Outta This Space!
 
