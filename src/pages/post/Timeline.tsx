@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 import { ShipData } from 'model/Phases';
-import { IonGrid, IonRow, IonCol, IonImg, IonPopover, IonCard, IonCardContent, IonButton } from '@ionic/react';
+import { IonGrid, IonRow, IonCol, IonImg, IonPopover, IonCard, IonCardContent, IonButton, IonItem } from '@ionic/react';
 
 import './Timeline.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -85,6 +85,16 @@ const Timeline: React.FC<InstructionPageProps> = ({nextUrl, extraProps: { button
         </IonGrid>
 
         <div className="centre">
+          <IonItem>
+            <p style={{margin: "0 auto"}}>
+              I'd love to hear the story of your game.
+            </p>
+          </IonItem>
+          <IonItem className="ion-margin-bottom">
+            <p style={{margin: "0 auto"}}>
+              Share your experience with <a href="/contact">me here</a>, or use the hashtag <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?text=%23gottagetouttathisspace">#gottagetouttathisspace</a>
+            </p>
+          </IonItem>
           <IonButton routerLink={nextUrl}>{buttonText}</IonButton>
         </div>
       </div>

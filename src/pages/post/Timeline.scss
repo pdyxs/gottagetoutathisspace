@@ -7,6 +7,8 @@
 
     &.continuing {
       margin-bottom: 2em;
+      position: relative;
+      left: -1px;
     }
 
     .line {
