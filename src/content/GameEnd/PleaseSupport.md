@@ -1,0 +1,1 @@
+If you've enjoyed playing this, please consider buying us a coffee. I'm passionate about creating innovative interactive games and artworks, and your support will help me make more cool things like this.

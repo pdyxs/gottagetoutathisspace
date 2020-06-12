@@ -8,11 +8,13 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas as fasp } from '@fortawesome/pro-solid-svg-icons';
 import { far as farp } from '@fortawesome/pro-regular-svg-icons';
+import { faMediumM } from '@fortawesome/free-brands-svg-icons';
 
 library.add(fas);
 library.add(far);
 library.add(fasp);
 library.add(farp);
+library.add(faMediumM);
 
 export const FuelIcon : React.FC<IconProps> = ({className}) =>
   <FontAwesomeIcon className={className} icon={['fas', 'bolt']} />

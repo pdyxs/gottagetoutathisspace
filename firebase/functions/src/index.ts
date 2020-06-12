@@ -44,7 +44,8 @@ interface GameData {
   created: Date,
   codeName?: string,
   systems: SystemData[],
-  finalShipURL?: string
+  finalShipURL?: string,
+  allowUse?: boolean
 }
 
 interface SystemData {
@@ -295,7 +296,7 @@ export const sendEmail = functions.https.onCall(async (data, _) => {
 });
 
 export const saveGameData = functions.https.onCall(async (data, _) => {
-  const {shipCode, codeName, finalShipURL, nextCodename} = data;
+  const {shipCode, codeName, finalShipURL, nextCodename, allowUse} = data;
   const shipDoc = db.collection("ships").doc(shipCode);
   const ship = await shipDoc.get();
   if (!ship.exists) return;
@@ -307,6 +308,7 @@ export const saveGameData = functions.https.onCall(async (data, _) => {
     //only do this if there's the right number of systems
     if (nextCodename.length >= 5 && game.systems.length === 3 && game.systems[2].won) {
       game.finalShipURL = finalShipURL;
+      game.allowUse = allowUse === true;
 
       shipData.games.push({
         created: new Date(),

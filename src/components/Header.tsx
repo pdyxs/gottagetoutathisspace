@@ -10,7 +10,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
 
-
   return (
     <>
       <IonMenu side="start" contentId="ggots-content">
@@ -35,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
             </IonItem>
             <IonItem routerLink="/contact">
               <IonIcon slot="start" icon={chatbubbleEllipsesOutline} />
-              <IonLabel>I want to talk to you</IonLabel>
+              <IonLabel>I want to say hi</IonLabel>
             </IonItem>
             <IonItem routerLink="/more">
               <IonIcon slot="start" icon={ellipsisHorizontalOutline} />
@@ -44,13 +43,13 @@ const Header: React.FC<HeaderProps> = ({shipCode, title}) => {
             <IonItem color="tertiary">
               <IonTitle>Money Stuff</IonTitle>
             </IonItem>
-            <IonItem disabled routerLink="/buy">
+            <IonItem routerLink="/buy">
               <IonIcon slot="start" icon={cardOutline} />
-              <IonLabel>Buy a nice deck</IonLabel>
+              <IonLabel>Buy a nice copy</IonLabel>
             </IonItem>
-            <IonItem disabled routerLink="/support-us">
+            <IonItem routerLink="/support">
               <IonIcon slot="start" icon={cashOutline} />
-              <IonLabel>Support Us</IonLabel>
+              <IonLabel>Help me make more</IonLabel>
             </IonItem>
             <IonItem color="tertiary">
               <IonTitle>Just Coz</IonTitle>

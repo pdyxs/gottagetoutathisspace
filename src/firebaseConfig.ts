@@ -60,9 +60,9 @@ export async function createNewShip(name: string) : Promise<ReturnData> {
   return result.data;
 }
 
-export async function saveGameData(id: string, codeName: string, finalShipURL: string, nextCodename: string) : Promise<ReturnData> {
+export async function saveGameData(id: string, codeName: string, finalShipURL: string, nextCodename: string, allowUse: boolean) : Promise<ReturnData> {
   const func = functions.httpsCallable('saveGameData');
-  const result = await func({shipCode: id, codeName, finalShipURL, nextCodename});
+  const result = await func({shipCode: id, codeName, finalShipURL, nextCodename, allowUse});
   analytics.logEvent(`game-completed`, {
     code: (result.data as ReturnData).shipCode,
     gameNumber: (result.data as ReturnData).ship.games?.length

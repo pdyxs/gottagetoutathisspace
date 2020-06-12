@@ -40,6 +40,8 @@ import Why from 'pages/info/why';
 import Contact from 'pages/info/contact';
 import More from 'pages/info/more';
 import Loss from 'pages/loss';
+import Support from 'pages/info/support';
+import Buy from 'pages/info/buy';
 
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
@@ -58,6 +60,8 @@ const App: React.FC = () => {
           <Route path="/why" exact component={Why} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/more" exact component={More} />
+          <Route path="/support" exact component={Support} />
+          <Route path="/buy" exact component={Buy} />
           {Continue}
           {NewGame}
           {EndGame}

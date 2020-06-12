@@ -1,4 +1,9 @@
 .captains-log {
+
+  &.card, .card {
+    border-radius: 0;
+  }
+
   background: var(--ion-color-notebook);
   color: black;
   border: black solid thin !important;

@@ -1,4 +1,4 @@
-import { IonButton, IonInput, IonLoading } from '@ionic/react';
+import { IonButton, IonInput, IonLoading, IonCheckbox, IonItem, IonText } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
@@ -24,6 +24,7 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
   const [chosenFileURL, setChosenFileURL] = useState('');
   const [chosenFile, setChosenFile] = useState<File>();
+  const [allowUse, setAllowUse] = useState(true);
 
   const onDrop = useCallback(acceptedFiles => {
     if (acceptedFiles.length === 0) return;
@@ -38,7 +39,7 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
     if (!chosenFile || !shipCode) return;
     setBusy(true);
     let imageURL = await uploadFile(shipCode, shipData?.games.length || 1, chosenFile);
-    let data = await saveGameData(shipCode, codeName || '', imageURL, code);
+    let data = await saveGameData(shipCode, codeName || '', imageURL, code, allowUse);
     dispatch(setPlayData(data));
     setBusy(false);
     history.push(nextUrl);
@@ -60,6 +61,14 @@ const RecordLogs: React.FC<InstructionPageProps> = ({nextUrl}) => {
         <div className="instructions">
           Drag and drop the image of your ship here, or click to choose a file
         </div>
+      </div>
+      <div className="dropCheck">
+        <IonItem>
+          <IonCheckbox slot="start" checked={allowUse} onIonChange={e => setAllowUse(e.detail.checked)} />
+          <IonText>
+            I allow the game's creators to use this image and other recorded details of this playthrough in social media and other marketing materials
+          </IonText>
+        </IonItem>
       </div>
       <MarkdownComponent source={Content2} transformations={{...shipData}} />
       <form className="centre"

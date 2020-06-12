@@ -26,6 +26,8 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
   });
   const printurl = materialBuildOptionTypes.join('/');
 
+  const isBuying = materialBuildOptionTypes.includes(MaterialBuildOptionType.Buy);
+
   const isPrintable = !isNil(materialBuildOptionTypes.find(
     bot => BuildOptionTypeDetails[bot].isPrinted
   ));
@@ -69,6 +71,16 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
         </div>
       </div>
       <IonFooter className="footer-fixed">
+        {isBuying &&
+          <IonItem color="dark" className="ion-text-center page-container">
+            <p>
+              You've chosen to buy some items. Click this button to do that!
+            </p>
+            <IonButton slot="end" size="large" href={`/buy`}
+              target="_blank" rel="noopener noreferrer">Buy</IonButton>
+          </IonItem>
+        }
+
         {isPrintable &&
           <IonItem color="dark" className="ion-text-center page-container">
             <p>
@@ -78,7 +90,6 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
               target="_blank" rel="noopener noreferrer">Print</IonButton>
           </IonItem>
         }
-
 
         {needsBuildInstructions &&
           <IonItem color="dark" className="ion-text-center page-container">
