@@ -8,4 +8,4 @@ It quickly became clear that I wasn't going to finish this in the 48 hours (I wa
 
 [Alistair](/who) came onto the project soon after, working on the art of the game.
 
-If you want to see what else I've made or follow along as I make more things, see the [I want more](/moreplease) page.
+If you want to see what else I've made or follow along as I make more things, see the [I want more](/more) page.

@@ -110,7 +110,7 @@ const Start: React.FC = () => {
                 <IonIcon slot="start" icon={cardOutline} />
                 <IonLabel>Buy a nice copy</IonLabel>
               </IonItem>
-              <IonItem lines="none" color="clear" routerLink="/support-us">
+              <IonItem lines="none" color="clear" routerLink="/support">
                 <IonIcon slot="start" icon={cashOutline} />
                 <IonLabel>Help me make more</IonLabel>
               </IonItem>

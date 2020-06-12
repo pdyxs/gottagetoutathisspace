@@ -82,3 +82,10 @@ export async function sendEmail(captcha: string, from: string, email: string, su
   const resp = await func({from, email, subject, body, doSubscribe, captcha});
   return resp.data;
 }
+
+//returns: whether it sent or not
+export async function subscribe(captcha: string, from: string, email: string, source: string) : Promise<any> {
+  const func = functions.httpsCallable('subscribe');
+  const resp = await func({from, email, captcha, source});
+  return resp.data;
+}
