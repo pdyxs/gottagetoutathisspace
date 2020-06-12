@@ -11,6 +11,10 @@
 .cover-sheet {
   --aspect-ratio: 0.7;
 
+  &.card, .card {
+    border-radius: 0;
+  }
+
   background: #010058;
   color: var(--ion-text-color);
 

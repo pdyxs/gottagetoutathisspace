@@ -1,4 +1,14 @@
 .record-logs {
+  .dropCheck {
+    width: 400px;
+    margin: 0 auto;
+    ion-text {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      font-size: 0.8em;
+    }
+  }
+
   .dropzone {
     width: 400px;
     height: 300px;

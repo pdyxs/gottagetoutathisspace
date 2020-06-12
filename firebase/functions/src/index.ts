@@ -44,7 +44,8 @@ interface GameData {
   created: Date,
   codeName?: string,
   systems: SystemData[],
-  finalShipURL?: string
+  finalShipURL?: string,
+  allowUse?: boolean
 }
 
 interface SystemData {
@@ -172,6 +173,10 @@ export const registerSystemResult = functions.https.onCall(async (data, _) => {
       system.won = result;
 
       await shipDoc.set(shipData);
+
+      if (!result) {
+        await registerGameLossOnSlack(shipCode, shipData, game);
+      }
     }
   }
 
@@ -189,47 +194,72 @@ interface MailData {
   body: string
 };
 
-async function doSend({from, email, subject, body} : MailData) : Promise<void> {
+interface BlockText {
+  type: "mrkdwn" | "plain_text";
+  text: string;
+  emoji?: boolean;
+}
+
+interface BlockElement {
+  type: "button",
+  text: BlockText,
+  url: string
+}
+
+interface Block {
+  type: "section" | "divider" | "actions" | "image";
+  text?: BlockText;
+  elements?: BlockElement[];
+  title?: BlockText;
+  image_url?: string;
+  alt_text?: string;
+}
+
+async function sendToSlack(blocks: Block[]) : Promise<void> {
   await rp({
     method: 'POST',
     uri: slackWebhook,
     body: {
-      blocks: [
-        {
-          type: "section",
-          text: {
-            "type": "mrkdwn",
-            "text": "Someone has just filled in the *_Gotta Get Outta This Space_* Contact Form!"
-          }
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "type": "section",
-          "text": {
-            "type": "mrkdwn",
-            "text": `*Name:* ${from}\n*Email:* ${email}\n*Subjeect:* ${subject}\n${body}`
-          }
-        },
-        {
-          "type": "actions",
-          "elements": [
-            {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Reply",
-                "emoji": true
-              },
-              "url": `mailto:${email}?subject=${encodeURIComponent("Re: " + subject)}&body=${encodeURIComponent('\n\n------------------------------\n> ' + body.replace('\n', '\n> '))}`
-            }
-          ]
-        }
-      ]
+      blocks
     },
     json: true
   });
+}
+
+async function doSend({from, email, subject, body} : MailData) : Promise<void> {
+  await sendToSlack([
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        "text": "Someone has just filled in the *_Gotta Get Outta This Space_* Contact Form!"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": `*Name:* ${from}\n*Email:* ${email}\n*Subjeect:* ${subject}\n${body}`
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Reply",
+            "emoji": true
+          },
+          "url": `mailto:${email}?subject=${encodeURIComponent("Re: " + subject)}&body=${encodeURIComponent('\n\n------------------------------\n> ' + body.replace('\n', '\n> '))}`
+        }
+      ]
+    }
+  ]);
 }
 
 interface CaptchaData {
@@ -256,6 +286,13 @@ interface SubscribeData {
   source: string
 }
 
+export const subscribe = functions.https.onCall(async (data, _) => {
+  const captchaCheck = await checkCaptcha(data);
+  if (!captchaCheck) return false;
+  await doSubscription(data);
+  return true;
+});
+
 
 async function doSubscription({from, email, source} : SubscribeData) {
   const names = from.split(' ');
@@ -279,7 +316,6 @@ async function doSubscription({from, email, source} : SubscribeData) {
   })
 }
 
-
 export const sendEmail = functions.https.onCall(async (data, _) => {
   const {doSubscribe} = data;
   const captchaCheck = await checkCaptcha(data);
@@ -295,7 +331,7 @@ export const sendEmail = functions.https.onCall(async (data, _) => {
 });
 
 export const saveGameData = functions.https.onCall(async (data, _) => {
-  const {shipCode, codeName, finalShipURL, nextCodename} = data;
+  const {shipCode, codeName, finalShipURL, nextCodename, allowUse} = data;
   const shipDoc = db.collection("ships").doc(shipCode);
   const ship = await shipDoc.get();
   if (!ship.exists) return;
@@ -307,6 +343,7 @@ export const saveGameData = functions.https.onCall(async (data, _) => {
     //only do this if there's the right number of systems
     if (nextCodename.length >= 5 && game.systems.length === 3 && game.systems[2].won) {
       game.finalShipURL = finalShipURL;
+      game.allowUse = allowUse === true;
 
       shipData.games.push({
         created: new Date(),
@@ -315,6 +352,7 @@ export const saveGameData = functions.https.onCall(async (data, _) => {
       });
 
       await shipDoc.set(shipData);
+      await registerGameFinishOnSlack(shipCode, shipData, game);
     }
   }
 
@@ -324,6 +362,49 @@ export const saveGameData = functions.https.onCall(async (data, _) => {
     isCurrentPlayer: false
   }
 });
+
+async function registerGameFinishOnSlack(shipCode: string, shipData: ShipData, gameData: GameData) : Promise<void> {
+  await sendToSlack([
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `The ship ${shipData.shipName} (code ${shipCode}) just finished game ${shipData.games.length - 1}.`
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `It went through the systems ${gameData.systems[0].name}, ${gameData.systems[1].name} and ${gameData.systems[2].name}.`
+      }
+    },
+    {
+      type: "image",
+      image_url: gameData.finalShipURL,
+      alt_text: `The current state of ${shipData.shipName}`
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `Social Sharing ${gameData.allowUse ? "*Allowed*" : "*Not Allowed*"}`
+      }
+    }
+  ]);
+}
+
+async function registerGameLossOnSlack(shipCode: string, shipData: ShipData, gameData: GameData) : Promise<void> {
+  await sendToSlack([
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `:skull: The ship ${shipData.shipName} (code ${shipCode}) just lost in game ${shipData.games.length}, system ${gameData.systems.length}.`
+      }
+    }
+  ]);
+}
 
 async function getNewShipId() : Promise<string> {
   const testShipCode = GetRandomShipCode();

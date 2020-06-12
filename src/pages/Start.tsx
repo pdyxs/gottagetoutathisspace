@@ -98,7 +98,7 @@ const Start: React.FC = () => {
               </IonItem>
               <IonItem lines="none" color="clear" routerLink="/contact">
                 <IonIcon slot="start" icon={chatbubbleEllipsesOutline} />
-                <IonLabel>I want to talk to you</IonLabel>
+                <IonLabel>I want to say hi</IonLabel>
               </IonItem>
               <IonItem lines="none" color="clear" routerLink="/more">
                 <IonIcon slot="start" icon={ellipsisHorizontalOutline} />
@@ -106,13 +106,13 @@ const Start: React.FC = () => {
               </IonItem>
             </IonCol>
             <IonCol size="8" size-md="6" size-lg="4">
-              <IonItem disabled lines="none" color="clear" routerLink="/buy">
+              <IonItem lines="none" color="clear" routerLink="/buy">
                 <IonIcon slot="start" icon={cardOutline} />
-                <IonLabel>Buy a nice deck</IonLabel>
+                <IonLabel>Buy a nice copy</IonLabel>
               </IonItem>
-              <IonItem disabled lines="none" color="clear" routerLink="/support-us">
+              <IonItem lines="none" color="clear" routerLink="/support">
                 <IonIcon slot="start" icon={cashOutline} />
-                <IonLabel>Support Us</IonLabel>
+                <IonLabel>Help me make more</IonLabel>
               </IonItem>
             </IonCol>
             <IonCol size="8" size-md="6" size-lg="4">
@@ -123,6 +123,11 @@ const Start: React.FC = () => {
               <IonItem lines="none" color="clear" href="https://github.com/pdyxs/gottagetouttathisspace" target="_blank" rel="noopener noreferrer">
                 <IonIcon slot="start" icon={codeSlashOutline} />
                 <IonLabel>Source Code</IonLabel>
+              </IonItem>
+              <IonItem lines="none" color="clear">
+              </IonItem>
+              <IonItem lines="none" color="clear" href="https://medium.com/@pdyxs/momemtum-8e375bea7a8e" target="_blank" rel="noopener noreferrer">
+                <IonText  style={{textAlign: "right"}}>A Momemtum project by PDYXS</IonText>
               </IonItem>
             </IonCol>
           </IonRow>

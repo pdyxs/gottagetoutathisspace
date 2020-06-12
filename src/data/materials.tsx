@@ -42,6 +42,11 @@ const materials: Material[] = [
         preview: CoverSheetPreviewComponent
       },
       {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice copy (Australia only)",
+        preview: CoverSheetPreviewComponent
+      },
+      {
         type: MaterialBuildOptionType.Build,
         description: "I want to make it myself"
       }
@@ -64,6 +69,11 @@ const materials: Material[] = [
       {
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
+        preview: CaptainsLogPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice copy (Australia only)",
         preview: CaptainsLogPreviewComponent
       },
       {
@@ -92,6 +102,11 @@ const materials: Material[] = [
         preview: ShipsManifestPreviewComponent
       },
       {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice copy (Australia only)",
+        preview: ShipsManifestPreviewComponent
+      },
+      {
         type: MaterialBuildOptionType.Build,
         description: "I want to make it myself"
       }
@@ -108,11 +123,11 @@ const materials: Material[] = [
     name: "Space Cards",
     description: "These are used to make the map that you'll play on",
     buildOptions: [
-      // {
-      //   type: MaterialBuildOptionType.Buy,
-      //   description: "I want to buy a nice deck",
-      //   preview: SpaceCardPreviewComponent
-      // },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice deck",
+        preview: SpaceCardPreviewComponent
+      },
       {
         type: MaterialBuildOptionType.PrintNormal,
         description: "I want to print them",
@@ -145,11 +160,11 @@ const materials: Material[] = [
     name: "Ship Module Cards",
     description: "These modules come together to make your ship. Each affects what you can do or what your ship can contain in some way.",
     buildOptions: [
-      // {
-      //   type: MaterialBuildOptionType.Buy,
-      //   description: "I want to buy a nice deck",
-      //   preview: ShipCardPreviewComponent
-      // },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice deck",
+        preview: ShipCardPreviewComponent
+      },
       {
         type: MaterialBuildOptionType.PrintNormal,
         description: "I want to print them",
@@ -183,11 +198,11 @@ const materials: Material[] = [
     description: "Your crew. Each comes with an ability that can be used once per game",
     buildDescription: "",
     buildOptions: [
-      // {
-      //   type: MaterialBuildOptionType.Buy,
-      //   description: "I want to buy a nice deck",
-      //   preview: CrewCardPreviewComponent
-      // },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "I want to buy a nice deck",
+        preview: CrewCardPreviewComponent
+      },
       {
         type: MaterialBuildOptionType.PrintNormal,
         description: "I want to print them",

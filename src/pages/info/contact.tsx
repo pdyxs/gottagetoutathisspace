@@ -8,6 +8,7 @@ import { sendEmail } from 'firebaseConfig';
 import { logoInstagram, logoTwitter, logoGithub, globeOutline, mailOutline } from 'ionicons/icons';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Contact: React.FC = () => {
   const [name, setName] = useState('');
@@ -57,6 +58,9 @@ const Contact: React.FC = () => {
                   <div className="social">
                     <a href="https://www.instagram.com/pdyxs/" target="_blank" rel="noopener noreferrer">
                       <IonIcon size="large" icon={logoInstagram} />
+                    </a>
+                    <a href="https://medium.com/@pdyxs" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon size="2x" style={{marginBottom: '4px'}} icon={['fab', 'medium-m']} />
                     </a>
                     <a href="https://twitter.com/pdyxs" target="_blank" rel="noopener noreferrer">
                       <IonIcon size="large" icon={logoTwitter} />

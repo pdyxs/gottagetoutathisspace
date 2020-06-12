@@ -60,9 +60,9 @@ export async function createNewShip(name: string) : Promise<ReturnData> {
   return result.data;
 }
 
-export async function saveGameData(id: string, codeName: string, finalShipURL: string, nextCodename: string) : Promise<ReturnData> {
+export async function saveGameData(id: string, codeName: string, finalShipURL: string, nextCodename: string, allowUse: boolean) : Promise<ReturnData> {
   const func = functions.httpsCallable('saveGameData');
-  const result = await func({shipCode: id, codeName, finalShipURL, nextCodename});
+  const result = await func({shipCode: id, codeName, finalShipURL, nextCodename, allowUse});
   analytics.logEvent(`game-completed`, {
     code: (result.data as ReturnData).shipCode,
     gameNumber: (result.data as ReturnData).ship.games?.length
@@ -80,5 +80,12 @@ export async function uploadFile(shipCode: string, game: number, file: File) : P
 export async function sendEmail(captcha: string, from: string, email: string, subject: string, body: string, doSubscribe: boolean) : Promise<any> {
   const func = functions.httpsCallable('sendEmail');
   const resp = await func({from, email, subject, body, doSubscribe, captcha});
+  return resp.data;
+}
+
+//returns: whether it sent or not
+export async function subscribe(captcha: string, from: string, email: string, source: string) : Promise<any> {
+  const func = functions.httpsCallable('subscribe');
+  const resp = await func({from, email, captcha, source});
   return resp.data;
 }
