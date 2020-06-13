@@ -2,7 +2,8 @@
 
 The source code for ["Gotta Get Outta This Space"](https://gottagetouttathis.space)
 
-This code
+Support me making more cool stuff at:
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R81RI6R)
 
 ## The Front-end
 The front-end for this project uses Ionic React, in Typescript.
