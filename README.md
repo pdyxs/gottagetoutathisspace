@@ -2,7 +2,8 @@
 
 The source code for ["Gotta Get Outta This Space"](https://gottagetouttathis.space)
 
-Support me making more cool stuff at:
+Support me making more cool stuff on Ko-fi
+
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R81RI6R)
 
 ## The Front-end
