@@ -6,11 +6,12 @@ import classNames from "classnames";
 interface MarkdownComponentProps {
   className?: string,
   source: string,
-  transformations?: {[id: string]: any}
+  transformations?: {[id: string]: any},
+  escapeHtml?: boolean
 }
 
 const MarkdownComponent : React.FC<MarkdownComponentProps> =
-  ({className, source, transformations}) => {
+  ({className, source, transformations, escapeHtml}) => {
     if (transformations != null) {
       source = replace(source,
         new RegExp(/{([A-Za-z0-9_]*)}/, 'g'),
@@ -72,6 +73,7 @@ const MarkdownComponent : React.FC<MarkdownComponentProps> =
 
     return <ReactMarkdown
       linkTarget={linkTarget}
+      escapeHtml={escapeHtml === undefined ? true : escapeHtml}
       className={classNames('default-markdown', className)} source={source}  />
   }
 
