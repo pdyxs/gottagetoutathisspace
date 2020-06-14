@@ -125,7 +125,7 @@ const TakeDamageControl: React.FC<TakeDamageControlProps> = () => {
                   Lose Crew
                 </IonLabel>
                 <IonNote className="ion-padding-bottom">
-                  One of your crew dies
+                  One of your crew dies (if you have any)
                 </IonNote>
               </div>
             </IonItem>
@@ -161,6 +161,7 @@ const TakeDamageControl: React.FC<TakeDamageControlProps> = () => {
             <ol>
               <li>
                 <p>Fill in the damage slot</p>
+                <blockquote><b><i>If there's no more damage slots available</i></b>, the module is destroyed. Remove it from your ship, and destroy the card.</blockquote>
                 <blockquote>Draw in the damage icon (above) into a free damage slot on the {damageChosen?.module.name || ''} module</blockquote>
               </li>
               {damageChosen?.damage.immediateInstructions &&
