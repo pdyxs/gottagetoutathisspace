@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import { isString } from 'lodash';
 import SizedInCSS from 'components/SizedInCSS';
 
-import BackgroundImage from 'content/Pieces/space_background.svg';
+import BackgroundImage from 'content/Pieces/space_background.png';
 
 interface SpaceCardProps {
   type?: CellContentTypes,
@@ -25,7 +25,7 @@ const SpaceCard: React.FC<SpaceCardProps> = ({className, isPrinterFriendly, type
   var piece = type ? pieces[type] : null;
   return (
     <SquareCard className={classNames("card", "space-card", className)}
-      style={{background: `url(${BackgroundImage})`}}
+      style={{backgroundImage: `url(${BackgroundImage})`}}
     >
       {piece && type &&
         <>
