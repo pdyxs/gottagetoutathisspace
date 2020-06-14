@@ -1,3 +1,14 @@
+.rules {
+  .irrelevant {
+    color: #999;
+    font-style: italic;
+  }
+
+  .requires-crew {
+    color: var(--ion-color-warning-shade);
+  }
+}
+
 .robots-move-img {
   float: right;
   width: 140px;
@@ -27,7 +38,8 @@
   color: var(--ion-color-danger-contrast);
 }
 
-.strong-em-as-success-button strong em {
+.strong-em-as-success-button strong em,
+.button-success {
   @extend %strong-em-as-button;
   background-color: var(--ion-color-success);
   color: var(--ion-color-success-contrast);
