@@ -1,4 +1,4 @@
-import Material, { MaterialBuildOptionType } from "model/Materials";
+import Material, { MaterialBuildOptionType, MaterialType } from "model/Materials";
 import { SpaceCardPreviewComponent, PrintSpaceCardsComponent } from "components/Game/Printing/Space";
 import { ShipCardPreviewComponent, PrintShipCardsComponent } from "components/Game/Printing/Ship";
 import { CrewCardPreviewComponent, PrintCrewCardsComponent } from "components/Game/Printing/Crew";
@@ -29,6 +29,7 @@ const materials: Material[] = [
     printCountMin: 1,
     printCountMax: 1,
     name: "Cover Sheet",
+    type: MaterialType.Paper,
     description: "Introduces the game, and gives you a Ship Code",
     buildOptions: [
       {
@@ -58,6 +59,7 @@ const materials: Material[] = [
     count: 1,
     printCountMin: 1,
     printCountMax: 1,
+    type: MaterialType.Paper,
     name: "Captain's Log",
     description: "A log of the ship, and the components used for the game",
     buildOptions: [
@@ -86,6 +88,7 @@ const materials: Material[] = [
   },
   {
     count: 1,
+    type: MaterialType.Paper,
     printCountMin: 1,
     printCountMax: 1,
     name: "Ship's Manifest",
@@ -116,6 +119,7 @@ const materials: Material[] = [
   },
   {
     count: 16,
+    type: MaterialType.Card,
     printCountMin: 16,
     printCountDefault: 16,
     printCountMax: 32,
@@ -153,6 +157,7 @@ const materials: Material[] = [
   },
   {
     count: "5-10",
+    type: MaterialType.Card,
     printCountMin: 5,
     printCountDefault: 5,
     printCountMax: 18,
@@ -190,6 +195,7 @@ const materials: Material[] = [
   },
   {
     count: "1 or more",
+    type: MaterialType.Card,
     printCountMin: 1,
     printCountDefault: 8,
     printCountMax: 14,
@@ -223,6 +229,7 @@ const materials: Material[] = [
   },
   {
     count: 20,
+    type: MaterialType.Token,
     printCountMin: 20,
     printCountMax: 20,
     name: "Robot Tokens",
@@ -243,12 +250,17 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print them, but be friendly to my printer",
         preview: RobotPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "Buy the deluxe edition (Australia only)"
       }
     ],
     printComponent: PrintRobotsComponent
   },
   {
     count: 1,
+    type: MaterialType.Token,
     printCountMin: 1,
     printCountMax: 1,
     name: "Ship Token",
@@ -269,12 +281,17 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
         preview: ShipTokenPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "Buy the deluxe edition (Australia only)"
       }
     ],
     printComponent: PrintShipTokenComponent
   },
   {
     count: "1-4",
+    type: MaterialType.Token,
     printCountMin: 1,
     printCountMax: 4,
     extraComponentDescription: "You'll need one of these per player. If you don't provide enough, whoever gets the game will have to add their own",
@@ -296,12 +313,17 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print them, but be friendly to my printer",
         preview: SurvivorTokenPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "Buy the deluxe edition (Australia only)"
       }
     ],
     printComponent: PrintSurvivorTokenComponent
   },
   {
     count: 1,
+    type: MaterialType.Token,
     printCountMin: 1,
     printCountMax: 1,
     name: "Upgrade Token",
@@ -322,12 +344,17 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
         preview: UpgradeTokenPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "Buy the deluxe edition (Australia only)"
       }
     ],
     printComponent: PrintUpgradeTokenComponent
   },
   {
     count: 1,
+    type: MaterialType.Token,
     printCountMin: 1,
     printCountMax: 1,
     name: "New Module Token",
@@ -348,12 +375,17 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
         preview: ModuleTokenPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "Buy the deluxe edition (Australia only)"
       }
     ],
     printComponent: PrintModuleTokenComponent
   },
   {
     count: 8,
+    type: MaterialType.Token,
     printCountMin: 8,
     printCountMax: 8,
     name: "Fuel Tokens",
@@ -374,6 +406,10 @@ const materials: Material[] = [
         type: MaterialBuildOptionType.PrintFriendly,
         description: "I want to print it, but be friendly to my printer",
         preview: FuelPreviewComponent
+      },
+      {
+        type: MaterialBuildOptionType.Buy,
+        description: "Buy the deluxe edition (Australia only)"
       }
     ],
     printComponent: PrintFuelComponent

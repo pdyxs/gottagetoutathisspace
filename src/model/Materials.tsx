@@ -55,6 +55,12 @@ export interface MaterialComponentProps {
   className?: string
 }
 
+export enum MaterialType {
+  Paper = "Paper",
+  Card = "Card",
+  Token = "Token"
+}
+
 export interface PrintComponentProps extends MaterialComponentProps {
   count?: number
 }
@@ -75,8 +81,68 @@ export function buildOptionClasses(type:MaterialBuildOptionType) {
   });
 }
 
+export interface MaterialPreset {
+  id: string,
+  name: string,
+  preset: {[id: string]: MaterialBuildOptionType}
+}
+
+export const MaterialPresets : MaterialPreset[] = [
+  {
+    id: 'buy-deluxe',
+    name: 'Buy the Deluxe Edition (Australia Only)',
+    preset: {
+      [MaterialType.Paper]: MaterialBuildOptionType.Buy,
+      [MaterialType.Card]: MaterialBuildOptionType.Buy,
+      [MaterialType.Token]: MaterialBuildOptionType.Buy
+    }
+  },
+  {
+    id: 'buy-cards',
+    name: 'Buy the Cards',
+    preset: {
+      [MaterialType.Card]: MaterialBuildOptionType.Buy
+    }
+  },
+  {
+    id: 'print-everything-paper',
+    name: 'Print Everything',
+    preset: {
+      [MaterialType.Paper]: MaterialBuildOptionType.PrintNormal,
+      [MaterialType.Card]: MaterialBuildOptionType.PrintNormal,
+      [MaterialType.Token]: MaterialBuildOptionType.PrintNormal
+    }
+  },
+  {
+    id: 'print-everything-friendly',
+    name: 'Print Everything (Printer Friendly)',
+    preset: {
+      [MaterialType.Paper]: MaterialBuildOptionType.PrintFriendly,
+      [MaterialType.Card]: MaterialBuildOptionType.PrintFriendly,
+      [MaterialType.Token]: MaterialBuildOptionType.PrintFriendly
+    }
+  },
+  {
+    id: 'print-tokens',
+    name: 'Use my own Tokens',
+    preset: {
+      [MaterialType.Token]: MaterialBuildOptionType.UseMyOwn
+    }
+  },
+  {
+    id: 'make-all',
+    name: 'Make Everything',
+    preset: {
+      [MaterialType.Paper]: MaterialBuildOptionType.Build,
+      [MaterialType.Card]: MaterialBuildOptionType.Build,
+      [MaterialType.Token]: MaterialBuildOptionType.UseMyOwn
+    }
+  }
+]
+
 interface Material {
   count: number | string,
+  type: MaterialType,
   printCountMin: number,
   printCountDefault?: number,
   printCountMax: number,

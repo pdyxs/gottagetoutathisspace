@@ -1,20 +1,56 @@
 import { IonGrid, IonRow, IonCol, IonButton, IonFooter, IonItem } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { InstructionPageProps } from '../../components/InstructionFlow';
 
 import Content from 'content/New/Make.md';
 import MarkdownComponent from 'components/MarkdownComponent';
 import materials from 'data/materials';
 import MakeMaterialsCard from 'components/Materials/MakeMaterialsCard';
-import { clone, isNil } from 'lodash';
-import { BuildOptionTypeDetails, MaterialBuildOptionType } from 'model/Materials';
+import { clone, isNil, has, findIndex } from 'lodash';
+import { BuildOptionTypeDetails, MaterialBuildOptionType, MaterialPresets, MaterialPreset } from 'model/Materials';
 
 const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const [buildOptions, setBuildOptions] = useState(materials.map(_m => 0));
+  const [isUsingPresets, setIsPresets] = useState(MaterialPresets.map(_ => false));
+
+  const checkPresets = useCallback(() => {
+    var newUsingPresets = MaterialPresets.map(_ => true);
+    for (let i = 0; i !== MaterialPresets.length; ++i) {
+      var preset = MaterialPresets[i];
+      for (let materialIndex = 0; materialIndex !== materials.length; ++materialIndex) {
+        let material = materials[materialIndex];
+        if (!has(preset.preset, material.type.toString())) continue;
+        let targetBuildOptionIndex = buildOptions[materialIndex];
+        let buildOption = (material.buildOptions.length <= targetBuildOptionIndex) ? MaterialBuildOptionType.None : (material.buildOptions[targetBuildOptionIndex]?.type || MaterialBuildOptionType.None);
+        if (buildOption !== preset.preset[material.type.toString()]) {
+          newUsingPresets[i] = false;
+          break;
+        }
+      }
+    }
+    setIsPresets(newUsingPresets);
+  }, [buildOptions]);
+  useEffect(() => {
+    checkPresets();
+  }, [checkPresets]);
 
   function updateBuildOption(materialIndex: number, index: number) {
     let newBuildOptions = clone(buildOptions);
     newBuildOptions[materialIndex] = index;
+    setBuildOptions(newBuildOptions);
+  }
+
+  function enablePreset(preset: MaterialPreset) {
+    let newBuildOptions = clone(buildOptions);
+    for (let materialIndex = 0; materialIndex !== materials.length; ++materialIndex) {
+      let material = materials[materialIndex];
+      if (has(preset.preset,material.type.toString())) {
+        var newIndex = findIndex(material.buildOptions, o => o.type === preset.preset[material.type.toString()]);
+        if (newIndex >= 0) {
+          newBuildOptions[materialIndex] = newIndex;
+        }
+      }
+    }
     setBuildOptions(newBuildOptions);
   }
 
@@ -41,6 +77,16 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
       <div className="ion-text-center ion-padding">
         <div className="page-container">
           <MarkdownComponent source={Content} />
+
+          <h4 className="centre">Presets</h4>
+          <div className="ion-text-center">
+            {MaterialPresets.map((preset, i) =>
+              <IonButton onClick={() => enablePreset(preset)} key={preset.id} color={isUsingPresets[i] ? "dark" : "primary"}>
+                {preset.name}
+              </IonButton>
+            )}
+          </div>
+
           <div className="ion-text-center">
             <p>
               Once you've finished making components, click here to continue
@@ -51,8 +97,8 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
           <IonGrid>
             <IonRow>
               {materials.map((material, i) =>
-                <IonCol key={i} size="12" size-sm="6">
-                  <MakeMaterialsCard material={material}
+                <IonCol key={`${i}-${buildOptions[i]}`} size="12" size-sm="6">
+                  <MakeMaterialsCard material={material} buildOptionIndex={buildOptions[i]}
                     onBuildOptionChanged={(j) => updateBuildOption(i, j)}
                     />
                 </IonCol>

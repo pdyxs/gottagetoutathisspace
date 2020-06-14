@@ -1,20 +1,20 @@
 import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonSelect, IonSelectOption, IonImg } from '@ionic/react';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect } from 'react';
 
 import './MakeMaterialsCard.scss';
 
 import Material, { MaterialBuildOption, buildOptionClasses } from 'model/Materials';
-import { isNil, first, isString } from 'lodash';
+import { isNil, isString } from 'lodash';
 
 interface MakeMaterialsCardProps {
   material: Material,
+  buildOptionIndex: number,
   onBuildOptionChanged: (index:number) => void
 }
 
-const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material, onBuildOptionChanged}) => {
+const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material, buildOptionIndex, onBuildOptionChanged}) => {
   let select = React.useRef<HTMLIonSelectElement>(null);
-  let [buildOption, setBuildOption] =
-    useState<MaterialBuildOption|undefined>(first(material.buildOptions))
+  const buildOption = material.buildOptions[buildOptionIndex]
 
   useLayoutEffect(() => {
     if (!isNil(select.current)) {
@@ -25,7 +25,6 @@ const MakeMaterialsCard: React.FC<MakeMaterialsCardProps> = ({material, onBuildO
   });
 
   function updateBuildOption(newVal : MaterialBuildOption) {
-    setBuildOption(newVal);
     onBuildOptionChanged(material.buildOptions.indexOf(newVal));
   }
 
