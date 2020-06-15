@@ -159,7 +159,7 @@ const materials: Material[] = [
     count: "5-10",
     type: MaterialType.Card,
     printCountMin: 5,
-    printCountDefault: 5,
+    printCountDefault: 8,
     printCountMax: 18,
     extraComponentDescription: "Cards after the first 5 are blanks",
     name: "Ship Module Cards",
