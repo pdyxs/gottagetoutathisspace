@@ -129,9 +129,18 @@ const MakeGame: React.FC<InstructionPageProps> = ({nextUrl}) => {
 
         {isPrintable &&
           <IonItem color="dark" className="ion-text-center page-container">
-            <p>
-              You've chosen to print some items. Click this button to do that!
-            </p>
+            <div>
+              <div>
+                You've chosen to print some items. Click this button to do that!
+              </div>
+              <div>
+                <b>OR</b> download a PDF with <a rel="noopener noreferrer" target="_blank" href="/assets/print-full.pdf">
+                  everything
+                </a> (<a rel="noopener noreferrer" target="_blank" href="/assets/print-full-friendly.pdf">
+                  printer friendly
+                </a>)
+              </div>
+            </div>
             <IonButton slot="end" size="large" href={`/print/${printurl}`}
               target="_blank" rel="noopener noreferrer">Print</IonButton>
           </IonItem>
