@@ -89,6 +89,7 @@ export function allowedPhases(data: StateData) : PlayPhase[] {
 
 export interface ShipData {
   shipName: string,
+  levelOffset?: number,
   created: Date,
   games: GameData[]
 }
