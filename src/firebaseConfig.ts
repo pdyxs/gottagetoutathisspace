@@ -51,9 +51,9 @@ export async function registerSystemResult(id: string, codeName: string, systemN
   return res.data;
 }
 
-export async function createNewShip(name: string) : Promise<ReturnData> {
+export async function createNewShip(name: string, offset: number) : Promise<ReturnData> {
   const func = functions.httpsCallable('createShip');
-  const result = await func({shipName: name});
+  const result = await func({shipName: name, levelOffset: offset});
   analytics.logEvent(`createShip`, {
     code: (result.data as ReturnData).shipCode
   });

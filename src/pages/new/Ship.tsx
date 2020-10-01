@@ -1,4 +1,4 @@
-import { IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem } from '@ionic/react';
+import { IonButton, IonInput, IonLoading, IonPopover, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonCheckbox, IonLabel, IonText } from '@ionic/react';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InstructionPageProps } from '../../components/InstructionFlow';
@@ -20,12 +20,14 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
   const [busy, setBusy] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
   const [shipCode, setShipCode] = useState('');
+  const [isNotFirstShip, setNotFirstShip] = useState(false);
+  const [offsetCount, setOffsetCount] = useState(1);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  async function makeShip(name : string) {
+  async function makeShip(name : string, offset: number) {
     setBusy(true);
-    let playData = await createNewShip(name);
+    let playData = await createNewShip(name, offset);
 
     dispatch(setPlayData(playData));
     storeCodes(playData.shipCode);
@@ -33,6 +35,8 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
     setShipCode(playData.shipCode);
     setShowPopover(true);
   }
+
+  const inputIsValid = nameInput.length >= 3 && (!isNotFirstShip || offsetCount > 0);
 
   return (
     <>
@@ -57,12 +61,27 @@ const NewShip: React.FC<InstructionPageProps> = ({nextUrl}) => {
           </p>
         </div>
         <form className="centre"
-          onSubmit={(e) => {makeShip(nameInput); e.preventDefault();}}>
+          onSubmit={(e) => {makeShip(nameInput, isNotFirstShip ? offsetCount : 0); e.preventDefault();}}>
           <IonLoading isOpen={busy} message="Creating Ship Record" />
           <IonInput
             value={nameInput} placeholder="Your Ship Name Here"
             onIonChange={e => setNameInput(e.detail.value!)} />
-          <IonButton disabled={nameInput.length < 3} onClick={() => makeShip(nameInput)}>Enter</IonButton>
+          <div className="returnCheck">
+            <IonCheckbox checked={isNotFirstShip} className="checkbox" onIonChange={e => setNotFirstShip(e.detail.checked)} />
+            <IonLabel>I've built a ship before</IonLabel>
+          </div>
+          {isNotFirstShip &&
+            <IonItem className="returnCountForm">
+              <IonText className="label">
+                Welcome back! How many ships have you made before?
+                We'll use this to make sure that you get different maps each time.
+              </IonText>
+              <IonInput className="playCountInput" slot="end" type="number"
+                value={offsetCount} placeholder="0" onIonChange={e => setOffsetCount(e.detail.value ? parseInt(e.detail.value) : 0)}
+                 />
+            </IonItem>
+          }
+          <IonButton disabled={!inputIsValid} onClick={() => makeShip(nameInput, isNotFirstShip ? offsetCount : 0)}>Enter</IonButton>
         </form>
       </div>
 

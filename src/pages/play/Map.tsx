@@ -53,8 +53,10 @@ const MapSetup: React.FC<InstructionPageProps> = ({
     return <></>;
   }
 
-  const uLevelStar = upgradeLevel(shipData?.games.length || 0)?.mainStar;
-  const sLevelStar = survivorLevel(shipData?.games.length || 0)?.mainStar;
+  const gameNumber = shipData ? ((shipData.games.length) || 0) + (shipData.levelOffset || 0) : 0;
+
+  const uLevelStar = upgradeLevel(gameNumber)?.mainStar;
+  const sLevelStar = survivorLevel(gameNumber)?.mainStar;
 
   return (
     <>

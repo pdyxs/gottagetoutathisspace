@@ -19,3 +19,23 @@
     margin: 0.2% 0.4%;
   }
 }
+
+.returnCheck {
+  margin: 1em;
+  .checkbox {
+    margin-right: 1em;
+    position: relative;
+    top: 4px;
+  }
+}
+
+.returnCountForm {
+  margin: 1em;
+  .label {
+    padding: 1em;
+  }
+  .playCountInput {
+    padding: 1em;
+    max-width: 2em;
+  }
+}

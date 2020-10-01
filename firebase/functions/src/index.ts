@@ -30,6 +30,7 @@ function GetRandomShipCode() : string {
 
 interface ShipData {
   shipName: string,
+  levelOffset: number,
   created: Date,
   games: GameData[]
 }
@@ -59,11 +60,12 @@ interface SystemData {
 // // https://firebase.google.com/docs/functions/typescript
 //
 export const createShip = functions.https.onCall(async (data, _) : Promise<ReturnData|undefined> => {
-  const {shipName} = data;
+  const {shipName, levelOffset} = data;
   const newID = await getNewShipId();
   const newShipDoc = db.collection("ships").doc(newID);
   const newShipData : ShipData = {
     shipName: shipName,
+    levelOffset: levelOffset || 0,
     created: new Date(),
     games: [{
       created: new Date(),

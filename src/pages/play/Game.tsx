@@ -34,7 +34,7 @@ const Game: React.FC<InstructionPageProps> = ({
     codeName
   } = useSelector((state: any) => state) as StateData;
 
-  level = isFunction(level) ? level(shipData?.games.length) : level;
+  level = isFunction(level) ? level((shipData?.games.length || 0) + (shipData?.levelOffset || 0)) : level;
 
   function winLevel() {
     setShowWinPopover(true);

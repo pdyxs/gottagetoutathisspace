@@ -26,7 +26,7 @@ const MapSetup: React.FC<InstructionPageProps> = ({
   const [refreshCount, setRefresh] = useState(0);
 
   playerCount = playerCount || 1;
-  const level:Level = isFunction(l) ? l(shipData?.games.length) : l;
+  const level:Level = isFunction(l) ? l((shipData?.games.length || 0) + (shipData?.levelOffset || 0)) : l;
 
   const playerPositions = level ? filter(flatten(level.grid),
     cell => cell.type !== CellTypes.Blank &&
